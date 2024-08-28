@@ -3,6 +3,7 @@
 #include <string> // string, stoi
 #include <vector>
 #include <stdint.h> // int32_t, uint32_t, [...]
+#include <SDL2/SDL.h>
 
 // struct made to store data about colors
 struct color{
@@ -35,6 +36,9 @@ struct entity{
     int32_t speed_X;
     int32_t speed_Y;
     double rotation; // in radian
+    SDL_Texture* texture;
+    SDL_Rect* srcRect;
+    SDL_Rect* dstRect;
 };
 
 void read_configuration_file(window_data* window_config, window_font* font, std::vector<entity*>* entities);

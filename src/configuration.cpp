@@ -82,7 +82,6 @@ void read_configuration_file(window_data* window_config, window_font* font, std:
         config_file_stream >> config_content;
         std::string::size_type sz;     // alias of size_t
         new_entity->rotation = std::stod(config_content, &sz);
-
         entities->push_back(new_entity);
     }
 
