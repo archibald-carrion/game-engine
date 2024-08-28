@@ -38,6 +38,35 @@ void Game::init() {
     );
 
     this->isRunning = true;
+
+    // TODO: this could be improved by passing the renderer to the configuration
+    // manager and loading the textures there when reading the configuration file
+
+    // for each entity, load the texture and create the rect
+    for (auto& e : entities) {
+        // load the texture
+        SDL_Surface* surface = IMG_Load(e->sprite_folder.c_str());
+        if (surface == nullptr) {
+            std::cout << "IMG_Load Error: " << IMG_GetError() << std::endl;
+            return;
+        }
+        e->texture = SDL_CreateTextureFromSurface(this->renderer, surface);
+        SDL_FreeSurface(surface);
+
+        // create the rect
+        e->srcRect = new SDL_Rect();
+        // set the position of the rect and its dimensions
+        e->srcRect->x = 0; // if I work with spritesheets, I will need to change this, but for now it's fine
+        e->srcRect->y = 0;
+        e->srcRect->w = e->sprite_width;
+        e->srcRect->h = e->sprite_height;
+
+        e->dstRect = new SDL_Rect();
+        e->dstRect->x = e->pos_X;
+        e->dstRect->y = e->pos_Y;
+        e->dstRect->w = e->sprite_width;
+        e->dstRect->h = e->sprite_height;
+    }
 }
 
 void Game::run() {
@@ -102,6 +131,21 @@ void Game::render() {
     );
 
     SDL_RenderClear(this->renderer);
+
+    // render the entities
+    for (const auto& e : this->entities) {
+        SDL_RenderCopyEx(
+            this->renderer,
+            e->texture,
+            e->srcRect, // source rect, could be nullptr to render the entire texture
+            e->dstRect, // destination rect
+            e->rotation,
+            nullptr, // center of rotation, nullptr to rotate around the center of the rect
+            SDL_FLIP_NONE
+        );
+    }
+
+
     SDL_RenderPresent(this->renderer);
 }
 
