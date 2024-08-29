@@ -4,6 +4,9 @@
 #include <vector>
 #include <stdint.h> // int32_t, uint32_t, [...]
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+#include <glm/glm.hpp>
+
 
 // struct made to store data about colors
 struct color{
@@ -20,10 +23,11 @@ struct window_data{
     color* window_color;
 };
 
-struct window_font{
+struct window_font_config{
     std::string font_folder;
     color* font_color;
     uint8_t font_size;
+    TTF_Font* font;
 };
 
 struct entity{
@@ -36,9 +40,15 @@ struct entity{
     int32_t speed_X;
     int32_t speed_Y;
     double rotation; // in radian
-    SDL_Texture* texture;
-    SDL_Rect* srcRect;
-    SDL_Rect* dstRect;
+    SDL_Texture* texture; // image of the entity
+    SDL_Rect* srcRect; // source rectangle of the image
+    SDL_Rect* dstRect; // destination rectangle of the image
+
+    SDL_Texture* message_texture; // texture of the message
+    SDL_Rect* message_dstRect; // destination rectangle of the message
+    size_t message_width;
+    size_t message_height;
+    glm::vec2 message_position;
 };
 
-void read_configuration_file(window_data* window_config, window_font* font, std::vector<entity*>* entities);
+void read_configuration_file(window_data* window_config, window_font_config* font, std::vector<entity*>* entities);

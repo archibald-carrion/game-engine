@@ -7,6 +7,14 @@ Game::Game() {
 
 Game::~Game() {
     std::cout << "Game destructor" << std::endl;
+    
+    // free allocated memory
+    delete window_configuration.window_color;
+    delete window_font.font_color;
+    for (auto& e : entities) {
+        delete e; // Deallocate each entity
+    }
+    
 }
 
 void Game::init() {
@@ -18,7 +26,7 @@ void Game::init() {
     }
 
     // read the config file
-    read_configuration_file(&window_configuration, &font, &entities);
+    read_configuration_file(&window_configuration, &window_font, &entities);
 
     // create the window
     this->window = SDL_CreateWindow(
@@ -41,6 +49,18 @@ void Game::init() {
 
     // TODO: this could be improved by passing the renderer to the configuration
     // manager and loading the textures there when reading the configuration file
+
+    if (TTF_Init() != 0) {
+        std::cout << "TTF_Init Error: " << TTF_GetError() << std::endl;
+        return;
+    }
+
+    // initialize the text
+    window_font.font = TTF_OpenFont(window_font.font_folder.c_str(), window_font.font_size);
+    if (window_font.font == nullptr) {
+        std::cout << "TTF_OpenFont Error: " << TTF_GetError() << std::endl;
+        return;
+    }
 
     // for each entity, load the texture and create the rect
     for (auto& e : entities) {
@@ -66,7 +86,37 @@ void Game::init() {
         e->dstRect->y = e->pos_Y;
         e->dstRect->w = e->sprite_width;
         e->dstRect->h = e->sprite_height;
+
+        // create the message texture
+        SDL_Surface* surface_message = TTF_RenderText_Solid(
+            window_font.font,
+            e->label.c_str(),
+            SDL_Color{window_font.font_color->r, window_font.font_color->g, window_font.font_color->b, window_font.font_color->alpha}
+        );
+        e->message_texture = SDL_CreateTextureFromSurface(this->renderer, surface_message);
+        // set size and position of the message
+        e->message_width = surface_message->w;
+        e->message_height = surface_message->h;
+        // position the message in the center of the entity
+        e->message_position = glm::vec2(e->pos_X + e->sprite_width / 2 - e->message_width / 2, e->pos_Y + e->sprite_height / 2 - e->message_height / 2);
+        SDL_FreeSurface(surface_message);
     }
+
+
+
+
+    // // create surface
+    // SDL_Surface* surface = TTF_RenderText_Solid(
+    //     font_,
+    //     message.c_str(),
+    //     font_color
+    // );
+    // message_texture = SDL_CreateTextureFromSurface(this->renderer, surface);
+    // message_width = surface->w;
+    // message_height = surface->h;
+    // message_position = glm::vec2(window_configuration.width / 2 - message_width / 2, window_configuration.height / 2 - message_height / 2);
+    // SDL_FreeSurface(surface);
+
 }
 
 void Game::run() {
@@ -81,17 +131,21 @@ void Game::run() {
 
 void Game::destroy() {
     std::cout << "Game destroy" << std::endl;
+
+    // destroy the texture of each entity
+    for (auto& e : entities) {
+        SDL_DestroyTexture(e->texture); // free the texture
+        SDL_DestroyTexture(e->message_texture); // free the texture
+    }
+
     SDL_DestroyWindow(this->window);
     SDL_DestroyRenderer(this->renderer);
-    SDL_Quit();
+    // SDL_DestroyTexture(message_texture); // free the texture
+    
 
-    // free allocated memory
-    // TODO: move this to ~Game() ?
-    delete window_configuration.window_color;
-    delete font.font_color;
-    for (auto& e : entities) {
-        delete e; // Deallocate each entity
-    }
+    TTF_Quit();
+
+    SDL_Quit();
 }
 
 void Game::processInput() {
@@ -143,7 +197,30 @@ void Game::render() {
             nullptr, // center of rotation, nullptr to rotate around the center of the rect
             SDL_FLIP_NONE
         );
+
+        // render the text
+        SDL_RenderCopyEx(
+            this->renderer,
+            e->message_texture,
+            nullptr, // source rect, nullptr to render the entire texture
+            new SDL_Rect{int(e->message_position.x), int(e->message_position.y), int(e->message_width), int(e->message_height)}, // destination rect
+            0.0,
+            nullptr, // center of rotation, nullptr to rotate around the center of the rect
+            SDL_FLIP_NONE
+        );
     }
+
+    // // render the text
+    // SDL_RenderCopyEx(
+    //     this->renderer,
+    //     message_texture,
+    //     nullptr, // source rect, nullptr to render the entire texture
+    //     new SDL_Rect{int(message_position.x), int(message_position.y), int(message_width), int(message_height)}, // destination rect
+    //     message_rotation,
+    //     nullptr, // center of rotation, nullptr to rotate around the center of the rect
+    //     SDL_FLIP_NONE
+    // );
+
 
 
     SDL_RenderPresent(this->renderer);
@@ -160,12 +237,12 @@ void Game::print_game_data() {
         << unsigned(this->window_configuration.window_color->b) << ")" << std::endl;
 
     // print the content of the font configuration settings
-    std::cout << "ttf file: " << font.font_folder << std::endl;
-    std::cout << "font size: " << unsigned(font.font_size) << std::endl;
+    std::cout << "ttf file: " << window_font.font_folder << std::endl;
+    std::cout << "font size: " << unsigned(window_font.font_size) << std::endl;
     std::cout << "color of the font: (" 
-        << unsigned(this->font.font_color->r) << ", "
-        << unsigned(this->font.font_color->g) << ", "
-        << unsigned(this->font.font_color->b) << ")" << std::endl;
+        << unsigned(this->window_font.font_color->r) << ", "
+        << unsigned(this->window_font.font_color->g) << ", "
+        << unsigned(this->window_font.font_color->b) << ")" << std::endl;
 
     // print the entities information
     for (const auto& e : this->entities) {

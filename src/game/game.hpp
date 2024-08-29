@@ -21,8 +21,19 @@ private:
     SDL_Renderer* renderer = nullptr;
     bool isRunning;
     window_data window_configuration;
-    window_font font;
+    window_font_config window_font;
     std::vector<entity*> entities;
+    
+    // TTF_Font* font_ = nullptr;
+    // int font_size = 0;
+    // SDL_Color font_color = {0, 0, 0, 255};
+    // std::string message = "Hello, World!";
+    // glm::vec2 message_position = glm::vec2(10.0f, 10.0f);
+    // size_t message_width = 0;
+    // size_t message_height = 0;
+    // SDL_Texture* message_texture = nullptr;
+    // double message_rotation = 0.0;
+
 
 public:
     Game();

@@ -1,6 +1,6 @@
 #include "configuration.hpp"
 
-void read_configuration_file(window_data* window_config, window_font* font, std::vector<entity*>* entities) {
+void read_configuration_file(window_data* window_config, window_font_config* font, std::vector<entity*>* entities) {
     std::string configFileName = "config.txt"; // this value is hardcoded but could be received in future implementation
     std::ifstream config_file_stream(configFileName);
     std::string config_content;
