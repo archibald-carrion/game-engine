@@ -34,3 +34,15 @@ Al presionar el botón de cerrar ventana (botón con signo de x) el programa deb
 Al presionar la tecla ESC debe cerrar la ventana y terminar el programa
 
 Al presionar la tecla P el programa debe pausar el moviento de las entidades
+
+## Guía de uso
+Para compilar el programa, ejecute el siguiente comando:
+```bash
+make; make run
+```
+El proyecto fue desarrollado en Ubuntu 24.04 en WSL2, utilizando el compilador g++ 13.2.0
+
+El makefile para funcionar con mi arquitectura de carpeta fue modificado.
+
+### Archivo de configuración
+El archivo de configuración config.txt sigue el mismo formate que el archivo dado por el profesor.
