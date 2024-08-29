@@ -9,6 +9,9 @@
 
 #include "../configuration.hpp"
 
+const int FPS = 60;
+const int MILLISECS_PER_FRAME = 1000 / FPS;
+
 
 
 class Game {
@@ -19,7 +22,11 @@ private:
 
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
+
     bool isRunning;
+    int mPreviousFrame = 0; // in milliseconds
+    bool isPaused = false;
+
     window_data window_configuration;
     window_font_config window_font;
     std::vector<entity*> entities;

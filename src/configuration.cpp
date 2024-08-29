@@ -75,9 +75,11 @@ void read_configuration_file(window_data* window_config, window_font_config* fon
         // read the speed on the axis X
         config_file_stream >> config_content;
         new_entity->speed_X = std::stoi(config_content, &numerical_value);
+        std::cout << "speed_X: " << new_entity->speed_X << std::endl;
         // read the speed on the axis Y
         config_file_stream >> config_content;
         new_entity->speed_Y = std::stoi(config_content, &numerical_value);
+        std::cout << "speed_Y: " << new_entity->speed_Y << std::endl;
         // read the rotation value
         config_file_stream >> config_content;
         std::string::size_type sz;     // alias of size_t

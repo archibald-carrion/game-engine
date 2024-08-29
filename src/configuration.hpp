@@ -35,8 +35,8 @@ struct entity{
     std::string sprite_folder;
     uint32_t sprite_width;
     uint32_t sprite_height;
-    int32_t pos_X;
-    int32_t pos_Y;
+    double pos_X;
+    double pos_Y;
     int32_t speed_X;
     int32_t speed_Y;
     double rotation; // in radian

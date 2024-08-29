@@ -1,5 +1,6 @@
 #include "game.hpp"
 #include <iostream>
+#include <algorithm> // std::max, std::min
 
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
@@ -120,7 +121,6 @@ void Game::init() {
 }
 
 void Game::run() {
-    // std::cout << "Game run" << std::endl;
 
     while (isRunning) {
         processInput();
@@ -159,8 +159,12 @@ void Game::processInput() {
             case SDL_KEYDOWN:
                 if (event.key.keysym.sym == SDLK_ESCAPE) {
                     isRunning = false;
+                }else{
+                    // check if key "p" was pressed to pause the game
+                    if (event.key.keysym.sym == SDLK_p) {
+                        isPaused = !isPaused;
+                    }
                 }
-                // add case to pause game on pressing p
                 break;
             default:
                 break;
@@ -168,8 +172,91 @@ void Game::processInput() {
     }
 }
 
+// void Game::update() {
+//     if (isPaused) {
+//         this->mPreviousFrame = SDL_GetTicks();
+//         return;
+//     }
+
+//     int time_to_wait = MILLISECS_PER_FRAME - (SDL_GetTicks() - this->mPreviousFrame);
+
+//     if (time_to_wait > 0 && time_to_wait <= MILLISECS_PER_FRAME) {
+//         SDL_Delay(time_to_wait);
+//     }
+
+//     // calculate the time between frames
+//     double deltaTime = (SDL_GetTicks() - this->mPreviousFrame) / 1000.0;
+
+//     this->mPreviousFrame = SDL_GetTicks();
+
+//     // on each frame update the position of the entities based on their speed
+//     for (auto& e : entities) {
+//         // print delta time
+//         e->pos_X += e->speed_X *deltaTime;
+//         // std::cout << "pos_X: " << e->pos_X << std::endl;
+//         std::cout << "delta time: " << deltaTime << std::endl;
+//         e->pos_Y += e->speed_Y *deltaTime;
+
+//         e->dstRect->x = e->pos_X;
+//         e->dstRect->y = e->pos_Y;
+//         // std::cout << "pos_Y: " << e->pos_Y << std::endl;
+
+//         // e->dstRect->x += e->speed_X *deltaTime;
+//         // e->dstRect->y += e->speed_Y *deltaTime;
+
+//         // update the position of the message
+//         e->message_position = glm::vec2(e->dstRect->x + e->sprite_width / 2 - e->message_width / 2, e->dstRect->y + e->sprite_height / 2 - e->message_height / 2);
+//     }
+
+//     // check if the entities are colliding with the window borders, if so, change their speed to make them bounce
+//     for (auto& e : entities) {
+//         if (e->pos_X < 0 || e->pos_X + e->sprite_width > window_configuration.width) {
+//             e->speed_X *= -1;
+//         }
+//         if (e->pos_Y < 0 || e->pos_Y + e->sprite_height > window_configuration.height) {
+//             e->speed_Y *= -1;
+//         }
+//     }
+// }
+
 void Game::update() {
-    // std::cout << "Game update" << std::endl;
+    if (isPaused) {
+        this->mPreviousFrame = SDL_GetTicks();
+        return;
+    }
+
+    int time_to_wait = MILLISECS_PER_FRAME - (SDL_GetTicks() - this->mPreviousFrame);
+
+    if (time_to_wait > 0 && time_to_wait <= MILLISECS_PER_FRAME) {
+        SDL_Delay(time_to_wait);
+    }
+
+    // calculate the time between frames
+    double deltaTime = (SDL_GetTicks() - this->mPreviousFrame) / 1000.0;
+
+    this->mPreviousFrame = SDL_GetTicks();
+
+    // on each frame update the position of the entities based on their speed
+    for (auto& e : entities) {
+        e->pos_X += e->speed_X * deltaTime;
+        e->pos_Y += e->speed_Y * deltaTime;
+
+        // Update the destination rectangle to match the new position
+        e->dstRect->x = static_cast<int>(e->pos_X);
+        e->dstRect->y = static_cast<int>(e->pos_Y);
+
+        // Update the position of the message
+        e->message_position = glm::vec2(e->pos_X + e->sprite_width / 2 - e->message_width / 2, 
+                                        e->pos_Y + e->sprite_height / 2 - e->message_height / 2);
+
+        // Check for collisions with window borders
+        if (e->pos_X < 0 || e->pos_X + e->sprite_width > window_configuration.width) {
+            e->speed_X *= -1;
+        }
+        if (e->pos_Y < 0 || e->pos_Y + e->sprite_height > window_configuration.height) {
+            e->speed_Y *= -1;
+        }
+    }
 }
 
 void Game::render() {
