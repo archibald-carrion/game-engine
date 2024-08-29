@@ -102,22 +102,6 @@ void Game::init() {
         e->message_position = glm::vec2(e->pos_X + e->sprite_width / 2 - e->message_width / 2, e->pos_Y + e->sprite_height / 2 - e->message_height / 2);
         SDL_FreeSurface(surface_message);
     }
-
-
-
-
-    // // create surface
-    // SDL_Surface* surface = TTF_RenderText_Solid(
-    //     font_,
-    //     message.c_str(),
-    //     font_color
-    // );
-    // message_texture = SDL_CreateTextureFromSurface(this->renderer, surface);
-    // message_width = surface->w;
-    // message_height = surface->h;
-    // message_position = glm::vec2(window_configuration.width / 2 - message_width / 2, window_configuration.height / 2 - message_height / 2);
-    // SDL_FreeSurface(surface);
-
 }
 
 void Game::run() {
@@ -140,7 +124,6 @@ void Game::destroy() {
 
     SDL_DestroyWindow(this->window);
     SDL_DestroyRenderer(this->renderer);
-    // SDL_DestroyTexture(message_texture); // free the texture
     
 
     TTF_Quit();
@@ -171,53 +154,6 @@ void Game::processInput() {
         }
     }
 }
-
-// void Game::update() {
-//     if (isPaused) {
-//         this->mPreviousFrame = SDL_GetTicks();
-//         return;
-//     }
-
-//     int time_to_wait = MILLISECS_PER_FRAME - (SDL_GetTicks() - this->mPreviousFrame);
-
-//     if (time_to_wait > 0 && time_to_wait <= MILLISECS_PER_FRAME) {
-//         SDL_Delay(time_to_wait);
-//     }
-
-//     // calculate the time between frames
-//     double deltaTime = (SDL_GetTicks() - this->mPreviousFrame) / 1000.0;
-
-//     this->mPreviousFrame = SDL_GetTicks();
-
-//     // on each frame update the position of the entities based on their speed
-//     for (auto& e : entities) {
-//         // print delta time
-//         e->pos_X += e->speed_X *deltaTime;
-//         // std::cout << "pos_X: " << e->pos_X << std::endl;
-//         std::cout << "delta time: " << deltaTime << std::endl;
-//         e->pos_Y += e->speed_Y *deltaTime;
-
-//         e->dstRect->x = e->pos_X;
-//         e->dstRect->y = e->pos_Y;
-//         // std::cout << "pos_Y: " << e->pos_Y << std::endl;
-
-//         // e->dstRect->x += e->speed_X *deltaTime;
-//         // e->dstRect->y += e->speed_Y *deltaTime;
-
-//         // update the position of the message
-//         e->message_position = glm::vec2(e->dstRect->x + e->sprite_width / 2 - e->message_width / 2, e->dstRect->y + e->sprite_height / 2 - e->message_height / 2);
-//     }
-
-//     // check if the entities are colliding with the window borders, if so, change their speed to make them bounce
-//     for (auto& e : entities) {
-//         if (e->pos_X < 0 || e->pos_X + e->sprite_width > window_configuration.width) {
-//             e->speed_X *= -1;
-//         }
-//         if (e->pos_Y < 0 || e->pos_Y + e->sprite_height > window_configuration.height) {
-//             e->speed_Y *= -1;
-//         }
-//     }
-// }
 
 void Game::update() {
     if (isPaused) {
@@ -260,8 +196,6 @@ void Game::update() {
 }
 
 void Game::render() {
-    // std::cout << "Game render" << std::endl;
-    
     // clear the window
     SDL_SetRenderDrawColor(
         this->renderer,
@@ -296,19 +230,6 @@ void Game::render() {
             SDL_FLIP_NONE
         );
     }
-
-    // // render the text
-    // SDL_RenderCopyEx(
-    //     this->renderer,
-    //     message_texture,
-    //     nullptr, // source rect, nullptr to render the entire texture
-    //     new SDL_Rect{int(message_position.x), int(message_position.y), int(message_width), int(message_height)}, // destination rect
-    //     message_rotation,
-    //     nullptr, // center of rotation, nullptr to rotate around the center of the rect
-    //     SDL_FLIP_NONE
-    // );
-
-
 
     SDL_RenderPresent(this->renderer);
 }
