@@ -1,91 +1,98 @@
+/**
+ * @file configuration.cpp
+ * @brief Implementation of configuration file reading functionality.
+ */
+
 #include "configuration.hpp"
 
+/**
+ * @brief Reads the configuration file and populates the provided structures.
+ * 
+ * This function reads a configuration file named "config.txt" and populates
+ * the window configuration, font configuration, and entity data structures.
+ * 
+ * @param window_config Pointer to the window_data structure to be populated
+ * @param font Pointer to the window_font_config structure to be populated
+ * @param entities Pointer to the vector of entity pointers to be populated
+ */
 void read_configuration_file(window_data* window_config, window_font_config* font, std::vector<entity*>* entities) {
-    std::string configFileName = "config.txt"; // this value is hardcoded but could be received in future implementation
+    const std::string configFileName = "config.txt"; // Hardcoded filename, could be parameterized in future
     std::ifstream config_file_stream(configFileName);
     std::string config_content;
-    size_t numerical_value; // buffer used to cast the token stored as string to numerical values
+    size_t numerical_value; // Buffer used to store the result of string-to-number conversions
 
-    // read the data of the window
-    config_file_stream >> config_content; // ignore first token, it's the flag window
-    // read the width
+    // Read window configuration
+    config_file_stream >> config_content; // Ignore first token (window flag)
+    
+    // Read window dimensions
     config_file_stream >> config_content; 
     window_config->width = std::stoi(config_content, &numerical_value);
-    // read the height
     config_file_stream >> config_content; 
     window_config->height = std::stoi(config_content, &numerical_value);
-    // allocate memory for the color of the window
+    
+    // Read window color
     window_config->window_color = new color();
-    // read r value of the color
     config_file_stream >> config_content; 
     window_config->window_color->r = std::stoi(config_content, &numerical_value);
-    // read g value of the color
     config_file_stream >> config_content; 
     window_config->window_color->g = std::stoi(config_content, &numerical_value);
-    // read b value of the color
     config_file_stream >> config_content; 
     window_config->window_color->b = std::stoi(config_content, &numerical_value);
 
-
-    // read the data of the font
-    config_file_stream >> config_content; // ignore first token, it's the flag font
-    // read folder direction of the font
+    // Read font configuration
+    config_file_stream >> config_content; // Ignore font flag
+    
+    // Read font folder
     config_file_stream >> config_content; 
     font->font_folder = config_content;
-    // allocate memory for the font color
+    
+    // Read font color
     font->font_color = new color();
-    // read r value of the color
     config_file_stream >> config_content; 
     font->font_color->r = std::stoi(config_content, &numerical_value);
-    // read g value of the color
     config_file_stream >> config_content; 
     font->font_color->g = std::stoi(config_content, &numerical_value);
-    // read b value of the color
     config_file_stream >> config_content; 
     font->font_color->b = std::stoi(config_content, &numerical_value);
-    // read size of the font
+    
+    // Read font size
     config_file_stream >> config_content; 
     font->font_size = std::stoi(config_content, &numerical_value);
 
-
-    // read the data of the entities
-    // need a loop because there is between 0 and a lot of entities
+    // Read entity data
     while(config_file_stream >> config_content) {
-        // we ignore the first token as it's the entity label
-        // allocate memory for new entity
+        // Ignore the entity flag
         entity* new_entity = new entity();
-        // read the name of the entity
+        
+        // Read entity properties
         config_file_stream >> config_content;
         new_entity->label = config_content;
-        // read the sprite folder of the entity
+        
         config_file_stream >> config_content;
         new_entity->sprite_folder = config_content;
-        // read the width of the sprite
+        
         config_file_stream >> config_content;
         new_entity->sprite_width = std::stoi(config_content, &numerical_value);
-        // read the height of the sprite
+        
         config_file_stream >> config_content;
         new_entity->sprite_height = std::stoi(config_content, &numerical_value);
-        // read the position on the axis X
+        
         config_file_stream >> config_content;
         new_entity->pos_X = std::stoi(config_content, &numerical_value);
-        // read the position on the axis Y
+        
         config_file_stream >> config_content;
         new_entity->pos_Y = std::stoi(config_content, &numerical_value);
-        // read the speed on the axis X
+        
         config_file_stream >> config_content;
         new_entity->speed_X = std::stoi(config_content, &numerical_value);
-        std::cout << "speed_X: " << new_entity->speed_X << std::endl;
-        // read the speed on the axis Y
+        
         config_file_stream >> config_content;
         new_entity->speed_Y = std::stoi(config_content, &numerical_value);
-        std::cout << "speed_Y: " << new_entity->speed_Y << std::endl;
-        // read the rotation value
+        
         config_file_stream >> config_content;
-        std::string::size_type sz;     // alias of size_t
+        std::string::size_type sz;
         new_entity->rotation = std::stod(config_content, &sz);
+        
         entities->push_back(new_entity);
     }
-
-
 }
