@@ -1,6 +1,5 @@
 #include "game.hpp"
 #include <iostream>
-#include <algorithm> // std::max, std::min
 
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
