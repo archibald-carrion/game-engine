@@ -58,3 +58,10 @@ El desarrollo del motor se llevo a cabo siguiendo los videos disponibles en la p
 
 Adjunto se agrego un screenshot del programa ejecutandose:
 ![screenshot pseudo motor](documentation/screenshot_basic_game.PNG)
+
+
+## Instalación de las bibliotecas necesarias
+Para instalar las bibliotecas necesarias en linux, ejecute el siguiente comando:
+```bash
+sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev lua5.3 liblua5.3-dev
+```
