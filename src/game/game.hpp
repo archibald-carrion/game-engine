@@ -28,13 +28,25 @@ const int MILLISECS_PER_FRAME = 1000 / FPS;
 class Game {
 private:
     /**
+     * @brief Default constructor for the Game class.
+     */
+    Game();
+
+    /**
+     * @brief Destructor for the Game class.
+     */
+    ~Game();
+
+    /**
      * @brief Processes user input events.
      */
     void processInput();
+
     /**
      * @brief Updates the game state.
      */
     void update();
+
     /**
      * @brief Renders the game state to the screen.
      */
@@ -52,15 +64,6 @@ private:
     std::vector<entity*> entities; /**< Vector of entity pointers. */
  
 public:
-    /**
-     * @brief Default constructor for the Game class.
-     */
-    Game();
-
-    /**
-     * @brief Destructor for the Game class.
-     */
-    ~Game();
 
     /**
      * @brief Initializes the game engine.
@@ -81,6 +84,11 @@ public:
      * @brief Prints the game data to the console.
      */
     void print_game_data();
+
+    /**
+     * @brief Returns the instance of the Game class.
+     */
+    static Game& get_instance();
 
 };
 

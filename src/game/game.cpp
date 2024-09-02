@@ -17,6 +17,11 @@ Game::~Game() {
     
 }
 
+Game& Game::get_instance() {
+    static Game game;
+    return game;
+}
+
 void Game::init() {
     std::cout << "Game init" << std::endl;
     // initialize SDL
