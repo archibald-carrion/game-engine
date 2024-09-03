@@ -1,6 +1,10 @@
 #ifndef ECS_HPP
 #define ECS_HPP
 
+#include <memory>
+#include <vector>
+#include "../Utils/Pool.hpp"
+
 struct IComponent {
 protected:
     static int next_id;
@@ -29,7 +33,7 @@ public:
 class Registry {
 private:
     int num_entities = 0;
-
+    std::vector<std::shared_ptr<IPool>> componentsPools;
 
 };
 
