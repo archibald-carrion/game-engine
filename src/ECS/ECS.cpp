@@ -33,3 +33,49 @@ Registry::Registry() {
 Registry::~Registry() {
     std::cout<<"Registry destructor" << std::endl;
 }
+
+Registry::Registry(){}
+    
+Registry::~Registry(){}
+
+void Registry::update(){}
+    
+    //Entity management
+Entity Registry::create_entity(){}
+
+
+void Registry::kill_entity(Entity entity){}
+
+    // // Component management
+template <typename TComponent, typename... TArgs>
+void Registry::add_component(Entity entity, TArgs&&... args){}
+
+template <typename TComponent>
+void Registry::remove_component(Entity entity){}
+
+template <typename TComponent>
+bool Registry::has_component(Entity entity){}
+
+template <typename TComponent>
+TComponent& Registry::get_component(Entity entity) const{
+
+}
+
+    // System management
+template <typename TSystem, typename... TArgs>
+void Registry::add_system(Entity entity, TArgs&&... args){
+
+}
+
+template <typename TSystem>
+void Registry::remove_system(Entity entity) {}
+
+template <typename TSystem>
+bool Registry::has_system(Entity entity){}
+
+template <typename TSystem>
+TSystem& Registry::get_system(Entity entity) const{}
+
+    // Add remove entities to systems
+void Registry::add_entity_to_system(Entity entity){}
+void Registry::remove_entity_from_system(Entity entity){}
