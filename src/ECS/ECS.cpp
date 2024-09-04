@@ -25,3 +25,11 @@ std::vector<Entity> System::get_entities() const {
 const Signature& System::get_signature() const {
     return componentSignature;
 }
+
+Registry::Registry() {
+    std::cout<<"Registry constructor" << std::endl;
+}
+    
+Registry::~Registry() {
+    std::cout<<"Registry destructor" << std::endl;
+}

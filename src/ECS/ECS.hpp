@@ -3,7 +3,12 @@
 
 #include <bitset>
 #include <memory>
+#include <unordered_map>
+#include <set>
+#include <typeindex>
+#include <deque>
 #include <vector>
+#include <iostream>
 #include "../Utils/Pool.hpp"
 
 
@@ -76,6 +81,53 @@ class Registry {
 private:
     int num_entities = 0;
     std::vector<std::shared_ptr<IPool>> componentsPools;
+    std::vector<Signature> entityComponentSignatures;
+
+    std::unordered_map<std::type_index, std::shared_ptr<System>> systems;
+    std::set<Entity> entities_to_be_added;
+    std::set<Entity> entities_to_be_killed;
+
+public:
+    Registry();
+    
+    ~Registry();
+
+    void update();
+    
+    //Entity management
+    Entity create_entity();
+    void kill_entity(Entity entity);
+
+    // Component management
+    template <typename TComponent, typename... TArgs>
+    void add_component(Entity entity, TArgs&&... args);
+
+    template <typename TComponent>
+    void remove_component(Entity entity);
+
+    template <typename TComponent>
+    bool has_component(Entity entity);
+
+    template <typename TComponent>
+    TComponent& get_component(Entity entity) const;
+
+    // System management
+    template <typename TSystem, typename... TArgs>
+    void add_system(Entity entity, TArgs&&... args);
+
+    template <typename TSystem>
+    void remove_system(Entity entity);
+
+    template <typename TSystem>
+    bool has_system(Entity entity);
+
+    template <typename TSystem>
+    TSystem& get_system(Entity entity) const;
+
+    // Add remove entities to systems
+    void add_entity_to_system(Entity entity);
+    void remove_entity_from_system(Entity entity);
+
 
 };
 
