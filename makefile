@@ -2,7 +2,7 @@ CC=g++
 STD=-std=c++17
 CFLAGS=-Wall
 INC_PATH=$(shell find ./libs -type d -exec echo -I{} \;)
-SRC=src/main.cpp src/game/game.cpp src/configuration.cpp
+SRC=src/main.cpp src/game/game.cpp src/configuration.cpp src/ECS/ECS.cpp
 LFLAGS=-lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -llua5.3
 EXEC=pseudo_motor
 
