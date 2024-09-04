@@ -1,7 +1,7 @@
 #include "game/game.hpp"
+#include "ECS/ECS.hpp"
 #include <iostream>
 #include <vector>
-#include "entity.hpp"
 
 
 // remember to add inline parameters of the subroutine main else SDL2 will not work
