@@ -34,17 +34,29 @@ Registry::~Registry() {
     std::cout<<"Registry destructor" << std::endl;
 }
 
-Registry::Registry(){}
+// Registry::Registry(){}
     
-Registry::~Registry(){}
+// Registry::~Registry(){}
 
 void Registry::update(){}
     
     //Entity management
-Entity Registry::create_entity(){}
+Entity Registry::create_entity(){
+    int entity_id = num_entities++;
+    if(entity_id >= entityComponentSignatures.size()){
+        entityComponentSignatures.resize(entity_id + 100);
+    }
+
+    Entity entity(entity_id);
+    entities_to_be_added.insert(entity);
+    std::cout<<"Entity created [Registry]" << std::endl;
+    return entity;
+}
 
 
-void Registry::kill_entity(Entity entity){}
+void Registry::kill_entity(Entity entity){
+    entities_to_be_killed.insert(entity);
+}
 
     // // Component management
 template <typename TComponent, typename... TArgs>
