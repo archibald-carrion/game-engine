@@ -62,16 +62,18 @@ void Registry::kill_entity(Entity entity){
 // template <typename TComponent, typename... TArgs>
 // void Registry::add_component(Entity entity, TArgs&&... args){}
 
-template <typename TComponent>
-void Registry::remove_component(Entity entity){}
+// template <typename TComponent>
+// void Registry::remove_component(Entity entity){
 
-template <typename TComponent>
-bool Registry::has_component(Entity entity){}
+// }
 
-template <typename TComponent>
-TComponent& Registry::get_component(Entity entity) const{
+// template <typename TComponent>
+// bool Registry::has_component(Entity entity){}
 
-}
+// template <typename TComponent>
+// TComponent& Registry::get_component(Entity entity) const{
+
+// }
 
     // System management
 template <typename TSystem, typename... TArgs>

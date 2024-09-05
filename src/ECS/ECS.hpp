@@ -165,6 +165,27 @@ void Registry::add_component(Entity entity, TArgs&&... args) {
     entityComponentSignatures[entity_id].set(component_id);
 }
 
+template <typename TComponent>
+void Registry::remove_component(Entity entity){
+    const int component_id = Component<TComponent>::get_id();
+    const int entity_id = entity.get_id();
+
+    // Check if the component exists
+    if (component_id >= componentsPools.size()) {
+        return;
+    }
+
+    // Check if the entity has the component
+    if(!componentsPools[component_id]){
+        return;
+    }
+
+    entityComponentSignatures[entity_id].set(component_id, false);
+}
+
+
+
+
 
 
 #endif // ECS_HPP
