@@ -58,9 +58,9 @@ void Registry::kill_entity(Entity entity){
     entities_to_be_killed.insert(entity);
 }
 
-    // // Component management
-template <typename TComponent, typename... TArgs>
-void Registry::add_component(Entity entity, TArgs&&... args){}
+//     // // Component management
+// template <typename TComponent, typename... TArgs>
+// void Registry::add_component(Entity entity, TArgs&&... args){}
 
 template <typename TComponent>
 void Registry::remove_component(Entity entity){}

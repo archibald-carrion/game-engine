@@ -137,6 +137,34 @@ void System::RequireComponent() {
     componentSignature.set(component_id);
 }
 
+template <typename TComponent, typename... TArgs>
+void Registry::add_component(Entity entity, TArgs&&... args) {
+
+    const int component_id = Component<TComponent>::get_id();
+    const int entity_id = entity.get_id();
+    if (component_id >= componentsPools.size()) {
+        componentsPools.resize(component_id + 10);
+    }
+
+    if(!componentsPools[component_id]){
+        std::shared_ptr<Pool<TComponent>> new_component_pool =
+            std::make_shared<Pool<TComponent>>();
+        componentsPools[component_id] = new_component_pool;
+    }
+
+    std::shared_ptr<Pool<TComponent>> component_pool =
+        std::static_pointer_cast<Pool<TComponent>>(componentsPools[component_id]);
+
+    if (entity_id >= component_pool->GetSize()) {
+        component_pool->resize(entity_id + 10);
+    }
+
+    TComponent new_component(std::forward<TArgs>(args)...);
+
+    component_pool->set(entity_id, new_component);
+    entityComponentSignatures[entity_id].set(component_id);
+}
+
 
 
 #endif // ECS_HPP
