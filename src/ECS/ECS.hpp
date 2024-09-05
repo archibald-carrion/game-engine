@@ -244,6 +244,17 @@ bool Registry::has_system(Entity entity){
 }
 
 
+template <typename TSystem>
+TSystem& Registry::get_system(Entity entity) const{
+    auto system = systems.find(std::type_index(typeid(TSystem)));
+    // Check if the system exists
+    if (system == systems.end()) {
+        throw std::runtime_error("System does not exist");
+    }
+    return *std::static_pointer_cast<TSystem>(system->second); // get the system from the iterator because it is a pair
+}
+
+
 
 
 
