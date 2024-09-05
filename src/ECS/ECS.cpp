@@ -91,5 +91,17 @@ void Registry::kill_entity(Entity entity){
 // TSystem& Registry::get_system(Entity entity) const{}
 
     // Add remove entities to systems
-void Registry::add_entity_to_system(Entity entity){}
+void Registry::add_entity_to_system(Entity entity){
+    const int entity_id = entity.get_id();
+    const Signature& entity_component_signature = entityComponentSignatures[entity_id];
+
+    for(auto& system : systems){
+        const auto& system_component_signature = system.second->get_signature();
+        bool is_compatible = (entity_component_signature & system_component_signature) == system_component_signature;
+        if(is_compatible){
+            system.second->add_entity_to_system(entity);
+        }
+    }
+}
+
 void Registry::remove_entity_from_system(Entity entity){}
