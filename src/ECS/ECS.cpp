@@ -84,8 +84,8 @@ void Registry::kill_entity(Entity entity){
 // template <typename TSystem>
 // void Registry::remove_system(Entity entity) {}
 
-template <typename TSystem>
-bool Registry::has_system(Entity entity){}
+// template <typename TSystem>
+// bool Registry::has_system(Entity entity){}
 
 template <typename TSystem>
 TSystem& Registry::get_system(Entity entity) const{}

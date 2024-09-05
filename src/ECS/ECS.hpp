@@ -237,6 +237,12 @@ void Registry::remove_system(Entity entity) {
     systems.erase(system);
 }
 
+template <typename TSystem>
+bool Registry::has_system(Entity entity){
+    auto system = systems.find(std::type_index(typeid(TSystem)));
+    return system != systems.end();
+}
+
 
 
 
