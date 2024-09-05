@@ -1,5 +1,4 @@
 #include "game/game.hpp"
-#include "ECS/ECS.hpp"
 #include <iostream>
 #include <vector>
 

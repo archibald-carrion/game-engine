@@ -11,8 +11,12 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <fstream> // used to read the configuration file
+#include <memory>
 
+#include "../ECS/ECS.hpp"
 #include "../configuration.hpp"
+
+
 
 /** @brief Target frames per second for the game. */
 const int FPS = 60;
@@ -62,6 +66,8 @@ private:
     window_data window_configuration; /**< Window configuration data. */
     window_font_config window_font; /**< Font configuration data. */
     std::vector<entity*> entities; /**< Vector of entity pointers. */
+
+    std::unique_ptr<Registry> registry; /**< Pointer to the game registry. */
  
 public:
 

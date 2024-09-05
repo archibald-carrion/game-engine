@@ -87,6 +87,8 @@ private:
     std::set<Entity> entities_to_be_added;
     std::set<Entity> entities_to_be_killed;
 
+    std::deque<int> free_ids;
+
 public:
     Registry();
     

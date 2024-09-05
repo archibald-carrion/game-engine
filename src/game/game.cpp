@@ -3,6 +3,8 @@
 
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
+    registry = std::make_unique<Registry>();
+
 }
 
 Game::~Game() {
@@ -29,6 +31,7 @@ void Game::init() {
         std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return;
     }
+
 
     // read the config file
     read_configuration_file(&window_configuration, &window_font, &entities);
