@@ -200,7 +200,25 @@ bool Registry::has_component(Entity entity) {
     return entityComponentSignatures[entity_id].test(component_id);
 }
 
+template <typename TComponent>
+TComponent& Registry::get_component(Entity entity) const{
+    const int component_id = Component<TComponent>::get_id();
+    const int entity_id = entity.get_id();
 
+    // Check if the component exists
+    if (component_id >= componentsPools.size()) {
+        throw std::runtime_error("Component does not exist");
+    }
+
+    // Check if the entity has the component
+    if(!componentsPools[component_id]){
+        throw std::runtime_error("Component does not exist");
+    }
+
+    auto component_pool = std:static_pointer_cast<Pool<TComponent>>(componentsPools[component_id]);
+
+    return component_pool->get(entity_id);
+}
 
 
 
