@@ -183,6 +183,24 @@ void Registry::remove_component(Entity entity){
     entityComponentSignatures[entity_id].set(component_id, false);
 }
 
+template <typename TComponent>
+bool Registry::has_component(Entity entity) {
+    const int component_id = Component<TComponent>::get_id();
+    const int entity_id = entity.get_id();
+
+    // Check if the component exists
+    if (component_id >= componentsPools.size()) {
+        return false;
+    }
+    // Check if the entity has the component
+    if(!componentsPools[component_id]){
+        return false;
+    }
+
+    return entityComponentSignatures[entity_id].test(component_id);
+}
+
+
 
 
 
