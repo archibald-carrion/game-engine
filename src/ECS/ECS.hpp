@@ -215,7 +215,7 @@ TComponent& Registry::get_component(Entity entity) const{
         throw std::runtime_error("Component does not exist");
     }
 
-    auto component_pool = std:static_pointer_cast<Pool<TComponent>>(componentsPools[component_id]);
+    auto component_pool = std::static_pointer_cast<Pool<TComponent>>(componentsPools[component_id]);
 
     return component_pool->get(entity_id);
 }
@@ -225,6 +225,16 @@ void Registry::add_system(Entity entity, TArgs&&... args){
     std::shared_ptr<TSystem> new_system = std::make_shared<TSystem>(std::forward<TArgs>(args)...);
 
     systems.insert(std::make_pair(std::type_index(typeid(TSystem)), new_system));
+}
+
+template <typename TSystem>
+void Registry::remove_system(Entity entity) {
+    auto system = systems.find(std::type_index(typeid(TSystem)));
+    // Check if the system exists
+    if (system == systems.end()) {
+        return;
+    }
+    systems.erase(system);
 }
 
 
