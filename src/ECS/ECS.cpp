@@ -76,10 +76,10 @@ void Registry::kill_entity(Entity entity){
 // }
 
     // System management
-template <typename TSystem, typename... TArgs>
-void Registry::add_system(Entity entity, TArgs&&... args){
+// template <typename TSystem, typename... TArgs>
+// void Registry::add_system(Entity entity, TArgs&&... args){
 
-}
+// }
 
 template <typename TSystem>
 void Registry::remove_system(Entity entity) {}

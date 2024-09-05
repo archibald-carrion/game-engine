@@ -220,6 +220,15 @@ TComponent& Registry::get_component(Entity entity) const{
     return component_pool->get(entity_id);
 }
 
+template <typename TSystem, typename... TArgs>
+void Registry::add_system(Entity entity, TArgs&&... args){
+    std::shared_ptr<TSystem> new_system = std::make_shared<TSystem>(std::forward<TArgs>(args)...);
+
+    systems.insert(std::make_pair(std::type_index(typeid(TSystem)), new_system));
+}
+
+
+
 
 
 
