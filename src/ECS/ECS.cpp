@@ -104,4 +104,8 @@ void Registry::add_entity_to_system(Entity entity){
     }
 }
 
-void Registry::remove_entity_from_system(Entity entity){}
+void Registry::remove_entity_from_system(Entity entity){
+    for (auto& system : systems){
+        system.second->remove_entity_from_system(entity);
+    }
+}
