@@ -38,11 +38,10 @@ Registry::~Registry() {
     
 // Registry::~Registry(){}
 
-void Registry::update(){}
     
     //Entity management
 Entity Registry::create_entity(){
-    int entity_id = num_entities++;
+    std::size_t entity_id = num_entities++;
     if(entity_id >= entityComponentSignatures.size()){
         entityComponentSignatures.resize(entity_id + 100);
     }
@@ -108,4 +107,18 @@ void Registry::remove_entity_from_system(Entity entity){
     for (auto& system : systems){
         system.second->remove_entity_from_system(entity);
     }
+}
+
+void Registry::update(){
+    for (auto& entity : entities_to_be_added){
+        add_entity_to_system(entity);
+    }
+    entities_to_be_added.clear();
+
+    for(auto& entity: entities_to_be_killed) {
+        remove_entity_from_system(entity);
+        entityComponentSignatures[entity.get_id()].reset();
+        //add id to free ids deque
+    }
+    entities_to_be_killed.clear();
 }
