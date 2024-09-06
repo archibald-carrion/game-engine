@@ -131,7 +131,7 @@ public:
 
     // System management
     template <typename TSystem, typename... TArgs>
-    void add_system(Entity entity, TArgs&&... args);
+    void add_system(TArgs&&... args);
 
     template <typename TSystem>
     void remove_system(Entity entity);
@@ -140,7 +140,7 @@ public:
     bool has_system(Entity entity);
 
     template <typename TSystem>
-    TSystem& get_system(Entity entity) const;
+    TSystem& get_system() const;
 
     // Add remove entities to systems
     void add_entity_to_system(Entity entity);
@@ -181,6 +181,8 @@ void Registry::add_component(Entity entity, TArgs&&... args) {
 
     component_pool->set(entity_id, new_component);
     entityComponentSignatures[entity_id].set(component_id);
+
+    std::cout << "component added to Registry, component id: " << component_id << " to entity :" << entity_id << std::endl;
 }
 
 template <typename TComponent>
@@ -239,9 +241,15 @@ TComponent& Registry::get_component(Entity entity) const{
 }
 
 template <typename TSystem, typename... TArgs>
-void Registry::add_system(Entity entity, TArgs&&... args){
-    std::shared_ptr<TSystem> new_system = std::make_shared<TSystem>(std::forward<TArgs>(args)...);
-
+void Registry::add_system(TArgs&&... args) {
+    std::shared_ptr<TSystem> new_system;
+    
+    if constexpr (sizeof...(TArgs) == 0) {
+        new_system = std::make_shared<TSystem>();
+    } else {
+        new_system = std::make_shared<TSystem>(std::forward<TArgs>(args)...);
+    }
+    
     systems.insert(std::make_pair(std::type_index(typeid(TSystem)), new_system));
 }
 
@@ -263,7 +271,7 @@ bool Registry::has_system(Entity entity){
 
 
 template <typename TSystem>
-TSystem& Registry::get_system(Entity entity) const{
+TSystem& Registry::get_system() const{
     auto system = systems.find(std::type_index(typeid(TSystem)));
     // Check if the system exists
     if (system == systems.end()) {

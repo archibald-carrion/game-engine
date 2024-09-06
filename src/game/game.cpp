@@ -1,6 +1,7 @@
 #include "game.hpp"
 #include <iostream>
 
+#include "../systems/render_system.hpp"
 #include "../components/transform_component.hpp"
 
 Game::Game() {
@@ -25,10 +26,13 @@ Game::~Game() {
 }
 
 void Game::setup() {
+    registry->add_system<RenderSystem>();
     assets_manager->add_texture(renderer, "enemy_alan", "./assets/images/enemy_alan.png");
     // std::cout << "Game setup" << std::endl;
     Entity enemy = registry->create_entity();
-    enemy.add_component<transform_component>(glm::vec2(100.0f, 100.0f), glm::vec2(1.0f, 1.0f), 0.0);
+
+    enemy.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
+    enemy.add_component<TransformComponent>(glm::vec2(100.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
 }
 
 Game& Game::get_instance() {
@@ -176,6 +180,9 @@ void Game::processInput() {
 }
 
 void Game::update() {
+
+    registry->update();
+
     if (isPaused) {
         this->mPreviousFrame = SDL_GetTicks();
         return;
@@ -250,6 +257,8 @@ void Game::render() {
             SDL_FLIP_NONE
         );
     }
+
+    registry->get_system<RenderSystem>().update(renderer, assets_manager);
 
     SDL_RenderPresent(this->renderer);
 }
