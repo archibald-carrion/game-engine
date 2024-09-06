@@ -6,7 +6,7 @@
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
     registry = std::make_unique<Registry>();
-
+    assets_manager = std::make_unique<Assets_manager>();
 }
 
 Game::~Game() {
@@ -19,14 +19,16 @@ Game::~Game() {
         delete e; // Deallocate each entity
     }
 
+    assets_manager.reset();
     registry.reset();
     
 }
 
 void Game::setup() {
+    assets_manager->add_texture(renderer, "enemy_alan", "./assets/images/enemy_alan.png");
     // std::cout << "Game setup" << std::endl;
-    Entity entity1 = registry->create_entity();
-    entity1.add_component<transform_component>(glm::vec2(100.0f, 100.0f), glm::vec2(1.0f, 1.0f), 0.0);
+    Entity enemy = registry->create_entity();
+    enemy.add_component<transform_component>(glm::vec2(100.0f, 100.0f), glm::vec2(1.0f, 1.0f), 0.0);
 }
 
 Game& Game::get_instance() {
