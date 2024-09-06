@@ -4,13 +4,13 @@
 #include <SDL2/SDL.h>
 #include <string>
 
-struct sprite_component {
+struct SpriteComponent {
     std::string texture_id;
     int height;
     int width;
     SDL_Rect src_rect;
 
-    sprite_component(const std::string& texture_id = "none", int width = 0, int height = 0, int src_rect_X =0, int src_rect_Y = 0) {
+    SpriteComponent(const std::string& texture_id = "none", int width = 0, int height = 0, int src_rect_X =0, int src_rect_Y = 0) {
         this->texture_id = texture_id;
         this->height = height;
         this->width = width;
