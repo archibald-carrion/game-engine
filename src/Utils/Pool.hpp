@@ -17,7 +17,7 @@ private:
 
 public:
     Pool(int size= 1000) {
-        data.rend(size);
+        data.resize(size);
     }
 
     virtual ~Pool() = default;

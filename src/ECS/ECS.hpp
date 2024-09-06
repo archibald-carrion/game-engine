@@ -56,6 +56,22 @@ public:
     bool operator<(const Entity& other) const {
         return id < other.id;
     }
+
+    // Component management
+    template <typename TComponent, typename... TArgs>
+    void add_component(TArgs&&... args);
+
+    template <typename TComponent>
+    void remove_component();
+
+    template <typename TComponent>
+    bool has_component();
+
+    template <typename TComponent>
+    TComponent& get_component() const;
+
+    class Registry* registry;
+
 };
 
 
@@ -142,7 +158,7 @@ void System::RequireComponent() {
 template <typename TComponent, typename... TArgs>
 void Registry::add_component(Entity entity, TArgs&&... args) {
 
-    const int component_id = Component<TComponent>::get_id();
+    const size_t component_id = Component<TComponent>::get_id();
     const int entity_id = entity.get_id();
     if (component_id >= componentsPools.size()) {
         componentsPools.resize(component_id + 10);
@@ -260,7 +276,25 @@ TSystem& Registry::get_system(Entity entity) const{
 
 
 
+template <typename TComponent, typename... TArgs>
+void Entity::add_component(TArgs&&... args) {
+    registry->add_component<TComponent>(*this, std::forward<TArgs>(args)...);
+}
 
+template <typename TComponent>
+void Entity::remove_component(){
+    registry->remove_component<TComponent>(*this);
+}
+
+template <typename TComponent>
+bool Entity::has_component(){
+    return registry->has_component<TComponent>(*this);
+}
+
+template <typename TComponent>
+TComponent& Entity::get_component() const{
+    return registry->get_component<TComponent>(*this);
+}
 
 
 #endif // ECS_HPP

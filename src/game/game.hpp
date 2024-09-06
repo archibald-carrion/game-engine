@@ -56,6 +56,11 @@ private:
      */
     void render();
 
+    /**
+     * @brief 
+     */
+    void setup();
+
     SDL_Window* window = nullptr; /**< Pointer to the SDL window. */
     SDL_Renderer* renderer = nullptr; /**< Pointer to the SDL renderer. */
 

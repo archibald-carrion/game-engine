@@ -1,6 +1,8 @@
 #include "game.hpp"
 #include <iostream>
 
+#include "../components/transform_components.hpp"
+
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
     registry = std::make_unique<Registry>();
@@ -16,7 +18,15 @@ Game::~Game() {
     for (auto& e : entities) {
         delete e; // Deallocate each entity
     }
+
+    registry.reset();
     
+}
+
+void Game::setup() {
+    // std::cout << "Game setup" << std::endl;
+    Entity entity1 = registry->create_entity();
+    entity1.add_component<transform_component>(glm::vec2(100.0f, 100.0f), glm::vec2(1.0f, 1.0f), 0.0);
 }
 
 Game& Game::get_instance() {
@@ -112,6 +122,7 @@ void Game::init() {
 }
 
 void Game::run() {
+    setup();
 
     while (isRunning) {
         processInput();
