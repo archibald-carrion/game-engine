@@ -14,7 +14,7 @@
 #include <memory>
 
 #include "../ECS/ECS.hpp"
-#include "../configuration.hpp"
+#include "../utils/configuration.hpp"
 #include "../assets_manager/assets_manager.hpp"
 
 

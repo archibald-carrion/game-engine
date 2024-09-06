@@ -9,7 +9,7 @@
 #include <deque>
 #include <vector>
 #include <iostream>
-#include "../Utils/Pool.hpp"
+#include "../utils/Pool.hpp"
 
 
 const unsigned int MAX_COMPONENTS = 64;
@@ -222,7 +222,7 @@ bool Registry::has_component(Entity entity) {
 
 template <typename TComponent>
 TComponent& Registry::get_component(Entity entity) const{
-    const int component_id = Component<TComponent>::get_id();
+    const size_t component_id = Component<TComponent>::get_id();
     const int entity_id = entity.get_id();
 
     // Check if the component exists
