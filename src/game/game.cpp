@@ -1,7 +1,7 @@
 #include "game.hpp"
 #include <iostream>
 
-#include "../components/transform_components.hpp"
+#include "../components/transform_component.hpp"
 
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
