@@ -6,7 +6,7 @@
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
     registry = std::make_unique<Registry>();
-    assets_manager = std::make_unique<Assets_manager>();
+    assets_manager = std::make_unique<AssetsManager>();
 }
 
 Game::~Game() {

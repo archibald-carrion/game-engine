@@ -1,17 +1,17 @@
-#ifndef ASSETSMANAGER_HPP
-#define ASSETSMANAGER_HPP
+#ifndef ASSETS_MANAGER_HPP
+#define ASSETS_MANAGER_HPP
 
 #include <SDL2/SDL.h>
 
 #include <map>
 #include <string>
 
-class Assets_manager {
+class AssetsManager {
 private:
     std::map<std::string, SDL_Texture*> textures;
 public: 
-    Assets_manager();
-    ~Assets_manager();
+    AssetsManager();
+    ~AssetsManager();
 
     void clear_assets();
 
@@ -23,4 +23,4 @@ public:
 
 
 
-#endif // ASSETSMANAGER_HPP
+#endif // ASSETS_MANAGER_HPP

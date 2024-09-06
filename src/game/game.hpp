@@ -75,7 +75,7 @@ private:
 
     std::unique_ptr<Registry> registry; /**< Pointer to the game registry. */
 
-    std::unique_ptr<Assets_manager> assets_manager;
+    std::unique_ptr<AssetsManager> assets_manager;
  
 public:
 
