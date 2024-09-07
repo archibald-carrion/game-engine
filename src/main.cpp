@@ -9,5 +9,6 @@ int main(int argc, char* argv[]) {
 
     game.init();
     game.run();
+    game.destroy();
     return 0;
 }
