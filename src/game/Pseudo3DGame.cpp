@@ -53,6 +53,16 @@ void Pseudo3DGame::init() {
     this->player->planeX = 0;
     this->player->planeY = 0.66;
 
+    /**
+     * Some basic trigonometry:
+     * the field of view is calculate using the angle of the direction vector and the plane vector
+     * FOV = 2 * arctangente(length of plane vecteur / length of direction vecteur)
+     * each lenght of vector is calculated using the formula sqrt(x^2 + y^2)
+     * longueur of plane vecteur = sqrt(0^2 + 0.66^2) = 0.66
+     * longueur of direction vecteur = sqrt(-1^2 + 0^2) = 1
+     * FOV = 2 * arctangente(0.66/1) = 66.8
+     */
+
     load_textures();
 
 }
@@ -308,6 +318,9 @@ void Pseudo3DGame::raycasting() {
         } else {
             perpWallDist = (mapY - player->y + (1 - stepY) / 2) / rayDirY;
         }
+
+        // Fishbowl correction
+        
 
         // Texture calculations
         int texNum = worldMap[mapX][mapY] - 1; // Subtract 1 because textures are zero-indexed
