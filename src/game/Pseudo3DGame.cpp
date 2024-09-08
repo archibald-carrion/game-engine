@@ -32,9 +32,6 @@ void Pseudo3DGame::init() {
         return;
     }
 
-    load_textures();
-
-
     this->window = SDL_CreateWindow(
         "pseudo engine",
         SDL_WINDOWPOS_CENTERED,
@@ -60,6 +57,8 @@ void Pseudo3DGame::init() {
     this->player->planeX = 0;
     this->player->planeY = 0.66;
 
+    load_textures();
+
 }
 
 void Pseudo3DGame::destroy() {
@@ -68,7 +67,7 @@ void Pseudo3DGame::destroy() {
 
 void Pseudo3DGame::load_textures() {
     // TODO: add more textures to the game
-    const char* texture_directions[] = {"assets/images/3d/TECH_1E.PNG", "assets/images/3d/TECH_2F.PNG"};
+    const char* texture_directions[] = {"./assets/3d/TECH_1E.PNG", "./assets/3d/TECH_2F.PNG"};
 
     for (const char* file : texture_directions) {
         // create a surface from the image
@@ -295,6 +294,20 @@ void Pseudo3DGame::raycasting() {
             perpWallDist = (mapY - player->y + (1 - stepY) / 2) / rayDirY;
         }
 
+        // Texture calculations
+        int texNum = worldMap[mapX][mapY] - 1; // Subtract 1 because textures are zero-indexed
+
+        // Calculate where exactly the wall was hit
+        double wallX;
+        if (side == 0) wallX = player->y + perpWallDist * rayDirY;
+        else           wallX = player->x + perpWallDist * rayDirX;
+        wallX -= floor(wallX);
+
+        // x coordinate on the texture
+        int texX = int(wallX * double(TEXTURE_WIDTH));
+        if(side == 0 && rayDirX > 0) texX = TEXTURE_WIDTH - texX - 1;
+        if(side == 1 && rayDirY < 0) texX = TEXTURE_WIDTH - texX - 1;
+
         // Calculate height of line to draw on screen
         int lineHeight = (int)(SCREEN_HEIGHT / perpWallDist);
 
@@ -304,18 +317,37 @@ void Pseudo3DGame::raycasting() {
         int drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2;
         if(drawEnd >= SCREEN_HEIGHT) drawEnd = SCREEN_HEIGHT - 1;
 
-        // Choose wall color
-        uint8_t r, g, b;
-        switch(worldMap[mapX][mapY]) {
-            case 1:  r = 125; g = 225; b = 200; break; // walls
-            default: r = 255; g = 255; b = 255; break;
-        }
+        // Texture rendering
+        SDL_Rect srcRect = {texX, 0, 1, TEXTURE_HEIGHT};
+        SDL_Rect destRect = {x, drawStart, 1, drawEnd - drawStart};
+        SDL_RenderCopy(renderer, textures[texNum], &srcRect, &destRect);
 
-        // Give x and y sides different brightness
-        if(side == 1) { r /= 2; g /= 2; b /= 2; }
+
+
+        // section used to draw walls using plain colors instead of textures
+        // left for reference
+
+        // // Calculate height of line to draw on screen
+        // int lineHeight = (int)(SCREEN_HEIGHT / perpWallDist);
+
+        // // Calculate lowest and highest pixel to fill in current stripe
+        // int drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;
+        // if(drawStart < 0) drawStart = 0;
+        // int drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2;
+        // if(drawEnd >= SCREEN_HEIGHT) drawEnd = SCREEN_HEIGHT - 1;
+
+        // // Choose wall color
+        // uint8_t r, g, b;
+        // switch(worldMap[mapX][mapY]) {
+        //     case 1:  r = 125; g = 225; b = 200; break; // walls
+        //     default: r = 255; g = 255; b = 255; break;
+        // }
+
+        // // Give x and y sides different brightness
+        // if(side == 1) { r /= 2; g /= 2; b /= 2; }
         
-        // Draw the pixels of the stripe as a vertical line
-        drawVerticalLine(x, drawStart, drawEnd, r, g, b);
+        // // Draw the pixels of the stripe as a vertical line
+        // drawVerticalLine(x, drawStart, drawEnd, r, g, b);
     }
 }
 

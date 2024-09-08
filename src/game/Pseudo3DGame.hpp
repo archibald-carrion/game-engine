@@ -12,6 +12,8 @@ const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 const int MAP_WIDTH = 8;
 const int MAP_HEIGHT = 8;
+const int TEXTURE_WIDTH = 64;
+const int TEXTURE_HEIGHT = 64;
 
 
 /** @brief Target frames per second for the game. */
@@ -30,8 +32,8 @@ class Pseudo3DGame {
 private:
 
     std::vector<SDL_Texture*> textures;
-    static const int TEXTURE_WIDTH = 64;
-    static const int TEXTURE_HEIGHT = 64;
+    // static const int TEXTURE_WIDTH = 64;
+    // static const int TEXTURE_HEIGHT = 64;
 
     int mPreviousFrame = 0; /**< Time of the previous frame. */
 
