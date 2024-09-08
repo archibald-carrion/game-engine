@@ -6,14 +6,10 @@ Pseudo3DGame::Pseudo3DGame() {
 Pseudo3DGame::~Pseudo3DGame() {
     std::cout << "Destructor of Pseudo3DGame" << std::endl;
 
-    for (auto texture : textures) {
-        SDL_DestroyTexture(texture);
-    }
+    // free allocated memory
 
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    IMG_Quit();
-    SDL_Quit();
+    std::cout << "successfull destruction" << std::endl;
+
 }
 
 void Pseudo3DGame::init() {
@@ -63,6 +59,25 @@ void Pseudo3DGame::init() {
 
 void Pseudo3DGame::destroy() {
     std::cout << "Game destroy" << std::endl;
+
+    // // destroy the texture of each entity
+    // for (auto& e : entities) {
+    //     SDL_DestroyTexture(e->texture); // free the texture
+    //     SDL_DestroyTexture(e->message_texture); // free the texture
+    // }
+
+    // destroy the texutres
+    for (auto texture : textures) {
+        SDL_DestroyTexture(texture);
+    }
+
+    SDL_DestroyWindow(this->window);
+    SDL_DestroyRenderer(this->renderer);
+    
+
+    // TTF_Quit();
+    IMG_Quit();
+    SDL_Quit();
 }
 
 void Pseudo3DGame::load_textures() {
