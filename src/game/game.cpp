@@ -2,7 +2,11 @@
 #include <iostream>
 
 #include "../systems/render_system.hpp"
+#include "../systems/MovementSystem.hpp"
 #include "../components/transform_component.hpp"
+#include "../components/RigidBodyComponent.hpp"
+#include "../components/sprite_component.hpp"
+
 
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
@@ -27,10 +31,13 @@ Game::~Game() {
 
 void Game::setup() {
     registry->add_system<RenderSystem>();
+    registry->add_system<MovementSystem>();
+
     assets_manager->add_texture(renderer, "enemy_alan", "./assets/images/enemy_alan.png");
     // std::cout << "Game setup" << std::endl;
     Entity enemy = registry->create_entity();
 
+    enemy.add_component<RigidBodyComponent>(glm::vec2(50, 0));
     enemy.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
     enemy.add_component<TransformComponent>(glm::vec2(100.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
 }
@@ -181,8 +188,6 @@ void Game::processInput() {
 
 void Game::update() {
 
-    registry->update();
-
     if (isPaused) {
         this->mPreviousFrame = SDL_GetTicks();
         return;
@@ -196,8 +201,14 @@ void Game::update() {
 
     // calculate the time between frames
     double deltaTime = (SDL_GetTicks() - this->mPreviousFrame) / 1000.0;
+    // TOOD: add variableto LUA state
 
     this->mPreviousFrame = SDL_GetTicks();
+
+    registry->update();
+    registry->get_system<MovementSystem>().Update(deltaTime);
+
+
 
     // on each frame update the position of the entities based on their speed
     for (auto& e : entities) {
