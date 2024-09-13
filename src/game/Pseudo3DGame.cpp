@@ -319,9 +319,6 @@ void Pseudo3DGame::raycasting() {
             perpWallDist = (mapY - player->y + (1 - stepY) / 2) / rayDirY;
         }
 
-        // Fishbowl correction
-        
-
         // Texture calculations
         int texNum = worldMap[mapX][mapY] - 1; // Subtract 1 because textures are zero-indexed
 
