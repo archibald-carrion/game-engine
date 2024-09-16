@@ -4,6 +4,7 @@
 #include "../systems/render_system.hpp"
 #include "../systems/MovementSystem.hpp"
 #include "../systems/collision_system.hpp"
+#include "../systems/damage_system.hpp"
 
 #include "../components/transform_component.hpp"
 #include "../components/RigidBodyComponent.hpp"
@@ -15,6 +16,8 @@ Game::Game() {
     std::cout << "Game constructor" << std::endl;
     registry = std::make_unique<Registry>();
     assets_manager = std::make_unique<AssetsManager>();
+    events_manager = std::make_unique<EventManager>();
+
 }
 
 Game::~Game() {
@@ -34,8 +37,10 @@ Game::~Game() {
 
 void Game::setup() {
     registry->add_system<RenderSystem>();
+    registry->add_system<DamageSystem>();
     registry->add_system<MovementSystem>();
     registry->add_system<CollisionSystem>();
+
 
 
     assets_manager->add_texture(renderer, "enemy_alan", "./assets/images/enemy_alan.png");
@@ -218,9 +223,13 @@ void Game::update() {
 
     this->mPreviousFrame = SDL_GetTicks();
 
+    // re-initialize subscriptions
+    events_manager->reset();
+    registry->get_system<DamageSystem>().subscribe_to_collision_event(events_manager);
+
     registry->update();
     registry->get_system<MovementSystem>().Update(deltaTime);
-    registry->get_system<CollisionSystem>().update();
+    registry->get_system<CollisionSystem>().update(events_manager);
 
 
 

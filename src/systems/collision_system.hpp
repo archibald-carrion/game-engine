@@ -2,10 +2,13 @@
 #define COLLISION_SYSTEM_HPP
 
 #include <iostream>
+#include <memory>
+
 #include "../ECS/ECS.hpp"
 #include "../components/transform_component.hpp"
 #include "../components/circle_collider_component.hpp"
-
+#include "../event_manager/event_manager.hpp"
+#include "../events/collision_event.hpp"
 
 class CollisionSystem : public System
 {
@@ -18,7 +21,7 @@ public:
         RequireComponent<TransformComponent>();
     }
 
-    void update() {
+    void update(std::unique_ptr<EventManager>& event_manager) {
         auto entities = get_entities();
         for(auto i = entities.begin(); i != entities.end(); i++) {
             Entity a = *i;
@@ -51,8 +54,9 @@ public:
                 bool there_is_collision = check_circular_collision(a_radius, b_radius, a_center_pos, b_center_pos);
 
                 if(there_is_collision) {
+                    event_manager->emit_event<CollisionEvent>(a, b);
                     // emit event
-                    std::cout << "[COLLISIONSYSTEM] collision between " << a.get_id() << " and " << b.get_id() << std::endl;
+                    // std::cout << "[COLLISIONSYSTEM] collision between " << a.get_id() << " and " << b.get_id() << std::endl;
                 }
             }
 
