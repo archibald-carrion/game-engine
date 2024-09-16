@@ -1,6 +1,7 @@
 #ifndef COLLISION_SYSTEM_HPP
 #define COLLISION_SYSTEM_HPP
 
+#include <iostream>
 #include "../ECS/ECS.hpp"
 #include "../components/transform_component.hpp"
 #include "../components/circle_collider_component.hpp"
@@ -34,21 +35,38 @@ public:
                 auto b_collider = b.get_component<CircleColliderComponent>();
                 auto b_transform = b.get_component<TransformComponent>();
 
-                bool there_is_collision = check_circular_collision();
+                glm::vec2 a_center_pos = glm::vec2(
+                    a_transform.position.x - (a_collider.width/2), 
+                    a_transform.position.y - (a_collider.height/2)
+                );
+
+                glm::vec2 b_center_pos = glm::vec2(
+                    b_transform.position.x - (b_collider.width/2), 
+                    b_transform.position.y - (b_collider.height/2)
+                );
+
+                bool there_is_collision = check_circular_collision(a_collider.radius, b_collider.radius, a_center_pos, b_center_pos);
 
                 if(there_is_collision) {
                     // emit event
+                    std::cout << "collision occured" << std::endl;
                 }
             }
 
         }
     }
 
-    bool  check_circular_collision() {
+    bool  check_circular_collision(int a_radius, int b_radius, glm::vec2 a_pos, glm::vec2 b_pos) {
+        glm::vec2 dif = a_pos - b_pos;
+        double lenght =glm::sqrt((dif.x*dif.x)+(dif.y*dif.y));
+
+        bool is_colliding = (a_radius+b_radius) >= lenght;
+
+        return is_colliding;
 
     }
 
-    ~CollisionSystem();
+    // ~CollisionSystem();
 };
 
 

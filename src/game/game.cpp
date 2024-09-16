@@ -3,6 +3,8 @@
 
 #include "../systems/render_system.hpp"
 #include "../systems/MovementSystem.hpp"
+#include "../systems/collision_system.hpp"
+
 #include "../components/transform_component.hpp"
 #include "../components/RigidBodyComponent.hpp"
 #include "../components/sprite_component.hpp"
@@ -40,6 +42,12 @@ void Game::setup() {
     enemy.add_component<RigidBodyComponent>(glm::vec2(50, 0));
     enemy.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
     enemy.add_component<TransformComponent>(glm::vec2(100.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
+
+    Entity enemy_1 = registry->create_entity();
+
+    enemy_1.add_component<RigidBodyComponent>(glm::vec2(-50, 0));
+    enemy_1.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
+    enemy_1.add_component<TransformComponent>(glm::vec2(100.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
 }
 
 Game& Game::get_instance() {
