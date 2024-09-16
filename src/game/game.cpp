@@ -8,6 +8,7 @@
 #include "../components/transform_component.hpp"
 #include "../components/RigidBodyComponent.hpp"
 #include "../components/sprite_component.hpp"
+#include "../components/circle_collider_component.hpp"
 
 
 Game::Game() {
@@ -34,20 +35,24 @@ Game::~Game() {
 void Game::setup() {
     registry->add_system<RenderSystem>();
     registry->add_system<MovementSystem>();
+    registry->add_system<CollisionSystem>();
+
 
     assets_manager->add_texture(renderer, "enemy_alan", "./assets/images/enemy_alan.png");
     // std::cout << "Game setup" << std::endl;
     Entity enemy = registry->create_entity();
 
+    enemy.add_component<CircleColliderComponent>(8, 16, 16);
     enemy.add_component<RigidBodyComponent>(glm::vec2(50, 0));
     enemy.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
     enemy.add_component<TransformComponent>(glm::vec2(100.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
 
     Entity enemy_1 = registry->create_entity();
 
+    enemy_1.add_component<CircleColliderComponent>(8, 16, 16);
     enemy_1.add_component<RigidBodyComponent>(glm::vec2(-50, 0));
     enemy_1.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
-    enemy_1.add_component<TransformComponent>(glm::vec2(100.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
+    enemy_1.add_component<TransformComponent>(glm::vec2(200.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
 }
 
 Game& Game::get_instance() {
@@ -215,6 +220,8 @@ void Game::update() {
 
     registry->update();
     registry->get_system<MovementSystem>().Update(deltaTime);
+    registry->get_system<CollisionSystem>().update();
+
 
 
 

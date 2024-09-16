@@ -36,20 +36,23 @@ public:
                 auto b_transform = b.get_component<TransformComponent>();
 
                 glm::vec2 a_center_pos = glm::vec2(
-                    a_transform.position.x - (a_collider.width/2), 
-                    a_transform.position.y - (a_collider.height/2)
+                    a_transform.position.x - (a_collider.width/2)* a_transform.scale.x,
+                    a_transform.position.y - (a_collider.height/2)* a_transform.scale.y
                 );
 
                 glm::vec2 b_center_pos = glm::vec2(
-                    b_transform.position.x - (b_collider.width/2), 
-                    b_transform.position.y - (b_collider.height/2)
+                    b_transform.position.x - (b_collider.width/2)* b_transform.scale.x, 
+                    b_transform.position.y - (b_collider.height/2)* b_transform.scale.y
                 );
 
-                bool there_is_collision = check_circular_collision(a_collider.radius, b_collider.radius, a_center_pos, b_center_pos);
+                int a_radius = a_collider.radius*a_transform.scale.x;
+                int b_radius = b_collider.radius*b_transform.scale.x;
+
+                bool there_is_collision = check_circular_collision(a_radius, b_radius, a_center_pos, b_center_pos);
 
                 if(there_is_collision) {
                     // emit event
-                    std::cout << "collision occured" << std::endl;
+                    std::cout << "[COLLISIONSYSTEM] collision between " << a.get_id() << " and " << b.get_id() << std::endl;
                 }
             }
 

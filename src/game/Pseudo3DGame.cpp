@@ -202,7 +202,7 @@ void  Pseudo3DGame::update() {
     }
 
     // calculate the time between frames
-    double deltaTime = (SDL_GetTicks() - this->mPreviousFrame) / 1000.0;
+    // double deltaTime = (SDL_GetTicks() - this->mPreviousFrame) / 1000.0;
 
     this->mPreviousFrame = SDL_GetTicks();
 }
