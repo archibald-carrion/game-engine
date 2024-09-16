@@ -27,8 +27,8 @@ private:
     TOwner* owner_instance;
     CallbackFunction callback_function;
 
-    virtual void Call(Event& e) override {
-        std::invoke(callback_function, owner_instance, static_cast<TEvent&> e);
+    virtual void call(Event& e) override {
+        std::invoke(callback_function, owner_instance, static_cast<TEvent&>(e));
     }
 
 public: 
@@ -63,7 +63,7 @@ public:
             subscribers[typeid(TEvent)] = std::make_unique<handler_list>();
         }
         auto subscriber = std::make_unique<EventCallback<TOwner, TEvent>>(owner_instance, callbackFunction);
-        subscribers[typeid(TEvent)]->push_back(std::move(subscriber))
+        subscribers[typeid(TEvent)]->push_back(std::move(subscriber));
     }
 
     template <typename TEvent, typename... TArgs>
