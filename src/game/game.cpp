@@ -5,11 +5,13 @@
 #include "../systems/MovementSystem.hpp"
 #include "../systems/collision_system.hpp"
 #include "../systems/damage_system.hpp"
+#include "../systems/animation_system.hpp"
 
 #include "../components/transform_component.hpp"
 #include "../components/RigidBodyComponent.hpp"
 #include "../components/sprite_component.hpp"
 #include "../components/circle_collider_component.hpp"
+#include "../components/animation_component.hpp"
 
 
 Game::Game() {
@@ -40,6 +42,7 @@ void Game::setup() {
     registry->add_system<DamageSystem>();
     registry->add_system<MovementSystem>();
     registry->add_system<CollisionSystem>();
+    registry->add_system<AnimationSystem>();
 
 
 
@@ -48,14 +51,16 @@ void Game::setup() {
     Entity enemy = registry->create_entity();
 
     enemy.add_component<CircleColliderComponent>(8, 16, 16);
-    enemy.add_component<RigidBodyComponent>(glm::vec2(50, 0));
+    enemy.add_component<AnimationComponent>(6, 10, true);
+    enemy.add_component<RigidBodyComponent>(glm::vec2(10, 0));
     enemy.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
-    enemy.add_component<TransformComponent>(glm::vec2(100.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
+    enemy.add_component<TransformComponent>(glm::vec2(10.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
 
     Entity enemy_1 = registry->create_entity();
 
     enemy_1.add_component<CircleColliderComponent>(8, 16, 16);
-    enemy_1.add_component<RigidBodyComponent>(glm::vec2(-50, 0));
+    enemy_1.add_component<AnimationComponent>(6, 10, true);
+    enemy_1.add_component<RigidBodyComponent>(glm::vec2(-10, 0));
     enemy_1.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
     enemy_1.add_component<TransformComponent>(glm::vec2(300.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
 }
@@ -228,6 +233,7 @@ void Game::update() {
     registry->get_system<DamageSystem>().subscribe_to_collision_event(events_manager);
 
     registry->update();
+    registry->get_system<AnimationSystem>().update();
     registry->get_system<MovementSystem>().Update(deltaTime);
     registry->get_system<CollisionSystem>().update(events_manager);
 
