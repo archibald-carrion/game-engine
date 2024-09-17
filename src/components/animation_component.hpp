@@ -11,7 +11,7 @@ struct AnimationComponent {
     bool is_loop;
     int start_time;
 
-    AnimationComponent(int num_frames, int frame_speed_rate, bool is_loop) {
+    AnimationComponent(int num_frames = 1, int frame_speed_rate = 1, bool is_loop = false) {
         this->num_frames = num_frames;
         this->frame_speed_rate = frame_speed_rate;
         this->is_loop = is_loop;
