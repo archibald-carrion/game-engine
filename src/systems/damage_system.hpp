@@ -22,6 +22,8 @@ public:
 
     void on_collision(CollisionEvent& e) {
         std::cout << "[DAMAGESYSTEM] collision between " << e.a.get_id() << " and " << e.b.get_id() << std::endl;
+        e.a.kill();
+        e.b.kill();
     }
 
 };

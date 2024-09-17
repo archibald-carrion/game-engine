@@ -134,3 +134,8 @@ void Registry::update(){
     entities_to_be_killed.clear();
 
 }
+
+
+void Entity::kill() {
+    registry->kill_entity(*this);
+}

@@ -41,6 +41,8 @@ public:
     Entity(int id) : id(id) {}
     int get_id() const;
 
+    void kill();
+
     bool operator==(const Entity& other) const {
         return id == other.id;
     }
