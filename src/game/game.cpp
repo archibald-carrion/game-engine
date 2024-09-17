@@ -57,7 +57,7 @@ void Game::setup() {
     enemy_1.add_component<CircleColliderComponent>(8, 16, 16);
     enemy_1.add_component<RigidBodyComponent>(glm::vec2(-50, 0));
     enemy_1.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
-    enemy_1.add_component<TransformComponent>(glm::vec2(200.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
+    enemy_1.add_component<TransformComponent>(glm::vec2(300.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
 }
 
 Game& Game::get_instance() {
