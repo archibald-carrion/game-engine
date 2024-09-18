@@ -47,14 +47,26 @@ void Game::setup() {
     registry->add_system<CollisionSystem>();
     registry->add_system<AnimationSystem>();
 
-
-
-    assets_manager->add_texture(renderer, "enemy_alan", "./assets/images/enemy_alan.png");
+    lua.open_libraries(sol::lib::base);
+ 
+    // ADD THE PLAYER TEXTURE
+    this->assets_manager->add_texture(renderer, "player", "./assets/images/player_ship.png");
+    
+    // ADD THE ENEMY TEXTURE
+    this->assets_manager->add_texture(renderer, "enemy_alan", "./assets/images/enemy_alan.png");
 
     this->controller_manager->add_key("up", 199); // SDLK_W
     this->controller_manager->add_key("down", 115); // SDLK_S
     this->controller_manager->add_key("left", 97); // SDLK_A
     this->controller_manager->add_key("right", 100); // SDLK_D
+
+    Entity player = registry->create_entity();
+
+    // player.add_component<AnimationComponent>(6, 10, true);
+    player.add_component<CircleColliderComponent>(8, 16, 16);
+    player.add_component<RigidBodyComponent>(glm::vec2(0, 0)); // no speed because the player is controlled by the player
+    player.add_component<SpriteComponent>("player", 16, 16, 16, 0);
+    player.add_component<TransformComponent>(glm::vec2(400.0f, 300.0f), glm::vec2(2.0f, 2.0f), 0.0);
 
 
     // std::cout << "Game setup" << std::endl;

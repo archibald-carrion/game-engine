@@ -6,6 +6,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <sol/sol.hpp>
 #include <glm/glm.hpp>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -79,6 +80,8 @@ private:
     std::unique_ptr<AssetsManager> assets_manager;
     std::unique_ptr<EventManager> events_manager;
     std::unique_ptr<ControllerManager> controller_manager;
+
+    sol::state lua; /**< Lua state for scripting. */
 
  
 public:
