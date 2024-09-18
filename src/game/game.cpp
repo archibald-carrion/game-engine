@@ -19,6 +19,7 @@ Game::Game() {
     registry = std::make_unique<Registry>();
     assets_manager = std::make_unique<AssetsManager>();
     events_manager = std::make_unique<EventManager>();
+    controller_manager = std::make_unique<ControllerManager>();
 
 }
 
@@ -33,6 +34,8 @@ Game::~Game() {
     }
 
     assets_manager.reset();
+    events_manager.reset();
+    controller_manager.reset();
     registry.reset();
     
 }
@@ -47,6 +50,13 @@ void Game::setup() {
 
 
     assets_manager->add_texture(renderer, "enemy_alan", "./assets/images/enemy_alan.png");
+
+    this->controller_manager->add_key("up", 199); // SDLK_W
+    this->controller_manager->add_key("down", 115); // SDLK_S
+    this->controller_manager->add_key("left", 97); // SDLK_A
+    this->controller_manager->add_key("right", 100); // SDLK_D
+
+
     // std::cout << "Game setup" << std::endl;
     Entity enemy = registry->create_entity();
 
@@ -196,15 +206,22 @@ void Game::processInput() {
             case SDL_KEYDOWN:
                 if (event.key.keysym.sym == SDLK_ESCAPE) {
                     isRunning = false;
-                }else{
-                    // check if key "p" was pressed to pause the game
-                    if (event.key.keysym.sym == SDLK_p) {
-                        isPaused = !isPaused;
-                    }
+                    break;
+                }else if (event.key.keysym.sym == SDLK_p)
+                {
+                    isPaused = !isPaused;
+                    break;
                 }
+                controller_manager->set_key_to_pressed(event.key.keysym.sym);               
+                 
+                break;
+
+            case SDL_KEYUP:
+                controller_manager->set_key_to_up(event.key.keysym.sym);
                 break;
             default:
                 break;
+                
         }
     }
 }

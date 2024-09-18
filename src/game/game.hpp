@@ -17,6 +17,7 @@
 #include "../utils/configuration.hpp"
 #include "../assets_manager/assets_manager.hpp"
 #include "../event_manager/event_manager.hpp"
+#include "../controller_manager/controller_manager.hpp"
 
 
 
@@ -75,9 +76,9 @@ private:
     std::vector<entity*> entities; /**< Vector of entity pointers. */
 
     std::unique_ptr<Registry> registry; /**< Pointer to the game registry. */
-
     std::unique_ptr<AssetsManager> assets_manager;
     std::unique_ptr<EventManager> events_manager;
+    std::unique_ptr<ControllerManager> controller_manager;
 
  
 public:
