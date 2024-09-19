@@ -49,7 +49,7 @@ void Game::setup() {
     registry->add_system<AnimationSystem>();
     registry->add_system<ScriptSystem>();
 
-    lua.open_libraries(sol::lib::base);
+    lua.open_libraries(sol::lib::base, sol::lib::math);
     registry->get_system<ScriptSystem>().create_lua_binding(lua);
 
  
