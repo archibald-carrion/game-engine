@@ -10,7 +10,7 @@ scene = {
     -- font table
     
     -- actions and keys table
-    key = {
+    keys = {
         [0] =
         {name = "up", key = 119}, -- SDLK_w
         {name = "left", key = 97}, -- SDLK_a
@@ -26,9 +26,9 @@ scene = {
         -- player
         {
             components = {
-                animation = {
+                -- animation = {
 
-                },
+                -- },
                 circular_collider = {
                     radius = 8,
                     width = 16,
