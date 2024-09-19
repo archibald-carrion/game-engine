@@ -21,12 +21,29 @@ SceneLoader::~SceneLoader() {
 void SceneLoader::load_scene(const std::string& scene_path,
     sol::state& lua, 
     std::unique_ptr<AssetsManager>& asset_manager, 
-    std::unique_ptr<ControllerManager> controller_manager, 
+    std::unique_ptr<ControllerManager>& controller_manager, 
     std::unique_ptr<Registry>& registry, 
     SDL_Renderer* renderer) {
 
-    
+    sol::load_result script_result = lua.load_file(scene_path);
+    if(!script_result.valid()) {
+        sol::error err = script_result;
+        std::string error_message = err.what();
+        std::cerr << "[SCENELOADER] " << error_message << std::endl;
+        return;
+    }
 
+    lua.script_file(scene_path);
+    sol::table scene = lua["scene"];
+
+    sol::table sprites = scene["sprites"];
+    load_sprites(renderer, sprites, asset_manager);
+
+    sol::table keys = scene["keys"];
+    load_keys_actions(keys, controller_manager);
+
+    sol::table entities = scene["entities"];
+    load_entities(lua, entities, registry);
 }
 
 void SceneLoader::load_sprites(SDL_Renderer* renderer, const sol::table& sprites, std::unique_ptr<AssetsManager>& asset_manager) {
@@ -48,7 +65,7 @@ void SceneLoader::load_sprites(SDL_Renderer* renderer, const sol::table& sprites
     }
 }
 
-void SceneLoader::load_keys_actions(const sol::table& keys, std::unique_ptr<ControllerManager> controller_manager) {
+void SceneLoader::load_keys_actions(const sol::table& keys, std::unique_ptr<ControllerManager>& controller_manager) {
     int index = 0;
     while(true) {
         sol::optional<sol::table> has_key = keys[index];
@@ -154,6 +171,6 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
         }
 
         index++;
-        
+
     }
 }
