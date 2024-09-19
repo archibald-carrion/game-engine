@@ -41,9 +41,9 @@ scene = {
                     path = "./assets/scripts/player.lua"
                 },
                 sprite = {
-                    asset_id = "player_ship"
-                    width = 16
-                    height = 16
+                    asset_id = "player_ship",
+                    width = 16,
+                    height = 16,
                     src_rect = {x = 16, y = 0},
                 },
                 transform = {
