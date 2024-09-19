@@ -6,13 +6,14 @@
 #include "../systems/collision_system.hpp"
 #include "../systems/damage_system.hpp"
 #include "../systems/animation_system.hpp"
+#include "../systems/script_system.hpp"
 
 #include "../components/transform_component.hpp"
 #include "../components/RigidBodyComponent.hpp"
 #include "../components/sprite_component.hpp"
 #include "../components/circle_collider_component.hpp"
 #include "../components/animation_component.hpp"
-
+#include "../components/script_component.hpp"
 
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
@@ -46,8 +47,10 @@ void Game::setup() {
     registry->add_system<MovementSystem>();
     registry->add_system<CollisionSystem>();
     registry->add_system<AnimationSystem>();
+    registry->add_system<ScriptSystem>();
 
     lua.open_libraries(sol::lib::base);
+
  
     // ADD THE PLAYER TEXTURE
     this->assets_manager->add_texture(renderer, "player", "./assets/images/player_ship.png");
@@ -62,7 +65,12 @@ void Game::setup() {
 
     Entity player = registry->create_entity();
 
+    lua.script_file("./assets/scripts/player.lua");
+    sol::function update = lua["update"];
+
+
     // player.add_component<AnimationComponent>(6, 10, true);
+    player.add_component<ScriptComponent>(update);
     player.add_component<CircleColliderComponent>(8, 16, 16);
     player.add_component<RigidBodyComponent>(glm::vec2(0, 0)); // no speed because the player is controlled by the player
     player.add_component<SpriteComponent>("player", 16, 16, 16, 0);
@@ -262,6 +270,7 @@ void Game::update() {
     registry->get_system<DamageSystem>().subscribe_to_collision_event(events_manager);
 
     registry->update();
+    registry->get_system<ScriptSystem>().update(lua);
     registry->get_system<AnimationSystem>().update();
     registry->get_system<MovementSystem>().Update(deltaTime);
     registry->get_system<CollisionSystem>().update(events_manager);
