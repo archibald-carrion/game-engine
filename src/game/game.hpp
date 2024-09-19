@@ -19,6 +19,7 @@
 #include "../assets_manager/assets_manager.hpp"
 #include "../event_manager/event_manager.hpp"
 #include "../controller_manager/controller_manager.hpp"
+#include "../scene_manager/scene_loader.hpp"
 
 
 
@@ -81,6 +82,8 @@ private:
     std::unique_ptr<EventManager> events_manager;
 
     sol::state lua; /**< Lua state for scripting. */
+
+    std::unique_ptr<SceneLoader> scene_loader;
 
  
 public:
