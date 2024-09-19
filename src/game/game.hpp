@@ -79,12 +79,12 @@ private:
     std::unique_ptr<Registry> registry; /**< Pointer to the game registry. */
     std::unique_ptr<AssetsManager> assets_manager;
     std::unique_ptr<EventManager> events_manager;
-    std::unique_ptr<ControllerManager> controller_manager;
 
     sol::state lua; /**< Lua state for scripting. */
 
  
 public:
+    std::unique_ptr<ControllerManager> controller_manager;
 
     /**
      * @brief Initializes the game engine.

@@ -50,6 +50,7 @@ void Game::setup() {
     registry->add_system<ScriptSystem>();
 
     lua.open_libraries(sol::lib::base);
+    registry->get_system<ScriptSystem>().create_lua_binding(lua);
 
  
     // ADD THE PLAYER TEXTURE
@@ -58,7 +59,7 @@ void Game::setup() {
     // ADD THE ENEMY TEXTURE
     this->assets_manager->add_texture(renderer, "enemy_alan", "./assets/images/enemy_alan.png");
 
-    this->controller_manager->add_key("up", 199); // SDLK_W
+    this->controller_manager->add_key("up", 119); // SDLK_W
     this->controller_manager->add_key("down", 115); // SDLK_S
     this->controller_manager->add_key("left", 97); // SDLK_A
     this->controller_manager->add_key("right", 100); // SDLK_D
@@ -232,7 +233,7 @@ void Game::processInput() {
                     isPaused = !isPaused;
                     break;
                 }
-                controller_manager->set_key_to_pressed(event.key.keysym.sym);               
+                controller_manager->set_key_to_pressed(event.key.keysym.sym);          
                  
                 break;
 
