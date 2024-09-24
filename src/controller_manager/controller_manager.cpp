@@ -75,3 +75,43 @@ void ControllerManager::clear() {
     action_key_name.clear();
     key_state.clear();
 }
+
+// MOUSE CONTROLLER
+
+void ControllerManager::add_mouse_button(const std::string button_name, int mouse_button_code) {
+    this->mouse_buttons_name.emplace(button_name, mouse_button_code);
+    this->mouse_button_state.emplace(mouse_button_code, false);
+}
+
+bool ControllerManager::is_mouse_button_pressed(const std::string& button_name) {
+    auto it = mouse_buttons_name.find(button_name);
+    if(it != mouse_buttons_name.end()) {
+        int button_code = mouse_buttons_name[button_name];
+        return mouse_button_state[button_code];
+    }
+    return false;
+
+}
+
+void ControllerManager::update_mouse_button(int mouse_button_code, bool state) {
+    auto it = mouse_button_state.find(mouse_button_code);
+    if(it != mouse_button_state.end()) {
+        mouse_button_state[mouse_button_code] = state;
+    }
+}
+
+void ControllerManager::set_mouse_position(int x, int y) {
+
+}
+
+std::tuple<int, int> ControllerManager::get_mouse_position() {
+
+}
+    
+void ControllerManager::set_mouse_button_to_pressed(int mouse_button_code) {
+    update_mouse_button(mouse_button_code, true);
+}
+
+void ControllerManager::set_mouse_button_to_up(int mouse_button_code) {
+    update_mouse_button(mouse_button_code, false);
+}
