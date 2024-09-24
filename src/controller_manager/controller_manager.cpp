@@ -101,11 +101,12 @@ void ControllerManager::update_mouse_button(int mouse_button_code, bool state) {
 }
 
 void ControllerManager::set_mouse_position(int x, int y) {
-
+    mouse_position_x = x;
+    mouse_position_y = y;
 }
 
 std::tuple<int, int> ControllerManager::get_mouse_position() {
-
+    return {mouse_position_x, mouse_position_y};
 }
     
 void ControllerManager::set_mouse_button_to_pressed(int mouse_button_code) {
