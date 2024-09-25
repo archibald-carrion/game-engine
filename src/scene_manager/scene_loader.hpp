@@ -14,6 +14,10 @@ class SceneLoader {
 private:
     void load_sprites(SDL_Renderer* renderer, const sol::table& sprites, std::unique_ptr<AssetsManager>& asset_manager);
 
+    void load_fonts(const sol::table& fonts, std::unique_ptr<AssetsManager>& asset_manager);
+    
+    void load_buttons(const sol::table& buttons, std::unique_ptr<ControllerManager>& controller_manager);
+
     void load_keys_actions(const sol::table& keys, std::unique_ptr<ControllerManager>& controller_manager);
 
     void load_entities(sol::state& lua, const sol::table& entities, std::unique_ptr<Registry>& registry);

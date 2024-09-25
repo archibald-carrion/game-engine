@@ -14,6 +14,7 @@ SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
 
 }
+
 SceneLoader::~SceneLoader() {
     std::cout << "[SCENELOADER] scene loader destructor" << std::endl;
 }
@@ -173,4 +174,27 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
         index++;
 
     }
+}
+
+void SceneLoader::load_fonts(const sol::table& fonts, std::unique_ptr<AssetsManager>& asset_manager) {
+    int index = 0;
+    while(true){
+        sol::optional<sol::table> has_font = fonts[index];
+        if(has_font == sol::nullopt) {
+            break;
+        }
+
+        sol::table font = fonts[index];
+        std::string font_id = font["font_id"];
+        std::string file_path = font["file_path"];
+        int font_size = font["font_size"];
+
+        asset_manager->add_font(font_id, file_path, font_size);
+
+        index++;
+    }
+}
+
+void SceneLoader::load_buttons(const sol::table& buttons, std::unique_ptr<ControllerManager>& controller_manager) {
+
 }
