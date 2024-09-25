@@ -7,6 +7,7 @@
 #include "../systems/damage_system.hpp"
 #include "../systems/animation_system.hpp"
 #include "../systems/script_system.hpp"
+#include "../systems/render_text_system.hpp"
 
 #include "../components/transform_component.hpp"
 #include "../components/RigidBodyComponent.hpp"
@@ -14,6 +15,7 @@
 #include "../components/circle_collider_component.hpp"
 #include "../components/animation_component.hpp"
 #include "../components/script_component.hpp"
+#include "../components/text_component.hpp"
 
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
@@ -51,6 +53,7 @@ void Game::setup() {
     registry->add_system<CollisionSystem>();
     registry->add_system<AnimationSystem>();
     registry->add_system<ScriptSystem>();
+    registry->add_system<RenderTextSystem>();
 
     lua.open_libraries(sol::lib::base, sol::lib::math);
     registry->get_system<ScriptSystem>().create_lua_binding(lua);
@@ -63,6 +66,11 @@ void Game::setup() {
         registry,
         renderer);
 
+    assets_manager->add_font("font_0", "./assets/fonts/highway_gothic.ttf", 24);
+    Entity text_entity = registry->create_entity();
+    // add text and transform component
+    text_entity.add_component<TextComponent>("Hello World", "font_0", 150, 0, 255, 255);
+    text_entity.add_component<TransformComponent>(glm::vec2(500.0f, 50.0f), glm::vec2(1.0f, 1.0f), 0.0);
  
     // // ADD THE PLAYER TEXTURE
     // this->assets_manager->add_texture(renderer, "player", "./assets/images/player_ship.png");
@@ -360,6 +368,7 @@ void Game::render() {
     }
 
     registry->get_system<RenderSystem>().update(renderer, assets_manager);
+    registry->get_system<RenderTextSystem>().update(renderer, assets_manager);
 
     SDL_RenderPresent(this->renderer);
 }
