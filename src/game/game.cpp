@@ -221,9 +221,7 @@ void Game::destroy() {
     SDL_DestroyWindow(this->window);
     SDL_DestroyRenderer(this->renderer);
     
-
     TTF_Quit();
-
     SDL_Quit();
 }
 
