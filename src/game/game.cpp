@@ -26,10 +26,6 @@ Game::Game() {
     assets_manager = std::make_unique<AssetsManager>();
     events_manager = std::make_unique<EventManager>();
     controller_manager = std::make_unique<ControllerManager>();
-
-    // will be part of the scene manager
-    scene_loader = std::make_unique<SceneLoader>();
-
 }
 
 Game::~Game() {
@@ -61,62 +57,6 @@ void Game::setup() {
 
     lua.open_libraries(sol::lib::base, sol::lib::math);
     registry->get_system<ScriptSystem>().create_lua_binding(lua);
-
-    // load the scene using the scene loader
-    this->scene_loader->load_scene("./assets/scripts/scene_01.lua",
-        lua,
-        assets_manager,
-        controller_manager,
-        registry,
-        renderer);
-
-    // assets_manager->add_font("font_0", "./assets/fonts/highway_gothic.ttf", 24);
-    // Entity text_entity = registry->create_entity();
-    // // add text and transform component
-    // text_entity.add_component<TextComponent>("Hello World", "font_0", 150, 0, 255, 255);
-    // text_entity.add_component<TransformComponent>(glm::vec2(500.0f, 50.0f), glm::vec2(1.0f, 1.0f), 0.0);
- 
-    // // ADD THE PLAYER TEXTURE
-    // this->assets_manager->add_texture(renderer, "player", "./assets/images/player_ship.png");
-    
-    // // ADD THE ENEMY TEXTURE
-    // this->assets_manager->add_texture(renderer, "enemy_alan", "./assets/images/enemy_alan.png");
-
-    // this->controller_manager->add_key("up", 119); // SDLK_W
-    // this->controller_manager->add_key("down", 115); // SDLK_S
-    // this->controller_manager->add_key("left", 97); // SDLK_A
-    // this->controller_manager->add_key("right", 100); // SDLK_D
-
-    // Entity player = registry->create_entity();
-
-    // lua.script_file("./assets/scripts/player.lua");
-    // sol::function update = lua["update"];
-
-
-    // // player.add_component<AnimationComponent>(6, 10, true);
-    // player.add_component<ScriptComponent>(update);
-    // player.add_component<CircleColliderComponent>(8, 16, 16);
-    // player.add_component<RigidBodyComponent>(glm::vec2(0, 0)); // no speed because the player is controlled by the player
-    // player.add_component<SpriteComponent>("player", 16, 16, 16, 0);
-    // player.add_component<TransformComponent>(glm::vec2(400.0f, 300.0f), glm::vec2(2.0f, 2.0f), 0.0);
-
-
-    // // std::cout << "Game setup" << std::endl;
-    // Entity enemy = registry->create_entity();
-
-    // enemy.add_component<CircleColliderComponent>(8, 16, 16);
-    // enemy.add_component<AnimationComponent>(6, 10, true);
-    // enemy.add_component<RigidBodyComponent>(glm::vec2(10, 0));
-    // enemy.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
-    // enemy.add_component<TransformComponent>(glm::vec2(10.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
-
-    // Entity enemy_1 = registry->create_entity();
-
-    // enemy_1.add_component<CircleColliderComponent>(8, 16, 16);
-    // enemy_1.add_component<AnimationComponent>(6, 10, true);
-    // enemy_1.add_component<RigidBodyComponent>(glm::vec2(-10, 0));
-    // enemy_1.add_component<SpriteComponent>("enemy_alan", 16, 16, 0, 0);
-    // enemy_1.add_component<TransformComponent>(glm::vec2(300.0f, 100.0f), glm::vec2(2.0f, 2.0f), 0.0);
 }
 
 Game& Game::get_instance() {

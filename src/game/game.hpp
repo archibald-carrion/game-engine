@@ -6,20 +6,20 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <sol/sol.hpp>
-#include <glm/glm.hpp>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
+#include <sol/sol.hpp> // Lua scripting
+#include <glm/glm.hpp> // GLM math library
+#include <SDL2/SDL.h> // SDL library for window creation and rendering
+#include <SDL2/SDL_image.h> // SDL image library for loading images
+#include <SDL2/SDL_ttf.h> // SDL ttf library for rendering text
 #include <fstream> // used to read the configuration file
-#include <memory>
+#include <memory> // used for smart pointers
 
-#include "../ECS/ECS.hpp"
-#include "../utils/configuration.hpp"
-#include "../assets_manager/assets_manager.hpp"
-#include "../event_manager/event_manager.hpp"
-#include "../controller_manager/controller_manager.hpp"
-#include "../scene_manager/scene_loader.hpp"
+#include "../ECS/ECS.hpp" // ECS library for entity-component-system
+#include "../utils/configuration.hpp" // Configuration data structures
+#include "../assets_manager/assets_manager.hpp" // Assets manager for loading textures and fonts
+#include "../event_manager/event_manager.hpp" // Event manager for handling events
+#include "../controller_manager/controller_manager.hpp" // Controller manager for handling user input
+#include "../scene_manager/scene_loader.hpp" // Scene loader for loading scenes
 
 
 
@@ -62,7 +62,7 @@ private:
     void render();
 
     /**
-     * @brief 
+     * @brief setup the game engine.
      */
     void setup();
 
@@ -77,17 +77,13 @@ private:
     window_font_config window_font; /**< Font configuration data. */
     std::vector<entity*> entities; /**< Vector of entity pointers. */
 
-    std::unique_ptr<Registry> registry; /**< Pointer to the game registry. */
-    std::unique_ptr<AssetsManager> assets_manager;
-    std::unique_ptr<EventManager> events_manager;
-
-    sol::state lua; /**< Lua state for scripting. */
-
-    std::unique_ptr<SceneLoader> scene_loader;
-
  
 public:
-    std::unique_ptr<ControllerManager> controller_manager;
+    std::unique_ptr<Registry> registry; /**< Pointer to the game registry. */
+    std::unique_ptr<AssetsManager> assets_manager; /**< Pointer to the assets manager. */
+    std::unique_ptr<EventManager> events_manager; /**< Pointer to the event manager. */
+    std::unique_ptr<ControllerManager> controller_manager; /**< Pointer to the controller manager. */
+    sol::state lua; /**< Lua state for scripting. */
 
     /**
      * @brief Initializes the game engine.
