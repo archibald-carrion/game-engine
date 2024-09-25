@@ -139,3 +139,11 @@ void Registry::update(){
 void Entity::kill() {
     registry->kill_entity(*this);
 }
+
+void Registry::clear_all_entities() {
+    for(int i = 0; i < num_entities; i++) {
+        remove_entity_from_system(Entity(i));
+        entityComponentSignatures[i].reset();
+        free_ids.push_back(i);
+    }
+}

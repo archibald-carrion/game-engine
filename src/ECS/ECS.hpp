@@ -148,6 +148,8 @@ public:
     void add_entity_to_system(Entity entity);
     void remove_entity_from_system(Entity entity);
 
+    // reset the registry
+    void clear_all_entities();
 
 };
 
