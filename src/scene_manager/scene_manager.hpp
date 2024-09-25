@@ -25,7 +25,7 @@ public:
     std::string get_next_scene() const;
     void set_next_scene(const std::string& next_scene);
 
-    bool is_scene_running() const;
+    bool is_current_scene_running() const;
     void start_scene();
     void stop_scene();
 
