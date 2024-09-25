@@ -8,6 +8,10 @@ scene = {
     },
 
     -- font table
+    fonts = {
+        [0] = 
+        {font_id = "font_0", file_path = "./assets/fonts/highway_gothic.ttf", font_size = 32},
+    },
     
     -- actions and keys table
     keys = {
@@ -19,6 +23,10 @@ scene = {
     },
 
     -- actions and mouse button table
+    buttons = {
+        [0] =
+        {name = "mouse_left_button", button_code = 1}, -- SDL_BUTTON_LEFT
+    },
 
     -- entities table
     entities = {
@@ -51,6 +59,25 @@ scene = {
                     scale = { x = 2.0, y =2.0},
                     rotation = 0.0
                 }
+
+
+            }
+        },
+        {
+            components = {
+                text = {
+                    text = "Score: 100",
+                    font_id = "font_0",
+                    r = 150,
+                    g = 10,
+                    b = 150,
+                    a = 255
+                },
+                transform = {
+                    position = { x = 500, y = 50},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
 
 
             }

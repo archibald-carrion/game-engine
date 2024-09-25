@@ -9,6 +9,7 @@
 #include "../components/circle_collider_component.hpp"
 #include "../components/animation_component.hpp"
 #include "../components/script_component.hpp"
+#include "../components/text_component.hpp"
 
 SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
@@ -39,6 +40,12 @@ void SceneLoader::load_scene(const std::string& scene_path,
 
     sol::table sprites = scene["sprites"];
     load_sprites(renderer, sprites, asset_manager);
+
+    sol::table fonts = scene["fonts"];
+    load_fonts(fonts, asset_manager);
+
+    sol::table buttons = scene["buttons"];
+    load_buttons(buttons, controller_manager);
 
     sol::table keys = scene["keys"];
     load_keys_actions(keys, controller_manager);
@@ -154,6 +161,19 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
                 );
             }
 
+            // Text component
+            sol::optional<sol::table> has_text = components["text"];
+            if(has_text != sol::nullopt) {
+                new_entity.add_component<TextComponent>(
+                    components["text"]["text"],
+                    components["text"]["font_id"],
+                    components["text"]["r"],
+                    components["text"]["g"],
+                    components["text"]["b"],
+                    components["text"]["a"]
+                );
+            }
+
              // transform component
             sol::optional<sol::table> has_transform = components["transform"];
             if(has_transform != sol::nullopt) {
@@ -196,5 +216,20 @@ void SceneLoader::load_fonts(const sol::table& fonts, std::unique_ptr<AssetsMana
 }
 
 void SceneLoader::load_buttons(const sol::table& buttons, std::unique_ptr<ControllerManager>& controller_manager) {
+    int index = 0;
+    while(true) {
+        sol::optional<sol::table> has_button = buttons[index];
+        if(has_button == sol::nullopt) {
+            break;
+        }
 
+        sol::table button = buttons[index];
+
+        std::string button_name = button["name"];
+        int button_code = button["button_code"];
+
+        controller_manager->add_mouse_button(button_name, button_code);
+
+        index++;
+    }
 }
