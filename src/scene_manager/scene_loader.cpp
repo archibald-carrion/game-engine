@@ -10,6 +10,7 @@
 #include "../components/animation_component.hpp"
 #include "../components/script_component.hpp"
 #include "../components/text_component.hpp"
+#include "../components/clickable_component.hpp"
 
 SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
@@ -109,7 +110,15 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
         if(has_components != sol::nullopt) {
             sol::table components = entity["components"];
 
-            // Animation component, not yet implemented
+            // Animation component
+            sol::optional<sol::table> has_animation = components["animation"];
+            if(has_animation != sol::nullopt) {
+                new_entity.add_component<AnimationComponent>(
+                    components["animation"]["num_frames"],
+                    components["animation"]["frame_speed_rate"],
+                    components["animation"]["is_loop"]
+                );
+            }
 
             // Circle collider component
             sol::optional<sol::table> has_circle_collider = components["circular_collider"];
@@ -131,6 +140,12 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
                         components["rigid_body"]["velocity"]["y"]
                     )
                 );
+            }
+
+            // Clickable component
+            sol::optional<sol::table> has_clickable = components["clickable"];
+            if(has_clickable != sol::nullopt) {
+                new_entity.add_component<ClickableComponent>();
             }
 
             // script component
