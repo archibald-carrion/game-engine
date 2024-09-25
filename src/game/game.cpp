@@ -66,11 +66,11 @@ void Game::setup() {
         registry,
         renderer);
 
-    assets_manager->add_font("font_0", "./assets/fonts/highway_gothic.ttf", 24);
-    Entity text_entity = registry->create_entity();
-    // add text and transform component
-    text_entity.add_component<TextComponent>("Hello World", "font_0", 150, 0, 255, 255);
-    text_entity.add_component<TransformComponent>(glm::vec2(500.0f, 50.0f), glm::vec2(1.0f, 1.0f), 0.0);
+    // assets_manager->add_font("font_0", "./assets/fonts/highway_gothic.ttf", 24);
+    // Entity text_entity = registry->create_entity();
+    // // add text and transform component
+    // text_entity.add_component<TextComponent>("Hello World", "font_0", 150, 0, 255, 255);
+    // text_entity.add_component<TransformComponent>(glm::vec2(500.0f, 50.0f), glm::vec2(1.0f, 1.0f), 0.0);
  
     // // ADD THE PLAYER TEXTURE
     // this->assets_manager->add_texture(renderer, "player", "./assets/images/player_ship.png");
