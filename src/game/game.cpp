@@ -8,6 +8,7 @@
 #include "../systems/animation_system.hpp"
 #include "../systems/script_system.hpp"
 #include "../systems/render_text_system.hpp"
+#include "../systems/UI_system.hpp"
 
 #include "../components/transform_component.hpp"
 #include "../components/RigidBodyComponent.hpp"
@@ -16,6 +17,8 @@
 #include "../components/animation_component.hpp"
 #include "../components/script_component.hpp"
 #include "../components/text_component.hpp"
+
+#include "../events/click_event.hpp"
 
 Game::Game() {
     std::cout << "Game constructor" << std::endl;
@@ -54,6 +57,7 @@ void Game::setup() {
     registry->add_system<AnimationSystem>();
     registry->add_system<ScriptSystem>();
     registry->add_system<RenderTextSystem>();
+    registry->add_system<UISystem>();
 
     lua.open_libraries(sol::lib::base, sol::lib::math);
     registry->get_system<ScriptSystem>().create_lua_binding(lua);
@@ -268,6 +272,11 @@ void Game::processInput() {
                 controller_manager->set_mouse_position(event.button.x, event.button.y);
                 controller_manager->set_mouse_button_to_pressed(static_cast<int>(event.button.button));
                 std::cout << (int)event.button.button << std::endl;
+                events_manager->emit_event<ClickEvent>(static_cast<int>(event.button.button), event.button.x, event.button.y);
+                break;
+            case SDL_MOUSEBUTTONUP:
+                controller_manager->set_mouse_position(event.button.x, event.button.y);
+                controller_manager->set_mouse_button_to_up(static_cast<int>(event.button.button));
                 break;
             default:
                 break;
@@ -298,6 +307,7 @@ void Game::update() {
     // re-initialize subscriptions
     events_manager->reset();
     registry->get_system<DamageSystem>().subscribe_to_collision_event(events_manager);
+    registry->get_system<UISystem>().suscribe_to_click_event(events_manager);
 
     registry->update();
     registry->get_system<ScriptSystem>().update(lua);
