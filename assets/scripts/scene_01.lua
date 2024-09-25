@@ -65,6 +65,8 @@ scene = {
         },
         {
             components = {
+                clickable = {
+                },
                 text = {
                     text = "Score: 100",
                     font_id = "font_0",
