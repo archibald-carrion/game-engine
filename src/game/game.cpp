@@ -10,13 +10,13 @@
 #include "../systems/render_text_system.hpp"
 #include "../systems/UI_system.hpp"
 
-#include "../components/transform_component.hpp"
-#include "../components/RigidBodyComponent.hpp"
-#include "../components/sprite_component.hpp"
-#include "../components/circle_collider_component.hpp"
-#include "../components/animation_component.hpp"
-#include "../components/script_component.hpp"
-#include "../components/text_component.hpp"
+// #include "../components/transform_component.hpp"
+// #include "../components/RigidBodyComponent.hpp"
+// #include "../components/sprite_component.hpp"
+// #include "../components/circle_collider_component.hpp"
+// #include "../components/animation_component.hpp"
+// #include "../components/script_component.hpp"
+// #include "../components/text_component.hpp"
 
 #include "../events/click_event.hpp"
 
@@ -26,6 +26,7 @@ Game::Game() {
     assets_manager = std::make_unique<AssetsManager>();
     events_manager = std::make_unique<EventManager>();
     controller_manager = std::make_unique<ControllerManager>();
+    scene_manager = std::make_unique<SceneManager>();
 }
 
 Game::~Game() {
@@ -38,6 +39,7 @@ Game::~Game() {
         delete e; // Deallocate each entity
     }
 
+    scene_manager.reset();
     assets_manager.reset();
     events_manager.reset();
     controller_manager.reset();
@@ -54,6 +56,8 @@ void Game::setup() {
     registry->add_system<ScriptSystem>();
     registry->add_system<RenderTextSystem>();
     registry->add_system<UISystem>();
+
+    scene_manager->load_scene_from_script("assets/scripts/scenes.lua", lua);
 
     lua.open_libraries(sol::lib::base, sol::lib::math);
     registry->get_system<ScriptSystem>().create_lua_binding(lua);
@@ -155,10 +159,20 @@ void Game::run() {
     setup();
 
     while (isRunning) {
+        scene_manager->start_scene();
+        run_scene();
+    }
+}
+
+void Game::run_scene() {
+    scene_manager->load_scene();
+    while(scene_manager->is_current_scene_running()) {
         processInput();
         update();
         render();
     }
+    assets_manager->clear_assets();
+    registry->clear_all_entities();
 }
 
 void Game::destroy() {
@@ -183,10 +197,12 @@ void Game::processInput() {
         switch (event.type) {
             // close the window events
             case SDL_QUIT:
+                scene_manager->stop_scene();
                 isRunning = false;
                 break;
             case SDL_KEYDOWN:
                 if (event.key.keysym.sym == SDLK_ESCAPE) {
+                    scene_manager->stop_scene();
                     isRunning = false;
                     break;
                 }else if (event.key.keysym.sym == SDLK_p)

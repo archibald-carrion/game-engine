@@ -1,5 +1,6 @@
 #include "scene_manager.hpp"
 #include <iostream>
+#include "../game/game.hpp"
 
 SceneManager::SceneManager() {
     std::cout << "[SCENEMANAGER] Constructor" << std::endl;
@@ -12,15 +13,36 @@ SceneManager::~SceneManager() {
 }
 
 void SceneManager::load_scene_from_script(const std::string& scene_path, sol::state& lua) {
-    
+    // TODO: check that code is correct
+    lua.script_file(scene_path);
+    sol::table scenes = lua["scenes"];
+    int index = 0;
+    while(true) {
+        sol::optional<sol::table> has_scene = scenes[index];
+        if(has_scene == sol::nullopt) {
+            break;
+        }
+
+        sol::table scene = scenes[index];
+        this->scenes.emplace(scene["name"], scene["path"]);
+
+        if (index == 0) {
+            this->next_scene = scene["name"];
+        }
+
+        index++;
+        
+    }
 }
 
 void SceneManager::load_scene() {
-
+    Game& game = Game::get_instance();
+    std::string scene_path = scenes[next_scene];
+    scene_loader->load_scene(scene_path, game.lua, game.assets_manager, game.controller_manager, game.registry, game.renderer);
 }
 
 std::string SceneManager::get_next_scene() const{
-
+    return this->next_scene;
 }
 
 void SceneManager::set_next_scene(const std::string& next_scene) {

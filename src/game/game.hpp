@@ -19,7 +19,7 @@
 #include "../assets_manager/assets_manager.hpp" // Assets manager for loading textures and fonts
 #include "../event_manager/event_manager.hpp" // Event manager for handling events
 #include "../controller_manager/controller_manager.hpp" // Controller manager for handling user input
-#include "../scene_manager/scene_loader.hpp" // Scene loader for loading scenes
+#include "../scene_manager/scene_manager.hpp" // Scene manager for handling scenes
 
 
 
@@ -66,8 +66,12 @@ private:
      */
     void setup();
 
+    /**
+     * @brief Run the scene.
+     */
+    void run_scene();
+
     SDL_Window* window = nullptr; /**< Pointer to the SDL window. */
-    SDL_Renderer* renderer = nullptr; /**< Pointer to the SDL renderer. */
 
     bool isRunning; /**< Flag to indicate if the game is running. */
     int mPreviousFrame = 0; /**< Time of the previous frame. */
@@ -79,7 +83,9 @@ private:
 
  
 public:
+    SDL_Renderer* renderer = nullptr; /**< Pointer to the SDL renderer. */
     std::unique_ptr<Registry> registry; /**< Pointer to the game registry. */
+    std::unique_ptr<SceneManager> scene_manager; /**< Pointer to the scene manager. */
     std::unique_ptr<AssetsManager> assets_manager; /**< Pointer to the assets manager. */
     std::unique_ptr<EventManager> events_manager; /**< Pointer to the event manager. */
     std::unique_ptr<ControllerManager> controller_manager; /**< Pointer to the controller manager. */
