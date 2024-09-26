@@ -64,6 +64,35 @@ scene = {
             }
         },
         {
+            -- enemy
+            components = {
+                animation = {
+                    num_frames = 1,
+                    frame_speed_rate = 0.1,
+                    is_loop = true
+                },
+                circular_collider = {
+                    radius = 8,
+                    width = 16,
+                    height = 16
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "enemy_alan",
+                    width = 16,
+                    height = 16,
+                    src_rect = {x = 16, y = 0},
+                },
+                transform = {
+                    position = { x = 200, y = 200},
+                    scale = { x = 2.0, y =2.0},
+                    rotation = 0.0
+                }
+            }
+        },
+        {
             components = {
                 clickable = {
                 },
