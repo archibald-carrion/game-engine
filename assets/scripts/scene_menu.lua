@@ -56,6 +56,9 @@ scene = {
             components = {
                 clickable = {
                 },
+                script = {
+                    path = "./assets/scripts/menu_button_01.lua",
+                },
                 text = {
                     text = "Level 01",
                     font_id = "font_0",
@@ -71,7 +74,7 @@ scene = {
                 },
 
 
-            }
+            },
         },
         -- level 02
         {
@@ -91,7 +94,7 @@ scene = {
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
-            }
+            },
         },
         -- level 03
         {
@@ -111,7 +114,7 @@ scene = {
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
-            }
+            },
         },
     }
 

@@ -10,6 +10,7 @@
 #include "../components/clickable_component.hpp"
 #include "../components/text_component.hpp"
 #include "../components/transform_component.hpp"
+#include "../components/script_component.hpp"
 
 #include "../event_manager/event_manager.hpp"
 #include "../events/click_event.hpp"
@@ -39,6 +40,12 @@ public:
             if (is_click_inside) {
                 // TODO: execute subroutine on_click from script
                 std::cout << "Entity clicked: " << entity.get_id() << std::endl;
+                if(entity.has_component<ScriptComponent>()) {
+                    const auto& script = entity.get_component<ScriptComponent>();
+                    if(script.on_click != sol::lua_nil) {
+                        script.on_click();
+                    }
+                }
             }
         }
     }

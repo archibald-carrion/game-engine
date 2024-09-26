@@ -111,14 +111,14 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
             sol::table components = entity["components"];
 
             // Animation component
-            sol::optional<sol::table> has_animation = components["animation"];
-            if(has_animation != sol::nullopt) {
-                new_entity.add_component<AnimationComponent>(
-                    components["animation"]["num_frames"],
-                    components["animation"]["frame_speed_rate"],
-                    components["animation"]["is_loop"]
-                );
-            }
+            // sol::optional<sol::table> has_animation = components["animation"];
+            // if(has_animation != sol::nullopt) {
+            //     new_entity.add_component<AnimationComponent>(
+            //         components["animation"]["num_frames"],
+            //         components["animation"]["frame_speed_rate"],
+            //         components["animation"]["is_loop"]
+            //     );
+            // }
 
             // Circle collider component
             sol::optional<sol::table> has_circle_collider = components["circular_collider"];
@@ -151,9 +151,19 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
             // script component
             sol::optional<sol::table> has_script = components["script"];
             if( has_script != sol::nullopt) {
+                lua["on_click"] = sol::nil;
                 lua["update"] = sol::nil;
+                std::cout << "before reading path" << std::endl;
                 std::string path = components["script"]["path"];
+                std::cout << "after reading path" << std::endl;
+
                 lua.script_file(path);
+
+                sol::optional<sol::function> has_on_click = lua["on_click"];
+                sol::function on_click = sol::nil;
+                if(has_on_click != sol::nullopt) {
+                    on_click = lua["on_click"];
+                }
 
                 sol::optional<sol::function> has_update = lua["update"];
                 sol::function update = sol::nil;
@@ -161,7 +171,7 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
                     update = lua["update"];
                 }
 
-                new_entity.add_component<ScriptComponent>(update);
+                new_entity.add_component<ScriptComponent>(update, on_click);
             }
 
             // Sprite component

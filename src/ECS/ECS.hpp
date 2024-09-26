@@ -213,7 +213,7 @@ bool Registry::has_component(Entity entity) {
     const int entity_id = entity.get_id();
 
     // Check if the component exists
-    if (component_id >= componentsPools.size()) {
+    if (static_cast<size_t>(component_id) >= componentsPools.size()) {
         return false;
     }
     // Check if the entity has the component

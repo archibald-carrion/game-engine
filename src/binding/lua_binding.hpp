@@ -21,5 +21,11 @@ void set_velocity(Entity e, float x, float y) {
     rigid_body.velocity.y = y;
 }
 
+// Scenes
+void go_to_scene(const std::string& scene_name) {
+    Game::get_instance().scene_manager->set_next_scene(scene_name);
+    Game::get_instance().scene_manager->stop_scene();
+}
+
 
 #endif // LUA_BINDING_HPP
