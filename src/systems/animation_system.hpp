@@ -9,12 +9,18 @@
 
 class AnimationSystem : public System {
 public:
+    /***
+     * @brief Constructor for AnimationSystem
+     */
     AnimationSystem() {
         // set as 1 in the bitset
         RequireComponent<AnimationComponent>();
         RequireComponent<SpriteComponent>();
     }
 
+    /***
+     * @brief Update the animation system, this will update the current frame of the animation component
+     */
     void update() {
         for (auto entity : get_entities()) {
             auto& animation = entity.get_component<AnimationComponent>();
@@ -24,14 +30,9 @@ public:
                 * animation.frame_speed_rate / 1000) % animation.num_frames;
             // print current frame
             // std::cout << "Current frame: " << animation.current_frame << std::endl;
-
             sprite.src_rect.x = sprite.width * animation.current_frame;
         }
     }
-
-
 };
-
-
 
 #endif // ANIMATION_SYSTEM_HPP
