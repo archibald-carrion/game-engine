@@ -110,7 +110,6 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
         if(has_components != sol::nullopt) {
             sol::table components = entity["components"];
 
-            // Animation component
             // sol::optional<sol::table> has_animation = components["animation"];
             // if(has_animation != sol::nullopt) {
             //     new_entity.add_component<AnimationComponent>(
@@ -120,6 +119,21 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
             //     );
             // }
 
+            sol::optional<sol::table> has_animation = components["animation"];
+            if(has_animation != sol::nullopt) {
+                sol::table animation = components["animation"];
+                
+                // add explicit conversions
+                int num_frames = animation["num_frames"].get<int>();
+                float frame_speed_rate = static_cast<float>(animation["frame_speed_rate"].get<double>());
+                bool is_loop = animation["is_loop"].get<bool>();
+                
+                new_entity.add_component<AnimationComponent>(
+                    num_frames,
+                    frame_speed_rate,
+                    is_loop
+                );
+            }
             // Circle collider component
             sol::optional<sol::table> has_circle_collider = components["circular_collider"];
 

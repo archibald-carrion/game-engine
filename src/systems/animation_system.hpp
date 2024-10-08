@@ -22,6 +22,8 @@ public:
 
             animation.current_frame = ((SDL_GetTicks() -animation.start_time) 
                 * animation.frame_speed_rate / 1000) % animation.num_frames;
+            // print current frame
+            // std::cout << "Current frame: " << animation.current_frame << std::endl;
 
             sprite.src_rect.x = sprite.width * animation.current_frame;
         }

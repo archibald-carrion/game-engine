@@ -67,8 +67,8 @@ scene = {
             -- enemy
             components = {
                 animation = {
-                    num_frames = 1,
-                    frame_speed_rate = 0.1,
+                    num_frames = 6,
+                    frame_speed_rate = 5,
                     is_loop = true
                 },
                 circular_collider = {
