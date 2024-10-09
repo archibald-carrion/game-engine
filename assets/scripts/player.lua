@@ -11,19 +11,19 @@ function update()
 
     if is_action_activated("up") then
         velocity_y = velocity_y + -1
-        print("[LUA] up")
+        -- print("[LUA] up")
     end
     if is_action_activated("left") then
         velocity_x = velocity_x + -1
-        print("[LUA] left")
+        -- print("[LUA] left")
     end
     if is_action_activated("down") then
         velocity_y = velocity_y + 1
-        print("[LUA] down")
+        -- print("[LUA] down")
     end
     if is_action_activated("right") then
         velocity_x = velocity_x + 1
-        print("[LUA] right")
+        -- print("[LUA] right")
     end
 
     if velocity_x ~=0 and velocity_y ~= 0 then

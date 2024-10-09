@@ -2,6 +2,7 @@
 #define BOX_COLLLSIION_SYSTEM_HPP
 
 #include "../components/box_collider_component.hpp"
+#include "../components/script_component.hpp"
 #include "../components/transform_component.hpp"
 #include "../ECS/ECS.hpp"
 
@@ -24,7 +25,7 @@ public:
         RequireComponent<TransformComponent>();
     }
 
-    void update(){
+    void update(sol::state& lua){
          auto entities = get_entities();
         for(auto i = entities.begin(); i != entities.end(); i++) {
             Entity a = *i;
@@ -55,7 +56,24 @@ public:
                 );
 
                 if(there_is_collision) {
-                    std::cout << "collision" << std::endl;
+                    // std::cout << "collision" << std::endl;
+                    if(a.has_component<ScriptComponent>()) {
+                        const auto& script = a.get_component<ScriptComponent>();
+                        if(script.on_collision != sol::nil) {
+                            lua["this"] = a;
+                            script.on_collision(b);
+                        }
+
+                    }
+
+                    if(b.has_component<ScriptComponent>()) {
+                        const auto& script = b.get_component<ScriptComponent>();
+                        if(script.on_collision != sol::nil) {
+                            lua["this"] = b;
+                            script.on_collision(a);
+                        }
+
+                    }
                 }
             }
 
