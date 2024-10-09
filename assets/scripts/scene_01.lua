@@ -5,6 +5,7 @@ scene = {
         [0] = 
         {asset_id = "enemy_alan", file_path = "./assets/images/enemy_alan.png"},
         {asset_id = "player_ship", file_path = "./assets/images/player_ship.png"},
+        {asset_id = "background", file_path = "./assets/images/space_background_0.png"},
     },
 
     -- font table
@@ -31,9 +32,26 @@ scene = {
     -- entities table
     entities = {
         [0] =
+        -- Background
+        {
+            components = {
+                sprite = {
+                    asset_id = "background",
+                    width = 2000,
+                    height = 2000,
+                    src_rect = {x = 0, y = 0},
+                },
+                transform = {
+                    position = { x = 0, y = 0},
+                    scale = { x = 1.0, y =1.0},
+                    rotation = 0.0
+                },
+            }
+        },
         -- player
         {
             components = {
+                camera_follow = {},
                 -- animation = {
 
                 -- },
