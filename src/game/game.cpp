@@ -283,7 +283,7 @@ void Game::update() {
     registry->get_system<MovementSystem>().Update(deltaTime);
     registry->get_system<CameraMovementSystem>().update(this->camera);
     registry->get_system<CircleCollisionSystem>().update(events_manager);
-    registry->get_system<BoxCollisionSystem>().update();
+    registry->get_system<BoxCollisionSystem>().update(lua);
 
     // on each frame update the position of the entities based on their speed
     for (auto& e : entities) {

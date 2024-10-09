@@ -94,6 +94,9 @@ scene = {
                     frame_speed_rate = 5,
                     is_loop = true
                 },
+                script = {
+                    path = "./assets/scripts/enemy_alan.lua"
+                },
                 box_collider = {
                     width = 16*2, -- scale by 2
                     height = 16*2,
