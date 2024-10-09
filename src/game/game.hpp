@@ -73,6 +73,13 @@ private:
 
     SDL_Window* window = nullptr; /**< Pointer to the SDL window. */
 
+    SDL_Rect camera = {0, 0, 0, 0};
+
+    // int window_height = 0;
+    // int window_width = 0;
+
+
+
     bool isRunning; /**< Flag to indicate if the game is running. */
     int mPreviousFrame = 0; /**< Time of the previous frame. */
     bool isPaused = false; /**< Flag to indicate if the game is paused. */
@@ -83,6 +90,10 @@ private:
 
  
 public:
+
+    int map_height = 0;
+    int map_width = 0;
+    
     SDL_Renderer* renderer = nullptr; /**< Pointer to the SDL renderer. */
     std::unique_ptr<Registry> registry; /**< Pointer to the game registry. */
     std::unique_ptr<SceneManager> scene_manager; /**< Pointer to the scene manager. */

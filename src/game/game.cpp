@@ -9,6 +9,7 @@
 #include "../systems/script_system.hpp"
 #include "../systems/render_text_system.hpp"
 #include "../systems/UI_system.hpp"
+#include "../systems/camera_movement_system.hpp"
 
 // #include "../components/transform_component.hpp"
 // #include "../components/RigidBodyComponent.hpp"
@@ -56,6 +57,7 @@ void Game::setup() {
     registry->add_system<ScriptSystem>();
     registry->add_system<RenderTextSystem>();
     registry->add_system<UISystem>();
+    registry->add_system<CameraMovementSystem>();
 
     scene_manager->load_scene_from_script("assets/scripts/scenes.lua", lua);
 
@@ -80,6 +82,9 @@ void Game::init() {
     // read the config file
     read_configuration_file(&window_configuration, &window_font, &entities);
 
+    this->map_height = 2000;
+    this->map_width = 2000;
+
     // create the window
     this->window = SDL_CreateWindow(
         "pseudo engine",
@@ -96,6 +101,11 @@ void Game::init() {
         -1, // screen driver index
         0 // no flags
     );
+
+    camera.x =0;
+    camera.y = 0;
+    camera.w = window_configuration.width;
+    camera.h = window_configuration.height;
 
     this->isRunning = true;
 
@@ -269,6 +279,7 @@ void Game::update() {
     registry->get_system<ScriptSystem>().update(lua);
     registry->get_system<AnimationSystem>().update();
     registry->get_system<MovementSystem>().Update(deltaTime);
+    registry->get_system<CameraMovementSystem>().update(this->camera);
     registry->get_system<CollisionSystem>().update(events_manager);
 
 
@@ -333,7 +344,7 @@ void Game::render() {
         );
     }
 
-    registry->get_system<RenderSystem>().update(renderer, assets_manager);
+    registry->get_system<RenderSystem>().update(renderer, assets_manager, this->camera);
     registry->get_system<RenderTextSystem>().update(renderer, assets_manager);
 
     SDL_RenderPresent(this->renderer);

@@ -16,7 +16,10 @@ public:
         RequireComponent<TransformComponent>();
     }
 
-    void update(SDL_Renderer* renderer, const std::unique_ptr<AssetsManager>& asset_manager) {
+    void update(
+        SDL_Renderer* renderer,
+        const std::unique_ptr<AssetsManager>& asset_manager,
+        SDL_Rect& camera) {
 
         for(auto entity: get_entities()) {
             const auto sprite = entity.get_component<SpriteComponent>();
@@ -24,8 +27,8 @@ public:
 
             SDL_Rect src_rect = sprite.src_rect;
             SDL_Rect dst_rect = {
-                static_cast<int>(transform.position.x),
-                static_cast<int>(transform.position.y),
+                static_cast<int>(transform.position.x - camera.x),
+                static_cast<int>(transform.position.y - camera.y),
                 static_cast<int>(sprite.width * transform.scale.x),
                 static_cast<int>(sprite.height * transform.scale.y)
             };
