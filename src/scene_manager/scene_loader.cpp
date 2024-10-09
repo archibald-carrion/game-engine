@@ -11,6 +11,7 @@
 #include "../components/script_component.hpp"
 #include "../components/text_component.hpp"
 #include "../components/clickable_component.hpp"
+#include "../components/camera_follow_component.hpp"
 
 SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
@@ -134,6 +135,13 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
                     is_loop
                 );
             }
+
+            // camera follow component
+            sol::optional<sol::table> has_camera_follow_component = components["camera_follow"];
+            if(has_camera_follow_component != sol::nullopt) {
+                new_entity.add_component<CameraFollowComponent>(); // has not parameters
+            }
+
             // Circle collider component
             sol::optional<sol::table> has_circle_collider = components["circular_collider"];
 
