@@ -1,5 +1,5 @@
-#ifndef COLLISION_SYSTEM_HPP
-#define COLLISION_SYSTEM_HPP
+#ifndef CIRCLE_COLLISION_SYSTEM_HPP
+#define CIRCLE_COLLISION_SYSTEM_HPP
 
 #include <iostream>
 #include <memory>
@@ -10,13 +10,13 @@
 #include "../event_manager/event_manager.hpp"
 #include "../events/collision_event.hpp"
 
-class CollisionSystem : public System
+class CircleCollisionSystem : public System
 {
 private:
     /* data */
 
 public:
-    CollisionSystem(/* args */) {
+    CircleCollisionSystem(/* args */) {
         RequireComponent<CircleColliderComponent>();
         RequireComponent<TransformComponent>();
     }
@@ -51,7 +51,7 @@ public:
                 int a_radius = a_collider.radius*a_transform.scale.x;
                 int b_radius = b_collider.radius*b_transform.scale.x;
 
-                bool there_is_collision = check_circular_collision(a_radius, b_radius, a_center_pos, b_center_pos);
+                bool there_is_collision = check_circle_collision(a_radius, b_radius, a_center_pos, b_center_pos);
 
                 if(there_is_collision) {
                     event_manager->emit_event<CollisionEvent>(a, b);
@@ -63,7 +63,7 @@ public:
         }
     }
 
-    bool  check_circular_collision(int a_radius, int b_radius, glm::vec2 a_pos, glm::vec2 b_pos) {
+    bool  check_circle_collision(int a_radius, int b_radius, glm::vec2 a_pos, glm::vec2 b_pos) {
         glm::vec2 dif = a_pos - b_pos;
         double lenght =glm::sqrt((dif.x*dif.x)+(dif.y*dif.y));
 
@@ -77,4 +77,4 @@ public:
 };
 
 
-#endif // COLLISION_SYSTEM_HPP
+#endif // CIRCLE_COLLISION_SYSTEM_HPP

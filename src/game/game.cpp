@@ -3,13 +3,14 @@
 
 #include "../systems/render_system.hpp"
 #include "../systems/MovementSystem.hpp"
-#include "../systems/collision_system.hpp"
-#include "../systems/damage_system.hpp"
+#include "../systems/circle_collision_system.hpp"
+// #include "../systems/damage_system.hpp"
 #include "../systems/animation_system.hpp"
 #include "../systems/script_system.hpp"
 #include "../systems/render_text_system.hpp"
 #include "../systems/UI_system.hpp"
 #include "../systems/camera_movement_system.hpp"
+#include "../systems/box_collision_system.hpp"
 
 // #include "../components/transform_component.hpp"
 // #include "../components/RigidBodyComponent.hpp"
@@ -50,14 +51,15 @@ Game::~Game() {
 
 void Game::setup() {
     registry->add_system<RenderSystem>();
-    registry->add_system<DamageSystem>();
+    // registry->add_system<DamageSystem>();
     registry->add_system<MovementSystem>();
-    registry->add_system<CollisionSystem>();
+    registry->add_system<CircleCollisionSystem>();
     registry->add_system<AnimationSystem>();
     registry->add_system<ScriptSystem>();
     registry->add_system<RenderTextSystem>();
     registry->add_system<UISystem>();
     registry->add_system<CameraMovementSystem>();
+    registry->add_system<BoxCollisionSystem>();
 
     scene_manager->load_scene_from_script("assets/scripts/scenes.lua", lua);
 
@@ -272,7 +274,7 @@ void Game::update() {
 
     // re-initialize subscriptions
     events_manager->reset();
-    registry->get_system<DamageSystem>().subscribe_to_collision_event(events_manager);
+    // registry->get_system<DamageSystem>().subscribe_to_collision_event(events_manager);
     registry->get_system<UISystem>().suscribe_to_click_event(events_manager);
 
     registry->update();
@@ -280,10 +282,8 @@ void Game::update() {
     registry->get_system<AnimationSystem>().update();
     registry->get_system<MovementSystem>().Update(deltaTime);
     registry->get_system<CameraMovementSystem>().update(this->camera);
-    registry->get_system<CollisionSystem>().update(events_manager);
-
-
-
+    registry->get_system<CircleCollisionSystem>().update(events_manager);
+    registry->get_system<BoxCollisionSystem>().update();
 
     // on each frame update the position of the entities based on their speed
     for (auto& e : entities) {

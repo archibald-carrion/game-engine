@@ -55,11 +55,16 @@ scene = {
                 -- animation = {
 
                 -- },
-                circular_collider = {
-                    radius = 8,
-                    width = 16,
-                    height = 16
+                box_collider = {
+                    width = 16*2, -- scale by 2
+                    height = 16*2,
+                    offset = {x = 0, y= 0},
                 },
+                -- circular_collider = {
+                --     radius = 8,
+                --     width = 16,
+                --     height = 16
+                -- },
                 rigid_body = {
                     velocity = {x = 0, y = 0},
                 },
@@ -89,11 +94,16 @@ scene = {
                     frame_speed_rate = 5,
                     is_loop = true
                 },
-                circular_collider = {
-                    radius = 8,
-                    width = 16,
-                    height = 16
+                box_collider = {
+                    width = 16*2, -- scale by 2
+                    height = 16*2,
+                    offset = {x = 0, y= 0},
                 },
+                -- circular_collider = {
+                --     radius = 8,
+                --     width = 16,
+                --     height = 16
+                -- },
                 rigid_body = {
                     velocity = {x = 0, y = 0},
                 },

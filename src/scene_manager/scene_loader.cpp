@@ -12,6 +12,7 @@
 #include "../components/text_component.hpp"
 #include "../components/clickable_component.hpp"
 #include "../components/camera_follow_component.hpp"
+#include "../components/box_collider_component.hpp"
 
 SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
@@ -133,6 +134,16 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
                     num_frames,
                     frame_speed_rate,
                     is_loop
+                );
+            }
+
+            // Box collider component
+            sol::optional<sol::table> has_box_collider = components["box_collider"];
+            if(has_box_collider != sol::nullopt) {
+                new_entity.add_component<BoxColliderComponent>(
+                    components["box_collider"]["width"],
+                    components["box_collider"]["height"],
+                    glm::vec2(components["box_collider"]["offset"]["x"], components["box_collider"]["offset"]["y"])
                 );
             }
 
