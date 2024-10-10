@@ -2,7 +2,8 @@
 scene = {
     -- sprites table
     sprites = {
-        -- add button sprite and other drawing to the main menu
+        [0] = 
+        {asset_id = "background", file_path = "./assets/images/space_background_0.png"},
     },
 
     -- font table
@@ -31,13 +32,29 @@ scene = {
     -- entities table
     entities = {
         [0] =
+        -- Background
+        {
+            components = {
+                sprite = {
+                    asset_id = "background",
+                    width = 2000,
+                    height = 2000,
+                    src_rect = {x = 0, y = 0},
+                },
+                transform = {
+                    position = { x = 0, y = 0},
+                    scale = { x = 1.0, y =1.0},
+                    rotation = 0.0
+                },
+            }
+        },
         -- title
         {
             components = {
                 clickable = {
                 },
                 text = {
-                    text = "Ad Terra",
+                    text = "De    Astra    Ad    Terra",
                     font_id = "arcade_classic_font",
                     r = 150,
                     g = 10,
@@ -45,8 +62,8 @@ scene = {
                     a = 255
                 },
                 transform = {
-                    position = { x = 300, y = 50},
-                    scale = { x = 1.0, y = 1.0},
+                    position = { x = 100, y = 50},
+                    scale = { x = 2.0, y = 2.0},
                     rotation = 0.0
                 },
 
@@ -63,14 +80,14 @@ scene = {
                 },
                 text = {
                     text = "Level 01",
-                    font_id = "font_0",
+                    font_id = "arcade_classic_font",
                     r = 50,
                     g = 100,
                     b = 10,
                     a = 255
                 },
                 transform = {
-                    position = { x = 300, y = 100},
+                    position = { x = 300, y = 200},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -85,14 +102,14 @@ scene = {
                 },
                 text = {
                     text = "Level 02",
-                    font_id = "font_0",
+                    font_id = "arcade_classic_font",
                     r = 50,
                     g = 100,
                     b = 10,
                     a = 255
                 },
                 transform = {
-                    position = { x = 300, y = 150},
+                    position = { x = 300, y = 300},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -105,14 +122,14 @@ scene = {
                 },
                 text = {
                     text = "Level 03",
-                    font_id = "font_0",
+                    font_id = "arcade_classic_font",
                     r = 50,
                     g = 100,
                     b = 10,
                     a = 255
                 },
                 transform = {
-                    position = { x = 300, y = 200},
+                    position = { x = 300, y = 400},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },

@@ -35,11 +35,11 @@ Game::~Game() {
     std::cout << "Game destructor" << std::endl;
     
     // free allocated memory
-    delete window_configuration.window_color;
-    delete window_font.font_color;
-    for (auto& e : entities) {
-        delete e; // Deallocate each entity
-    }
+    // delete window_configuration.window_color;
+    // delete window_font.font_color;
+    // for (auto& e : entities) {
+    //     delete e; // Deallocate each entity
+    // }
 
     scene_manager.reset();
     assets_manager.reset();
@@ -82,7 +82,7 @@ void Game::init() {
 
 
     // read the config file
-    read_configuration_file(&window_configuration, &window_font, &entities);
+    // read_configuration_file(&window_configuration, &window_font, &entities);
 
     this->map_height = 2000;
     this->map_width = 2000;
@@ -92,10 +92,12 @@ void Game::init() {
         "pseudo engine",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        window_configuration.width,
-        window_configuration.height,
+        WINDOW_WIDTH,
+        WINDOW_HEIGHT,
         SDL_WINDOW_SHOWN
     );
+
+    SDL_SetWindowResizable(window, SDL_FALSE);
 
     // create renderer
     this->renderer = SDL_CreateRenderer(
@@ -104,10 +106,10 @@ void Game::init() {
         0 // no flags
     );
 
-    camera.x =0;
+    camera.x = 0;
     camera.y = 0;
-    camera.w = window_configuration.width;
-    camera.h = window_configuration.height;
+    camera.w = WINDOW_WIDTH; //window_configuration.width;
+    camera.h = WINDOW_HEIGHT; // window_configuration.height;
 
     this->isRunning = true;
 
@@ -119,15 +121,15 @@ void Game::init() {
         return;
     }
 
-    // initialize the text
-    window_font.font = TTF_OpenFont(window_font.font_folder.c_str(), window_font.font_size);
-    if (window_font.font == nullptr) {
-        std::cout << "TTF_OpenFont Error: " << TTF_GetError() << std::endl;
-        return;
-    }
+    // // initialize the text
+    // window_font.font = TTF_OpenFont(window_font.font_folder.c_str(), window_font.font_size);
+    // if (window_font.font == nullptr) {
+    //     std::cout << "TTF_OpenFont Error: " << TTF_GetError() << std::endl;
+    //     return;
+    // }
 
     // for each entity, load the texture and create the rect
-    for (auto& e : entities) {
+    /*for (auto& e : entities) {
         // load the texture
         SDL_Surface* surface = IMG_Load(e->sprite_folder.c_str());
         if (surface == nullptr) {
@@ -164,7 +166,7 @@ void Game::init() {
         // position the message in the center of the entity
         e->message_position = glm::vec2(e->pos_X + e->sprite_width / 2 - e->message_width / 2, e->pos_Y + e->sprite_height / 2 - e->message_height / 2);
         SDL_FreeSurface(surface_message);
-    }
+    }*/
 }
 
 void Game::run() {
@@ -191,10 +193,10 @@ void Game::destroy() {
     std::cout << "Game destroy" << std::endl;
 
     // destroy the texture of each entity
-    for (auto& e : entities) {
-        SDL_DestroyTexture(e->texture); // free the texture
-        SDL_DestroyTexture(e->message_texture); // free the texture
-    }
+    // for (auto& e : entities) {
+    //     SDL_DestroyTexture(e->texture); // free the texture
+    //     SDL_DestroyTexture(e->message_texture); // free the texture
+    // }
 
     SDL_DestroyWindow(this->window);
     SDL_DestroyRenderer(this->renderer);
@@ -213,6 +215,13 @@ void Game::processInput() {
                 isRunning = false;
                 break;
             case SDL_KEYDOWN:
+                // manage the fullscreen event
+                // if (event.key.keysym.sym == SDLK_F11 || 
+                //     (event.key.keysym.sym == SDLK_RETURN && 
+                //      event.key.keysym.mod & KMOD_ALT)) {
+                //     toggleFullscreen();
+                // }
+
                 if (event.key.keysym.sym == SDLK_ESCAPE) {
                     scene_manager->stop_scene();
                     isRunning = false;
@@ -286,7 +295,7 @@ void Game::update() {
     registry->get_system<BoxCollisionSystem>().update(lua);
 
     // on each frame update the position of the entities based on their speed
-    for (auto& e : entities) {
+    /*for (auto& e : entities) {
         e->pos_X += e->speed_X * deltaTime;
         e->pos_Y += e->speed_Y * deltaTime;
 
@@ -305,23 +314,23 @@ void Game::update() {
         if (e->pos_Y < 0 || e->pos_Y + e->sprite_height > window_configuration.height) {
             e->speed_Y *= -1;
         }
-    }
+    }*/
 }
 
 void Game::render() {
     // clear the window
-    SDL_SetRenderDrawColor(
-        this->renderer,
-        this->window_configuration.window_color->r,
-        this->window_configuration.window_color->g,
-        this->window_configuration.window_color->b,
-        SDL_ALPHA_OPAQUE
-    );
+    // SDL_SetRenderDrawColor(
+    //     this->renderer,
+    //     this->window_configuration.window_color->r,
+    //     this->window_configuration.window_color->g,
+    //     this->window_configuration.window_color->b,
+    //     SDL_ALPHA_OPAQUE
+    // );
 
     SDL_RenderClear(this->renderer);
 
     // render the entities
-    for (const auto& e : this->entities) {
+    /*for (const auto& e : this->entities) {
         SDL_RenderCopyEx(
             this->renderer,
             e->texture,
@@ -342,7 +351,7 @@ void Game::render() {
             nullptr, // center of rotation, nullptr to rotate around the center of the rect
             SDL_FLIP_NONE
         );
-    }
+    }*/
 
     registry->get_system<RenderSystem>().update(renderer, assets_manager, this->camera);
     registry->get_system<RenderTextSystem>().update(renderer, assets_manager);
@@ -350,7 +359,12 @@ void Game::render() {
     SDL_RenderPresent(this->renderer);
 }
 
-void Game::print_game_data() {
+// void Game::toggleFullscreen() {
+//     isFullscreen = !isFullscreen;
+//     SDL_SetWindowFullscreen(window, isFullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+// }
+
+/*void Game::print_game_data() {
     // print the content of the window configuration settings
     std::cout << "width of the window: " 
         << this->window_configuration.width << ", height of the window: " 
@@ -374,4 +388,4 @@ void Game::print_game_data() {
         std::cout << "rotation: " << e->rotation << ", speed: (" << e->speed_X << ", " << e->speed_Y << ")" << std::endl;
         std::cout << "sprite dirr: " << e->sprite_folder << ", sprite dimensions: " << e->sprite_width << ", " << e->sprite_height << std::endl;
     }
-}
+}*/

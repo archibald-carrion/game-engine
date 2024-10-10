@@ -66,6 +66,9 @@ Para instalar las bibliotecas necesarias en linux, ejecute el siguiente comando:
 sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev lua5.3 liblua5.3-dev
 ```
 
+## Ressources used for the game
+- [arcade classic font](https://www.1001fonts.com/arcadeclassic-font.html)
+
 
 ## TODO
 - [ ] Implement the animation of the entities using the lua script
