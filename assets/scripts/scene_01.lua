@@ -52,6 +52,10 @@ scene = {
         {
             components = {
                 camera_follow = {},
+                tag = {
+                    tag = "player",
+                },
+                
                 -- animation = {
 
                 -- },
@@ -115,6 +119,9 @@ scene = {
                     width = 16,
                     height = 16,
                     src_rect = {x = 16, y = 0},
+                },
+                tag = {
+                    tag = "enemy",
                 },
                 transform = {
                     position = { x = 200, y = 200},

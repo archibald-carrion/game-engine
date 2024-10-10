@@ -13,6 +13,7 @@
 #include "../components/clickable_component.hpp"
 #include "../components/camera_follow_component.hpp"
 #include "../components/box_collider_component.hpp"
+#include "../components/tag_component.hpp"
 
 SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
@@ -237,6 +238,12 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
                     components["text"]["b"],
                     components["text"]["a"]
                 );
+            }
+
+            // tag component
+            sol::optional<sol::table> has_tag = components["tag"];
+            if(has_tag != sol::nullopt) {
+                new_entity.add_component<TagComponent>(static_cast<std::string>(components["tag"]["tag"]));
             }
 
              // transform component
