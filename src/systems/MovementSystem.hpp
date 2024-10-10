@@ -17,6 +17,8 @@ public:
             const auto& rigid_body = entity.get_component<RigidBodyComponent>();
             auto& transform = entity.get_component<TransformComponent>();
 
+            transform.previous_position = transform.position;
+
             transform.position.x += rigid_body.velocity.x * dt;
             transform.position.y += rigid_body.velocity.y * dt;
 

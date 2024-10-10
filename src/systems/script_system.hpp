@@ -24,6 +24,9 @@ public:
         lua.set_function("get_tag", get_tag);
         lua.set_function("go_to_scene", go_to_scene);
 
+        lua.set_function("left_collision", left_collision);
+        lua.set_function("right_collision", right_collision);
+
 
     }
 

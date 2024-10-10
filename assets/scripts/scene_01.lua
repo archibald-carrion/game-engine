@@ -6,6 +6,8 @@ scene = {
         {asset_id = "enemy_alan", file_path = "./assets/images/enemy_alan.png"},
         {asset_id = "player_ship", file_path = "./assets/images/player_ship.png"},
         {asset_id = "background", file_path = "./assets/images/space_background_0.png"},
+        {asset_id = "barrier", file_path = "./assets/images/barrier.png"},
+
     },
 
     -- font table
@@ -90,6 +92,61 @@ scene = {
 
             }
         },
+        -- barrier 1
+        {
+            components = {
+                box_collider = {
+                    width = 16*2, -- scale by 2
+                    height = 16*2,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "barrier",
+                    width = 16,
+                    height = 16,
+                    src_rect = {x = 0, y = 0},
+                },
+                transform = {
+                    position = { x = 600, y = 200},
+                    scale = { x = 2.0, y =2.0},
+                    rotation = 0.0
+                },
+                tag = {
+                    tag = "barrier",
+                }
+            }
+        },
+        -- barrier 2
+        {
+            components = {
+                box_collider = {
+                    width = 16*2, -- scale by 2
+                    height = 16*2,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "barrier",
+                    width = 16,
+                    height = 16,
+                    src_rect = {x = 0, y = 0},
+                },
+                transform = {
+                    position = { x = 100, y = 200},
+                    scale = { x = 2.0, y =2.0},
+                    rotation = 0.0
+                },
+                tag = {
+                    tag = "barrier",
+                }
+            }
+        },
+
         {
             -- enemy
             components = {
@@ -112,7 +169,7 @@ scene = {
                 --     height = 16
                 -- },
                 rigid_body = {
-                    velocity = {x = 0, y = 0},
+                    velocity = {x = -50, y = 0},
                 },
                 sprite = {
                     asset_id = "enemy_alan",
@@ -124,7 +181,7 @@ scene = {
                     tag = "enemy",
                 },
                 transform = {
-                    position = { x = 200, y = 200},
+                    position = { x = 500, y = 200},
                     scale = { x = 2.0, y =2.0},
                     rotation = 0.0
                 }
