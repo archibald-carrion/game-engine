@@ -23,6 +23,8 @@ public:
         lua.set_function("set_velocity", set_velocity);
         lua.set_function("get_velocity", get_velocity);
 
+        lua.set_function("set_rotation", set_rotation);
+
         lua.set_function("get_tag", get_tag);
         lua.set_function("go_to_scene", go_to_scene);
 

@@ -19,7 +19,6 @@ bool is_action_activated(const std::string& action) {
 }
 
 
-
 // Rigid body component
 
 void set_velocity(Entity e, float x, float y) {
@@ -34,6 +33,11 @@ std::string get_tag(Entity entity){
 }
 
 // Transform component
+void set_rotation(Entity e, float angle) {
+    auto& transform = e.get_component<TransformComponent>();
+    transform.rotation = angle;
+}
+
 std::tuple<int, int> get_position(Entity e) {
     const auto& transform = e.get_component<TransformComponent>();
     return {static_cast<int>(transform.position.x), static_cast<int>(transform.position.y)};

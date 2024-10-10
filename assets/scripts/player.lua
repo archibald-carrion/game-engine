@@ -36,6 +36,18 @@ function update()
 
     set_velocity(this, velocity_x, velocity_y)
 
+    -- change the ship rotation based on the direction in which it is moving
+    -- using the set_rotation(this, angle) function
+    -- Calculate and set rotation based on movement direction
+    if velocity_x ~= 0 or velocity_y ~= 0 then
+        -- Calculate angle in radians using atan2
+        local angle = math.atan2(velocity_x, -velocity_y)
+        -- Convert to degrees and adjust for SDL
+        local degrees = angle * (180 / math.pi)
+        
+        -- Set the rotation
+        set_rotation(this, degrees)
+    end
 
     
     
