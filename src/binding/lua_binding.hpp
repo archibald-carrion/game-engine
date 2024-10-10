@@ -2,6 +2,7 @@
 #define LUA_BINDING_HPP
 
 #include <string>
+#include <tuple>
 
 #include"../ECS/ECS.hpp"
 #include "../game/game.hpp"
@@ -30,6 +31,33 @@ void set_velocity(Entity e, float x, float y) {
 // Tag component
 std::string get_tag(Entity entity){
     return entity.get_component<TagComponent>().tag;
+}
+
+// Transform component
+std::tuple<int, int> get_position(Entity e) {
+    const auto& transform = e.get_component<TransformComponent>();
+    return {static_cast<int>(transform.position.x), static_cast<int>(transform.position.y)};
+}
+
+std::tuple<int, int> get_velocity(Entity e) {
+    const auto& rigid_body = e.get_component<RigidBodyComponent>();
+    return {static_cast<int>(rigid_body.velocity.x), static_cast<int>(rigid_body.velocity.y)};
+}
+
+void set_position(Entity e, int x, int y) {
+    auto& transform = e.get_component<TransformComponent>();
+    transform.position.x = static_cast<float>(x);
+    transform.position.y = static_cast<float>(y);
+}
+
+std::tuple<int, int> get_size(Entity e) {
+    const auto& sprite = e.get_component<SpriteComponent>();
+    const auto& transform = e.get_component<TransformComponent>();
+    
+    int width = sprite.width * transform.scale.x;
+    int height = sprite.height * transform.scale.y;
+
+    return {width, height};
 }
 
 // Scenes

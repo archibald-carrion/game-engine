@@ -21,8 +21,16 @@ public:
         // functions
         lua.set_function("is_action_activated", is_action_activated);
         lua.set_function("set_velocity", set_velocity);
+        lua.set_function("get_velocity", get_velocity);
+
         lua.set_function("get_tag", get_tag);
         lua.set_function("go_to_scene", go_to_scene);
+
+        lua.set_function("get_position", get_position);
+        lua.set_function("set_position", set_position);
+        lua.set_function("get_size", get_size);
+
+
 
         lua.set_function("left_collision", left_collision);
         lua.set_function("right_collision", right_collision);
