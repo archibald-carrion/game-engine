@@ -9,6 +9,8 @@ scene = {
     fonts = {
         [0] = 
         {font_id = "font_0", file_path = "./assets/fonts/highway_gothic.ttf", font_size = 32},
+        {font_id = "arcade_classic_font", file_path = "./assets/fonts/ARCADECLASSIC.TTF", font_size = 32},
+
     },
     
     -- actions and keys table
@@ -35,8 +37,8 @@ scene = {
                 clickable = {
                 },
                 text = {
-                    text = "Galaxian",
-                    font_id = "font_0",
+                    text = "Ad Terra",
+                    font_id = "arcade_classic_font",
                     r = 150,
                     g = 10,
                     b = 50,
