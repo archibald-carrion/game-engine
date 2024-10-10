@@ -4,7 +4,7 @@ scene = {
     sprites = {
         [0] = 
         {asset_id = "enemy_alan", file_path = "./assets/images/enemy_alan.png"},
-        {asset_id = "player_ship", file_path = "./assets/images/player_ship.png"},
+        {asset_id = "player_ship", file_path = "./assets/images/admiral_ship_sprite_sheet.png"},
         {asset_id = "background", file_path = "./assets/images/space_background_0.png"},
         {asset_id = "barrier", file_path = "./assets/images/barrier.png"},
 
@@ -55,6 +55,11 @@ scene = {
         -- player
         {
             components = {
+                animation = {
+                    num_frames = 3,
+                    frame_speed_rate = 5,
+                    is_loop = true
+                },
                 camera_follow = {},
                 tag = {
                     tag = "player",
@@ -81,8 +86,8 @@ scene = {
                 },
                 sprite = {
                     asset_id = "player_ship",
-                    width = 16,
-                    height = 16,
+                    width = 32,
+                    height = 32,
                     src_rect = {x = 16, y = 0},
                 },
                 transform = {
