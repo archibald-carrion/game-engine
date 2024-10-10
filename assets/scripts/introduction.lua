@@ -70,58 +70,16 @@ scene = {
 
             }
         },
-        -- level 01
+        -- continue button
         {
             components = {
                 clickable = {
                 },
                 script = {
-                    path = "./assets/scripts/goto_level_1.lua",
+                    path = "./assets/scripts/goto_level_1.lua", -- simply go to scene 01 (first level)
                 },
                 text = {
-                    text = "Level 01",
-                    font_id = "arcade_classic_font",
-                    r = 150,
-                    g = 10,
-                    b = 50,
-                    a = 255
-                },
-                transform = {
-                    position = { x = 300, y = 200},
-                    scale = { x = 1.0, y = 1.0},
-                    rotation = 0.0
-                },
-
-
-            },
-        },
-        -- level 02
-        {
-            components = {
-                clickable = {
-                },
-                text = {
-                    text = "Level 02",
-                    font_id = "arcade_classic_font",
-                    r = 150,
-                    g = 10,
-                    b = 50,
-                    a = 255
-                },
-                transform = {
-                    position = { x = 300, y = 300},
-                    scale = { x = 1.0, y = 1.0},
-                    rotation = 0.0
-                },
-            },
-        },
-        -- level 03
-        {
-            components = {
-                clickable = {
-                },
-                text = {
-                    text = "Level 03",
+                    text = "click here to continue",
                     font_id = "arcade_classic_font",
                     r = 150,
                     g = 10,
@@ -139,3 +97,6 @@ scene = {
 
     -- music and sound effect table
 }
+
+
+
