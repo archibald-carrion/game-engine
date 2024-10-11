@@ -56,70 +56,29 @@ end
 function on_collision(other)
     this_tag = get_tag(this)
     other_tag = get_tag(other)
-    print("[LUA] Collision between this: "..this_tag.. " and other: "..other_tag)
-
+    
     if other_tag == "barrier" then
+        this_x, this_y = get_position(this)
+        this_width, this_height = get_size(this)
+        other_x, other_y = get_position(other)
+        other_width, other_height = get_size(other)
+        
         if left_collision(this, other) then
             print("[LUA] Left collision")
-            -- avoid superposition
-            this_x, this_y = get_position(this)
-            this_velocity_x, this_velocity_y = get_velocity(this)
-
-            other_x, other_y = get_position(other)
-            other_width, other_height = get_size(other)
-
-            set_position(this, other_x + other_width +1, this_y)
-
-            -- react to collision/resolve collision
-            
-        end
-
-        if right_collision(this, other) then
+            -- Move this entity to the right of the other entity
+            set_position(this, other_x + other_width + 1, this_y)
+        elseif right_collision(this, other) then
             print("[LUA] Right collision")
-            -- avoid superposition
-            this_x, this_y = get_position(this)
-            this_velocity_x, this_velocity_y = get_velocity(this)
-
-            other_x, other_y = get_position(other)
-            other_width, other_height = get_size(other)
-
-            set_position(this, other_x - other_width -1, this_y)
-
-            -- react to collision/resolve collision
-            
-
-        end
-
-        if top_collision(this, other) then
+            -- Move this entity to the left of the other entity
+            set_position(this, other_x - this_width - 1, this_y)
+        elseif top_collision(this, other) then
             print("[LUA] Top collision")
-            -- avoid superposition
-            this_x, this_y = get_position(this)
-            this_velocity_x, this_velocity_y = get_velocity(this)
-
-            other_x, other_y = get_position(other)
-            other_width, other_height = get_size(other)
-
-            set_position(this, this_x, other_y + other_height +1)
-
-            -- react to collision/resolve collision
-            
-
-        end
-
-        if bottom_collision(this, other) then
+            -- Move this entity below the other entity
+            set_position(this, this_x, other_y + other_height - 1)
+        elseif bottom_collision(this, other) then
             print("[LUA] Bottom collision")
-            -- avoid superposition
-            this_x, this_y = get_position(this)
-            this_velocity_x, this_velocity_y = get_velocity(this)
-
-            other_x, other_y = get_position(other)
-            other_width, other_height = get_size(other)
-
-            set_position(this, this_x, other_y - other_height -1)
-
-            -- react to collision/resolve collision
-            
-
+            -- Move this entity above the other entity
+            set_position(this, this_x, other_y - this_height - 1)
         end
     end
 end

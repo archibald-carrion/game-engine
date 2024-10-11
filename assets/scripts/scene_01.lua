@@ -69,8 +69,8 @@ scene = {
 
                 -- },
                 box_collider = {
-                    width = 16*2, -- scale by 2
-                    height = 16*2,
+                    width = 32*2, -- scale by 2
+                    height = 32*2,
                     offset = {x = 0, y= 0},
                 },
                 -- circular_collider = {
@@ -157,8 +157,8 @@ scene = {
         {
             components = {
                 box_collider = {
-                    width = 16*4, -- scale by 2
-                    height = 16*4,
+                    width = 64, -- scale by 2
+                    height = 64,
                     offset = {x = 0, y= 0},
                 },
                 rigid_body = {

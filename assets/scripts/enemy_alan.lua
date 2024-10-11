@@ -2,11 +2,11 @@
 function on_collision(other)
     this_tag = get_tag(this)
     other_tag = get_tag(other)
-    print("[LUA] Collision between this: "..this_tag.. " and other: "..other_tag)
+    -- print("[LUA] Collision between this: "..this_tag.. " and other: "..other_tag)
 
     if other_tag == "barrier" then
         if left_collision(this, other) then
-            print("[LUA] Left collision")
+            -- print("[LUA] Left collision")
             -- avoid superposition
             this_x, this_y = get_position(this)
             this_velocity_x, this_velocity_y = get_velocity(this)
@@ -21,7 +21,7 @@ function on_collision(other)
         end
 
         if right_collision(this, other) then
-            print("[LUA] Right collision")
+            -- print("[LUA] Right collision")
             -- avoid superposition
             this_x, this_y = get_position(this)
             this_velocity_x, this_velocity_y = get_velocity(this)
