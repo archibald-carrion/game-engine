@@ -38,6 +38,10 @@ void set_rotation(Entity e, float angle) {
     transform.rotation = angle;
 }
 
+float get_rotation(Entity e) {
+    return e.get_component<TransformComponent>().rotation;
+}
+
 std::tuple<int, int> get_position(Entity e) {
     const auto& transform = e.get_component<TransformComponent>();
     return {static_cast<int>(transform.position.x), static_cast<int>(transform.position.y)};
