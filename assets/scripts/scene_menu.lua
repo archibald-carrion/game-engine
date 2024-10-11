@@ -33,8 +33,6 @@ scene = {
     entities = {
         [0] =
         -- Background
-        {},
-        {},
         {
             components = {
                 sprite = {
