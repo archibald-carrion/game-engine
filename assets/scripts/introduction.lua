@@ -52,6 +52,7 @@ scene = {
                 },
             }
         },
+        -- First paragraph
         {
             components = {
                 text = {
@@ -60,7 +61,7 @@ scene = {
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 50, y = 50},
+                    position = { x = 200, y = 100},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -74,7 +75,7 @@ scene = {
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 50, y = 80},
+                    position = { x = 200, y = 130},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -88,7 +89,7 @@ scene = {
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 50, y = 110},
+                    position = { x = 200, y = 160},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -102,7 +103,7 @@ scene = {
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 50, y = 140},
+                    position = { x = 200, y = 190},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -117,7 +118,7 @@ scene = {
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 50, y = 200},
+                    position = { x = 200, y = 250},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -131,7 +132,7 @@ scene = {
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 50, y = 230},
+                    position = { x = 200, y = 280},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -145,7 +146,7 @@ scene = {
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 50, y = 260},
+                    position = { x = 200, y = 310},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -160,7 +161,7 @@ scene = {
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 50, y = 320},
+                    position = { x = 200, y = 370},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -174,7 +175,7 @@ scene = {
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 50, y = 350},
+                    position = { x = 200, y = 400},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -189,7 +190,7 @@ scene = {
                     r = 255, g = 215, b = 0, a = 255  -- Golden color
                 },
                 transform = {
-                    position = { x = 250, y = 400},
+                    position = { x = 340, y = 480},
                     scale = { x = 1.5, y = 1.5},  -- Larger scale for the title
                     rotation = 0.0
                 },
@@ -202,7 +203,6 @@ scene = {
                 },
                 script = {
                     path = "./assets/scripts/goto_level_1.lua",
-                    -- path = "./assets/scripts/goto_introduction.lua",
                 },
                 text = {
                     text = "[click here to continue]",
@@ -213,12 +213,10 @@ scene = {
                     a = 255
                 },
                 transform = {
-                    position = { x = 250, y = 500},
+                    position = { x = 400, y = 600},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
-
-
             },
         },
     }
