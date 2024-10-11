@@ -33,6 +33,8 @@ scene = {
     entities = {
         [0] =
         -- Background
+        {},
+        {},
         {
             components = {
                 sprite = {
@@ -76,7 +78,8 @@ scene = {
                 clickable = {
                 },
                 script = {
-                    path = "./assets/scripts/goto_level_1.lua",
+                    --path = "./assets/scripts/goto_level_1.lua",
+                    path = "./assets/scripts/goto_introduction.lua",
                 },
                 text = {
                     text = "Level 01",

@@ -108,6 +108,20 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
         sol::table entity = entities[index];
         Entity new_entity = registry->create_entity();
 
+        // to be sure, remove_component is called for all components
+        new_entity.remove_component<TransformComponent>();
+        new_entity.remove_component<RigidBodyComponent>();
+        new_entity.remove_component<SpriteComponent>();
+        new_entity.remove_component<CircleColliderComponent>();
+        new_entity.remove_component<AnimationComponent>();
+        new_entity.remove_component<ScriptComponent>();
+        new_entity.remove_component<TextComponent>();
+        new_entity.remove_component<ClickableComponent>();
+        new_entity.remove_component<CameraFollowComponent>();
+        new_entity.remove_component<BoxColliderComponent>();
+        new_entity.remove_component<TagComponent>();
+        
+
         sol::optional<sol::table> has_components = entity["components"];
 
         if(has_components != sol::nullopt) {

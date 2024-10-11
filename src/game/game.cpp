@@ -180,11 +180,17 @@ void Game::run() {
 
 void Game::run_scene() {
     scene_manager->load_scene();
+        
+    std::cout << "[DEBUGGING] ammount of entities: " << registry->num_entities << std::endl;
+
     while(scene_manager->is_current_scene_running()) {
         processInput();
         update();
         render();
     }
+
+    
+    
     assets_manager->clear_assets();
     registry->clear_all_entities();
 }

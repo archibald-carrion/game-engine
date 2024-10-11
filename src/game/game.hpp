@@ -100,8 +100,8 @@ public:
     int map_height = 0;
     int map_width = 0;
 
-    int WINDOW_WIDTH = 800;
-    int WINDOW_HEIGHT = 600; 
+    const int WINDOW_WIDTH = 800;
+    const int WINDOW_HEIGHT = 600; 
     
     SDL_Renderer* renderer = nullptr; /**< Pointer to the SDL renderer. */
     std::unique_ptr<Registry> registry; /**< Pointer to the game registry. */

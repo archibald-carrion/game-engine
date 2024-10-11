@@ -146,4 +146,11 @@ void Registry::clear_all_entities() {
         entityComponentSignatures[i].reset();
         free_ids.push_back(i);
     }
+
+    // num_entities = 0;
+
+    // // for each pool in componentsPools, clear all components
+    // componentsPools.clear();
+
+    // entityComponentSignatures.clear();
 }

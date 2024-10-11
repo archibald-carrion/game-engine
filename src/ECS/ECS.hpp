@@ -97,7 +97,6 @@ public:
 
 class Registry {
 private:
-    int num_entities = 0;
     std::vector<std::shared_ptr<IPool>> componentsPools;
     std::vector<Signature> entityComponentSignatures;
 
@@ -108,6 +107,7 @@ private:
     std::deque<int> free_ids;
 
 public:
+    int num_entities = 0;
     Registry();
     
     ~Registry();
@@ -186,7 +186,7 @@ void Registry::add_component(Entity entity, TArgs&&... args) {
     component_pool->set(entity_id, new_component);
     entityComponentSignatures[entity_id].set(component_id);
 
-    std::cout << "component added to Registry, component id: " << component_id << " to entity :" << entity_id << std::endl;
+    // std::cout << "component added to Registry, component id: " << component_id << " to entity :" << entity_id << std::endl;
 }
 
 template <typename TComponent>
@@ -195,7 +195,7 @@ void Registry::remove_component(Entity entity){
     const int entity_id = entity.get_id();
 
     // Check if the component exists
-    if (component_id >= componentsPools.size()) {
+    if (static_cast<size_t>(component_id) >= componentsPools.size()) {
         return;
     }
 

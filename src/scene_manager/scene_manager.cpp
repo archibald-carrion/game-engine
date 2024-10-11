@@ -37,6 +37,8 @@ void SceneManager::load_scene_from_script(const std::string& scene_path, sol::st
 
 void SceneManager::load_scene() {
     Game& game = Game::get_instance();
+    // reset the registry
+    // game.registry->clear_all_entities();
     std::string scene_path = scenes[next_scene];
     scene_loader->load_scene(scene_path, game.lua, game.assets_manager, game.controller_manager, game.registry, game.renderer);
 }

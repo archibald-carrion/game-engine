@@ -14,7 +14,7 @@ scene = {
     fonts = {
         [0] = 
         {font_id = "font_0", file_path = "./assets/fonts/highway_gothic.ttf", font_size = 32},
-        {font_id = "arcade_classic_font", file_path = "./assets/fonts/ARCADECLASSIC.ttf", font_size = 32},
+        {font_id = "arcade_classic_font", file_path = "./assets/fonts/ARCADECLASSIC.TTF", font_size = 32},
 
     },
     

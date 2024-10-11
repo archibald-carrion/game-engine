@@ -48,35 +48,14 @@ scene = {
                 },
             }
         },
-        -- title
-        {
-            components = {
-                clickable = {
-                },
-                text = {
-                    text = "De    Astra    Ad    Terra",
-                    font_id = "arcade_classic_font",
-                    r = 150,
-                    g = 10,
-                    b = 50,
-                    a = 255
-                },
-                transform = {
-                    position = { x = 100, y = 50},
-                    scale = { x = 2.0, y = 2.0},
-                    rotation = 0.0
-                },
-
-
-            }
-        },
-        -- continue button
+        -- button to continue
         {
             components = {
                 clickable = {
                 },
                 script = {
-                    path = "./assets/scripts/goto_level_1.lua", -- simply go to scene 01 (first level)
+                    path = "./assets/scripts/goto_level_1.lua",
+                    -- path = "./assets/scripts/goto_introduction.lua",
                 },
                 text = {
                     text = "click here to continue",
@@ -87,16 +66,15 @@ scene = {
                     a = 255
                 },
                 transform = {
-                    position = { x = 300, y = 400},
+                    position = { x = 300, y = 200},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
+
+
             },
         },
     }
 
     -- music and sound effect table
 }
-
-
-
