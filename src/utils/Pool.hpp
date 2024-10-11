@@ -8,6 +8,7 @@
 class IPool {
 public:
     virtual ~IPool() = default;
+    virtual void Clear() = 0; // Add this pure virtual function
 };
 
 template <typename TComponent>
