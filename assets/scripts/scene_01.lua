@@ -254,6 +254,9 @@ scene = {
                 rigid_body = {
                     velocity = {x = 0, y = 50},
                 },
+                script = {
+                    path = "./assets/scripts/meteor.lua"
+                },
                 sprite = {
                     asset_id = "meteor_0",
                     width = 32,
