@@ -7,7 +7,7 @@ scene = {
         {asset_id = "player_ship", file_path = "./assets/images/admiral_ship_sprite_sheet.png"},
         {asset_id = "background", file_path = "./assets/images/space_background_0.png"},
         {asset_id = "barrier", file_path = "./assets/images/barrier.png"},
-
+        {asset_id = "meteor_0", file_path = "./assets/images/meteor_0.png"},
     },
 
     -- font table
@@ -242,7 +242,34 @@ scene = {
 
 
             }
-        }
+        },
+        -- meteor
+        {
+            components = {
+                box_collider = {
+                    width =32, -- scale by 2
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 50},
+                },
+                sprite = {
+                    asset_id = "meteor_0",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "meteor",
+                },
+                transform = {
+                    position = { x = 500, y = 200},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
     }
 
     -- music and sound effect table
