@@ -36,7 +36,8 @@ public:
 
         lua.set_function("left_collision", left_collision);
         lua.set_function("right_collision", right_collision);
-
+        lua.set_function("top_collision", top_collision);
+        lua.set_function("bottom_collision", bottom_collision);
 
     }
 

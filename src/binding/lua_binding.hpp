@@ -119,5 +119,53 @@ bool right_collision(Entity e, Entity other) {
     );
 }
 
+bool top_collision(Entity e, Entity other) {
+    const auto& e_collider = e.get_component<BoxColliderComponent>();
+    const auto& e_transform = e.get_component<TransformComponent>();
+    const auto& other_collider = other.get_component<BoxColliderComponent>();
+    const auto& other_transform = other.get_component<TransformComponent>();
+
+    float e_x = e_transform.previous_position.x;
+    float e_y = e_transform.previous_position.y;
+
+    float e_w = static_cast<float>(e_collider.width);
+
+    float other_x = other_transform.previous_position.x;
+    float other_y = other_transform.previous_position.y;
+
+    float other_w = static_cast<float>(other_collider.width);
+
+    // check if left side of e is colliding with other
+    return (
+        other_x < e_x + e_w &&
+        other_x + other_w > e_x &&
+        other_y < e_y
+    );
+}
+
+bool bottom_collision(Entity e, Entity other) {
+    const auto& e_collider = e.get_component<BoxColliderComponent>();
+    const auto& e_transform = e.get_component<TransformComponent>();
+    const auto& other_collider = other.get_component<BoxColliderComponent>();
+    const auto& other_transform = other.get_component<TransformComponent>();
+
+    float e_x = e_transform.previous_position.x;
+    float e_y = e_transform.previous_position.y;
+
+    float e_w = static_cast<float>(e_collider.width);
+
+    float other_x = other_transform.previous_position.x;
+    float other_y = other_transform.previous_position.y;
+
+    float other_w = static_cast<float>(other_collider.width);
+
+    // check if left side of e is colliding with other
+    return (
+        other_x < e_x + e_w &&
+        other_x + other_w > e_x &&
+        other_y > e_y
+    );
+}
+
 
 #endif // LUA_BINDING_HPP
