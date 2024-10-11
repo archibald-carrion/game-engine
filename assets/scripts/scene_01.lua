@@ -153,6 +153,34 @@ scene = {
                 }
             }
         },
+        -- barrier 3
+        {
+            components = {
+                box_collider = {
+                    width = 16*4, -- scale by 2
+                    height = 16*4,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "barrier",
+                    width = 16,
+                    height = 16,
+                    src_rect = {x = 0, y = 0},
+                },
+                transform = {
+                    position = { x = 300, y = 400},
+                    scale = { x = 4.0, y = 4.0},
+                    rotation = 0.0
+                },
+                tag = {
+                    tag = "barrier",
+                }
+            }
+        },
+
 
         {
             -- enemy
