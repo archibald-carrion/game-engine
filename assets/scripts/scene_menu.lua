@@ -1,4 +1,3 @@
-
 scene = {
     -- sprites table
     sprites = {
@@ -10,8 +9,8 @@ scene = {
     fonts = {
         [0] = 
         {font_id = "font_0", file_path = "./assets/fonts/highway_gothic.ttf", font_size = 32},
-        {font_id = "arcade_classic_font", file_path = "./assets/fonts/ARCADECLASSIC.TTF", font_size = 32},
-
+        {font_id = "arcade_classic_font", file_path = "./assets/fonts/prstart.ttf", font_size = 32},
+        {font_id = "arcade_classic_large", file_path = "./assets/fonts/prstart.ttf", font_size = 48},
     },
     
     -- actions and keys table
@@ -37,13 +36,13 @@ scene = {
             components = {
                 sprite = {
                     asset_id = "background",
-                    width = 2000,
-                    height = 2000,
+                    width = 1280,
+                    height = 720,
                     src_rect = {x = 0, y = 0},
                 },
                 transform = {
                     position = { x = 0, y = 0},
-                    scale = { x = 1.0, y =1.0},
+                    scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
             }
@@ -51,23 +50,16 @@ scene = {
         -- title
         {
             components = {
-                clickable = {
-                },
                 text = {
-                    text = "De    Astra    Ad    Terra",
-                    font_id = "arcade_classic_font",
-                    r = 150,
-                    g = 10,
-                    b = 50,
-                    a = 255
+                    text = "De  Astra  Ad  Terra",
+                    font_id = "arcade_classic_large",
+                    r = 255, g = 215, b = 0, a = 255  -- Golden color
                 },
                 transform = {
                     position = { x = 100, y = 50},
-                    scale = { x = 2.0, y = 2.0},
+                    scale = { x = 1.5, y = 1.5},
                     rotation = 0.0
                 },
-
-
             }
         },
         -- level 01
@@ -76,24 +68,18 @@ scene = {
                 clickable = {
                 },
                 script = {
-                    --path = "./assets/scripts/goto_level_1.lua",
                     path = "./assets/scripts/goto_introduction.lua",
                 },
                 text = {
-                    text = "Level 01",
+                    text = "Level  01:  The  Beginning",
                     font_id = "arcade_classic_font",
-                    r = 150,
-                    g = 10,
-                    b = 50,
-                    a = 255
+                    r = 255, g = 255, b = 255, a = 255  -- White color
                 },
                 transform = {
-                    position = { x = 300, y = 200},
-                    scale = { x = 1.0, y = 1.0},
+                    position = { x = 100, y = 250},
+                    scale = { x = 1.2, y = 1.2},
                     rotation = 0.0
                 },
-
-
             },
         },
         -- level 02
@@ -102,16 +88,13 @@ scene = {
                 clickable = {
                 },
                 text = {
-                    text = "Level 02",
+                    text = "Level  02:  The  Journey",
                     font_id = "arcade_classic_font",
-                    r = 150,
-                    g = 10,
-                    b = 50,
-                    a = 255
+                    r = 200, g = 200, b = 200, a = 255  -- Light gray color
                 },
                 transform = {
-                    position = { x = 300, y = 300},
-                    scale = { x = 1.0, y = 1.0},
+                    position = { x = 100, y = 350},
+                    scale = { x = 1.2, y = 1.2},
                     rotation = 0.0
                 },
             },
@@ -122,16 +105,13 @@ scene = {
                 clickable = {
                 },
                 text = {
-                    text = "Level 03",
+                    text = "Level  03:  The  Discovery",
                     font_id = "arcade_classic_font",
-                    r = 150,
-                    g = 10,
-                    b = 50,
-                    a = 255
+                    r = 150, g = 150, b = 150, a = 255  -- Darker gray color
                 },
                 transform = {
-                    position = { x = 300, y = 400},
-                    scale = { x = 1.0, y = 1.0},
+                    position = { x = 100, y = 450},
+                    scale = { x = 1.2, y = 1.2},
                     rotation = 0.0
                 },
             },

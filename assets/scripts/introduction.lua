@@ -1,5 +1,5 @@
-
 scene = {
+
     -- sprites table
     sprites = {
         [0] = 
@@ -11,13 +11,10 @@ scene = {
         [0] = 
         {font_id = "font_0", file_path = "./assets/fonts/highway_gothic.ttf", font_size = 32},
         {font_id = "arcade_classic_font", file_path = "./assets/fonts/ARCADECLASSIC.TTF", font_size = 32},
-        {font_id = "press_start", file_path = "./assets/fonts/prstart.ttf", font_size = 16},
+        {font_id = "press_start", file_path = "./assets/fonts/prstart.ttf", font_size = 24},
         {font_id = "press_start_32", file_path = "./assets/fonts/prstart.ttf", font_size = 32},
-
-
-
     },
-    
+
     -- actions and keys table
     keys = {
         [0] =
@@ -36,19 +33,25 @@ scene = {
     -- entities table
     entities = {
         [0] =
+
         -- Background
         {
             components = {
                 sprite = {
                     asset_id = "background",
-                    width = 2000,
-                    height = 2000,
+                    width = 1280,
+                    height = 720,
                     src_rect = {x = 0, y = 0},
                 },
                 transform = {
                     position = { x = 0, y = 0},
-                    scale = { x = 1.0, y =1.0},
+                    scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
+                },
+                clickable = {
+                },
+                script = {
+                    path = "./assets/scripts/goto_level_1.lua",
                 },
             }
         },
@@ -56,12 +59,12 @@ scene = {
         {
             components = {
                 text = {
-                    text = "In the forgotten corners of the galaxy, where stars burn cold",
+                    text = "In the forgotten corners of the galaxy,",
                     font_id = "press_start",
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 200, y = 100},
+                    position = { x = 50, y = 60},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -70,12 +73,12 @@ scene = {
         {
             components = {
                 text = {
-                    text = "and empires crumble into dust, humanity drifts, lost among",
+                    text = "where stars burn cold and empires",
                     font_id = "press_start",
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 200, y = 130},
+                    position = { x = 50, y = 95},  -- Increased spacing
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -84,12 +87,12 @@ scene = {
         {
             components = {
                 text = {
-                    text = "the endless void. After thousands of years of aimless",
+                    text = "crumble into dust, humanity drifts,",
                     font_id = "press_start",
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 200, y = 160},
+                    position = { x = 50, y = 130},  -- Increased spacing
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -98,27 +101,70 @@ scene = {
         {
             components = {
                 text = {
-                    text = "exploration, mankind stands divided like never before.",
+                    text = "lost among the endless void.",
                     font_id = "press_start",
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 200, y = 190},
+                    position = { x = 50, y = 165},  -- Increased spacing
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
             },
         },
+        {
+            components = {
+                text = {
+                    text = "After thousands of years of aimless",
+                    font_id = "press_start",
+                    r = 255, g = 255, b = 255, a = 255
+                },
+                transform = {
+                    position = { x = 50, y = 200},  -- Increased spacing
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+        {
+            components = {
+                text = {
+                    text = "exploration, mankind stands divided",
+                    font_id = "press_start",
+                    r = 255, g = 255, b = 255, a = 255
+                },
+                transform = {
+                    position = { x = 50, y = 235},  -- Increased spacing
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+        {
+            components = {
+                text = {
+                    text = "like never before.",
+                    font_id = "press_start",
+                    r = 255, g = 255, b = 255, a = 255
+                },
+                transform = {
+                    position = { x = 50, y = 270},  -- Increased spacing
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+
         -- Second paragraph
         {
             components = {
                 text = {
-                    text = "But legends speak of ancient technology, relics from an",
+                    text = "But legends speak of ancient technology,",
                     font_id = "press_start",
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 200, y = 250},
+                    position = { x = 50, y = 320},  -- Increased spacing
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -127,12 +173,12 @@ scene = {
         {
             components = {
                 text = {
-                    text = "age when humans still knew where they came from. One such",
+                    text = "relics from an age when humans still",
                     font_id = "press_start",
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 200, y = 280},
+                    position = { x = 50, y = 355},  -- Increased spacing
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -141,27 +187,56 @@ scene = {
         {
             components = {
                 text = {
-                    text = "artifact has been found, and with it, a spark of hope.",
+                    text = "knew where they came from. One such",
                     font_id = "press_start",
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 200, y = 310},
+                    position = { x = 50, y = 390},  -- Increased spacing
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
             },
         },
+        {
+            components = {
+                text = {
+                    text = "artifact has been found, and with it,",
+                    font_id = "press_start",
+                    r = 255, g = 255, b = 255, a = 255
+                },
+                transform = {
+                    position = { x = 50, y = 425},  -- Increased spacing
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+        {
+            components = {
+                text = {
+                    text = "a spark of hope.",
+                    font_id = "press_start",
+                    r = 255, g = 255, b = 255, a = 255
+                },
+                transform = {
+                    position = { x = 50, y = 460},  -- Increased spacing
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+
         -- Third paragraph
         {
             components = {
                 text = {
-                    text = "The stars beckon, but the answers lie somewhere in the",
+                    text = "The stars beckon, but the answers lie",
                     font_id = "press_start",
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 200, y = 370},
+                    position = { x = 50, y = 510},  -- Increased spacing
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -170,12 +245,12 @@ scene = {
         {
             components = {
                 text = {
-                    text = "dark, on the long-lost path...",
+                    text = "somewhere in the dark, on the long-lost path...",
                     font_id = "press_start",
                     r = 255, g = 255, b = 255, a = 255
                 },
                 transform = {
-                    position = { x = 200, y = 400},
+                    position = { x = 50, y = 545},  -- Increased spacing
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
@@ -185,12 +260,12 @@ scene = {
         {
             components = {
                 text = {
-                    text = "De    Astra    Ad    Terra",
+                    text = "De Astra Ad Terra",
                     font_id = "press_start",
                     r = 255, g = 215, b = 0, a = 255  -- Golden color
                 },
                 transform = {
-                    position = { x = 340, y = 480},
+                    position = { x = 50, y = 600},
                     scale = { x = 1.5, y = 1.5},  -- Larger scale for the title
                     rotation = 0.0
                 },
@@ -207,13 +282,10 @@ scene = {
                 text = {
                     text = "[click here to continue]",
                     font_id = "press_start_32",
-                    r = 150,
-                    g = 10,
-                    b = 50,
-                    a = 255
+                    r = 255, g = 215, b = 0, a = 255  -- Golden color
                 },
                 transform = {
-                    position = { x = 400, y = 600},
+                    position = { x = 50, y = 655},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
