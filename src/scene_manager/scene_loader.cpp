@@ -28,7 +28,8 @@ SceneLoader::~SceneLoader() {
 void SceneLoader::load_scene(const std::string& scene_path,
     sol::state& lua, 
     std::unique_ptr<AssetsManager>& asset_manager, 
-    std::unique_ptr<ControllerManager>& controller_manager, 
+    std::unique_ptr<ControllerManager>& controller_manager,
+    std::unique_ptr<AudioManager>& audio_manager,
     std::unique_ptr<Registry>& registry, 
     SDL_Renderer* renderer) {
 
@@ -55,11 +56,11 @@ void SceneLoader::load_scene(const std::string& scene_path,
 
     std::cout << "blablabalbal" << std::endl;
 
-    sol::table sounds = scene["sounds"];
-    load_sounds(sounds, asset_manager);
+    // sol::table sounds = scene["sounds"];
+    // load_sounds(sounds, audio_manager);
 
-    std::cout << "blolboblbooa" << std::endl;
-
+    // sol::table music = scene["music"];
+    // load_music(music, audio_manager);
 
     sol::table fonts = scene["fonts"];
     load_fonts(fonts, asset_manager);
@@ -94,7 +95,7 @@ void SceneLoader::load_sprites(SDL_Renderer* renderer, const sol::table& sprites
 }
 
 
-void SceneLoader::load_sounds(const sol::table& sounds, std::unique_ptr<AssetsManager>& asset_manager) {
+void SceneLoader::load_sounds(const sol::table& sounds, std::unique_ptr<AudioManager>& audio_manager) {
     int index = 0;
 
     while(true) {
@@ -107,7 +108,26 @@ void SceneLoader::load_sounds(const sol::table& sounds, std::unique_ptr<AssetsMa
         std::string sound_id = sound["sound_id"];
         std::string file_path = sound["file_path"];
 
-        asset_manager->add_sound(sound_id, file_path);
+        audio_manager->add_sound_effect(sound_id, file_path);
+
+        index++;
+    }
+}
+
+void SceneLoader::load_music(const sol::table& music, std::unique_ptr<AudioManager>& audio_manager) {
+    int index = 0;
+
+    while(true) {
+        sol::optional<sol::table> has_music = music[index];
+        if(has_music == sol::nullopt) {
+            break;
+        }
+
+        sol::table music = music[index];
+        std::string music_id = music["music_id"];
+        std::string file_path = music["file_path"];
+
+        audio_manager->add_music(music_id, file_path);
 
         index++;
     }
