@@ -9,7 +9,13 @@ scene = {
     -- sounds table
     sounds = {
         [0] =
-        {sound_id = "menu_song",file_path ="./assets/sounds/GAL_v1.mp3"},
+        {sound_id = "other_sound",file_path ="./assets/sounds/lazer.mp3"},
+    },
+
+    -- music table
+    music = {
+        [0] =
+        {music_id = "menu_music",file_path ="./assets/sounds/GAL_v1.mp3"},
     },
 
     -- font table

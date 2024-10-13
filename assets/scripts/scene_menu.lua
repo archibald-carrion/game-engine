@@ -8,7 +8,7 @@ scene = {
     -- sounds table
     sounds = {
         [0] =
-        {sound_id = "other_sound",file_path ="./assets/sounds/GAL_v1.mp3"},
+        {sound_id = "other_sound",file_path ="./assets/sounds/lazer.mp3"},
     },
 
     -- music table

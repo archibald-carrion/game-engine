@@ -49,18 +49,17 @@ void SceneLoader::load_scene(const std::string& scene_path,
     lua.script_file(scene_path);
     sol::table scene = lua["scene"];
 
-    std::cout << "before loading sprites" << std::endl;
-
     sol::table sprites = scene["sprites"];
     load_sprites(renderer, sprites, asset_manager);
 
-    std::cout << "blablabalbal" << std::endl;
 
-    // sol::table sounds = scene["sounds"];
-    // load_sounds(sounds, audio_manager);
+    sol::table sounds = scene["sounds"];
+    load_sounds(sounds, audio_manager);
 
-    // sol::table music = scene["music"];
-    // load_music(music, audio_manager);
+    sol::table music = scene["music"];
+    load_music(music, audio_manager);
+    
+    std::cout << "[SCENELOADER] Sucessfully loaded sounds and music" << std::endl;
 
     sol::table fonts = scene["fonts"];
     load_fonts(fonts, asset_manager);
@@ -118,15 +117,19 @@ void SceneLoader::load_music(const sol::table& music, std::unique_ptr<AudioManag
     int index = 0;
 
     while(true) {
+
+
         sol::optional<sol::table> has_music = music[index];
         if(has_music == sol::nullopt) {
             break;
         }
+        std::cout << "hello" << std::endl;
 
-        sol::table music = music[index];
-        std::string music_id = music["music_id"];
-        std::string file_path = music["file_path"];
+        sol::table selected_music = music[index];
+        std::string music_id = selected_music["music_id"];
+        std::string file_path = selected_music["file_path"];
 
+        std::cout << "before adding music" << std::endl;
         audio_manager->add_music(music_id, file_path);
 
         index++;
