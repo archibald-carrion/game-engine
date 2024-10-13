@@ -13,14 +13,6 @@
 #include "../systems/box_collision_system.hpp"
 #include "../systems/sound_system.hpp"
 
-// #include "../components/transform_component.hpp"
-// #include "../components/RigidBodyComponent.hpp"
-// #include "../components/sprite_component.hpp"
-// #include "../components/circle_collider_component.hpp"
-// #include "../components/animation_component.hpp"
-// #include "../components/script_component.hpp"
-// #include "../components/text_component.hpp"
-
 #include "../events/click_event.hpp"
 
 Game::Game() {
@@ -34,13 +26,6 @@ Game::Game() {
 
 Game::~Game() {
     std::cout << "Game destructor" << std::endl;
-    
-    // free allocated memory
-    // delete window_configuration.window_color;
-    // delete window_font.font_color;
-    // for (auto& e : entities) {
-    //     delete e; // Deallocate each entity
-    // }
 
     scene_manager.reset();
     assets_manager.reset();
@@ -120,65 +105,15 @@ void Game::init() {
 
     camera.x = 0;
     camera.y = 0;
-    camera.w = WINDOW_WIDTH; //window_configuration.width;
-    camera.h = WINDOW_HEIGHT; // window_configuration.height;
+    camera.w = WINDOW_WIDTH;
+    camera.h = WINDOW_HEIGHT;
 
     this->isRunning = true;
-
-    // TODO: this could be improved by passing the renderer to the configuration
-    // manager and loading the textures there when reading the configuration file
 
     if (TTF_Init() != 0) {
         std::cout << "TTF_Init Error: " << TTF_GetError() << std::endl;
         return;
     }
-
-    // // initialize the text
-    // window_font.font = TTF_OpenFont(window_font.font_folder.c_str(), window_font.font_size);
-    // if (window_font.font == nullptr) {
-    //     std::cout << "TTF_OpenFont Error: " << TTF_GetError() << std::endl;
-    //     return;
-    // }
-
-    // for each entity, load the texture and create the rect
-    /*for (auto& e : entities) {
-        // load the texture
-        SDL_Surface* surface = IMG_Load(e->sprite_folder.c_str());
-        if (surface == nullptr) {
-            std::cout << "IMG_Load Error: " << IMG_GetError() << std::endl;
-            return;
-        }
-        e->texture = SDL_CreateTextureFromSurface(this->renderer, surface);
-        SDL_FreeSurface(surface);
-
-        // create the rect
-        e->srcRect = new SDL_Rect();
-        // set the position of the rect and its dimensions
-        e->srcRect->x = 0; // if I work with spritesheets, I will need to change this, but for now it's fine
-        e->srcRect->y = 0;
-        e->srcRect->w = e->sprite_width;
-        e->srcRect->h = e->sprite_height;
-
-        e->dstRect = new SDL_Rect();
-        e->dstRect->x = e->pos_X;
-        e->dstRect->y = e->pos_Y;
-        e->dstRect->w = e->sprite_width;
-        e->dstRect->h = e->sprite_height;
-
-        // create the message texture
-        SDL_Surface* surface_message = TTF_RenderText_Solid(
-            window_font.font,
-            e->label.c_str(),
-            SDL_Color{window_font.font_color->r, window_font.font_color->g, window_font.font_color->b, window_font.font_color->alpha}
-        );
-        e->message_texture = SDL_CreateTextureFromSurface(this->renderer, surface_message);
-        // set size and position of the message
-        e->message_width = surface_message->w;
-        e->message_height = surface_message->h;
-        // position the message in the center of the entity
-        e->message_position = glm::vec2(e->pos_X + e->sprite_width / 2 - e->message_width / 2, e->pos_Y + e->sprite_height / 2 - e->message_height / 2);
-        SDL_FreeSurface(surface_message);
-    }*/
 }
 
 void Game::run() {
@@ -220,13 +155,6 @@ void Game::destroy() {
     Mix_CloseAudio();
     Mix_Quit();
 
-
-    // destroy the texture of each entity
-    // for (auto& e : entities) {
-    //     SDL_DestroyTexture(e->texture); // free the texture
-    //     SDL_DestroyTexture(e->message_texture); // free the texture
-    // }
-
     SDL_DestroyWindow(this->window);
     SDL_DestroyRenderer(this->renderer);
     
@@ -244,12 +172,6 @@ void Game::processInput() {
                 isRunning = false;
                 break;
             case SDL_KEYDOWN:
-                // manage the fullscreen event
-                // if (event.key.keysym.sym == SDLK_F11 || 
-                //     (event.key.keysym.sym == SDLK_RETURN && 
-                //      event.key.keysym.mod & KMOD_ALT)) {
-                //     toggleFullscreen();
-                // }
 
                 if (event.key.keysym.sym == SDLK_ESCAPE) {
                     scene_manager->stop_scene();
@@ -323,99 +245,13 @@ void Game::update() {
     registry->get_system<CircleCollisionSystem>().update(events_manager);
     registry->get_system<BoxCollisionSystem>().update(lua);
     registry->get_system<SoundSystem>().update(this->assets_manager);
-
-    // on each frame update the position of the entities based on their speed
-    /*for (auto& e : entities) {
-        e->pos_X += e->speed_X * deltaTime;
-        e->pos_Y += e->speed_Y * deltaTime;
-
-        // Update the destination rectangle to match the new position
-        e->dstRect->x = static_cast<int>(e->pos_X);
-        e->dstRect->y = static_cast<int>(e->pos_Y);
-
-        // Update the position of the message
-        e->message_position = glm::vec2(e->pos_X + e->sprite_width / 2 - e->message_width / 2, 
-                                        e->pos_Y + e->sprite_height / 2 - e->message_height / 2);
-
-        // Check for collisions with window borders
-        if (e->pos_X < 0 || e->pos_X + e->sprite_width > window_configuration.width) {
-            e->speed_X *= -1;
-        }
-        if (e->pos_Y < 0 || e->pos_Y + e->sprite_height > window_configuration.height) {
-            e->speed_Y *= -1;
-        }
-    }*/
 }
 
 void Game::render() {
-    // clear the window
-    // SDL_SetRenderDrawColor(
-    //     this->renderer,
-    //     this->window_configuration.window_color->r,
-    //     this->window_configuration.window_color->g,
-    //     this->window_configuration.window_color->b,
-    //     SDL_ALPHA_OPAQUE
-    // );
-
     SDL_RenderClear(this->renderer);
-
-    // render the entities
-    /*for (const auto& e : this->entities) {
-        SDL_RenderCopyEx(
-            this->renderer,
-            e->texture,
-            e->srcRect, // source rect, could be nullptr to render the entire texture
-            e->dstRect, // destination rect
-            e->rotation,
-            nullptr, // center of rotation, nullptr to rotate around the center of the rect
-            SDL_FLIP_NONE
-        );
-
-        // render the text
-        SDL_RenderCopyEx(
-            this->renderer,
-            e->message_texture,
-            nullptr, // source rect, nullptr to render the entire texture
-            new SDL_Rect{int(e->message_position.x), int(e->message_position.y), int(e->message_width), int(e->message_height)}, // destination rect
-            0.0,
-            nullptr, // center of rotation, nullptr to rotate around the center of the rect
-            SDL_FLIP_NONE
-        );
-    }*/
 
     registry->get_system<RenderSystem>().update(renderer, assets_manager, this->camera);
     registry->get_system<RenderTextSystem>().update(renderer, assets_manager);
 
     SDL_RenderPresent(this->renderer);
 }
-
-// void Game::toggleFullscreen() {
-//     isFullscreen = !isFullscreen;
-//     SDL_SetWindowFullscreen(window, isFullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
-// }
-
-/*void Game::print_game_data() {
-    // print the content of the window configuration settings
-    std::cout << "width of the window: " 
-        << this->window_configuration.width << ", height of the window: " 
-        << this->window_configuration.height << std::endl;
-    std::cout << "color of the window: (" 
-        << unsigned(this->window_configuration.window_color->r) << ", " 
-        << unsigned(this->window_configuration.window_color->g) << ", " 
-        << unsigned(this->window_configuration.window_color->b) << ")" << std::endl;
-
-    // print the content of the font configuration settings
-    std::cout << "ttf file: " << window_font.font_folder << std::endl;
-    std::cout << "font size: " << unsigned(window_font.font_size) << std::endl;
-    std::cout << "color of the font: (" 
-        << unsigned(this->window_font.font_color->r) << ", "
-        << unsigned(this->window_font.font_color->g) << ", "
-        << unsigned(this->window_font.font_color->b) << ")" << std::endl;
-
-    // print the entities information
-    for (const auto& e : this->entities) {
-        std::cout << "Label: " << e->label << ", Position: (" << e->pos_X << ", " << e->pos_Y << ")" << std::endl;
-        std::cout << "rotation: " << e->rotation << ", speed: (" << e->speed_X << ", " << e->speed_Y << ")" << std::endl;
-        std::cout << "sprite dirr: " << e->sprite_folder << ", sprite dimensions: " << e->sprite_width << ", " << e->sprite_height << std::endl;
-    }
-}*/
