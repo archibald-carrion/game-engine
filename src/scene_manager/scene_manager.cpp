@@ -40,6 +40,9 @@ void SceneManager::load_scene() {
     // reset the registry
     // game.registry->clear_all_entities();
     std::string scene_path = scenes[next_scene];
+
+    std::cout << "[SCENEMANAGER] loading new scene" << std::endl;
+
     scene_loader->load_scene(scene_path, game.lua, game.assets_manager, game.controller_manager, game.registry, game.renderer);
 }
 

@@ -32,6 +32,9 @@ void SceneLoader::load_scene(const std::string& scene_path,
     std::unique_ptr<Registry>& registry, 
     SDL_Renderer* renderer) {
 
+    std::cout << "[SCENELOADER] before loading the script" << std::endl;
+
+
     sol::load_result script_result = lua.load_file(scene_path);
     if(!script_result.valid()) {
         sol::error err = script_result;
@@ -40,8 +43,12 @@ void SceneLoader::load_scene(const std::string& scene_path,
         return;
     }
 
+    std::cout << "[SCENELOADER] successfully loaded the script" << std::endl;
+
     lua.script_file(scene_path);
     sol::table scene = lua["scene"];
+
+    std::cout << "before loading sprites" << std::endl;
 
     sol::table sprites = scene["sprites"];
     load_sprites(renderer, sprites, asset_manager);
@@ -50,7 +57,7 @@ void SceneLoader::load_scene(const std::string& scene_path,
 
     sol::table sounds = scene["sounds"];
     load_sounds(sounds, asset_manager);
-    
+
     std::cout << "blolboblbooa" << std::endl;
 
 
