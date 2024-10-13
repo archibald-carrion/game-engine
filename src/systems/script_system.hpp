@@ -40,15 +40,15 @@ public:
         lua.set_function("bottom_collision", bottom_collision);
 
         // Sound functions
-        lua.set_function("play_sound", play_sound);
-        lua.set_function("stop_sound", stop_sound);
-        lua.set_function("pause_sound", pause_sound);
-        lua.set_function("resume_sound", resume_sound);
-        lua.set_function("set_sound_volume", set_sound_volume);
-        lua.set_function("get_sound_volume", get_sound_volume);
-        lua.set_function("set_sound_loop", set_sound_loop);
-        lua.set_function("is_sound_looping", is_sound_looping);
-        lua.set_function("load_sound", load_sound);
+        // lua.set_function("play_sound", play_sound);
+        // lua.set_function("stop_sound", stop_sound);
+        // lua.set_function("pause_sound", pause_sound);
+        // lua.set_function("resume_sound", resume_sound);
+        // lua.set_function("set_sound_volume", set_sound_volume);
+        // lua.set_function("get_sound_volume", get_sound_volume);
+        // lua.set_function("set_sound_loop", set_sound_loop);
+        // lua.set_function("is_sound_looping", is_sound_looping);
+        // lua.set_function("load_sound", load_sound);
 
 
     }
