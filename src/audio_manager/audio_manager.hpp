@@ -7,6 +7,8 @@
 #include <map>
 #include <string>
 
+// #include "../systems/script_system.hpp"
+
 class AudioManager {
 private:
     std::map<std::string, Mix_Music*> music_tracks;   // For music (streamed)
@@ -29,6 +31,18 @@ public:
     void play_sound_effect(const std::string& sound_id, int loops = 0); // 0 means play once
 
     // in future, we can add more functions to control volume, pause, resume, etc.
+
+
+    // void init_audio_from_script(sol::state& lua, std::unique_ptr<Registry>& registry) {
+    //     for (auto& entity : registry->get_system<ScriptSystem>().get_entities()) {
+    //         const auto& script = entity.get_component<ScriptComponent>();
+
+    //         if (script.on_init != sol::lua_nil) {
+    //             lua["this"] = entity;
+    //             script.on_init();
+    //         }
+    //     }
+    // }
 
     // Clean up all loaded audio
     void clear_audio();

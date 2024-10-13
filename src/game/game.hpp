@@ -82,8 +82,8 @@ private:
 
  
 public:
-    int map_height = 0; /**< Height of the game map. */
-    int map_width = 0; /**< Width of the game map. */
+    int map_height = 2000; /**< Height of the game map. */
+    int map_width = 2000; /**< Width of the game map. */
 
     const int WINDOW_WIDTH = 1280; /**< Width of the game window. */
     const int WINDOW_HEIGHT = 720; /**< Height of the game window. */

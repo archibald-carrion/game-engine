@@ -118,6 +118,8 @@ void Game::run() {
 void Game::run_scene() {
     scene_manager->load_scene();
 
+    // this->audio_manager->init_audio_from_script(lua, registry);
+
     while(scene_manager->is_current_scene_running()) {
         processInput();
         update();
@@ -228,6 +230,7 @@ void Game::update() {
     registry->get_system<CameraMovementSystem>().update(this->camera);
     registry->get_system<CircleCollisionSystem>().update(events_manager);
     registry->get_system<BoxCollisionSystem>().update(lua);
+
 }
 
 void Game::render() {

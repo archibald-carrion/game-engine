@@ -57,6 +57,9 @@ scene = {
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
+                script = {
+                    path = "./assets/scripts/main_menu_music.lua",
+                },
             }
         },
         -- title

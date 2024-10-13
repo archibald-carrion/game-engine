@@ -272,9 +272,9 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
                 lua["on_collision"] = sol::nil;
                 lua["on_click"] = sol::nil;
                 lua["update"] = sol::nil;
-                std::cout << "before reading path" << std::endl;
+                lua["on_init"] = sol::nil;
+
                 std::string path = components["script"]["path"];
-                std::cout << "after reading path" << std::endl;
 
                 lua.script_file(path);
 
@@ -296,7 +296,13 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
                     update = lua["update"];
                 }
 
-                new_entity.add_component<ScriptComponent>(on_collision, update, on_click);
+                sol::optional<sol::function> has_on_init = lua["on_init"];
+                sol::function on_init = sol::nil;
+                if(has_on_init != sol::nullopt) {
+                    on_init = lua["on_init"];
+                }
+
+                new_entity.add_component<ScriptComponent>(on_collision, update, on_click, on_init);
             }
 
             // Sprite component
