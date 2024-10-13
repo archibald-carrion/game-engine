@@ -11,12 +11,12 @@
 #include <SDL2/SDL.h> // SDL library for window creation and rendering
 #include <SDL2/SDL_image.h> // SDL image library for loading images
 #include <SDL2/SDL_ttf.h> // SDL ttf library for rendering text
-#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_mixer.h> // SDL mixer library for audio
 #include <fstream> // used to read the configuration file
 #include <memory> // used for smart pointers
 
 #include "../ECS/ECS.hpp" // ECS library for entity-component-system
-// #include "../utils/configuration.hpp" // Configuration data structures
+#include "../audio_manager/audio_manager.hpp" // Audio manager for handling audio
 #include "../assets_manager/assets_manager.hpp" // Assets manager for loading textures and fonts
 #include "../event_manager/event_manager.hpp" // Event manager for handling events
 #include "../controller_manager/controller_manager.hpp" // Controller manager for handling user input
@@ -74,30 +74,19 @@ private:
 
     SDL_Window* window = nullptr; /**< Pointer to the SDL window. */
 
-    SDL_Rect camera = {0, 0, 0, 0};
-
-    // int window_height = 0;
-    // int window_width = 0;
-
-
+    SDL_Rect camera = {0, 0, 0, 0}; /**< Camera rectangle for rendering. */
 
     bool isRunning; /**< Flag to indicate if the game is running. */
     int mPreviousFrame = 0; /**< Time of the previous frame. */
     bool isPaused = false; /**< Flag to indicate if the game is paused. */
 
-    //window_data window_configuration; /**< Window configuration data. */
-    //window_font_config window_font; /**< Font configuration data. */
-    // std::vector<entity*> entities; /**< Vector of entity pointers. */
-
  
 public:
-    // bool isFullscreen = false;
+    int map_height = 0; /**< Height of the game map. */
+    int map_width = 0; /**< Width of the game map. */
 
-    int map_height = 0;
-    int map_width = 0;
-
-    const int WINDOW_WIDTH = 1280;
-    const int WINDOW_HEIGHT = 720; 
+    const int WINDOW_WIDTH = 1280; /**< Width of the game window. */
+    const int WINDOW_HEIGHT = 720; /**< Height of the game window. */
     
     SDL_Renderer* renderer = nullptr; /**< Pointer to the SDL renderer. */
     std::unique_ptr<Registry> registry; /**< Pointer to the game registry. */
