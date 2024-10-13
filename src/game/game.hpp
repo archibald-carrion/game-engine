@@ -72,11 +72,6 @@ private:
      */
     void run_scene();
 
-    // /**
-    //  * @brief Toggle the fullscreen mode.
-    //  */
-    // void toggleFullscreen();
-
     SDL_Window* window = nullptr; /**< Pointer to the SDL window. */
 
     SDL_Rect camera = {0, 0, 0, 0};
