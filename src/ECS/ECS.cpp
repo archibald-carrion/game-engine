@@ -59,7 +59,7 @@ Entity Registry::create_entity(){
     Entity entity(entity_id);
     entity.registry = this;
     entities_to_be_added.insert(entity);
-    std::cout<<"Entity created [Registry]" << std::endl;
+    // std::cout<<"Entity created [Registry]" << std::endl;
     return entity;
 }
 

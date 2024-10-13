@@ -118,6 +118,13 @@ void Game::run() {
 void Game::run_scene() {
     scene_manager->load_scene();
 
+    std::cout << "[GAME] Run scene 0" << std::endl;
+    
+    registry->update();
+    registry->get_system<ScriptSystem>().init_audio_from_script(lua);
+
+    std::cout << "[GAME] Run scene 1" << std::endl;
+
     // this->audio_manager->init_audio_from_script(lua, registry);
 
     while(scene_manager->is_current_scene_running()) {

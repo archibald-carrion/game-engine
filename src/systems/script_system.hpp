@@ -63,6 +63,19 @@ public:
             }
         }
     }
+
+    // TODO: find better name, perhaps jsut init 
+    void init_audio_from_script(sol::state& lua) {
+        std::cout << "[SCRIPTSYTEM] init_audio_from_script" << std::endl;
+        for (auto& entity : get_entities()) {
+            const auto& script = entity.get_component<ScriptComponent>();
+
+            if (script.on_init != sol::lua_nil) {
+                lua["this"] = entity;
+                script.on_init();
+            }
+        }
+    }
 };
 
 #endif // SCRIPT_SYSTEM_HPP
