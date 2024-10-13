@@ -4,40 +4,38 @@
 #include "../systems/render_system.hpp"
 #include "../systems/MovementSystem.hpp"
 #include "../systems/circle_collision_system.hpp"
-// #include "../systems/damage_system.hpp"
 #include "../systems/animation_system.hpp"
 #include "../systems/script_system.hpp"
 #include "../systems/render_text_system.hpp"
 #include "../systems/UI_system.hpp"
 #include "../systems/camera_movement_system.hpp"
 #include "../systems/box_collision_system.hpp"
-// #include "../systems/sound_system.hpp"
 
 #include "../events/click_event.hpp"
 
 Game::Game() {
-    std::cout << "Game constructor" << std::endl;
+    std::cout << "[GAME] Constructor" << std::endl;
     registry = std::make_unique<Registry>();
     assets_manager = std::make_unique<AssetsManager>();
     events_manager = std::make_unique<EventManager>();
     controller_manager = std::make_unique<ControllerManager>();
     scene_manager = std::make_unique<SceneManager>();
+    audio_manager = std::make_unique<AudioManager>();
 }
 
 Game::~Game() {
-    std::cout << "Game destructor" << std::endl;
+    std::cout << "[GAME] Destructor" << std::endl;
 
+    audio_manager.reset();
     scene_manager.reset();
     assets_manager.reset();
     events_manager.reset();
     controller_manager.reset();
     registry.reset();
-    
 }
 
 void Game::setup() {
     registry->add_system<RenderSystem>();
-    // registry->add_system<DamageSystem>();
     registry->add_system<MovementSystem>();
     registry->add_system<CircleCollisionSystem>();
     registry->add_system<AnimationSystem>();
@@ -46,7 +44,6 @@ void Game::setup() {
     registry->add_system<UISystem>();
     registry->add_system<CameraMovementSystem>();
     registry->add_system<BoxCollisionSystem>();
-    // registry->add_system<SoundSystem>();
 
     scene_manager->load_scene_from_script("assets/scripts/scenes.lua", lua);
 
@@ -60,7 +57,7 @@ Game& Game::get_instance() {
 }
 
 void Game::init() {
-    std::cout << "Game init" << std::endl;
+    std::cout << "[GAME] Init" << std::endl;
 
     // initialize SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -76,13 +73,6 @@ void Game::init() {
 
     // Set number of channels, like layers in gimp in a way
     Mix_AllocateChannels(16); // might need to lower this, I don't this I will use more than a few channels
-
-
-    // read the config file
-    // read_configuration_file(&window_configuration, &window_font, &entities);
-
-    this->map_height = 2000;
-    this->map_width = 2000;
 
     // create the window
     this->window = SDL_CreateWindow(
@@ -126,40 +116,36 @@ void Game::run() {
 }
 
 void Game::run_scene() {
-    std::cout << "helloooo"<< std::endl;
     scene_manager->load_scene();
-        
 
     while(scene_manager->is_current_scene_running()) {
         processInput();
         update();
         render();
     }
-
     
-    
-    std::cout << "aaaaa"<< std::endl;
     assets_manager->clear_assets();
-    std::cout << "bbbb"<< std::endl;
     registry->clear_all_entities();
-    std::cout << "cccc"<< std::endl;
 }
 
 void Game::destroy() {
-    std::cout << "Game destroy" << std::endl;
+    std::cout << "[GAME] Destroy" << std::endl;
+
+    audio_manager->clear_audio();
+    assets_manager->clear_assets();    
 
     // stop all currently playing sounds
     Mix_HaltChannel(-1);  // -1 means all channels
 
     // Close the audio device and quit SDL_mixer
     Mix_CloseAudio();
-    Mix_Quit();
 
     SDL_DestroyWindow(this->window);
     SDL_DestroyRenderer(this->renderer);
     
     TTF_Quit();
     SDL_Quit();
+    Mix_Quit();
 }
 
 void Game::processInput() {
@@ -171,19 +157,18 @@ void Game::processInput() {
                 scene_manager->stop_scene();
                 isRunning = false;
                 break;
-            case SDL_KEYDOWN:
 
+            case SDL_KEYDOWN:
                 if (event.key.keysym.sym == SDLK_ESCAPE) {
                     scene_manager->stop_scene();
                     isRunning = false;
                     break;
-                }else if (event.key.keysym.sym == SDLK_p)
+                } else if (event.key.keysym.sym == SDLK_p)
                 {
                     isPaused = !isPaused;
                     break;
                 }
                 controller_manager->set_key_to_pressed(event.key.keysym.sym);          
-                 
                 break;
 
             case SDL_KEYUP:
@@ -194,21 +179,22 @@ void Game::processInput() {
                 int x, y;
                 SDL_GetMouseState(&x, &y);
                 controller_manager->set_mouse_position(x, y);
-
                 break;
+
             case SDL_MOUSEBUTTONDOWN:
                 controller_manager->set_mouse_position(event.button.x, event.button.y);
                 controller_manager->set_mouse_button_to_pressed(static_cast<int>(event.button.button));
                 std::cout << (int)event.button.button << std::endl;
                 events_manager->emit_event<ClickEvent>(static_cast<int>(event.button.button), event.button.x, event.button.y);
                 break;
+
             case SDL_MOUSEBUTTONUP:
                 controller_manager->set_mouse_position(event.button.x, event.button.y);
                 controller_manager->set_mouse_button_to_up(static_cast<int>(event.button.button));
                 break;
+
             default:
                 break;
-                
         }
     }
 }
@@ -228,13 +214,11 @@ void Game::update() {
 
     // calculate the time between frames
     double deltaTime = (SDL_GetTicks() - this->mPreviousFrame) / 1000.0;
-    // TOOD: add variableto LUA state
 
     this->mPreviousFrame = SDL_GetTicks();
 
     // re-initialize subscriptions
     events_manager->reset();
-    // registry->get_system<DamageSystem>().subscribe_to_collision_event(events_manager);
     registry->get_system<UISystem>().suscribe_to_click_event(events_manager);
 
     registry->update();
@@ -244,12 +228,12 @@ void Game::update() {
     registry->get_system<CameraMovementSystem>().update(this->camera);
     registry->get_system<CircleCollisionSystem>().update(events_manager);
     registry->get_system<BoxCollisionSystem>().update(lua);
-    // registry->get_system<SoundSystem>().update(this->assets_manager);
 }
 
 void Game::render() {
     SDL_RenderClear(this->renderer);
 
+    // render all renderable systems
     registry->get_system<RenderSystem>().update(renderer, assets_manager, this->camera);
     registry->get_system<RenderTextSystem>().update(renderer, assets_manager);
 

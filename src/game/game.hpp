@@ -94,6 +94,7 @@ public:
     std::unique_ptr<AssetsManager> assets_manager; /**< Pointer to the assets manager. */
     std::unique_ptr<EventManager> events_manager; /**< Pointer to the event manager. */
     std::unique_ptr<ControllerManager> controller_manager; /**< Pointer to the controller manager. */
+    std::unique_ptr<AudioManager> audio_manager; /**< Pointer to the audio manager. */
     sol::state lua; /**< Lua state for scripting. */
 
     /**
