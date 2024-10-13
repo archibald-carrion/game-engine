@@ -10,7 +10,53 @@
 #include "../components/box_collider_component.hpp"
 #include "../components/sprite_component.hpp"
 #include "../components/transform_component.hpp"
+#include "../components/sound_component.hpp"
 #include "../components/tag_component.hpp"
+#include "../systems/sound_system.hpp"
+
+
+// Sounds thingies functions 
+void play_sound(Entity e) {
+    Game::get_instance().registry->get_system<SoundSystem>().play_sound(e);
+}
+
+void stop_sound(Entity e) {
+    Game::get_instance().registry->get_system<SoundSystem>().stop_sound(e);
+}
+
+void pause_sound(Entity e) {
+    Game::get_instance().registry->get_system<SoundSystem>().pause_sound(e);
+}
+
+void resume_sound(Entity e) {
+    Game::get_instance().registry->get_system<SoundSystem>().resume_sound(e);
+}
+
+void set_sound_volume(Entity e, int volume) {
+    auto& sound = e.get_component<SoundComponent>();
+    sound.volume = volume;
+}
+
+int get_sound_volume(Entity e) {
+    const auto& sound = e.get_component<SoundComponent>();
+    return sound.volume;
+}
+
+void set_sound_loop(Entity e, bool is_looping) {
+    auto& sound = e.get_component<SoundComponent>();
+    sound.is_looping = is_looping;
+}
+
+bool is_sound_looping(Entity e) {
+    const auto& sound = e.get_component<SoundComponent>();
+    return sound.is_looping;
+}
+
+void load_sound(Entity e, const std::string& sound_id) {
+    auto& sound = e.get_component<SoundComponent>();
+    sound.sound_id = sound_id;
+    sound.sound = Game::get_instance().assets_manager->get_sound(sound_id);
+}
 
 // Controls
 

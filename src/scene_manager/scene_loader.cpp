@@ -14,6 +14,7 @@
 #include "../components/camera_follow_component.hpp"
 #include "../components/box_collider_component.hpp"
 #include "../components/tag_component.hpp"
+#include "../components/sound_component.hpp"
 
 SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
@@ -45,6 +46,14 @@ void SceneLoader::load_scene(const std::string& scene_path,
     sol::table sprites = scene["sprites"];
     load_sprites(renderer, sprites, asset_manager);
 
+    std::cout << "blablabalbal" << std::endl;
+
+    sol::table sounds = scene["sounds"];
+    load_sounds(sounds, asset_manager);
+    
+    std::cout << "blolboblbooa" << std::endl;
+
+
     sol::table fonts = scene["fonts"];
     load_fonts(fonts, asset_manager);
 
@@ -72,6 +81,26 @@ void SceneLoader::load_sprites(SDL_Renderer* renderer, const sol::table& sprites
         std::string file_path = sprite["file_path"];
 
         asset_manager->add_texture(renderer, asset_id, file_path);
+
+        index++;
+    }
+}
+
+
+void SceneLoader::load_sounds(const sol::table& sounds, std::unique_ptr<AssetsManager>& asset_manager) {
+    int index = 0;
+
+    while(true) {
+        sol::optional<sol::table> has_sounds = sounds[index];
+        if(has_sounds == sol::nullopt) {
+            break;
+        }
+
+        sol::table sound = sounds[index];
+        std::string sound_id = sound["sound_id"];
+        std::string file_path = sound["file_path"];
+
+        asset_manager->add_sound(sound_id, file_path);
 
         index++;
     }
@@ -135,6 +164,17 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
             //         components["animation"]["is_loop"]
             //     );
             // }
+
+            sol::optional<sol::table> has_sound = components["sound"];
+            if(has_sound != sol::nullopt) {
+                sol::table sound  = components["sound"];
+                const std::string sound_id = sound["sound_id"];
+                int volume = sound["volume"];
+                int channel = sound["channel"];
+                bool is_looping = sound["is_looping"];
+
+                new_entity.add_component<SoundComponent>(sound_id, volume, channel, is_looping);
+            }
 
             sol::optional<sol::table> has_animation = components["animation"];
             if(has_animation != sol::nullopt) {

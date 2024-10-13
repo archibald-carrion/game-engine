@@ -11,6 +11,7 @@
 #include "../systems/UI_system.hpp"
 #include "../systems/camera_movement_system.hpp"
 #include "../systems/box_collision_system.hpp"
+#include "../systems/sound_system.hpp"
 
 // #include "../components/transform_component.hpp"
 // #include "../components/RigidBodyComponent.hpp"
@@ -60,6 +61,7 @@ void Game::setup() {
     registry->add_system<UISystem>();
     registry->add_system<CameraMovementSystem>();
     registry->add_system<BoxCollisionSystem>();
+    registry->add_system<SoundSystem>();
 
     scene_manager->load_scene_from_script("assets/scripts/scenes.lua", lua);
 
@@ -74,11 +76,21 @@ Game& Game::get_instance() {
 
 void Game::init() {
     std::cout << "Game init" << std::endl;
+
     // initialize SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return;
     }
+
+    // Initialize SDL_mixer
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        std::cout << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << std::endl;
+        return;
+    }
+
+    // Set number of channels, like layers in gimp in a way
+    Mix_AllocateChannels(16); // might need to lower this, I don't this I will use more than a few channels
 
 
     // read the config file
@@ -179,9 +191,9 @@ void Game::run() {
 }
 
 void Game::run_scene() {
+    std::cout << "helloooo"<< std::endl;
     scene_manager->load_scene();
         
-    std::cout << "[DEBUGGING] ammount of entities: " << registry->num_entities << std::endl;
 
     while(scene_manager->is_current_scene_running()) {
         processInput();
@@ -191,12 +203,23 @@ void Game::run_scene() {
 
     
     
+    std::cout << "aaaaa"<< std::endl;
     assets_manager->clear_assets();
+    std::cout << "bbbb"<< std::endl;
     registry->clear_all_entities();
+    std::cout << "cccc"<< std::endl;
 }
 
 void Game::destroy() {
     std::cout << "Game destroy" << std::endl;
+
+    // stop all currently playing sounds
+    Mix_HaltChannel(-1);  // -1 means all channels
+
+    // Close the audio device and quit SDL_mixer
+    Mix_CloseAudio();
+    Mix_Quit();
+
 
     // destroy the texture of each entity
     // for (auto& e : entities) {
@@ -299,6 +322,7 @@ void Game::update() {
     registry->get_system<CameraMovementSystem>().update(this->camera);
     registry->get_system<CircleCollisionSystem>().update(events_manager);
     registry->get_system<BoxCollisionSystem>().update(lua);
+    registry->get_system<SoundSystem>().update(this->assets_manager);
 
     // on each frame update the position of the entities based on their speed
     /*for (auto& e : entities) {

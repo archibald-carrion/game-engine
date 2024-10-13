@@ -11,6 +11,7 @@
 #include <SDL2/SDL.h> // SDL library for window creation and rendering
 #include <SDL2/SDL_image.h> // SDL image library for loading images
 #include <SDL2/SDL_ttf.h> // SDL ttf library for rendering text
+#include <SDL2/SDL_mixer.h>
 #include <fstream> // used to read the configuration file
 #include <memory> // used for smart pointers
 

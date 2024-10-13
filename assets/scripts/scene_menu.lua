@@ -5,6 +5,12 @@ scene = {
         {asset_id = "background", file_path = "./assets/images/space_background_0.png"},
     },
 
+    -- sounds table
+    sounds = {
+        [0] =
+        {sound_id = "menu_song",file_path ="./assets/sounds/GAL_v1.mp3"},
+    },
+
     -- font table
     fonts = {
         [0] = 
@@ -44,6 +50,12 @@ scene = {
                     position = { x = 0, y = 0},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
+                },
+                sound = {
+                    sound_id = "menu_song",
+                    volume = 100, -- MIX_MAX_VOLUME is 128
+                    channel = 0,
+                    is_looping = true,
                 },
             }
         },

@@ -10,6 +10,12 @@ scene = {
         {asset_id = "meteor_0", file_path = "./assets/images/meteor_0.png"},
     },
 
+    -- sounds table
+    sounds = {
+        [0] =
+        {sound_id = "menu_song",file_path ="./assets/sounds/GAL_v1.mp3"},
+    },
+
     -- font table
     fonts = {
         [0] = 

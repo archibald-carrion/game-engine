@@ -21,8 +21,14 @@ void AssetsManager::clear_assets() {
         TTF_CloseFont(font.second);
     }
 
-    // add other loop for assets which are not texture, like audio and such
+        // clear sounds
+    for (auto sound : sounds) {
+        Mix_FreeChunk(sound.second);
+    }
 
+
+    // add other loop for assets which are not texture, like audio and such
+    sounds.clear();
     fonts.clear();
     textures.clear();
 }
@@ -54,4 +60,19 @@ TTF_Font*  AssetsManager::get_font(const std::string& font_id) {
 
     return fonts[font_id];
 
+}
+
+void AssetsManager::add_sound(const std::string& sound_id, const std::string& file_path) {
+    Mix_Chunk* sound = Mix_LoadWAV(file_path.c_str());
+
+    // check if sound is null
+    if (sound == nullptr) {
+        std::cerr << "[ASSETMANAGER] Failed to load sound: " << Mix_GetError() << std::endl;
+        return;
+    }
+    this->sounds.emplace(sound_id, sound);
+}
+
+Mix_Chunk* AssetsManager::get_sound(const std::string& sound_id) {
+    return sounds[sound_id];
 }
