@@ -49,6 +49,15 @@ void SceneLoader::load_scene(const std::string& scene_path,
     lua.script_file(scene_path);
     sol::table scene = lua["scene"];
 
+    // check if the file has a initialize function and if it does, call it
+    // sol::optional<sol::function> has_initialize = lua["initialize"];
+    // if(has_initialize != sol::nullopt) {
+    //     std::cout << "[SCENELOADER] calling initialize function" << std::endl;
+    //     sol::function initialize = lua["initialize"];
+    //     initialize();
+    // }
+
+
     sol::table sprites = scene["sprites"];
     load_sprites(renderer, sprites, asset_manager);
 
