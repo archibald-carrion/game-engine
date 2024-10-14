@@ -371,6 +371,34 @@ scene = {
             }
         }
     },
+
+    -- large right wall
+    {
+        components = {
+            box_collider = {
+                width = 32,
+                height = 3000,
+                offset = {x = 0, y= 0},
+            },
+            rigid_body = {
+                velocity = {x = 0, y = 0},
+            },
+            sprite = {
+                asset_id = "wall_0",
+                width = 32,
+                height = 3000,
+                src_rect = {x = 0, y = 0},
+            },
+            tag = {
+                tag = "wall_0",
+            },
+            transform = {
+                position = { x = 3000, y = 0},
+                scale = { x = 1.0, y = 1.0},
+                rotation = 0.0
+            }
+        }
+    },
 }
 }
 
