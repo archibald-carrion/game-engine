@@ -8,6 +8,7 @@ scene = {
         {asset_id = "background", file_path = "./assets/images/space_background_0.png"},
         {asset_id = "barrier", file_path = "./assets/images/barrier.png"},
         {asset_id = "meteor_0", file_path = "./assets/images/meteor_0.png"},
+        {asset_id = "orange_portal", file_path = "./assets/images/orange_portal.png"},
     },
 
     -- sounds table
@@ -281,6 +282,41 @@ scene = {
                 transform = {
                     position = { x = 500, y = 200},
                     scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+        -- orange portal
+        {
+            components = {
+                animation = {
+                    num_frames = 3,
+                    frame_speed_rate = 5,
+                    is_loop = true
+                },
+                box_collider = {
+                    width = 64,
+                    height = 64,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                script = {
+                    path = "./assets/scripts/portal.lua"
+                },
+                sprite = {
+                    asset_id = "orange_portal",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "portal",
+                },
+                transform = {
+                    position = { x = 1000, y = 1000},
+                    scale = { x = 2.0, y = 2.0},
                     rotation = 0.0
                 }
             }
