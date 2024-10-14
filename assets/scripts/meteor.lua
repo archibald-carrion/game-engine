@@ -1,4 +1,8 @@
 
+function on_collision(other)
+    play_sound("lazer")
+end
+
 function update()
     -- apply a rotation to the meteor
     -- get the current rotation
