@@ -71,4 +71,7 @@ sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 
 
 ## TODO
-- [ ] Implement the animation of the entities using the lua script
+- [ ] Implement new functions of the sound manager stop_sound, stop_music and stop_all_audio
+- [ ] Implement lua bindings for the new functions of the sound manager
+- [ ] Implement new scene introducing the characters after intro scene
+- [ ] Implement shooting mechanics so the player can shoot the enemies
