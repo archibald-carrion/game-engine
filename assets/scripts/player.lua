@@ -82,3 +82,7 @@ function on_collision(other)
         end
     end
 end
+
+function on_init()
+    
+end
