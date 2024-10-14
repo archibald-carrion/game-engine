@@ -6,7 +6,7 @@ scene = {
         {asset_id = "enemy_alan", file_path = "./assets/images/enemy_alan.png"},
         {asset_id = "player_ship", file_path = "./assets/images/admiral_ship_sprite_sheet.png"},
         {asset_id = "background", file_path = "./assets/images/space_background_0.png"},
-        {asset_id = "barrier", file_path = "./assets/images/barrier.png"},
+        {asset_id = "wall_0", file_path = "./assets/images/wall_0.png"},
         {asset_id = "meteor_0", file_path = "./assets/images/meteor_0.png"},
         {asset_id = "orange_portal", file_path = "./assets/images/orange_portal.png"},
     },
@@ -112,61 +112,61 @@ scene = {
 
             }
         },
-        -- barrier 1
+        -- wall_0 1
         {
             components = {
                 box_collider = {
-                    width = 16*2, -- scale by 2
-                    height = 16*2,
+                    width = 32, -- scale by 2
+                    height = 32,
                     offset = {x = 0, y= 0},
                 },
                 rigid_body = {
                     velocity = {x = 0, y = 0},
                 },
                 sprite = {
-                    asset_id = "barrier",
-                    width = 16,
-                    height = 16,
+                    asset_id = "wall_0",
+                    width = 32,
+                    height = 32,
                     src_rect = {x = 0, y = 0},
                 },
                 transform = {
                     position = { x = 600, y = 200},
-                    scale = { x = 2.0, y =2.0},
+                    scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
                 tag = {
-                    tag = "barrier",
+                    tag = "wall_0",
                 }
             }
         },
-        -- barrier 2
+        -- wall_0 2
         {
             components = {
                 box_collider = {
-                    width = 16*2, -- scale by 2
-                    height = 16*2,
+                    width = 32, -- scale by 2
+                    height = 32,
                     offset = {x = 0, y= 0},
                 },
                 rigid_body = {
                     velocity = {x = 0, y = 0},
                 },
                 sprite = {
-                    asset_id = "barrier",
-                    width = 16,
-                    height = 16,
+                    asset_id = "wall_0",
+                    width = 32,
+                    height = 32,
                     src_rect = {x = 0, y = 0},
                 },
                 transform = {
                     position = { x = 100, y = 200},
-                    scale = { x = 2.0, y =2.0},
+                    scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
                 tag = {
-                    tag = "barrier",
+                    tag = "wall_0",
                 }
             }
         },
-        -- barrier 3
+        -- wall_0 3
         {
             components = {
                 box_collider = {
@@ -178,18 +178,18 @@ scene = {
                     velocity = {x = 0, y = 0},
                 },
                 sprite = {
-                    asset_id = "barrier",
-                    width = 16,
-                    height = 16,
+                    asset_id = "wall_0",
+                    width = 32,
+                    height = 32,
                     src_rect = {x = 0, y = 0},
                 },
                 transform = {
                     position = { x = 300, y = 400},
-                    scale = { x = 4.0, y = 4.0},
+                    scale = { x = 2.0, y = 2.0},
                     rotation = 0.0
                 },
                 tag = {
-                    tag = "barrier",
+                    tag = "wall_0",
                 }
             }
         },

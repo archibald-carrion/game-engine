@@ -4,7 +4,7 @@ function on_collision(other)
     other_tag = get_tag(other)
     -- print("[LUA] Collision between this: "..this_tag.. " and other: "..other_tag)
 
-    if other_tag == "barrier" then
+    if other_tag == "wall_0" then
         if left_collision(this, other) then
             -- print("[LUA] Left collision")
             -- avoid superposition
