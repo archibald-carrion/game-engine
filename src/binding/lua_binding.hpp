@@ -15,7 +15,13 @@
 
 
 // Sounds thingies functions 
+void play_sound(const std::string& sound_id) {
+    Game::get_instance().audio_manager->play_sound_effect(sound_id);
+}
 
+void play_music(const std::string& music_id) {
+    Game::get_instance().audio_manager->play_music(music_id);
+}
 
 
 // void play_sound(Entity e) {
