@@ -68,6 +68,7 @@ sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 
 ## Ressources used for the game
 - [arcade classic font](https://www.1001fonts.com/arcadeclassic-font.html)
+- [background generator](https://deep-fold.itch.io/space-background-generator)
 
 
 ## TODO
