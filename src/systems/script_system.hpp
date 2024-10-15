@@ -39,6 +39,9 @@ public:
         lua.set_function("top_collision", top_collision);
         lua.set_function("bottom_collision", bottom_collision);
 
+        lua.set_function("is_mouse_button_pressed", is_mouse_button_pressed);
+        lua.set_function("get_mouse_position", get_mouse_position);
+
         // Sound functions
         lua.set_function("play_sound", play_sound);
         lua.set_function("play_music", play_music);

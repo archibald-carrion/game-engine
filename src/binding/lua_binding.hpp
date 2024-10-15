@@ -72,6 +72,14 @@ void play_music(const std::string& music_id) {
 
 // Controls
 
+std::tuple<int, int> get_mouse_position() {
+    return Game::get_instance().controller_manager->get_mouse_position();
+}
+
+bool is_mouse_button_pressed(const std::string& button) {
+    return Game::get_instance().controller_manager->is_mouse_button_pressed(button);
+}
+
 bool is_action_activated(const std::string& action) {
     return Game::get_instance().controller_manager->is_key_pressed(action);
 }
