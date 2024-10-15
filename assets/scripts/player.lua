@@ -57,7 +57,7 @@ function on_collision(other)
     this_tag = get_tag(this)
     other_tag = get_tag(other)
     
-    if other_tag == "wall_0" then
+    if other_tag == "wall_0" or other_tag=="wall_1" then
         this_x, this_y = get_position(this)
         this_width, this_height = get_size(this)
         other_x, other_y = get_position(other)

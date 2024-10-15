@@ -7,6 +7,7 @@ scene = {
         {asset_id = "player_ship", file_path = "./assets/images/admiral_ship_sprite_sheet.png"},
         {asset_id = "background", file_path = "./assets/images/background_0.png"},
         {asset_id = "wall_0", file_path = "./assets/images/wall_0.png"},
+        {asset_id = "wall_1", file_path = "./assets/images/wall_1.png"},
         {asset_id = "meteor_0", file_path = "./assets/images/meteor_0.png"},
         {asset_id = "orange_portal", file_path = "./assets/images/orange_portal.png"},
     },
@@ -95,7 +96,7 @@ scene = {
                 src_rect = {x = 16, y = 0},
             },
             transform = {
-                position = { x = 150, y = 150},
+                position = { x = 100, y = 100},
                 scale = { x = 2.0, y =2.0},
                 rotation = 0.0
             }
@@ -151,7 +152,7 @@ scene = {
                 tag = "enemy",
             },
             transform = {
-                position = { x = 700, y = 700},
+                position = { x = 700, y = 750},
                 scale = { x = 2.0, y = 2.0},
                 rotation = 0.0
             }
@@ -287,6 +288,364 @@ scene = {
             }
         }
     },
+
+
+
+    -- labyrinth walls
+        -- vertical walls 1
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 500,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 32,
+                    height = 500,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 200, y = 0},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        
+        {
+            components = {
+                box_collider = {
+                    width = 500,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 500,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 200, y = 500},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 300,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 300,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 200, y = 700},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 300,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 300,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 700, y = 700},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 250,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 32,
+                    height = 250,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 700, y = 700},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 250,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 32,
+                    height = 250,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 700, y = 700},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 700,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 700,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 0, y = 900},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 700,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 700,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 1300, y = 900},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 500,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 32,
+                    height = 500,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 2000, y = 0},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 500,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 32,
+                    height = 500,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 2700, y = 0},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 500,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 32,
+                    height = 500,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 1400, y = 1300},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 700,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 700,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 1200, y = 1300},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 400,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 400,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 1000, y = 300},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+
+    -- "invisible walls" to keep player in bounds
     
     -- large upper wall
     {
