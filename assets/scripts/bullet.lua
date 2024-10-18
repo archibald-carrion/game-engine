@@ -27,6 +27,9 @@ function update()
             velocity_x = 0
             velocity_y = 0
 
+            -- print the rotation
+            print("[LUA] rotation: " .. rotation)
+
             if rotation == 0 then
                 velocity_y = -bullet_speed
 
@@ -35,8 +38,9 @@ function update()
             
             elseif rotation == 180 then
                 velocity_y = bullet_speed
+            end
             
-            elseif rotation == 270 then
+            if rotation == -90 then
                 velocity_x = -bullet_speed
             end
 
@@ -50,13 +54,14 @@ function update()
                 velocity_x = bullet_speed
                 velocity_y = bullet_speed
             
-            elseif rotation == 225 then
+            elseif rotation == -45 then
+                velocity_x = -bullet_speed
+                velocity_y = -bullet_speed  
+            
+            elseif rotation == -135 then
+                
                 velocity_x = -bullet_speed
                 velocity_y = bullet_speed
-            
-            elseif rotation == 315 then
-                velocity_x = -bullet_speed
-                velocity_y = -bullet_speed
             end
             
 
