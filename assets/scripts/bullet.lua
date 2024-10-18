@@ -1,13 +1,5 @@
 is_bullet_shot = false
 
--- function on_shot()
---     is_bullet_shot = true
---     -- get the mouse position
-
---     -- change the rigidbody velocity to move the bullet in
-
-
--- end
 
 function update()
     -- get the mouse position and check if the mouse_left_button is pressed
@@ -59,30 +51,10 @@ function update()
                 velocity_y = -bullet_speed  
             
             elseif rotation == -135 then
-                
                 velocity_x = -bullet_speed
                 velocity_y = bullet_speed
             end
             
-
-
-
-            -- print the mouse position
-            -- print("[LUA] mouse_x: " .. mouse_x .. " mouse_y: " .. mouse_y)
-
-            -- -- Calculate the direction of the bullet
-            -- local dx = mouse_x - x
-            -- local dy = mouse_y - y
-            -- local distance = math.sqrt(dx * dx + dy * dy)
-
-            -- -- Normalize the direction vector to get a unit vector
-            -- local direction_x = dx / distance
-            -- local direction_y = dy / distance
-
-            -- -- Calculate the velocity based on the direction and speed
-            -- velocity_x = direction_x * bullet_speed
-            -- velocity_y = direction_y * bullet_speed
-
             -- Set the velocity
             set_velocity(this, velocity_x, velocity_y)
 
@@ -96,7 +68,17 @@ function on_collision(other)
 
     -- if bullet shot, check if the bullet collided with a wall or enemy, then place the bullet at the player location
     if is_bullet_shot then
-        -- check if the bullet collided with a wall or enemy, then place the bullet at the player location
+        if other_tag ~= "player" then
+            is_bullet_shot = false
+            reset_bullet(this)
+        end
+
+
+            -- place the bullet at the player location
+
+            -- set rotation to player rotation
+            -- set_rotation(this, get_rotation(player))
+
     end
 
     -- if bullet not shot, just place the bullet at the player location

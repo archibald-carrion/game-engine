@@ -85,6 +85,8 @@ public:
     int map_height = 3000; /**< Height of the game map. */
     int map_width = 3000; /**< Width of the game map. */
 
+    std::tuple<int, int> player_location = {50, 50}; /**< Location of the player. */
+
     const int WINDOW_WIDTH = 1280; /**< Width of the game window. */
     const int WINDOW_HEIGHT = 720; /**< Height of the game window. */
     

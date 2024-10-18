@@ -9,6 +9,9 @@
 #include "../ECS/ECS.hpp"
 
 class ScriptSystem : public System {
+private:
+    // player location
+
 public:
     ScriptSystem() {
         RequireComponent<ScriptComponent>();
@@ -42,6 +45,8 @@ public:
         lua.set_function("is_mouse_button_pressed", is_mouse_button_pressed);
         lua.set_function("get_mouse_position", get_mouse_position);
 
+        lua.set_function("reset_bullet", reset_bullet);
+        lua.set_function("update_player_location", update_player_location);
         // Sound functions
         lua.set_function("play_sound", play_sound);
         lua.set_function("play_music", play_music);

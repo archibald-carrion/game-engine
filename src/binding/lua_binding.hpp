@@ -23,7 +23,26 @@ void play_music(const std::string& music_id) {
     Game::get_instance().audio_manager->play_music(music_id);
 }
 
+void reset_bullet(Entity e) {
+    // set velocity to 0
+    auto& rigid_body = e.get_component<RigidBodyComponent>();
 
+    rigid_body.velocity = {0, 0};
+
+    // get the player location from the game
+    auto& game = Game::get_instance();
+    auto [x, y] = game.player_location;
+
+    // set the bullet location to the player location
+    auto& transform = e.get_component<TransformComponent>();
+    transform.position = {static_cast<float>(x), static_cast<float>(y)};
+
+}
+
+
+void update_player_location(int x, int y) {
+    Game::get_instance().player_location = {x, y};
+}
 
 
 
