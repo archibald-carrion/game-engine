@@ -9,64 +9,62 @@
 #include "../ECS/ECS.hpp"
 
 class ScriptSystem : public System {
-private:
-    // player location
-
 public:
+
+    /**
+     * @brief Construct a new Script System object
+     */
     ScriptSystem() {
         RequireComponent<ScriptComponent>();
     }
 
+    /**
+     * @brief Create a lua binding object
+     * @param lua sol lua state
+     */
     void create_lua_binding(sol::state& lua) {
         // classes
         lua.new_usertype<Entity>("entity");
 
-        // functions
+        // key and mouse related functions
         lua.set_function("is_action_activated", is_action_activated);
-        lua.set_function("set_velocity", set_velocity);
-        lua.set_function("get_velocity", get_velocity);
-
-        lua.set_function("set_rotation", set_rotation);
-        lua.set_function("get_rotation", get_rotation);
-
-        lua.set_function("get_tag", get_tag);
-        lua.set_function("go_to_scene", go_to_scene);
-
-        lua.set_function("get_position", get_position);
-        lua.set_function("set_position", set_position);
-        lua.set_function("get_size", get_size);
-
-        // collision detection functions
-        lua.set_function("left_collision", left_collision);
-        lua.set_function("right_collision", right_collision);
-        lua.set_function("top_collision", top_collision);
-        lua.set_function("bottom_collision", bottom_collision);
-
         lua.set_function("is_mouse_button_pressed", is_mouse_button_pressed);
         lua.set_function("get_mouse_position", get_mouse_position);
 
+        // movement, rotation and position related functions 
+        lua.set_function("set_velocity", set_velocity);
+        lua.set_function("get_velocity", get_velocity);
+        lua.set_function("set_rotation", set_rotation);
+        lua.set_function("get_rotation", get_rotation);
+        lua.set_function("set_position", set_position);
+        lua.set_function("get_position", get_position);
+        lua.set_function("get_size", get_size);
+
+        // general entity related functions
+        lua.set_function("get_tag", get_tag);
         lua.set_function("reset_bullet", reset_bullet);
         lua.set_function("update_player_location", update_player_location);
-        // Sound functions
+        lua.set_function("kill_entity", kill_entity);
+
+        // scene related functions
+        lua.set_function("go_to_scene", go_to_scene);
+
+        // collision related functions
+        lua.set_function("top_collision", top_collision);
+        lua.set_function("left_collision", left_collision);
+        lua.set_function("bottom_collision", bottom_collision);
+        lua.set_function("right_collision", right_collision);
+
+        // sound and music related functions
         lua.set_function("play_sound", play_sound);
         lua.set_function("play_music", play_music);
-
         lua.set_function("stop_all_sounds", stop_all_sounds);
-
-        lua.set_function("kill_entity", kill_entity);
-        // lua.set_function("play_sound", play_sound);
-        // lua.set_function("stop_sound", stop_sound);
-        // lua.set_function("pause_sound", pause_sound);
-        // lua.set_function("resume_sound", resume_sound);
-        // lua.set_function("set_sound_volume", set_sound_volume);
-        // lua.set_function("get_sound_volume", get_sound_volume);
-        // lua.set_function("set_sound_loop", set_sound_loop);
-        // lua.set_function("is_sound_looping", is_sound_looping);
-        // lua.set_function("load_sound", load_sound);
-
-
     }
 
+    /**
+     * @brief Update the script system
+     * @param lua sol lua state
+     */
     void update(sol::state& lua) {
         for (auto& entity : get_entities()) {
             const auto& script = entity.get_component<ScriptComponent>();
@@ -78,12 +76,15 @@ public:
         }
     }
 
-    // TODO: find better name, perhaps jsut init 
-    void init_audio_from_script(sol::state& lua) {
-        std::cout << "[SCRIPTSYTEM] init_audio_from_script" << std::endl;
+    /**
+     * @brief init function that calls the on_init function from the script component
+     * @param lua sol lua state
+     */
+    void init_from_script(sol::state& lua) {
+        // loop through all entities and call the on_init function
         for (auto& entity : get_entities()) {
             const auto& script = entity.get_component<ScriptComponent>();
-
+            // check if the on_init function exists
             if (script.on_init != sol::lua_nil) {
                 lua["this"] = entity;
                 script.on_init();
