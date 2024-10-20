@@ -27,6 +27,10 @@ void stop_all_sounds() {
     Game::get_instance().audio_manager->stop_all_sounds();
 }
 
+void kill_entity(Entity e) {
+    e.kill();
+}
+
 void reset_bullet(Entity e) {
     // set velocity to 0
     auto& rigid_body = e.get_component<RigidBodyComponent>();
