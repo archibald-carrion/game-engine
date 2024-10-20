@@ -1,13 +1,16 @@
 #ifndef SCRIPT_SYSTEM_HPP
 #define SCRIPT_SYSTEM_HPP
 
-#include <sol/sol.hpp>
-#include <memory>
+#include <sol/sol.hpp> // Lua scripting
+#include <memory> // std::unique_ptr
+#include "../binding/lua_binding.hpp" // Lua bindings   
+#include "../components/script_component.hpp" // ScriptComponent
+#include "../ECS/ECS.hpp" // System
 
-#include "../binding/lua_binding.hpp"
-#include "../components/script_component.hpp"
-#include "../ECS/ECS.hpp"
-
+/**
+ * @brief Script System class
+ * The ScriptSystem class is a class for managing scripts.
+ */
 class ScriptSystem : public System {
 public:
 

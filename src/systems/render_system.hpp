@@ -1,26 +1,41 @@
 #ifndef RENDER_SYSTEM_HPP
 #define RENDER_SYSTEM_HPP
 
-#include <iostream>
-#include "SDL2/SDL.h"
-#include "../assets_manager/assets_manager.hpp"
-#include "../components/sprite_component.hpp"
-#include "../components/transform_component.hpp"
-#include "../ECS/ECS.hpp"
+#include <iostream> // std::cout
+#include "SDL2/SDL.h" // SDL library for window creation and rendering
+#include "../assets_manager/assets_manager.hpp" // AssetsManager
+#include "../components/sprite_component.hpp" // SpriteComponent
+#include "../components/transform_component.hpp" // TransformComponent
+#include "../ECS/ECS.hpp" // System
 
+/***
+ * @brief RenderSystem class
+ * The RenderSystem class is a class for rendering entities.
+ */
 class RenderSystem: public System {
 public:
+
+    /***
+     * @brief Constructor for RenderSystem
+     */
     RenderSystem() {
         std::cout<<"RenderSystem constructor"<<std::endl;
         RequireComponent<SpriteComponent>();
         RequireComponent<TransformComponent>();
     }
 
+    /***
+     * @brief Update the render system, this will render the entities to the screen
+     * @param renderer The SDL renderer
+     * @param asset_manager The asset manager
+     * @param camera The camera rectangle
+     */
     void update(
         SDL_Renderer* renderer,
         const std::unique_ptr<AssetsManager>& asset_manager,
         SDL_Rect& camera) {
-
+        
+        // loop through all the entities
         for(auto entity: get_entities()) {
             const auto sprite = entity.get_component<SpriteComponent>();
             const auto transform = entity.get_component<TransformComponent>();

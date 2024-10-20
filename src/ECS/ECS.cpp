@@ -80,7 +80,7 @@ void Registry::clear_all_entities() {
     // Clear the component pools
     for (auto& pool : componentsPools) {
         if (pool) {
-            pool->Clear();
+            pool->clear();
         }
     }
 

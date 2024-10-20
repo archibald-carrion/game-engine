@@ -1,24 +1,36 @@
 #ifndef RENDER_TEXT_SYSTEM_HPP
 #define RENDER_TEXT_SYSTEM_HPP
 
-#include <memory>
+#include <memory> // std::unique_ptr
+#include <SDL2/SDL.h> // SDL library for window creation and rendering
+#include <SDL2/SDL_ttf.h> // SDL ttf library for rendering text
+#include "../components/text_component.hpp" // TextComponent
+#include "../components/transform_component.hpp" // TransformComponent
+#include "../assets_manager/assets_manager.hpp" // AssetsManager
+#include "../ECS/ECS.hpp" // System
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-
-#include "../components/text_component.hpp"
-#include "../components/transform_component.hpp"
-#include "../assets_manager/assets_manager.hpp"
-#include "../ECS/ECS.hpp"
-
+/***
+ * @brief RenderTextSystem class
+ * The RenderTextSystem class is a class for rendering text entities.
+ */
 class RenderTextSystem : public System {
 public:
+
+    /***
+     * @brief Constructor for RenderTextSystem
+     */
     RenderTextSystem() {
         RequireComponent<TextComponent>();
         RequireComponent<TransformComponent>();
     }
 
+    /***
+     * @brief Update the render text system, this will render the text entities to the screen
+     * @param renderer The SDL renderer
+     * @param asset_manager The asset manager
+     */
     void update(SDL_Renderer* renderer, const std::unique_ptr<AssetsManager>& assets_manager) {
+        // loop through all the entities
         for(auto entity : get_entities()) {
             auto& text = entity.get_component<TextComponent>();
             auto& transform = entity.get_component<TransformComponent>();
@@ -44,6 +56,7 @@ public:
                 text.height  * static_cast<int>(transform.scale.y)
             };
 
+            // render the texture
             SDL_RenderCopy(renderer, texture, NULL, &destionation_rect);
             SDL_DestroyTexture(texture);
         }

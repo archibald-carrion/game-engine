@@ -5,7 +5,6 @@ INC_PATH=$(shell find ./libs -type d -exec echo -I{} \;)
 SRC=src/main.cpp \
 	src/game/game.cpp \
 	src/game/Pseudo3DGame.cpp \
-	src/utils/configuration.cpp \
 	src/ECS/*.cpp \
 	src/assets_manager/assets_manager.cpp \
 	src/controller_manager/*.cpp \

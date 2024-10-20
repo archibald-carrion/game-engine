@@ -156,7 +156,7 @@ void Registry::add_component(Entity entity, TArgs&&... args) {
     std::shared_ptr<Pool<TComponent>> component_pool =
         std::static_pointer_cast<Pool<TComponent>>(componentsPools[component_id]);
 
-    if (entity_id >= component_pool->GetSize()) {
+    if (entity_id >= component_pool->get_size()) {
         component_pool->resize(entity_id + 10);
     }
 
