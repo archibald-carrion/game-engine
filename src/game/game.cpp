@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "../systems/render_system.hpp"
-#include "../systems/MovementSystem.hpp"
+#include "../systems/movement_system.hpp"
 #include "../systems/circle_collision_system.hpp"
 #include "../systems/animation_system.hpp"
 #include "../systems/script_system.hpp"
@@ -227,7 +227,7 @@ void Game::update() {
     registry->update();
     registry->get_system<ScriptSystem>().update(lua);
     registry->get_system<AnimationSystem>().update();
-    registry->get_system<MovementSystem>().Update(deltaTime);
+    registry->get_system<MovementSystem>().update(deltaTime);
     registry->get_system<CameraMovementSystem>().update(this->camera);
     registry->get_system<CircleCollisionSystem>().update(events_manager);
     registry->get_system<BoxCollisionSystem>().update(lua);
