@@ -30,7 +30,7 @@ private:
     std::deque<int> free_ids; // deque containing free ids
 
 public:
-    int num_entities = 0; 
+    int num_entities = 0;
     Registry();
     
     ~Registry();

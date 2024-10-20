@@ -11,12 +11,6 @@
 
 
 
-template<typename TComponent>
-void System::RequireComponent() {
-    const int component_id = Component<TComponent>::get_id();
-    componentSignature.set(component_id);
-}
-
 
 template <typename TComponent, typename... TArgs>
 void Entity::add_component(TArgs&&... args) {

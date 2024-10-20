@@ -8,19 +8,15 @@ Registry::~Registry() {
     std::cout<<"Registry destructor" << std::endl;
 }
 
-// Registry::Registry(){}
-    
-// Registry::~Registry(){}
-
-    
-    //Entity management
 Entity Registry::create_entity(){
     std::size_t entity_id;
 
+    // if there are free ids, use one of them
     if(!free_ids.empty()){
         entity_id = free_ids.front();
         free_ids.pop_front();
     }else{
+        // otherwise, create a new id
         entity_id = num_entities++;
         bool is_resize_needed = entity_id >= entityComponentSignatures.size();
         if(is_resize_needed){
@@ -31,48 +27,13 @@ Entity Registry::create_entity(){
     Entity entity(entity_id);
     entity.registry = this;
     entities_to_be_added.insert(entity);
-    // std::cout<<"Entity created [Registry]" << std::endl;
     return entity;
 }
-
 
 void Registry::kill_entity(Entity entity){
     entities_to_be_killed.insert(entity);
 }
 
-//     // // Component management
-// template <typename TComponent, typename... TArgs>
-// void Registry::add_component(Entity entity, TArgs&&... args){}
-
-// template <typename TComponent>
-// void Registry::remove_component(Entity entity){
-
-// }
-
-// template <typename TComponent>
-// bool Registry::has_component(Entity entity){}
-
-// template <typename TComponent>
-// TComponent& Registry::get_component(Entity entity) const{
-
-// }
-
-    // System management
-// template <typename TSystem, typename... TArgs>
-// void Registry::add_system(Entity entity, TArgs&&... args){
-
-// }
-
-// template <typename TSystem>
-// void Registry::remove_system(Entity entity) {}
-
-// template <typename TSystem>
-// bool Registry::has_system(Entity entity){}
-
-// template <typename TSystem>
-// TSystem& Registry::get_system(Entity entity) const{}
-
-    // Add remove entities to systems
 void Registry::add_entity_to_system(Entity entity){
     const int entity_id = entity.get_id();
     const Signature& entity_component_signature = entityComponentSignatures[entity_id];

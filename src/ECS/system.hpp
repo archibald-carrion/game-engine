@@ -58,5 +58,11 @@ public:
 };
 
 
+template<typename TComponent>
+void System::RequireComponent() {
+    const int component_id = Component<TComponent>::get_id();
+    componentSignature.set(component_id);
+}
+
 
 #endif // SYSTEM_HPP
