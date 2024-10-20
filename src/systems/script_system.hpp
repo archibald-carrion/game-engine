@@ -50,6 +50,8 @@ public:
         // Sound functions
         lua.set_function("play_sound", play_sound);
         lua.set_function("play_music", play_music);
+
+        lua.set_function("stop_all_sounds", stop_all_sounds);
         // lua.set_function("play_sound", play_sound);
         // lua.set_function("stop_sound", stop_sound);
         // lua.set_function("pause_sound", pause_sound);

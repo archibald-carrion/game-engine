@@ -23,6 +23,10 @@ void play_music(const std::string& music_id) {
     Game::get_instance().audio_manager->play_music(music_id);
 }
 
+void stop_all_sounds() {
+    Game::get_instance().audio_manager->stop_all_sounds();
+}
+
 void reset_bullet(Entity e) {
     // set velocity to 0
     auto& rigid_body = e.get_component<RigidBodyComponent>();

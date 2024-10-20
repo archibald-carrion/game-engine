@@ -3,6 +3,12 @@ player_velocity = 150;
 
 fixed_player_velocity = math.sqrt((player_velocity*player_velocity)/2)
 
+function on_init()
+    -- stop all sound from previous scene
+    print("[LUA] Stopping all sounds")
+    stop_all_sounds()
+end
+
 function update()
 
     set_velocity(this, 0, 0);
@@ -86,8 +92,4 @@ function on_collision(other)
             set_position(this, this_x, other_y - this_height - 1)
         end
     end
-end
-
-function on_init()
-    
 end

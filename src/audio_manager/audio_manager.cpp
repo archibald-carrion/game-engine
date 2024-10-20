@@ -74,3 +74,28 @@ void AudioManager::play_sound_effect(const std::string& sound_id, int loops) {
         }
     }
 }
+
+void AudioManager::stop_music(const std::string& music_id) {
+    Mix_Music* music = get_music(music_id);
+    if (music != nullptr) {
+        Mix_HaltMusic();
+    }
+}
+
+void AudioManager::stop_sound_effect(const std::string& sound_id) {
+    Mix_Chunk* sound = get_sound_effect(sound_id);
+    if (sound != nullptr) {
+        Mix_HaltChannel(-1);
+    }
+}
+
+void AudioManager::stop_all_sounds() {
+    std::cout << "[AUDIOMANAGER] Stopping all sounds" << std::endl;
+
+    // stop all sound effects
+    Mix_HaltChannel(-1);
+
+    // stop all music
+    Mix_HaltMusic();
+
+}
