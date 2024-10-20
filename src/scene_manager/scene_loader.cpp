@@ -14,7 +14,6 @@
 #include "../components/camera_follow_component.hpp"
 #include "../components/box_collider_component.hpp"
 #include "../components/tag_component.hpp"
-#include "../components/sound_component.hpp"
 
 SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
@@ -195,26 +194,7 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
         if(has_components != sol::nullopt) {
             sol::table components = entity["components"];
 
-            // sol::optional<sol::table> has_animation = components["animation"];
-            // if(has_animation != sol::nullopt) {
-            //     new_entity.add_component<AnimationComponent>(
-            //         components["animation"]["num_frames"],
-            //         components["animation"]["frame_speed_rate"],
-            //         components["animation"]["is_loop"]
-            //     );
-            // }
-
-            sol::optional<sol::table> has_sound = components["sound"];
-            if(has_sound != sol::nullopt) {
-                sol::table sound  = components["sound"];
-                const std::string sound_id = sound["sound_id"];
-                int volume = sound["volume"];
-                int channel = sound["channel"];
-                bool is_looping = sound["is_looping"];
-
-                new_entity.add_component<SoundComponent>(sound_id, volume, channel, is_looping);
-            }
-
+            // Animation component
             sol::optional<sol::table> has_animation = components["animation"];
             if(has_animation != sol::nullopt) {
                 sol::table animation = components["animation"];

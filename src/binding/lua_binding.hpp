@@ -10,7 +10,6 @@
 #include "../components/box_collider_component.hpp"
 #include "../components/sprite_component.hpp"
 #include "../components/transform_component.hpp"
-#include "../components/sound_component.hpp"
 #include "../components/tag_component.hpp"
 
 // Audio related functions
