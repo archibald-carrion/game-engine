@@ -3,7 +3,6 @@
 
 #include "component.hpp"
 
-
 /**
  * @class Entity
  * @brief The Entity class represents an entity in the ECS system.
@@ -91,5 +90,6 @@ public:
 
     class Registry* registry;
 };
+
 
 #endif // ENTITY_HPP
