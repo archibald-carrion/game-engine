@@ -1,8 +1,12 @@
 #ifndef ANIMATION_COMPONENT_HPP
 #define ANIMATION_COMPONENT_HPP
 
-#include <SDL2/SDL.h>
+#include <SDL2/SDL.h> // SDL library for window creation and rendering
 
+/**
+ * @struct AnimationComponent
+ * @brief The AnimationComponent struct represents an animation component for an entity.
+ */
 struct AnimationComponent {
     int num_frames; // number of frames in the animation
     int current_frame; // current frame being displayed

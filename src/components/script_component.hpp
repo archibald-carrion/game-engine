@@ -3,6 +3,10 @@
 
 #include <sol/sol.hpp> // Lua scripting
 
+/**
+ * @struct ScriptComponent
+ * @brief The ScriptComponent struct represents a script component for an entity.
+ */
 struct ScriptComponent {
     sol::function update; // update function
     sol::function on_collision; // on collision function

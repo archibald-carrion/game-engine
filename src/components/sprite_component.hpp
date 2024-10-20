@@ -4,6 +4,10 @@
 #include <SDL2/SDL.h> // SDL library for window creation and rendering, used for SDL_Rect
 #include <string> // std::string
 
+/**
+ * @struct SpriteComponent
+ * @brief The SpriteComponent struct represents a sprite for an entity.
+ */
 struct SpriteComponent {
     std::string texture_id; // texture id of the sprite
     int height; // height of the sprite

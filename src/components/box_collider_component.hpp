@@ -1,8 +1,12 @@
 #ifndef BOX_COLLEGER_COMPONENT_HPP
 #define BOX_COLLEGER_COMPONENT_HPP
 
-#include <glm/glm.hpp>
+#include <glm/glm.hpp> // GLM math library, used for vec2
 
+/**
+ * @struct BoxColliderComponent
+ * @brief The BoxColliderComponent struct represents a box collider for an entity.
+ */
 struct BoxColliderComponent {
     int width; // width of the collider
     int height; // height of the collider

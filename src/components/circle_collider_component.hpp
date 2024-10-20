@@ -1,6 +1,10 @@
 #ifndef CIRCLE_COLLISION_COMPONENT_HPP
 #define CIRCLE_COLLISION_COMPONENT_HPP
 
+/**
+ * @struct CircleColliderComponent
+ * @brief The CircleColliderComponent struct represents a circle collider for an entity.
+ */
 struct CircleColliderComponent
 {
     int radius; // radius of the collider

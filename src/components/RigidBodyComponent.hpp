@@ -3,6 +3,10 @@
 
 #include <glm/glm.hpp> // GLM math library, used for vec2
 
+/**
+ * @struct RigidBodyComponent
+ * @brief The RigidBodyComponent struct represents a rigid body component for an entity.
+ */
 struct RigidBodyComponent {
     glm::vec2 velocity; // velocity of the rigid body
 
