@@ -3,11 +3,16 @@
 
 struct CircleColliderComponent
 {
-    int radius;
+    int radius; // radius of the collider
+    int width; // width of the collider
+    int height; // height of the collider
 
-    int width;
-    int height;
-
+    /**
+     * @brief Construct a new Circle Collider Component object
+     * @param radius The radius of the collider
+     * @param width The width of the collider
+     * @param height The height of the collider
+     */
     CircleColliderComponent(int radius = 0, int width=0, int height = 0) {
         this->radius = radius;
         this->width = width;
