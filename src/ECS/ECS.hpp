@@ -29,49 +29,111 @@ private:
 
     std::deque<int> free_ids; // deque containing free ids
 
-public:
-    int num_entities = 0;
+public: 
+    int num_entities = 0; // current number of entities in the registry
+
+    /**
+    * @brief Constructs a new Registry object.
+    */
     Registry();
     
+    /**
+    * @brief Destroys the Registry object.
+    */
     ~Registry();
 
+    /**
+    * @brief Updates the registry. This function should be called periodically to process any changes within the registry.
+    */
     void update();
     
-    //Entity management
+    /**
+    * @brief Creates a new entity within the registry. 
+    * @return The created entity.
+    */
     Entity create_entity();
+
+    /**
+     * @brief Kills (removes) an entity from the registry.
+     * @param entity The entity to be removed.
+     */
     void kill_entity(Entity entity);
 
-    // Component management
+    /**
+     * @brief Adds a component of type TComponent to the specified entity.
+     * @param entity The entity to which the component will be added.
+     * @param args The arguments to pass to the component constructor.
+     */
     template <typename TComponent, typename... TArgs>
     void add_component(Entity entity, TArgs&&... args);
 
+    /**
+     * @brief Removes a component of type TComponent from the specified entity.
+     * @param entity The entity from which the component will be removed.
+     */
     template <typename TComponent>
     void remove_component(Entity entity);
 
+    /**
+     * @brief Checks if the specified entity has a component of type TComponent.
+     * @param entity The entity to check.
+     * @return true if the entity has the component, false otherwise.
+     */
     template <typename TComponent>
     bool has_component(Entity entity);
 
+    /**
+     * @brief Gets the component of type TComponent from the specified entity.
+     * @param entity The entity from which the component will be retrieved.
+     * @return The component.
+     */    
     template <typename TComponent>
     TComponent& get_component(Entity entity) const;
 
-    // System management
+    /**
+     * @brief Adds a system of type TSystem to the registry.
+     * @param args The arguments to pass to the system constructor.
+     */
     template <typename TSystem, typename... TArgs>
     void add_system(TArgs&&... args);
 
+    /**
+     * @brief Removes a system of type TSystem from the registry.
+     * @param entity The entity from which the system will be removed.
+     */
     template <typename TSystem>
     void remove_system(Entity entity);
 
+    /**
+     * @brief Checks if the registry has a system of type TSystem.
+     * @param entity The entity to check.
+     * @return true if the registry has the system, false otherwise.
+     */
     template <typename TSystem>
     bool has_system(Entity entity);
 
+    /**
+     * @brief Gets the system of type TSystem from the registry.
+     * @return The system.
+     */
     template <typename TSystem>
     TSystem& get_system() const;
 
-    // Add remove entities to systems
+    /**
+     * @brief Adds an entity to the system
+     * @param entity The entity to be added
+     */
     void add_entity_to_system(Entity entity);
+
+    /**
+     * @brief Removes an entity from the system
+     * @param entity The entity to be removed
+     */
     void remove_entity_from_system(Entity entity);
 
-    // reset the registry
+    /**
+     * @brief Clears all entities from the registry
+     */
     void clear_all_entities();
 
 };
