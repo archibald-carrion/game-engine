@@ -6,7 +6,7 @@ SRC=src/main.cpp \
 	src/game/game.cpp \
 	src/game/Pseudo3DGame.cpp \
 	src/utils/configuration.cpp \
-	src/ECS/ECS.cpp \
+	src/ECS/*.cpp \
 	src/assets_manager/assets_manager.cpp \
 	src/controller_manager/*.cpp \
 	src/scene_manager/*.cpp \
