@@ -13,7 +13,7 @@ function update()
 
             -- rotation 0 is point to the top of the screen
 
-            bullet_speed = 50
+            bullet_speed = 250
 
             -- get the velocity of the bullet
             velocity_x = 0
@@ -60,6 +60,10 @@ function update()
 
             is_bullet_shot = true
         end
+    else
+        -- if bullet is shot, rotate the bullet to look like it is moving
+        rotation = get_rotation(this)
+        set_rotation(this, rotation + 10)
     end
 end
 
