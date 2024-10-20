@@ -7,6 +7,8 @@ function on_init()
     -- stop all sound from previous scene
     print("[LUA] Stopping all sounds")
     stop_all_sounds()
+    print("[LUA] playing game music")
+    play_music("first_level_music")
 end
 
 function update()
@@ -15,23 +17,22 @@ function update()
     velocity_x = 0
     velocity_y = 0
 
+    -- Check if the player is pressing the wasd keys to move the player
+
     if is_action_activated("up") then
         velocity_y = velocity_y + -1
-        -- print("[LUA] up")
     end
     if is_action_activated("left") then
         velocity_x = velocity_x + -1
-        -- print("[LUA] left")
     end
     if is_action_activated("down") then
         velocity_y = velocity_y + 1
-        -- print("[LUA] down")
     end
     if is_action_activated("right") then
         velocity_x = velocity_x + 1
-        -- print("[LUA] right")
     end
 
+    -- Normalize the velocity so that the player moves at the same speed in all directions
     if velocity_x ~=0 and velocity_y ~= 0 then
         velocity_x = velocity_x * fixed_player_velocity
         velocity_y = velocity_y * fixed_player_velocity
@@ -59,8 +60,6 @@ function update()
         -- Set the rotation
         set_rotation(this, degrees)
     end
-
-    
     
 end
 
@@ -68,6 +67,7 @@ function on_collision(other)
     this_tag = get_tag(this)
     other_tag = get_tag(other)
     
+    -- Check if the player is colliding with a wall, and if so don't allow the player to move through the wall
     if other_tag == "wall_0" or other_tag=="wall_1" then
         this_x, this_y = get_position(this)
         this_width, this_height = get_size(this)
@@ -92,4 +92,6 @@ function on_collision(other)
             set_position(this, this_x, other_y - this_height - 1)
         end
     end
+
+    -- implement damage to player when colliding with enemy, meteor and such
 end

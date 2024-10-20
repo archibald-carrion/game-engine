@@ -22,7 +22,8 @@ scene = {
     -- music table
     music = {
         [0] =
-        {music_id = "menu_music",file_path ="./assets/sounds/GAL_v1.mp3"},
+        {music_id = "menu_music", file_path ="./assets/sounds/GAL_v1.mp3"},
+        {music_id = "first_level_music", file_path ="./assets/sounds/HBS.mp3"},
     },
 
     -- font table
