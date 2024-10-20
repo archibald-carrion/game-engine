@@ -1,16 +1,21 @@
 #ifndef ANIMATION_COMPONENT_HPP
 #define ANIMATION_COMPONENT_HPP
 
-// #include <glm/glm.hpp>
 #include <SDL2/SDL.h>
 
 struct AnimationComponent {
-    int num_frames;
-    int current_frame;
-    int frame_speed_rate;
-    bool is_loop;
-    int start_time;
+    int num_frames; // number of frames in the animation
+    int current_frame; // current frame being displayed
+    int frame_speed_rate; // speed rate of the animation
+    bool is_loop; // flag to indicate if the animation is looping
+    int start_time; // start time of the animation
 
+    /**
+     * @brief Construct a new Animation Component object
+     * @param num_frames The number of frames in the animation
+     * @param frame_speed_rate The speed rate of the animation
+     * @param is_loop Flag to indicate if the animation is looping
+     */
     AnimationComponent(int num_frames = 1, int frame_speed_rate = 1, bool is_loop = false) {
         this->num_frames = num_frames;
         this->frame_speed_rate = frame_speed_rate;
