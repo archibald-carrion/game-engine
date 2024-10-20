@@ -13,7 +13,6 @@ SceneManager::~SceneManager() {
 }
 
 void SceneManager::load_scene_from_script(const std::string& scene_path, sol::state& lua) {
-    // TODO: check that code is correct
     lua.script_file(scene_path);
     sol::table scenes = lua["scenes"];
     int index = 0;
@@ -37,8 +36,6 @@ void SceneManager::load_scene_from_script(const std::string& scene_path, sol::st
 
 void SceneManager::load_scene() {
     Game& game = Game::get_instance();
-    // reset the registry
-    // game.registry->clear_all_entities();
     std::string scene_path = scenes[next_scene];
 
     std::cout << "[SCENEMANAGER] loading new scene" << std::endl;

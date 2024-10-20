@@ -17,7 +17,6 @@
 
 SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
-
 }
 
 SceneLoader::~SceneLoader() {
@@ -32,9 +31,7 @@ void SceneLoader::load_scene(const std::string& scene_path,
     std::unique_ptr<Registry>& registry, 
     SDL_Renderer* renderer) {
 
-    std::cout << "[SCENELOADER] before loading the script" << std::endl;
-
-
+    // load the script
     sol::load_result script_result = lua.load_file(scene_path);
     if(!script_result.valid()) {
         sol::error err = script_result;
@@ -43,41 +40,28 @@ void SceneLoader::load_scene(const std::string& scene_path,
         return;
     }
 
-    std::cout << "[SCENELOADER] successfully loaded the script" << std::endl;
-
+    // load the scene
     lua.script_file(scene_path);
     sol::table scene = lua["scene"];
-
-    // check if the file has a initialize function and if it does, call it
-    // sol::optional<sol::function> has_initialize = lua["initialize"];
-    // if(has_initialize != sol::nullopt) {
-    //     std::cout << "[SCENELOADER] calling initialize function" << std::endl;
-    //     sol::function initialize = lua["initialize"];
-    //     initialize();
-    // }
-
-
+    // load the sprites
     sol::table sprites = scene["sprites"];
     load_sprites(renderer, sprites, asset_manager);
-
-
+    // load the sounds
     sol::table sounds = scene["sounds"];
     load_sounds(sounds, audio_manager);
-
+    // load the music
     sol::table music = scene["music"];
     load_music(music, audio_manager);
-    
-    std::cout << "[SCENELOADER] Sucessfully loaded sounds and music" << std::endl;
-
+    // load the fonts
     sol::table fonts = scene["fonts"];
     load_fonts(fonts, asset_manager);
-
+    // load the buttons
     sol::table buttons = scene["buttons"];
     load_buttons(buttons, controller_manager);
-
+    // load the keys
     sol::table keys = scene["keys"];
     load_keys_actions(keys, controller_manager);
-
+    // load the entities
     sol::table entities = scene["entities"];
     load_entities(lua, entities, registry);
 }
@@ -124,20 +108,16 @@ void SceneLoader::load_sounds(const sol::table& sounds, std::unique_ptr<AudioMan
 void SceneLoader::load_music(const sol::table& music, std::unique_ptr<AudioManager>& audio_manager) {
     int index = 0;
 
+    // loop through all the music
     while(true) {
-
-
         sol::optional<sol::table> has_music = music[index];
         if(has_music == sol::nullopt) {
             break;
         }
-        std::cout << "hello" << std::endl;
-
         sol::table selected_music = music[index];
         std::string music_id = selected_music["music_id"];
         std::string file_path = selected_music["file_path"];
 
-        std::cout << "before adding music" << std::endl;
         audio_manager->add_music(music_id, file_path);
 
         index++;
@@ -343,7 +323,6 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
         }
 
         index++;
-
     }
 }
 
