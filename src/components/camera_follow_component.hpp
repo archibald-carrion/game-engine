@@ -2,16 +2,12 @@
 #define CAMERA_FOLLOW_COMPONENT_HPP
 
 struct CameraFollowComponent{
+
+    /**
+     * @brief Construct a new Camera Follow Component object
+     */
     CameraFollowComponent() {
     }
 };
-
-
-
-
-
-
-
-
 
 #endif // CAMERA_FOLLOW_COMPONENT_HPP
