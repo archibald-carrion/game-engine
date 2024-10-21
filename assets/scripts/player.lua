@@ -75,19 +75,15 @@ function on_collision(other)
         other_width, other_height = get_size(other)
         
         if top_collision(this, other) then
-            print("[LUA] Top collision")
             -- Move this entity below the other entity
             set_position(this, this_x, other_y + other_height - 1)
         elseif left_collision(this, other) then
-            print("[LUA] Left collision")
             -- Move this entity to the right of the other entity
             set_position(this, other_x + other_width + 1, this_y)
         elseif right_collision(this, other) then
-            print("[LUA] Right collision")
             -- Move this entity to the left of the other entity
             set_position(this, other_x - this_width - 1, this_y)
         elseif bottom_collision(this, other) then
-            print("[LUA] Bottom collision")
             -- Move this entity above the other entity
             set_position(this, this_x, other_y - this_height - 1)
         end
