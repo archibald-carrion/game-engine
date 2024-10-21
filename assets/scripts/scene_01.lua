@@ -193,6 +193,7 @@ scene = {
                 }
             }
         },
+
         -- enemy_alan 2
         {
             components = {
@@ -228,6 +229,7 @@ scene = {
                 }
             }
         },
+
         -- meteor 1
         {
             components = {
@@ -258,6 +260,7 @@ scene = {
                 }
             }
         },
+
         -- meteor 2
         {
             components = {
@@ -288,6 +291,7 @@ scene = {
                 }
             }
         },
+
         -- orange portal
         {
             components = {
@@ -681,6 +685,117 @@ scene = {
                 },
             },
         },
+
+        {
+            components = {
+                box_collider = {
+                    width = 400,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 400,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 800, y = 150},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+
+        -- boxes, squared walls that looks cool, and allow to have more "blockage" against the bullet
+
+        {
+            components = {
+                box_collider = {
+                    width = 64,
+                    height = 64,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 64,
+                    height = 64,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 800, y = 300},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 64,
+                    height = 64,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 64,
+                    height = 64,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 300, y = 300},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+
+        {
+            components = {
+                box_collider = {
+                    width = 132,
+                    height = 132,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_1",
+                    width = 132,
+                    height = 132,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_1",
+                },
+                transform = {
+                    position = { x = 200, y = 1200},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                },
+            },
+        },
+
 
     -- "invisible walls" to keep player in bounds
     
