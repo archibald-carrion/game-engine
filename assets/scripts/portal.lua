@@ -9,7 +9,7 @@ function on_collision(other)
 
         -- check if the player is fast enough to teleport
         if velocity > 300 then
-            go_to_scene("scene_02")
+            go_to_scene("level_02")
         end
 
         print("[LUA] Collision with player")
