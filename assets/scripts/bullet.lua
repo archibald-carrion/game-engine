@@ -13,7 +13,7 @@ function update()
 
             -- rotation 0 is point to the top of the screen
 
-            bullet_speed = 300
+            bullet_speed = 1000
 
             -- get the velocity of the bullet
             velocity_x = 0
