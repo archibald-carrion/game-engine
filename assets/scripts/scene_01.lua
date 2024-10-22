@@ -332,6 +332,99 @@ scene = {
             }
         },
 
+        -- meteor 3
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 50},
+                },
+                script = {
+                    path = "./assets/scripts/meteor.lua"
+                },
+                sprite = {
+                    asset_id = "meteor_0",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "meteor",
+                },
+                transform = {
+                    position = { x = 2000, y = 2000},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        -- meteor 4
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 50},
+                },
+                script = {
+                    path = "./assets/scripts/meteor.lua"
+                },
+                sprite = {
+                    asset_id = "meteor_0",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "meteor",
+                },
+                transform = {
+                    position = { x = 2200, y = 2200},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        -- meteor 5
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 50},
+                },
+                script = {
+                    path = "./assets/scripts/meteor.lua"
+                },
+                sprite = {
+                    asset_id = "meteor_0",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "meteor",
+                },
+                transform = {
+                    position = { x = 2400, y = 2400},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
         -- orange portal
         {
             components = {
@@ -372,7 +465,8 @@ scene = {
 
     -- WALLS
 
-    -- labyrinth walls
+        -- labyrinth walls
+
         -- vertical walls 1
         {
             components = {
@@ -1728,119 +1822,120 @@ scene = {
         },
 
 
-    -- "invisible walls" to keep player in bounds
     
-    -- large upper wall
-    {
-        components = {
-            box_collider = {
-                width = 3000,
-                height = 32,
-                offset = {x = 0, y= 0},
-            },
-            rigid_body = {
-                velocity = {x = 0, y = 0},
-            },
-            sprite = {
-                asset_id = "wall_0",
-                width = 3000,
-                height = 32,
-                src_rect = {x = 0, y = 0},
-            },
-            tag = {
-                tag = "wall_0",
-            },
-            transform = {
-                position = { x = 0, y = -30},
-                scale = { x = 1.0, y = 1.0},
-                rotation = 0.0
+        -- "invisible walls" to keep player in bounds
+        
+        -- large upper wall
+        {
+            components = {
+                box_collider = {
+                    width = 3000,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_0",
+                    width = 3000,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_0",
+                },
+                transform = {
+                    position = { x = 0, y = -30},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
             }
-        }
-    },
-   
-    -- large lower wall
-    {
-        components = {
-            box_collider = {
-                width = 3000,
-                height = 32,
-                offset = {x = 0, y= 0},
-            },
-            rigid_body = {
-                velocity = {x = 0, y = 0},
-            },
-            sprite = {
-                asset_id = "wall_0",
-                width = 3000,
-                height = 32,
-                src_rect = {x = 0, y = 0},
-            },
-            tag = {
-                tag = "wall_0",
-            },
-            transform = {
-                position = { x = 0, y = 2715},
-                scale = { x = 1.0, y = 1.0},
-                rotation = 0.0
+        },
+    
+        -- large lower wall
+        {
+            components = {
+                box_collider = {
+                    width = 3000,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_0",
+                    width = 3000,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_0",
+                },
+                transform = {
+                    position = { x = 0, y = 2715},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
             }
-        }
-    },
+        },
 
-    -- large left wall
-    {
-        components = {
-            box_collider = {
-                width = 32,
-                height = 3000,
-                offset = {x = 0, y= 0},
-            },
-            rigid_body = {
-                velocity = {x = 0, y = 0},
-            },
-            sprite = {
-                asset_id = "wall_0",
-                width = 32,
-                height = 3000,
-                src_rect = {x = 0, y = 0},
-            },
-            tag = {
-                tag = "wall_0",
-            },
-            transform = {
-                position = { x = -30, y = 0},
-                scale = { x = 1.0, y = 1.0},
-                rotation = 0.0
+        -- large left wall
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 3000,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_0",
+                    width = 32,
+                    height = 3000,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_0",
+                },
+                transform = {
+                    position = { x = -30, y = 0},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
             }
-        }
-    },
+        },
 
-    -- large right wall
-    {
-        components = {
-            box_collider = {
-                width = 32,
-                height = 3000,
-                offset = {x = 0, y= 0},
-            },
-            rigid_body = {
-                velocity = {x = 0, y = 0},
-            },
-            sprite = {
-                asset_id = "wall_0",
-                width = 32,
-                height = 3000,
-                src_rect = {x = 0, y = 0},
-            },
-            tag = {
-                tag = "wall_0",
-            },
-            transform = {
-                position = { x = 3000, y = 0},
-                scale = { x = 1.0, y = 1.0},
-                rotation = 0.0
+        -- large right wall
+        {
+            components = {
+                box_collider = {
+                    width = 32,
+                    height = 3000,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                sprite = {
+                    asset_id = "wall_0",
+                    width = 32,
+                    height = 3000,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "wall_0",
+                },
+                transform = {
+                    position = { x = 3000, y = 0},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
             }
-        }
-    },
+        },
 }
 }
 
