@@ -11,6 +11,7 @@ scene = {
         {asset_id = "meteor_0", file_path = "./assets/images/meteor_0.png"},
         {asset_id = "orange_portal", file_path = "./assets/images/orange_portal.png"},
         {asset_id = "bullet", file_path = "./assets/images/bullet_more_visible.png"},
+        {asset_id = "speed_boost", file_path = "./assets/images/speed_boost.png"},
     },
 
     -- sounds table
@@ -155,6 +156,42 @@ scene = {
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
+            }
+        },
+
+        -- speed boost 1
+        {
+            components = {
+                animation = {
+                    num_frames = 2,
+                    frame_speed_rate = 5,
+                    is_loop = true
+                },
+                box_collider = {
+                    width = 32,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 50},
+                },
+                script = {
+                    path = "./assets/scripts/speed_boost.lua"
+                },
+                sprite = {
+                    asset_id = "speed_boost",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "speed_boost",
+                },
+                transform = {
+                    position = { x = 1000, y = 200},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
             }
         },
 
