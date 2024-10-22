@@ -43,11 +43,7 @@ function update()
 
     set_velocity(this, velocity_x, velocity_y)
 
-    location_x, location_y = get_position(this)
-
-    -- set the player rotation of game
-    update_player_location(location_x, location_y)
-
+    
     -- change the ship rotation based on the direction in which it is moving
     -- using the set_rotation(this, angle) function
     -- Calculate and set rotation based on movement direction
@@ -60,6 +56,11 @@ function update()
         -- Set the rotation
         set_rotation(this, degrees)
     end
+    
+    location_x, location_y = get_position(this)
+
+    -- set the player rotation of game
+    update_player_location(location_x, location_y)
     
 end
 
