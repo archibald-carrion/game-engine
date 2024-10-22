@@ -65,8 +65,8 @@ function on_collision(other)
         -- add 50 to the player velocity
         increment_player_velocity(other, 50)
 
-        -- check if player has key
+        -- destroy the speed boost entity
+        kill_entity(this)
 
-        -- if player has key, teleport to next level
     end
 end
