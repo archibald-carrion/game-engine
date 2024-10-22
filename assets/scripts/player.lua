@@ -1,7 +1,6 @@
--- Global variable
-player_velocity = 150;
+-- -- Global variable
+-- player_velocity = 150;
 
-fixed_player_velocity = math.sqrt((player_velocity*player_velocity)/2)
 
 function on_init()
     -- stop all sound from previous scene
@@ -12,6 +11,10 @@ function on_init()
 end
 
 function update()
+
+    player_velocity = get_player_velocity(this) -- need to update because player can get speed boost
+    print("[LUA] Player velocity: " .. player_velocity)
+    fixed_player_velocity = math.sqrt((player_velocity*player_velocity)/2)
 
     set_velocity(this, 0, 0);
     velocity_x = 0

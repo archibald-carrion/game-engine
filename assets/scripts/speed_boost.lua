@@ -63,9 +63,8 @@ function on_collision(other)
 
     if other_tag == "player" then
         -- add 50 to the player velocity
-        velocity_x, velocity_y = get_velocity(other)
-        velocity_x = velocity_x + 50
-        
+        increment_player_velocity(other, 50)
+
         -- check if player has key
 
         -- if player has key, teleport to next level

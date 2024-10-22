@@ -134,6 +134,9 @@ scene = {
                     position = { x = 100, y = 100},
                     scale = { x = 2.0, y =2.0},
                     rotation = 0.0
+                },
+                player_velocity = {
+                    player_velocity = 150
                 }
             }
         },

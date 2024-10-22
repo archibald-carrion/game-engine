@@ -11,6 +11,7 @@
 #include "../components/sprite_component.hpp"
 #include "../components/transform_component.hpp"
 #include "../components/tag_component.hpp"
+#include "../components/player_velocity.hpp"
 
 // Audio related functions
 
@@ -73,6 +74,25 @@ void reset_bullet(Entity e) {
  */
 void update_player_location(int x, int y) {
     Game::get_instance().player_location = {x, y};
+}
+
+/**
+ * @brief Increment the player velocity by a certain amount.
+ * @param e The entity to increment the velocity for.
+ * @param increment The amount to increment the velocity by.
+ */
+void increment_player_velocity(Entity e, int increment) {
+    auto& player_velocity = e.get_component<PlayerVelocity>();
+    player_velocity.player_velocity += increment;
+}
+
+/**
+ * @brief Get the player velocity.
+ * @param e The entity to get the velocity from.
+ * @return The player velocity.
+ */
+int get_player_velocity(Entity e) {
+    return e.get_component<PlayerVelocity>().player_velocity;
 }
 
 /**

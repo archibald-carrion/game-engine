@@ -16,6 +16,8 @@ function on_collision(other)
         -- check if player has key
 
         -- if player has key, teleport to next level
+        velocity = get_player_velocity(other)
+        print("[LUA] Player velocity: " .. velocity)
     end
 end
 

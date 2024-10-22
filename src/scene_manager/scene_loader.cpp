@@ -14,6 +14,7 @@
 #include "../components/camera_follow_component.hpp"
 #include "../components/box_collider_component.hpp"
 #include "../components/tag_component.hpp"
+#include "../components/player_velocity.hpp"
 
 SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
@@ -318,6 +319,16 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
                         components["transform"]["scale"]["y"]
                     ),
                     components["transform"]["rotation"]
+                );
+            }
+
+            // player velocity component
+            sol::optional<sol::table> has_player_velocity = components["player_velocity"];
+            if(has_player_velocity != sol::nullopt) {
+
+                // add static cast to avoid warning
+                new_entity.add_component<PlayerVelocity>(
+                    static_cast<int>(components["player_velocity"]["player_velocity"])
                 );
             }
         }
