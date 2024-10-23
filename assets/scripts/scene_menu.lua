@@ -102,6 +102,9 @@ scene = {
             components = {
                 clickable = {
                 },
+                script = {
+                    path = "./assets/scripts/goto_level_2.lua",
+                },
                 text = {
                     text = "Level  02:  The  Journey",
                     font_id = "arcade_classic_font",
