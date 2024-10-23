@@ -53,3 +53,4 @@ TTF_Font*  AssetsManager::get_font(const std::string& font_id) {
     return fonts[font_id];
 
 }
+

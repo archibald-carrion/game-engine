@@ -10,6 +10,11 @@
 #include "../systems/UI_system.hpp"
 #include "../systems/camera_movement_system.hpp"
 #include "../systems/box_collision_system.hpp"
+#include "../systems/player_score_system.hpp"
+
+// // TODO: remove this later
+// #include "../components/tag_component.hpp" // only for testing, remove later
+// #include "../components/player_score_component.hpp" // only for testing, remove later
 
 #include "../events/click_event.hpp"
 
@@ -44,11 +49,21 @@ void Game::setup() {
     registry->add_system<UISystem>();
     registry->add_system<CameraMovementSystem>();
     registry->add_system<BoxCollisionSystem>();
+    registry->add_system<PlayerScoreSystem>();
 
     scene_manager->load_scene_from_script("assets/scripts/scenes.lua", lua);
 
     lua.open_libraries(sol::lib::base, sol::lib::math);
     registry->get_system<ScriptSystem>().create_lua_binding(lua);
+
+    // std::cout <<"START TEST" << std::endl;
+    // Registry registry;
+    // auto entity = registry.create_entity();
+    // entity.add_component<TagComponent>(std::string("hello"));
+    // entity.add_component<PlayerScore>(10);
+    // bool has = entity.has_component<PlayerScore>();  // Should now return false
+    // std::cout << "Has component: " << has << std::endl;
+    // std::cout << "END TEST" << std::endl;
 }
 
 Game& Game::get_instance() {
@@ -239,6 +254,7 @@ void Game::render() {
 
     // render all renderable systems
     registry->get_system<RenderSystem>().update(renderer, assets_manager, this->camera);
+    registry->get_system<PlayerScoreSystem>().update(renderer);
     registry->get_system<RenderTextSystem>().update(renderer, assets_manager);
 
     SDL_RenderPresent(this->renderer);

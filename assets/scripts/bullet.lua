@@ -19,8 +19,6 @@ function update()
             velocity_x = 0
             velocity_y = 0
 
-            -- print the rotation
-            print("[LUA] rotation: " .. rotation)
 
             if rotation == 0 then
                 velocity_y = -bullet_speed

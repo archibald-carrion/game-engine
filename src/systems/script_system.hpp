@@ -50,6 +50,7 @@ public:
         lua.set_function("kill_entity", kill_entity);
         lua.set_function("increment_player_velocity", increment_player_velocity);
         lua.set_function("get_player_velocity", get_player_velocity);
+        lua.set_function("increase_score", increase_score);
 
         // scene related functions
         lua.set_function("go_to_scene", go_to_scene);

@@ -97,6 +97,9 @@ scene = {
                     position = { x = 100, y = 100},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
+                },
+                player_score = {
+                    player_score = 0
                 }
             }
         },
@@ -141,26 +144,29 @@ scene = {
             }
         },
 
-        -- Score text
-        {
-            components = {
-                clickable = {
-                },
-                text = {
-                    text = "Score: 100",
-                    font_id = "font_0",
-                    r = 150,
-                    g = 10,
-                    b = 10,
-                    a = 255
-                },
-                transform = {
-                    position = { x = 1000, y = 50},
-                    scale = { x = 1.0, y = 1.0},
-                    rotation = 0.0
-                },
-            }
-        },
+        -- Score
+        -- {
+        --     components = {
+        --         clickable = {
+        --         },
+        --         text = {
+        --             text = "Score: 0",
+        --             font_id = "font_0",
+        --             r = 150,
+        --             g = 10,
+        --             b = 10,
+        --             a = 255
+        --         },
+        --         transform = {
+        --             position = { x = 1000, y = 50},
+        --             scale = { x = 1.0, y = 1.0},
+        --             rotation = 0.0
+        --         },
+        --         tag = {
+        --             tag = "score",
+        --         },
+        --     }
+        -- },
 
         -- speed boost 1
         {

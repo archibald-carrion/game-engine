@@ -15,6 +15,7 @@
 #include "../components/box_collider_component.hpp"
 #include "../components/tag_component.hpp"
 #include "../components/player_velocity.hpp"
+#include "../components/player_score_component.hpp"
 
 SceneLoader::SceneLoader() {
     std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
@@ -329,6 +330,14 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
                 // add static cast to avoid warning
                 new_entity.add_component<PlayerVelocity>(
                     static_cast<int>(components["player_velocity"]["player_velocity"])
+                );
+            }
+
+            // player score component
+            sol::optional<sol::table> has_player_score = components["player_score"];
+            if(has_player_score != sol::nullopt) {
+                new_entity.add_component<PlayerScore>(
+                    static_cast<int>(components["player_score"]["player_score"])
                 );
             }
         }

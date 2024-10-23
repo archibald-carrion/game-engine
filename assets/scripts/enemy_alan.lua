@@ -5,6 +5,8 @@ function on_collision(other)
     -- print("[LUA] Collision between this: "..this_tag.. " and other: "..other_tag)
 
     if other_tag == "bullet" then
+        -- call increase score function
+        increase_score(other, 10)
         kill_entity(this)
     end
 
