@@ -12,10 +12,6 @@
 #include "../systems/box_collision_system.hpp"
 #include "../systems/player_score_system.hpp"
 
-// // TODO: remove this later
-// #include "../components/tag_component.hpp" // only for testing, remove later
-// #include "../components/player_score_component.hpp" // only for testing, remove later
-
 #include "../events/click_event.hpp"
 
 Game::Game() {
@@ -55,15 +51,6 @@ void Game::setup() {
 
     lua.open_libraries(sol::lib::base, sol::lib::math);
     registry->get_system<ScriptSystem>().create_lua_binding(lua);
-
-    // std::cout <<"START TEST" << std::endl;
-    // Registry registry;
-    // auto entity = registry.create_entity();
-    // entity.add_component<TagComponent>(std::string("hello"));
-    // entity.add_component<PlayerScore>(10);
-    // bool has = entity.has_component<PlayerScore>();  // Should now return false
-    // std::cout << "Has component: " << has << std::endl;
-    // std::cout << "END TEST" << std::endl;
 }
 
 Game& Game::get_instance() {
