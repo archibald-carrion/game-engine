@@ -73,7 +73,6 @@ public:
             // Convert score to string
             std::string score_text = std::string(SCORE_PREFIX) + std::to_string(score.player_score);
 
-            std::cout << score_text << std::endl;
             
             // Create surface with score text
             SDL_Surface* surface = TTF_RenderText_Blended(
@@ -102,9 +101,6 @@ public:
                 surface->w,
                 surface->h
             };
-
-            std::cout << "window_width: " << window_width << " surface->w: " << surface->w << std::endl;
-            std::cout << "window_height: " << window_height << " surface->h: " << surface->h << std::endl;
 
             // Render the score
             SDL_RenderCopy(renderer, texture, nullptr, &dest_rect);

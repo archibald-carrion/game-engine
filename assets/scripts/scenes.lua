@@ -4,6 +4,7 @@ scenes = {
     {name = "main_menu", path = "./assets/scripts/scene_menu.lua"}, -- main menu where player can choose level to play
     {name = "introduction", path = "./assets/scripts/introduction.lua"}, -- main text explaining the context
     {name = "tutorial", path = "./assets/scripts/tutorial.lua"}, -- game tutorial, showing movement, shooting mechanics, enemies, and how to beat a level
+    {name = "fail_scene", path = "./assets/scripts/fail_scene.lua"}, -- scene that appear when main ship is destroyed
 
     -- basic cinematic to present the story and it's advancements
     {name = "cinematic_01", path = "./assets/scripts/cinematic_01.lua"},
