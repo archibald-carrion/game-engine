@@ -61,6 +61,11 @@ function on_collision(other)
             set_velocity(this, this_velocity_x, this_velocity_y * -1)
         end
     end
+
+    -- player die when touching enemy
+    if other_tag == "player" then
+        go_to_scene("fail_scene")
+    end
 end
 
 
