@@ -24,27 +24,22 @@ function on_collision(other)
             set_position(this, other_x + other_width +1, this_y)
             -- react to collision/resolve collision
             set_velocity(this, this_velocity_x * -1, this_velocity_y)
-        end
-
-        if right_collision(this, other) then
+        
+        elseif right_collision(this, other) then
 
             print("[LUA] Right collision")
-            set_position(this, this_x-this_velocity_x, this_y)
+            set_position(this, this_x-10, this_y)
             -- react to collision/resolve collision
             set_velocity(this, this_velocity_x * -1, this_velocity_y)
 
-        end
-
-        if top_collision(this, other) then
+        elseif top_collision(this, other) then
 
            --print("[LUA] Top collision")
            set_position(this, this_x, other_y + other_height +1)
             -- react to collision/resolve collision
             set_velocity(this, this_velocity_x, this_velocity_y * -1)
 
-        end
-
-        if bottom_collision(this, other) then
+        elseif bottom_collision(this, other) then
             
             --print("[LUA] Bottom collision")
             set_position(this, this_x, other_y - other_height -1)

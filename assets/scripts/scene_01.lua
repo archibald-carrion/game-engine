@@ -325,6 +325,42 @@ scene = {
             }
         },
 
+         -- enemy_circle 3
+         {
+            components = {
+                animation = {
+                    num_frames = 2,
+                    frame_speed_rate = 2,
+                    is_loop = true
+                },
+                script = {
+                    path = "./assets/scripts/enemy_circle_small.lua"
+                },
+                box_collider = {
+                    width = 64,
+                    height = 64,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 110, y = 0},
+                },
+                sprite = {
+                    asset_id = "enemy_circle",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 16, y = 0},
+                },
+                tag = {
+                    tag = "enemy",
+                },
+                transform = {
+                    position = { x = 500, y = 500},
+                    scale = { x = 2.0, y = 2.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
         -- speed boost 1
         {
             components = {
@@ -794,7 +830,7 @@ scene = {
             }
         },
 
-        -- meteor 6
+        -- meteor 8
         {
             components = {
                 box_collider = {
