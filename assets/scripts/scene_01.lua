@@ -426,7 +426,43 @@ scene = {
                     tag = "speed_boost",
                 },
                 transform = {
-                    position = { x = 1500, y = 2400},
+                    position = { x = 2500, y = 2700},
+                    scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        -- speed boost 3
+        {
+            components = {
+                animation = {
+                    num_frames = 2,
+                    frame_speed_rate = 5,
+                    is_loop = true
+                },
+                box_collider = {
+                    width = 32,
+                    height = 32,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 150, y = 0},
+                },
+                script = {
+                    path = "./assets/scripts/speed_boost.lua"
+                },
+                sprite = {
+                    asset_id = "speed_boost",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 0, y = 0},
+                },
+                tag = {
+                    tag = "speed_boost",
+                },
+                transform = {
+                    position = { x = 500, y = 2600},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 }
