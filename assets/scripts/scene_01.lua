@@ -442,187 +442,152 @@ scene = {
 
         -- spiders
 
-        -- -- enemy_spider_small 1
-        -- {
-        --     components = {
-        --         animation = {
-        --             num_frames = 2,
-        --             frame_speed_rate = 1,
-        --             is_loop = true
-        --         },
-        --         script = {
-        --             path = "./assets/scripts/enemy_spider_small.lua"
-        --         },
-        --         box_collider = {
-        --             width = 64,
-        --             height = 64,
-        --             offset = {x = 0, y= 0},
-        --         },
-        --         rigid_body = {
-        --             velocity = {x = -50, y = 0},
-        --         },
-        --         sprite = {
-        --             asset_id = "enemy_spider_small",
-        --             width = 32,
-        --             height = 32,
-        --             src_rect = {x = 16, y = 0},
-        --         },
-        --         tag = {
-        --             tag = "enemy",
-        --         },
-        --         transform = {
-        --             position = { x = 700, y = 750},
-        --             scale = { x = 2.0, y = 2.0},
-        --             rotation = 0.0
-        --         }
-        --     }
-        -- },
+            -- enemy_spider_small 1
+            {
+                components = {
+                    animation = {
+                        num_frames = 2,
+                        frame_speed_rate = 1,
+                        is_loop = true
+                    },
+                    script = {
+                        path = "./assets/scripts/enemy_spider_small.lua"
+                    },
+                    box_collider = {
+                        width = 64,
+                        height = 64,
+                        offset = {x = 0, y= 0},
+                    },
+                    rigid_body = {
+                        velocity = {x = -50, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "enemy_spider_small",
+                        width = 32,
+                        height = 32,
+                        src_rect = {x = 16, y = 0},
+                    },
+                    tag = {
+                        tag = "enemy",
+                    },
+                    transform = {
+                        position = { x = 700, y = 750},
+                        scale = { x = 2.0, y = 2.0},
+                        rotation = 0.0
+                    }
+                }
+            },
 
-        -- -- enemy_spider_small 2
-        -- {
-        --     components = {
-        --         animation = {
-        --             num_frames = 2,
-        --             frame_speed_rate = 2,
-        --             is_loop = true
-        --         },
-        --         script = {
-        --             path = "./assets/scripts/enemy_spider_small.lua"
-        --         },
-        --         box_collider = {
-        --             width = 64,
-        --             height = 64,
-        --             offset = {x = 0, y= 0},
-        --         },
-        --         rigid_body = {
-        --             velocity = {x = -50, y = 0},
-        --         },
-        --         sprite = {
-        --             asset_id = "enemy_spider_small",
-        --             width = 32,
-        --             height = 32,
-        --             src_rect = {x = 16, y = 0},
-        --         },
-        --         tag = {
-        --             tag = "enemy",
-        --         },
-        --         transform = {
-        --             position = { x = 2200, y = 700},
-        --             scale = { x = 2.0, y = 2.0},
-        --             rotation = 0.0
-        --         }
-        --     }
-        -- },
+            -- enemy_spider_small 2
+            {
+                components = {
+                    animation = {
+                        num_frames = 2,
+                        frame_speed_rate = 2,
+                        is_loop = true
+                    },
+                    script = {
+                        path = "./assets/scripts/enemy_spider_small.lua"
+                    },
+                    box_collider = {
+                        width = 64,
+                        height = 64,
+                        offset = {x = 0, y= 0},
+                    },
+                    rigid_body = {
+                        velocity = {x = -50, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "enemy_spider_small",
+                        width = 32,
+                        height = 32,
+                        src_rect = {x = 16, y = 0},
+                    },
+                    tag = {
+                        tag = "enemy",
+                    },
+                    transform = {
+                        position = { x = 2200, y = 700},
+                        scale = { x = 2.0, y = 2.0},
+                        rotation = 0.0
+                    }
+                }
+            },
 
-        -- -- enemy_spider_small 3
-        -- {
-        --     components = {
-        --         animation = {
-        --             num_frames = 2,
-        --             frame_speed_rate = 2,
-        --             is_loop = true
-        --         },
-        --         script = {
-        --             path = "./assets/scripts/enemy_spider_small.lua"
-        --         },
-        --         box_collider = {
-        --             width = 64,
-        --             height = 64,
-        --             offset = {x = 0, y= 0},
-        --         },
-        --         rigid_body = {
-        --             velocity = {x = -50, y = 0},
-        --         },
-        --         sprite = {
-        --             asset_id = "enemy_spider_small",
-        --             width = 32,
-        --             height = 32,
-        --             src_rect = {x = 0, y = 150},
-        --         },
-        --         tag = {
-        --             tag = "enemy",
-        --         },
-        --         transform = {
-        --             position = { x = 200, y = 2700},
-        --             scale = { x = 2.0, y = 2.0},
-        --             rotation = 0.0
-        --         }
-        --     }
-        -- },
+            -- enemy_spider_small 3
+            {
+                components = {
+                    animation = {
+                        num_frames = 2,
+                        frame_speed_rate = 2,
+                        is_loop = true
+                    },
+                    script = {
+                        path = "./assets/scripts/enemy_spider_small.lua"
+                    },
+                    box_collider = {
+                        width = 64,
+                        height = 64,
+                        offset = {x = 0, y= 0},
+                    },
+                    rigid_body = {
+                        velocity = {x = -50, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "enemy_spider_small",
+                        width = 32,
+                        height = 32,
+                        src_rect = {x = 16, y = 0},
+                    },
+                    tag = {
+                        tag = "enemy",
+                    },
+                    transform = {
+                        position = { x = 500, y = 2500},
+                        scale = { x = 2.0, y = 2.0},
+                        rotation = 0.0
+                    }
+                }
+            },
 
-        -- -- enemy_spider_small 4
-        -- {
-        --     components = {
-        --         animation = {
-        --             num_frames = 2,
-        --             frame_speed_rate = 2,
-        --             is_loop = true
-        --         },
-        --         script = {
-        --             path = "./assets/scripts/enemy_spider_small.lua"
-        --         },
-        --         box_collider = {
-        --             width = 64,
-        --             height = 64,
-        --             offset = {x = 0, y= 0},
-        --         },
-        --         rigid_body = {
-        --             velocity = {x = 100, y = 0},
-        --         },
-        --         sprite = {
-        --             asset_id = "enemy_spider_small",
-        --             width = 32,
-        --             height = 32,
-        --             src_rect = {x = 0, y = 150},
-        --         },
-        --         tag = {
-        --             tag = "enemy",
-        --         },
-        --         transform = {
-        --             position = { x = 2400, y = 150},
-        --             scale = { x = 2.0, y = 2.0},
-        --             rotation = 0.0
-        --         }
-        --     }
-        -- },
+            -- enemy_spider_small 4
+            {
+                components = {
+                    animation = {
+                        num_frames = 2,
+                        frame_speed_rate = 2,
+                        is_loop = true
+                    },
+                    script = {
+                        path = "./assets/scripts/enemy_spider_small.lua"
+                    },
+                    box_collider = {
+                        width = 64,
+                        height = 64,
+                        offset = {x = 0, y= 0},
+                    },
+                    rigid_body = {
+                        velocity = {x = 100, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "enemy_spider_small",
+                        width = 32,
+                        height = 32,
+                        src_rect = {x = 16, y = 0},
+                    },
+                    tag = {
+                        tag = "enemy",
+                    },
+                    transform = {
+                        position = { x = 2400, y = 150},
+                        scale = { x = 2.0, y = 2.0},
+                        rotation = 0.0
+                    }
+                }
+            },
 
-        -- -- enemy_spider_small 5
-        -- {
-        --     components = {
-        --         animation = {
-        --             num_frames = 2,
-        --             frame_speed_rate = 2,
-        --             is_loop = true
-        --         },
-        --         script = {
-        --             path = "./assets/scripts/enemy_spider_small.lua"
-        --         },
-        --         box_collider = {
-        --             width = 64,
-        --             height = 64,
-        --             offset = {x = 0, y= 0},
-        --         },
-        --         rigid_body = {
-        --             velocity = {x = 100, y = 0},
-        --         },
-        --         sprite = {
-        --             asset_id = "enemy_spider_small",
-        --             width = 32,
-        --             height = 32,
-        --             src_rect = {x = 0, y = 150},
-        --         },
-        --         tag = {
-        --             tag = "enemy",
-        --         },
-        --         transform = {
-        --             position = { x = 2400, y = 150},
-        --             scale = { x = 2.0, y = 2.0},
-        --             rotation = 0.0
-        --         }
-        --     }
-        -- },
-
-            -- enemy_spider_small 6
+            -- enemy_spider_small 5
+            
             {
                 components = {
                     animation = {
@@ -658,36 +623,38 @@ scene = {
                 }
             },
 
-        -- -- meteor 1
-        -- {
-        --     components = {
-        --         box_collider = {
-        --             width = 32,
-        --             height = 32,
-        --             offset = {x = 0, y= 0},
-        --         },
-        --         rigid_body = {
-        --             velocity = {x = 0, y = 50},
-        --         },
-        --         script = {
-        --             path = "./assets/scripts/meteor.lua"
-        --         },
-        --         sprite = {
-        --             asset_id = "meteor_0",
-        --             width = 32,
-        --             height = 32,
-        --             src_rect = {x = 0, y = 0},
-        --         },
-        --         tag = {
-        --             tag = "meteor",
-        --         },
-        --         transform = {
-        --             position = { x = 1200, y = 1200},
-        --             scale = { x = 1.0, y = 1.0},
-        --             rotation = 0.0
-        --         }
-        --     }
-        -- },
+        -- meteors
+
+            -- meteor 1
+            {
+                components = {
+                    box_collider = {
+                        width = 32,
+                        height = 32,
+                        offset = {x = 0, y= 0},
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 50},
+                    },
+                    script = {
+                        path = "./assets/scripts/meteor.lua"
+                    },
+                    sprite = {
+                        asset_id = "meteor_0",
+                        width = 32,
+                        height = 32,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "meteor",
+                    },
+                    transform = {
+                        position = { x = 1200, y = 1200},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
 
         -- -- meteor 2
         -- {

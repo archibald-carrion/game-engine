@@ -64,6 +64,7 @@ function on_collision(other)
 
     -- player die when touching enemy
     if other_tag == "player" then
+        print("[LUA] Meteor kill player")
         go_to_scene("fail_scene")
     end
 end
