@@ -162,7 +162,7 @@ scene = {
                     velocity = {x = 0, y = 0},
                 },
                 script = {
-                    path = "./assets/scripts/portal.lua"
+                    path = "./assets/scripts/portal_level1.lua"
                 },
                 sprite = {
                     asset_id = "orange_portal",
