@@ -174,7 +174,7 @@ scene = {
                     tag = "portal",
                 },
                 transform = {
-                    position = { x = 2400, y = 2400},
+                    position = { x = 2850, y = 1500},
                     scale = { x = 2.0, y = 2.0},
                     rotation = 0.0
                 }
