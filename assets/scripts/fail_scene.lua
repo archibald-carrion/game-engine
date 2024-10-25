@@ -130,7 +130,7 @@ scene = {
                 clickable = {
                 },
                 script = {
-                    path = "./assets/scripts/goto_level_1.lua", -- change to goto level 01
+                    path = "./assets/scripts/goto_level_2.lua", -- change to goto level 01
                 },
                 text = {
                     text = "Level  02:  The  Journey",
