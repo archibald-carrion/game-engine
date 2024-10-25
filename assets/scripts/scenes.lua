@@ -5,6 +5,7 @@ scenes = {
     {name = "introduction", path = "./assets/scripts/introduction.lua"}, -- main text explaining the context
     {name = "tutorial", path = "./assets/scripts/tutorial.lua"}, -- game tutorial, showing movement, shooting mechanics, enemies, and how to beat a level
     {name = "fail_scene", path = "./assets/scripts/fail_scene.lua"}, -- scene that appear when main ship is destroyed
+    {name = "win_scene", path = "./assets/scripts/win_scene.lua"}, -- scene that appear when player wins the game
 
     -- basic cinematic to present the story and it's advancements
     {name = "cinematic_01", path = "./assets/scripts/cinematic_01.lua"},
