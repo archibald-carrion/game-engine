@@ -372,6 +372,12 @@ void shoot_bullet(Entity player) {
     // Subtract 90 degrees (π/2 radians) to make 0 degrees point upward
     const float rotation_radians = glm::radians(player_transform.rotation - 90.0f);
     
+    // Calculate spawn offset from center based on rotation
+    // Use half the sprite height as the distance from center to nose
+    float spawn_offset = (player_sprite.height * player_transform.scale.y) / 2.0f;
+    float spawn_x = player_center_x + (spawn_offset * std::cos(rotation_radians));
+    float spawn_y = player_center_y + (spawn_offset * std::sin(rotation_radians));
+    
     // Calculate bullet velocity based on player's rotation
     const int bullet_speed = 1000;
     const float velocity_x = static_cast<float>(bullet_speed) * std::cos(rotation_radians);
@@ -398,9 +404,9 @@ void shoot_bullet(Entity player) {
     
     bullet.add_component<TagComponent>("bullet");
     
-    // Use the centered position for the bullet
+    // Use the nose position for the bullet, and center the bullet sprite itself
     bullet.add_component<TransformComponent>(
-        glm::vec2(player_center_x - 4, player_center_y - 4),  // position (center of player, offset by half bullet size)
+        glm::vec2(spawn_x - 4, spawn_y - 4),  // position (at nose, offset by half bullet size)
         glm::vec2(1.0f, 1.0f),    // scale
         player_transform.rotation   // rotation (match player rotation)
     );
