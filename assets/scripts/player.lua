@@ -20,7 +20,6 @@ function update()
     velocity_y = 0
 
     -- Check if the player is pressing the wasd keys to move the player
-
     if is_action_activated("up") then
         velocity_y = velocity_y + -1
     end
@@ -63,6 +62,11 @@ function update()
 
     -- set the player rotation of game
     update_player_location(location_x, location_y)
+
+    -- check if the player is pressing space key to shoot
+    if is_action_activated("shoot") then
+        shoot_bullet(this)
+    end
     
 end
 

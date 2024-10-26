@@ -51,6 +51,7 @@ public:
         lua.set_function("increment_player_velocity", increment_player_velocity);
         lua.set_function("get_player_velocity", get_player_velocity);
         lua.set_function("increase_score", increase_score);
+        lua.set_function("shoot_bullet", shoot_bullet);
 
         // scene related functions
         lua.set_function("go_to_scene", go_to_scene);

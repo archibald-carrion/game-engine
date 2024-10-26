@@ -43,6 +43,7 @@ scene = {
         {name = "left", key = 97}, -- SDLK_a
         {name = "down", key = 115}, -- SDLK_s
         {name = "right", key = 100}, -- SDLK_d
+        {name = "shoot", key = 32}, -- SDLK_SPACE
     },
 
     -- actions and mouse button table
