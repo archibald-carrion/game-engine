@@ -182,6 +182,152 @@ scene = {
             }
         },
 
+        -- speedboosts
+             -- speed boost 1
+             {
+                components = {
+                    animation = {
+                        num_frames = 2,
+                        frame_speed_rate = 5,
+                        is_loop = true
+                    },
+                    box_collider = {
+                        width = 32,
+                        height = 32,
+                        offset = {x = 0, y= 0},
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 50},
+                    },
+                    script = {
+                        path = "./assets/scripts/speed_boost.lua"
+                    },
+                    sprite = {
+                        asset_id = "speed_boost",
+                        width = 32,
+                        height = 32,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "speed_boost",
+                    },
+                    transform = {
+                        position = { x = 1300, y = 200},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+             -- speed boost 2
+             {
+                components = {
+                    animation = {
+                        num_frames = 2,
+                        frame_speed_rate = 5,
+                        is_loop = true
+                    },
+                    box_collider = {
+                        width = 32,
+                        height = 32,
+                        offset = {x = 0, y= 0},
+                    },
+                    rigid_body = {
+                        velocity = {x = 100, y = 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/speed_boost.lua"
+                    },
+                    sprite = {
+                        asset_id = "speed_boost",
+                        width = 32,
+                        height = 32,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "speed_boost",
+                    },
+                    transform = {
+                        position = { x = 500, y = 2700},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            -- speed boost 3
+            {
+                components = {
+                    animation = {
+                        num_frames = 2,
+                        frame_speed_rate = 5,
+                        is_loop = true
+                    },
+                    box_collider = {
+                        width = 32,
+                        height = 32,
+                        offset = {x = 0, y= 0},
+                    },
+                    rigid_body = {
+                        velocity = {x = 100, y = 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/speed_boost.lua"
+                    },
+                    sprite = {
+                        asset_id = "speed_boost",
+                        width = 32,
+                        height = 32,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "speed_boost",
+                    },
+                    transform = {
+                        position = { x = 2700, y = 300},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            -- speed boost 3
+            {
+                components = {
+                    animation = {
+                        num_frames = 2,
+                        frame_speed_rate = 5,
+                        is_loop = true
+                    },
+                    box_collider = {
+                        width = 32,
+                        height = 32,
+                        offset = {x = 0, y= 0},
+                    },
+                    rigid_body = {
+                        velocity = {x = 100, y = 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/speed_boost.lua"
+                    },
+                    sprite = {
+                        asset_id = "speed_boost",
+                        width = 32,
+                        height = 32,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "speed_boost",
+                    },
+                    transform = {
+                        position = { x = 700, y = 1000},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+
         -- Enemies
             -- red circle enemies
                 -- enemy_circle 1
@@ -608,37 +754,6 @@ scene = {
                 },
 
                 -- meteor 3
-                {
-                    components = {
-                        box_collider = {
-                            width = 32,
-                            height = 32,
-                            offset = {x = 0, y= 0},
-                        },
-                        rigid_body = {
-                            velocity = {x = 50, y = 0},
-                        },
-                        script = {
-                            path = "./assets/scripts/meteor.lua"
-                        },
-                        sprite = {
-                            asset_id = "meteor_0",
-                            width = 32,
-                            height = 32,
-                            src_rect = {x = 0, y = 0},
-                        },
-                        tag = {
-                            tag = "meteor",
-                        },
-                        transform = {
-                            position = { x = 200, y = 1800},
-                            scale = { x = 1.0, y = 1.0},
-                            rotation = 0.0
-                        }
-                    }
-                },
-
-                -- meteor 4
                 {
                     components = {
                         box_collider = {
