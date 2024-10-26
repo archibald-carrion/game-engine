@@ -846,6 +846,316 @@ scene = {
                     }
                 },
 
+                -- meteor 6
+                {
+                    components = {
+                        box_collider = {
+                            width = 32,
+                            height = 32,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 50, y = 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/meteor.lua"
+                        },
+                        sprite = {
+                            asset_id = "meteor_0",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 0, y = 0},
+                        },
+                        tag = {
+                            tag = "meteor",
+                        },
+                        transform = {
+                            position = { x = 1200, y = 2000},
+                            scale = { x = 1.0, y = 1.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- meteor 7
+                {
+                    components = {
+                        box_collider = {
+                            width = 32,
+                            height = 32,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 50, y = 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/meteor.lua"
+                        },
+                        sprite = {
+                            asset_id = "meteor_0",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 0, y = 0},
+                        },
+                        tag = {
+                            tag = "meteor",
+                        },
+                        transform = {
+                            position = { x = 700, y = 2000},
+                            scale = { x = 1.0, y = 1.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- meteor 8
+                {
+                    components = {
+                        box_collider = {
+                            width = 32,
+                            height = 32,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 50, y = 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/meteor.lua"
+                        },
+                        sprite = {
+                            asset_id = "meteor_0",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 0, y = 0},
+                        },
+                        tag = {
+                            tag = "meteor",
+                        },
+                        transform = {
+                            position = { x = 1700, y = 2000},
+                            scale = { x = 1.0, y = 1.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- meteor 9
+                {
+                    components = {
+                        box_collider = {
+                            width = 32,
+                            height = 32,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 50, y = 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/meteor.lua"
+                        },
+                        sprite = {
+                            asset_id = "meteor_0",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 0, y = 0},
+                        },
+                        tag = {
+                            tag = "meteor",
+                        },
+                        transform = {
+                            position = { x = 2200, y = 2000},
+                            scale = { x = 1.0, y = 1.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- meteor 10
+                {
+                    components = {
+                        box_collider = {
+                            width = 32,
+                            height = 32,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 50, y = 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/meteor.lua"
+                        },
+                        sprite = {
+                            asset_id = "meteor_0",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 0, y = 0},
+                        },
+                        tag = {
+                            tag = "meteor",
+                        },
+                        transform = {
+                            position = { x = 2700, y = 2000},
+                            scale = { x = 1.0, y = 1.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- meteor 11
+                {
+                    components = {
+                        box_collider = {
+                            width = 32,
+                            height = 32,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 50, y = 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/meteor.lua"
+                        },
+                        sprite = {
+                            asset_id = "meteor_0",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 0, y = 0},
+                        },
+                        tag = {
+                            tag = "meteor",
+                        },
+                        transform = {
+                            position = { x = 1200, y = 600},
+                            scale = { x = 1.0, y = 1.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- meteor 12
+                {
+                    components = {
+                        box_collider = {
+                            width = 32,
+                            height = 32,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 50, y = 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/meteor.lua"
+                        },
+                        sprite = {
+                            asset_id = "meteor_0",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 0, y = 0},
+                        },
+                        tag = {
+                            tag = "meteor",
+                        },
+                        transform = {
+                            position = { x = 700, y = 600},
+                            scale = { x = 1.0, y = 1.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- meteor 13
+                {
+                    components = {
+                        box_collider = {
+                            width = 32,
+                            height = 32,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 50, y = 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/meteor.lua"
+                        },
+                        sprite = {
+                            asset_id = "meteor_0",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 0, y = 0},
+                        },
+                        tag = {
+                            tag = "meteor",
+                        },
+                        transform = {
+                            position = { x = 1700, y = 600},
+                            scale = { x = 1.0, y = 1.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- meteor 14
+                {
+                    components = {
+                        box_collider = {
+                            width = 32,
+                            height = 32,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 50, y = 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/meteor.lua"
+                        },
+                        sprite = {
+                            asset_id = "meteor_0",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 0, y = 0},
+                        },
+                        tag = {
+                            tag = "meteor",
+                        },
+                        transform = {
+                            position = { x = 2200, y = 600},
+                            scale = { x = 1.0, y = 1.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- meteor 15
+                {
+                    components = {
+                        box_collider = {
+                            width = 32,
+                            height = 32,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 50, y = 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/meteor.lua"
+                        },
+                        sprite = {
+                            asset_id = "meteor_0",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 0, y = 0},
+                        },
+                        tag = {
+                            tag = "meteor",
+                        },
+                        transform = {
+                            position = { x = 2700, y = 600},
+                            scale = { x = 1.0, y = 1.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
 
 
                 
