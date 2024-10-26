@@ -5,6 +5,7 @@ scene = {
         [0] = 
         {asset_id = "enemy_spider_small", file_path = "./assets/images/enemy_spider_small.png"},
         {asset_id = "enemy_circle", file_path = "./assets/images/enemy_circle_thing.png"},
+        {asset_id = "enemy_circle_red", file_path = "./assets/images/enemy_circle_thing_red.png"},
         {asset_id = "player_ship", file_path = "./assets/images/admiral_ship_sprite_sheet.png"},
         {asset_id = "background", file_path = "./assets/images/background_0.png"},
         {asset_id = "wall_0", file_path = "./assets/images/wall_0.png"},
@@ -181,6 +182,43 @@ scene = {
             }
         },
 
+        -- Enemies
+            -- red circle enemies
+                        -- enemy_circle 1
+                            {
+                                components = {
+                                    animation = {
+                                        num_frames = 2,
+                                        frame_speed_rate = 2,
+                                        is_loop = true
+                                    },
+                                    script = {
+                                        path = "./assets/scripts/enemy_circle_not_small.lua"
+                                    },
+                                    box_collider = {
+                                        width = 96,
+                                        height = 96,
+                                        offset = {x = 0, y= 0},
+                                    },
+                                    rigid_body = {
+                                        velocity = {x = 0, y = -300},
+                                    },
+                                    sprite = {
+                                        asset_id = "enemy_circle_red",
+                                        width = 32,
+                                        height = 32,
+                                        src_rect = {x = 16, y = 0},
+                                    },
+                                    tag = {
+                                        tag = "enemy",
+                                    },
+                                    transform = {
+                                        position = { x = 1600, y = 100},
+                                        scale = { x = 3.0, y = 3.0},
+                                        rotation = 0.0
+                                    }
+                                }
+                            },
 
         -- WALLS
             -- third line of walls 
