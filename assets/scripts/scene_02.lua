@@ -184,41 +184,370 @@ scene = {
 
         -- Enemies
             -- red circle enemies
-                        -- enemy_circle 1
-                            {
-                                components = {
-                                    animation = {
-                                        num_frames = 2,
-                                        frame_speed_rate = 2,
-                                        is_loop = true
-                                    },
-                                    script = {
-                                        path = "./assets/scripts/enemy_circle_not_small.lua"
-                                    },
-                                    box_collider = {
-                                        width = 96,
-                                        height = 96,
-                                        offset = {x = 0, y= 0},
-                                    },
-                                    rigid_body = {
-                                        velocity = {x = 0, y = -300},
-                                    },
-                                    sprite = {
-                                        asset_id = "enemy_circle_red",
-                                        width = 32,
-                                        height = 32,
-                                        src_rect = {x = 16, y = 0},
-                                    },
-                                    tag = {
-                                        tag = "enemy",
-                                    },
-                                    transform = {
-                                        position = { x = 1600, y = 100},
-                                        scale = { x = 3.0, y = 3.0},
-                                        rotation = 0.0
-                                    }
-                                }
-                            },
+                -- enemy_circle 1
+                {
+                    components = {
+                        animation = {
+                            num_frames = 2,
+                            frame_speed_rate = 2,
+                            is_loop = true
+                        },
+                        script = {
+                            path = "./assets/scripts/enemy_circle_not_small.lua"
+                        },
+                        box_collider = {
+                            width = 96,
+                            height = 96,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 0, y = -300},
+                        },
+                        sprite = {
+                            asset_id = "enemy_circle_red",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 16, y = 0},
+                        },
+                        tag = {
+                            tag = "enemy",
+                        },
+                        transform = {
+                            position = { x = 1600, y = 100},
+                            scale = { x = 3.0, y = 3.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- enemy_circle 2
+                {
+                    components = {
+                        animation = {
+                            num_frames = 2,
+                            frame_speed_rate = 2,
+                            is_loop = true
+                        },
+                        script = {
+                            path = "./assets/scripts/enemy_circle_not_small.lua"
+                        },
+                        box_collider = {
+                            width = 96,
+                            height = 96,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 0, y = -300},
+                        },
+                        sprite = {
+                            asset_id = "enemy_circle_red",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 16, y = 0},
+                        },
+                        tag = {
+                            tag = "enemy",
+                        },
+                        transform = {
+                            position = { x = 1350, y = 100},
+                            scale = { x = 3.0, y = 3.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- enemy_circle 3
+                {
+                    components = {
+                        animation = {
+                            num_frames = 2,
+                            frame_speed_rate = 2,
+                            is_loop = true
+                        },
+                        script = {
+                            path = "./assets/scripts/enemy_circle_not_small.lua"
+                        },
+                        box_collider = {
+                            width = 96,
+                            height = 96,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 0, y = -300},
+                        },
+                        sprite = {
+                            asset_id = "enemy_circle_red",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 16, y = 0},
+                        },
+                        tag = {
+                            tag = "enemy",
+                        },
+                        transform = {
+                            position = { x = 1100, y = 100},
+                            scale = { x = 3.0, y = 3.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- enemy_circle 4
+                {
+                    components = {
+                        animation = {
+                            num_frames = 2,
+                            frame_speed_rate = 2,
+                            is_loop = true
+                        },
+                        script = {
+                            path = "./assets/scripts/enemy_circle_not_small.lua"
+                        },
+                        box_collider = {
+                            width = 96,
+                            height = 96,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 0, y = -300},
+                        },
+                        sprite = {
+                            asset_id = "enemy_circle_red",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 16, y = 0},
+                        },
+                        tag = {
+                            tag = "enemy",
+                        },
+                        transform = {
+                            position = { x = 850, y = 100},
+                            scale = { x = 3.0, y = 3.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- enemy_circle 5
+                {
+                    components = {
+                        animation = {
+                            num_frames = 2,
+                            frame_speed_rate = 2,
+                            is_loop = true
+                        },
+                        script = {
+                            path = "./assets/scripts/enemy_circle_not_small.lua"
+                        },
+                        box_collider = {
+                            width = 96,
+                            height = 96,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 0, y = -300},
+                        },
+                        sprite = {
+                            asset_id = "enemy_circle_red",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 16, y = 0},
+                        },
+                        tag = {
+                            tag = "enemy",
+                        },
+                        transform = {
+                            position = { x = 600, y = 100},
+                            scale = { x = 3.0, y = 3.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- enemy_circle 6
+                {
+                    components = {
+                        animation = {
+                            num_frames = 2,
+                            frame_speed_rate = 2,
+                            is_loop = true
+                        },
+                        script = {
+                            path = "./assets/scripts/enemy_circle_not_small.lua"
+                        },
+                        box_collider = {
+                            width = 96,
+                            height = 96,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 0, y = -300},
+                        },
+                        sprite = {
+                            asset_id = "enemy_circle_red",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 16, y = 0},
+                        },
+                        tag = {
+                            tag = "enemy",
+                        },
+                        transform = {
+                            position = { x = 350, y = 100},
+                            scale = { x = 3.0, y = 3.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- enemy_circle 7
+                {
+                    components = {
+                        animation = {
+                            num_frames = 2,
+                            frame_speed_rate = 2,
+                            is_loop = true
+                        },
+                        script = {
+                            path = "./assets/scripts/enemy_circle_not_small.lua"
+                        },
+                        box_collider = {
+                            width = 96,
+                            height = 96,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 0, y = -300},
+                        },
+                        sprite = {
+                            asset_id = "enemy_circle_red",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 16, y = 0},
+                        },
+                        tag = {
+                            tag = "enemy",
+                        },
+                        transform = {
+                            position = { x = 1850, y = 100},
+                            scale = { x = 3.0, y = 3.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- enemy_circle 8
+                {
+                    components = {
+                        animation = {
+                            num_frames = 2,
+                            frame_speed_rate = 2,
+                            is_loop = true
+                        },
+                        script = {
+                            path = "./assets/scripts/enemy_circle_not_small.lua"
+                        },
+                        box_collider = {
+                            width = 96,
+                            height = 96,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 0, y = -300},
+                        },
+                        sprite = {
+                            asset_id = "enemy_circle_red",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 16, y = 0},
+                        },
+                        tag = {
+                            tag = "enemy",
+                        },
+                        transform = {
+                            position = { x = 2100, y = 100},
+                            scale = { x = 3.0, y = 3.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- enemy_circle 9
+                {
+                    components = {
+                        animation = {
+                            num_frames = 2,
+                            frame_speed_rate = 2,
+                            is_loop = true
+                        },
+                        script = {
+                            path = "./assets/scripts/enemy_circle_not_small.lua"
+                        },
+                        box_collider = {
+                            width = 96,
+                            height = 96,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 0, y = -300},
+                        },
+                        sprite = {
+                            asset_id = "enemy_circle_red",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 16, y = 0},
+                        },
+                        tag = {
+                            tag = "enemy",
+                        },
+                        transform = {
+                            position = { x = 2350, y = 100},
+                            scale = { x = 3.0, y = 3.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                -- enemy_circle 10
+                {
+                    components = {
+                        animation = {
+                            num_frames = 2,
+                            frame_speed_rate = 2,
+                            is_loop = true
+                        },
+                        script = {
+                            path = "./assets/scripts/enemy_circle_not_small.lua"
+                        },
+                        box_collider = {
+                            width = 96,
+                            height = 96,
+                            offset = {x = 0, y= 0},
+                        },
+                        rigid_body = {
+                            velocity = {x = 0, y = -300},
+                        },
+                        sprite = {
+                            asset_id = "enemy_circle_red",
+                            width = 32,
+                            height = 32,
+                            src_rect = {x = 16, y = 0},
+                        },
+                        tag = {
+                            tag = "enemy",
+                        },
+                        transform = {
+                            position = { x = 2600, y = 100},
+                            scale = { x = 3.0, y = 3.0},
+                            rotation = 0.0
+                        }
+                    }
+                },
+
+                
+
+
+                
 
         -- WALLS
             -- third line of walls 
