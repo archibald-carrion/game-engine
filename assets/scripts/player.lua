@@ -1,6 +1,5 @@
 -- -- Global variable
--- player_velocity = 150;
-
+is_shooting = false
 
 function on_init()
     -- stop all sound from previous scene
@@ -64,8 +63,15 @@ function update()
     update_player_location(location_x, location_y)
 
     -- check if the player is pressing space key to shoot
-    if is_action_activated("shoot") then
-        shoot_bullet(this)
+    if is_shooting  == false then
+        if is_action_activated("shoot") then
+            shoot_bullet(this)
+            is_shooting = true
+        end
+    else 
+        if not is_action_activated("shoot") then
+            is_shooting = false
+        end
     end
     
 end
