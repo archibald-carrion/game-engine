@@ -54,7 +54,7 @@ public:
      * @param score The score value to display
      */
     void update(SDL_Renderer* renderer, int score) {
-        if (!font || !renderer) {
+        if (!font || !renderer || score <= 0) {
             return;
         }
 
