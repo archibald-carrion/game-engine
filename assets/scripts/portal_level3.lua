@@ -19,7 +19,7 @@ function on_collision(other)
         velocity = get_player_velocity(other)
         print("[LUA] Player velocity: " .. velocity)
 
-        if velocity >= 400 then
+        if velocity >= 350 then
             go_to_scene("win_scene")
         end
 
