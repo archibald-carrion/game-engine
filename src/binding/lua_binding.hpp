@@ -133,11 +133,10 @@ bool is_action_activated(const std::string& action) {
     return Game::get_instance().controller_manager->is_key_pressed(action);
 }
 
-void increase_score(Entity e, int score) {
-    auto& player_score = e.get_component<PlayerScore>();
-    player_score.player_score += score;
+void increase_score(int score) {
+    Game::get_instance().player_score += score;
     // print the score to the console
-    std::cout << "Score: " << player_score.player_score << std::endl;
+    std::cout << "Score: " <<  Game::get_instance().player_score << std::endl;
 }
 
 // Movement, rotation and position related functions

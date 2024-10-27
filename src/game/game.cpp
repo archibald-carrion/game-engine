@@ -122,6 +122,7 @@ void Game::run_scene() {
     registry->update();
     // call the on_init functions of the entities from the script component
     registry->get_system<ScriptSystem>().init_from_script(lua);
+    this->player_score = 0; // reset score between levels
 
     while(scene_manager->is_current_scene_running()) {
         processInput();
@@ -241,7 +242,7 @@ void Game::render() {
 
     // render all renderable systems
     registry->get_system<RenderSystem>().update(renderer, assets_manager, this->camera);
-    registry->get_system<PlayerScoreSystem>().update(renderer);
+    registry->get_system<PlayerScoreSystem>().update(renderer, player_score);
     registry->get_system<RenderTextSystem>().update(renderer, assets_manager);
 
     SDL_RenderPresent(this->renderer);

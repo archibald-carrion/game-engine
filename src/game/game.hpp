@@ -87,6 +87,8 @@ public:
 
     std::tuple<int, int> player_location = {50, 50}; /**< Location of the player. */
 
+    int player_score = 0;
+
     const int WINDOW_WIDTH = 1280; /**< Width of the game window. */
     const int WINDOW_HEIGHT = 720; /**< Height of the game window. */
     

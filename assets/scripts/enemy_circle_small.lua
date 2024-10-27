@@ -6,7 +6,7 @@ function on_collision(other)
        
     if other_tag == "bullet" then
         -- call increase score function
-        increase_score(other, 15)
+        increase_score(15)
         increment_player_velocity(other, 10)
         kill_entity(this)
     end

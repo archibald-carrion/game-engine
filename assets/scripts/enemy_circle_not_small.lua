@@ -14,7 +14,7 @@ if other_tag == "bullet" then
         hit_points = hit_points - 1
     else
         -- increase the score
-        increase_score(other, 30)
+        increase_score(30)
         increment_player_velocity(other, 10)
         kill_entity(this)
     end
