@@ -1,5 +1,3 @@
-hit_points = 1
-
 function on_collision(other)
     this_tag = get_tag(this)
     other_tag = get_tag(other)
@@ -7,17 +5,7 @@ function on_collision(other)
 
    
 if other_tag == "bullet" then
-    -- call increase score function
-    -- check if the hit points is greater than 0
-    if hit_points > 0 then
-        -- decrease the hit points
-        hit_points = hit_points - 1
-    else
-        -- increase the score
-        increase_score(30)
-        increment_player_velocity(other, 10)
-        kill_entity(this)
-    end
+    kill_entity(other)
 end
 
 if other_tag == "wall_0" or other_tag=="wall_1" then

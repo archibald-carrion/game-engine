@@ -67,6 +67,11 @@ function on_collision(other)
         print("[LUA] Meteor kill player")
         go_to_scene("fail_scene")
     end
+
+    if other_tag == "bullet" then
+        kill_entity(other)
+    end
+    
 end
 
 
