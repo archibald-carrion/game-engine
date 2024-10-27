@@ -44,6 +44,7 @@ scene = {
         {name = "left", key = 97}, -- SDLK_a
         {name = "down", key = 115}, -- SDLK_s
         {name = "right", key = 100}, -- SDLK_d
+        {name = "shoot", key = 32}, -- SDLK_SPACE
     },
 
     -- actions and mouse button table
@@ -136,7 +137,7 @@ scene = {
                     src_rect = {x = 16, y = 0},
                 },
                 transform = {
-                    position = { x = 1500, y = 1500},
+                    position = { x = 100, y = 100},
                     scale = { x = 2.0, y =2.0},
                     rotation = 0.0
                 },
@@ -145,7 +146,7 @@ scene = {
                 }
             }
         },
-
+    
         -- orange portal
         {
             components = {
