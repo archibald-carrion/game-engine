@@ -66,10 +66,15 @@ Para instalar las bibliotecas necesarias en linux, ejecute el siguiente comando:
 sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev lua5.3 liblua5.3-dev
 ```
 
+## Puntos extras
+Para obtener puntos extras, implemente las siguientes características:
+- [x] Se implemento el audio manager para reproducir música de fondo y efectos de sonido, ademas se usaron audios hechos propios por [Namlin] (https://github.com/namlin)
+- [x] Todos los assets graficos, salvo las fuentes y el background fueron hechos por mi usando el programa [GIMP](https://www.gimp.org/)
+
 ## Ressources used for the game
 - [arcade classic font](https://www.1001fonts.com/arcadeclassic-font.html)
 - [background generator](https://deep-fold.itch.io/space-background-generator)
-- [Music made by game-developer Namlin] (https://github.com/namlin)
+- Music made by game developer [Namlin] (https://github.com/namlin)
 
 
 ## TODO
