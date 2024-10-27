@@ -184,7 +184,36 @@ scene = {
 
 
         -- WALLS
-
+            -- first box, top left
+            {
+                components = {
+                    box_collider = {
+                        width = 32,
+                        height = 500,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 32,
+                        height = 500,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 250, y = -200},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
 
 
 
@@ -197,6 +226,9 @@ scene = {
                             width = 3000,
                             height = 32,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -226,6 +258,9 @@ scene = {
                             height = 32,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -254,6 +289,9 @@ scene = {
                             height = 3000,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -281,6 +319,9 @@ scene = {
                             width = 32,
                             height = 3000,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
