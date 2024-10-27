@@ -71,39 +71,39 @@ scene = {
             }
         },
 
-        -- bullet
-        {
-            components = {
-                box_collider = {
-                    width = 8,
-                    height = 8,
-                    offset = {x = 0, y= 0},
-                },
-                rigid_body = {
-                    velocity = {x = 0, y = 0},
-                },
-                script = {
-                    path = "./assets/scripts/bullet.lua"
-                },
-                sprite = {
-                    asset_id = "bullet",
-                    width = 8,
-                    height = 8,
-                    src_rect = {x = 0, y = 0},
-                },
-                tag = {
-                    tag = "bullet",
-                },
-                transform = {
-                    position = { x = 100, y = 100},
-                    scale = { x = 1.0, y = 1.0},
-                    rotation = 0.0
-                },
-                player_score = {
-                    player_score = 0
-                }
-            }
-        },
+        -- -- bullet
+        -- {
+        --     components = {
+        --         box_collider = {
+        --             width = 8,
+        --             height = 8,
+        --             offset = {x = 0, y= 0},
+        --         },
+        --         rigid_body = {
+        --             velocity = {x = 0, y = 0},
+        --         },
+        --         script = {
+        --             path = "./assets/scripts/bullet.lua"
+        --         },
+        --         sprite = {
+        --             asset_id = "bullet",
+        --             width = 8,
+        --             height = 8,
+        --             src_rect = {x = 0, y = 0},
+        --         },
+        --         tag = {
+        --             tag = "bullet",
+        --         },
+        --         transform = {
+        --             position = { x = 100, y = 100},
+        --             scale = { x = 1.0, y = 1.0},
+        --             rotation = 0.0
+        --         },
+        --         player_score = {
+        --             player_score = 0
+        --         }
+        --     }
+        -- },
 
         -- player
         {
