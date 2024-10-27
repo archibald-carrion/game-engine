@@ -1,39 +1,48 @@
 # Creación de Videojuegos ─ Tarea 1: Introducción a SDL2 y los motores de videojuegos
 ## Entrega
-Fecha de entrega: 30 de agosto de 2024
-Formato: Entregue el proyecto comprimido en un archivo zip. NO incluya archivos y carpetas generadas automáticamente (por ejemplo, /Debug, etc.).
-Presentación: Debe presentar su programa en la siguiente clase después de la entrega.
+Fecha de entrega: 27 de octubre de 2024
 
-## Especificación del Programa
-Implemente un programa (pseudo motor de videojuegos) utilizando las bibliotecas SDL2 y GLM y el lenguaje de programación C++. El programa debe leer un archivo de configuración (config.txt) que posee las características de la ventana, la fuente y los elementos (entidades) que se dibujarán en la ventana. Los elementos deberan aparecer en el posición indicada en el archivo y moverse según su su velocidad. Cuando un elemento llega a algún borde de la ventana, este deberá "rebotar" y cambiar la dirección de la velocidad dependiendo del borde contra el que "impacte". Además, cada elemento cuenta con una etiqueta. La etiqueta debe de dibujarse de forma que el centro de la etiquea calce con el centro de la imagen del elemento.
 
-### La ventana
-El ancho, alto y color de fondo de la ventana se indican en el archivo de configuración
-### Fuente
-La fuente, tamaño y color del texto se indican en el archivo de configuración
-### Entidades
-Las entidades se implementa como class o struct y solo deben almacenan variables
-Las características (datos) de cada entidad se indican en el archivo de configuración (config.txt)
+## Descripción del juego
+Es un juego de ciencia ficción en el que el jugador controla una nave espacial que debe esquivar asteroides y naves enemigas, mientras dispara a enemigos.
+El juego cuenta con :
+- un menú principal
+- una pantalla de introducción para tener mas contexto sobre la historia
+- tres niveles
+- una pantalla de "muerte" donde llega el jugador si se muere que permite redirrecionar a los tres niveles
+- una pantalla de "congratulation" que permite redirrecionar al menu principal
+El juego cuenta con música de fondo y assets propios. 
 
-Una entidad está compuesta por dos texturas de SDL (imagen y texto), sus dimensiones, la posición, la velocidad, el ángulo, la etiqueta y demás elementos necesarios para poder dibujar y mover la entidad por la ventana
+## Controles
+- W: Mover la nave hacia arriba
+- S: Mover la nave hacia abajo
+- A: Mover la nave hacia la izquierda
+- D: Mover la nave hacia la derecha
+- Espacio: Disparar
+- P: Pausar el juego
 
-La textura de la imagen y el texto deben de dibujarse en conjunto. La textura de la etiqueta debe estar centrada a la textura de la imagen
+## Historia del juego
+El juego se desarrolla en un futuro muy lejano donde la humanidad ha colonizado otros sistemas solares y otras galaxias, tras milenios la humanidad se ha ido olvidando de su origen y de la tierra o "Terra" como se refiere en el juego.
+Al pasar tanto tiempo los humanos olvidaron de donde venian, muchos creen que siempre han vivido en el espacio, pero hay una leyenda que habla de un pequeño planeta perdido en la inmensidad del espacio, un planeta que fue el origen de la humanidad, un planeta que se llama "Terra".
+El/la jugador/a interpreta al Capitan Castellum, al encontrar un antiguo artefacto en una de las colonias, el capitan descubre que el artefacto es una especie de mapa que lo lleva a un portal que lo llevara a "Terra", el capitan decide seguir el mapa y descubrir la verdad sobre el origen de la humanidad.
+Tras recolectar los artefactos necesarios, el capitan llega a "Terra", el juego termina con una pantalla de "congratulation", dejando al jugador con la duda de que descubrio el capitan en "Terra".
 
-Clase Game
-Expanda el código de la clase Game que implementó en los tutoriales para que pueda almacenar y dibujar varias entidades
+## Objetivos del juego
+Para ir avanzando en el juego, el jugador debe:
+- recolectar power ups que le permiten moverse mas rapido, a nivel de narrativa, estos items representan antiguas tecnologias que permite a la nave pasar a traves de los portales para llegar al siguiente nivel
+- disparar a los enemigos para ganar tener el mayor score posible
+- esquivar los asteroides y naves enemigas para no morir
+- el jugador no puede pasar al siguiente nivel si no ha recolectado todos los artefactos necesarios
 
-El método encargado de dibujar la ventana debe "refrescarse" aproximadamente 60 frames por segundo
+## 4 enemigos
+En mi juego hay 4 enemigos:
+- asteroides, no se pueden destruir, pero si se pueden esquivar
+- enemigos arrañas, se pueden destruir con un disparo y dan 10 puntos, usualmente no se mueve muy rapido
+- enemigos circulares azules, se pueden destruir con un disparo y dan 15 puntos, usualmente se mueve mas rapido que los enemigos arrañas y "rodan"
+- enemigos circulares rojos, son muy grandes y no se pueden destruir
 
-Trate de modularizar lo mejor posible la clase Game
 
-Recuerde liberar la memoria solicitada por SDL
 
-Teclas y eventos
-Al presionar el botón de cerrar ventana (botón con signo de x) el programa debe terminar
-
-Al presionar la tecla ESC debe cerrar la ventana y terminar el programa
-
-Al presionar la tecla P el programa debe pausar el moviento de las entidades
 
 ## Guía de uso
 Para compilar el programa, ejecute el siguiente comando:
