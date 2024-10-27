@@ -161,7 +161,7 @@ scene = {
                     offset = {x = 0, y= 0},
                 },
                 rigid_body = {
-                    velocity = {x = 0, y = 50},
+                    velocity = {x = 100, y = 0},
                 },
                 script = {
                     path = "./assets/scripts/speed_boost.lua"
@@ -176,14 +176,86 @@ scene = {
                     tag = "speed_boost",
                 },
                 transform = {
-                    position = { x = 1300, y = 200},
+                    position = { x = 500, y = 600},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 }
             }
         },
 
-         -- speed boost 1
+         -- enemy_circle of speed boost 1
+         {
+            components = {
+                animation = {
+                    num_frames = 2,
+                    frame_speed_rate = 2,
+                    is_loop = true
+                },
+                script = {
+                    path = "./assets/scripts/enemy_circle_small.lua"
+                },
+                box_collider = {
+                    width = 64,
+                    height = 64,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 110, y = 0},
+                },
+                sprite = {
+                    asset_id = "enemy_circle",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 16, y = 0},
+                },
+                tag = {
+                    tag = "enemy",
+                },
+                transform = {
+                    position = { x = 500, y = 350},
+                    scale = { x = 2.0, y = 2.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        -- enemy_circle of speed boost 1
+        {
+            components = {
+                animation = {
+                    num_frames = 2,
+                    frame_speed_rate = 2,
+                    is_loop = true
+                },
+                script = {
+                    path = "./assets/scripts/enemy_circle_small.lua"
+                },
+                box_collider = {
+                    width = 64,
+                    height = 64,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = -110, y = 0},
+                },
+                sprite = {
+                    asset_id = "enemy_circle",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 16, y = 0},
+                },
+                tag = {
+                    tag = "enemy",
+                },
+                transform = {
+                    position = { x = 500, y = 500},
+                    scale = { x = 2.0, y = 2.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+         -- speed boost 2
          {
             components = {
                 animation = {
@@ -197,7 +269,7 @@ scene = {
                     offset = {x = 0, y= 0},
                 },
                 rigid_body = {
-                    velocity = {x = 0, y = 50},
+                    velocity = {x = 100, y = 0},
                 },
                 script = {
                     path = "./assets/scripts/speed_boost.lua"
@@ -212,8 +284,80 @@ scene = {
                     tag = "speed_boost",
                 },
                 transform = {
-                    position = { x = 1700, y = 200},
+                    position = { x = 2500, y = 600},
                     scale = { x = 1.0, y = 1.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        -- enemy_circle of speed boost 2
+        {
+            components = {
+                animation = {
+                    num_frames = 2,
+                    frame_speed_rate = 2,
+                    is_loop = true
+                },
+                script = {
+                    path = "./assets/scripts/enemy_circle_small.lua"
+                },
+                box_collider = {
+                    width = 64,
+                    height = 64,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 110, y = 0},
+                },
+                sprite = {
+                    asset_id = "enemy_circle",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 16, y = 0},
+                },
+                tag = {
+                    tag = "enemy",
+                },
+                transform = {
+                    position = { x = 2500, y = 350},
+                    scale = { x = 2.0, y = 2.0},
+                    rotation = 0.0
+                }
+            }
+        },
+
+        -- enemy_circle of speed boost 2
+        {
+            components = {
+                animation = {
+                    num_frames = 2,
+                    frame_speed_rate = 2,
+                    is_loop = true
+                },
+                script = {
+                    path = "./assets/scripts/enemy_circle_small.lua"
+                },
+                box_collider = {
+                    width = 64,
+                    height = 64,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = -110, y = 0},
+                },
+                sprite = {
+                    asset_id = "enemy_circle",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 16, y = 0},
+                },
+                tag = {
+                    tag = "enemy",
+                },
+                transform = {
+                    position = { x = 2500, y = 500},
+                    scale = { x = 2.0, y = 2.0},
                     rotation = 0.0
                 }
             }
