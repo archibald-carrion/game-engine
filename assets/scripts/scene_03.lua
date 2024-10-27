@@ -185,6 +185,7 @@ scene = {
 
         -- WALLS
             -- first box, top left
+            -- left side of firstbox
             {
                 components = {
                     box_collider = {
@@ -208,7 +209,349 @@ scene = {
                         tag = "wall_1",
                     },
                     transform = {
-                        position = { x = 250, y = -200},
+                        position = { x = 250, y = 200},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+            -- right side of first box
+            {
+                components = {
+                    box_collider = {
+                        width = 32,
+                        height = 500,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 32,
+                        height = 500,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 750, y = 200},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+            -- bottom side of first box
+            {
+                components = {
+                    box_collider = {
+                        width = 500,
+                        height = 32,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 500,
+                        height = 32,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 250, y = 668},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            --second box, top middle
+            -- left side of second box
+            {
+                components = {
+                    box_collider = {
+                        width = 32,
+                        height = 500,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 32,
+                        height = 500,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 1250, y = 200},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            -- right side of second box
+            {
+                components = {
+                    box_collider = {
+                        width = 32,
+                        height = 500,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 32,
+                        height = 500,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 1750, y = 200},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            -- bottom side of second box
+            {
+                components = {
+                    box_collider = {
+                        width = 500,
+                        height = 32,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 500,
+                        height = 32,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 1250, y = 668},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            --third box, top right
+            -- left side of third box
+            {
+                components = {
+                    box_collider = {
+                        width = 32,
+                        height = 500,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 32,
+                        height = 500,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 2250, y = 200},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            -- right side of third box
+            {
+                components = {
+                    box_collider = {
+                        width = 32,
+                        height = 500,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 32,
+                        height = 500,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 2750, y = 200},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            -- bottom side of third box
+            {
+                components = {
+                    box_collider = {
+                        width = 500,
+                        height = 32,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 500,
+                        height = 32,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 2250, y = 668},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            --fourth box, bottom left
+            -- left side of fourth box
+            {
+                components = {
+                    box_collider = {
+                        width = 32,
+                        height = 500,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 32,
+                        height = 500,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 250, y = 2000},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            -- right side of fourth box
+            {
+                components = {
+                    box_collider = {
+                        width = 32,
+                        height = 500,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 32,
+                        height = 500,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 750, y = 2000},
+                        scale = { x = 1.0, y = 1.0},
+                        rotation = 0.0
+                    }
+                }
+            },
+
+            -- top side of fourth box
+            {
+                components = {
+                    box_collider = {
+                        width = 500,
+                        height = 32,
+                        offset = {x = 0, y= 0},
+                    },
+                    script = {
+                        path = "./assets/scripts/wall.lua"
+                    },
+                    rigid_body = {
+                        velocity = {x = 0, y = 0},
+                    },
+                    sprite = {
+                        asset_id = "wall_1",
+                        width = 500,
+                        height = 32,
+                        src_rect = {x = 0, y = 0},
+                    },
+                    tag = {
+                        tag = "wall_1",
+                    },
+                    transform = {
+                        position = { x = 250, y = 2000},
                         scale = { x = 1.0, y = 1.0},
                         rotation = 0.0
                     }
