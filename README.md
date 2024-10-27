@@ -69,10 +69,8 @@ sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev
 ## Ressources used for the game
 - [arcade classic font](https://www.1001fonts.com/arcadeclassic-font.html)
 - [background generator](https://deep-fold.itch.io/space-background-generator)
+- [Music made by game-developer Namlin] (https://github.com/namlin)
 
 
 ## TODO
-- [ ] Implement new functions of the sound manager stop_sound, stop_music and stop_all_audio
-- [ ] Implement lua bindings for the new functions of the sound manager
-- [ ] Implement new scene introducing the characters after intro scene
-- [ ] Implement shooting mechanics so the player can shoot the enemies
+- [ ] Implement new scene introducing the characters after intro scene in some sort of "cinematic"
