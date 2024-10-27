@@ -1169,6 +1169,9 @@ scene = {
                                 height = 500,
                                 offset = {x = 0, y= 0},
                             },
+                            script = {
+                                path = "./assets/scripts/wall.lua"
+                            },
                             rigid_body = {
                                 velocity = {x = 0, y = 0},
                             },
@@ -1199,6 +1202,9 @@ scene = {
                                 height = 500,
                                 offset = {x = 0, y= 0},
                             },
+                            script = {
+                                path = "./assets/scripts/wall.lua"
+                            },
                             rigid_body = {
                                 velocity = {x = 0, y = 0},
                             },
@@ -1225,6 +1231,9 @@ scene = {
                                 width = 32,
                                 height = 500,
                                 offset = {x = 0, y= 0},
+                            },
+                            script = {
+                                path = "./assets/scripts/wall.lua"
                             },
                             rigid_body = {
                                 velocity = {x = 0, y = 0},
@@ -1255,6 +1264,9 @@ scene = {
                                 height = 500,
                                 offset = {x = 0, y= 0},
                             },
+                            script = {
+                                path = "./assets/scripts/wall.lua"
+                            },
                             rigid_body = {
                                 velocity = {x = 0, y = 0},
                             },
@@ -1282,6 +1294,9 @@ scene = {
                                 height = 500,
                                 offset = {x = 0, y= 0},
                             },
+                            script = {
+                                path = "./assets/scripts/wall.lua"
+                            },
                             rigid_body = {
                                 velocity = {x = 0, y = 0},
                             },
@@ -1308,6 +1323,9 @@ scene = {
                                 width = 32,
                                 height = 500,
                                 offset = {x = 0, y= 0},
+                            },
+                            script = {
+                                path = "./assets/scripts/wall.lua"
                             },
                             rigid_body = {
                                 velocity = {x = 0, y = 0},
@@ -1338,6 +1356,9 @@ scene = {
                                 height = 500,
                                 offset = {x = 0, y= 0},
                             },
+                            script = {
+                                path = "./assets/scripts/wall.lua"
+                            },
                             rigid_body = {
                                 velocity = {x = 0, y = 0},
                             },
@@ -1364,6 +1385,9 @@ scene = {
                                 width = 32,
                                 height = 500,
                                 offset = {x = 0, y= 0},
+                            },
+                            script = {
+                                path = "./assets/scripts/wall.lua"
                             },
                             rigid_body = {
                                 velocity = {x = 0, y = 0},
@@ -1394,6 +1418,9 @@ scene = {
                                 height = 500,
                                 offset = {x = 0, y= 0},
                             },
+                            script = {
+                                path = "./assets/scripts/wall.lua"
+                            },
                             rigid_body = {
                                 velocity = {x = 0, y = 0},
                             },
@@ -1420,6 +1447,9 @@ scene = {
                                 width = 32,
                                 height = 500,
                                 offset = {x = 0, y= 0},
+                            },
+                            script = {
+                                path = "./assets/scripts/wall.lua"
                             },
                             rigid_body = {
                                 velocity = {x = 0, y = 0},
@@ -1448,6 +1478,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -1479,6 +1512,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -1505,6 +1541,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -1535,6 +1574,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -1561,6 +1603,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -1590,6 +1635,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -1615,6 +1663,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -1642,6 +1693,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -1667,6 +1721,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -1696,6 +1753,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -1721,6 +1781,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -1748,6 +1811,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -1773,6 +1839,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -1802,6 +1871,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -1827,6 +1899,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -1854,6 +1929,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -1879,6 +1957,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -1908,6 +1989,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -1933,6 +2017,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -1960,6 +2047,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -1985,6 +2075,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2014,6 +2107,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2039,6 +2135,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2066,6 +2165,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2091,6 +2193,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2120,6 +2225,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2145,6 +2253,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2172,6 +2283,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2197,6 +2311,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2228,6 +2345,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2253,6 +2373,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2280,6 +2403,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2305,6 +2431,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2334,6 +2463,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2359,6 +2491,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2386,6 +2521,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2411,6 +2549,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2440,6 +2581,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2465,6 +2609,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2492,6 +2639,9 @@ scene = {
                             height = 500,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2517,6 +2667,9 @@ scene = {
                             width = 32,
                             height = 500,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2554,6 +2707,9 @@ scene = {
                             height = 32,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2581,6 +2737,9 @@ scene = {
                             width = 3000,
                             height = 32,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
@@ -2610,6 +2769,9 @@ scene = {
                             height = 3000,
                             offset = {x = 0, y= 0},
                         },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
+                        },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
                         },
@@ -2637,6 +2799,9 @@ scene = {
                             width = 32,
                             height = 3000,
                             offset = {x = 0, y= 0},
+                        },
+                        script = {
+                            path = "./assets/scripts/wall.lua"
                         },
                         rigid_body = {
                             velocity = {x = 0, y = 0},
