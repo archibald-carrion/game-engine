@@ -282,7 +282,7 @@ classDiagram
     Entity "1" -- "0..*" Component
     System "*" -- "*" Entity
 
-```mermaid
+```
 
 ## Ressources used for the game
 - [arcade classic font](https://www.1001fonts.com/arcadeclassic-font.html)
