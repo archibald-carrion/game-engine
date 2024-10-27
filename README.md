@@ -47,14 +47,13 @@ En mi juego hay 4 enemigos:
 ## Guía de uso
 Para compilar el programa, ejecute el siguiente comando:
 ```bash
-make; make run
+make clean; make; make run
 ```
 El proyecto fue desarrollado en Ubuntu 24.04 en WSL2, utilizando el compilador g++ 13.2.0
 
 El makefile para funcionar con mi arquitectura de carpeta fue modificado.
 
-### Archivo de configuración
-El archivo de configuración config.txt sigue el mismo formate que el archivo dado por el profesor.
+
 
 ## Proceso de desarrollo
 Para desarrollar el pseudo motor de videojuegos, se crearon se usaron los siguientes archivos:
@@ -65,7 +64,7 @@ Para desarrollar el pseudo motor de videojuegos, se crearon se usaron los siguie
 
 El desarrollo del motor se llevo a cabo siguiendo los videos disponibles en la plataforma, y agregando poco a poco las funcionalidades requeridas por la tarea, como la lectura de configuración, personalización de la clase Game para que tenga un vector de entity y los structs mencionados anteriormente, la funcionalidad de tener tantos entidades como se requiere en el archivo de config, y otras funcionalidades como pausar el juego usando la tecla "p" o que las imagenes reboten en los angulos de la ventana.
 
-Adjunto se agrego un screenshot del programa ejecutandose:
+Adjunto se agrego una serie de screenshots del juego ejecutandose:
 ![screenshot pseudo motor](documentation/screenshot_basic_game.PNG)
 
 

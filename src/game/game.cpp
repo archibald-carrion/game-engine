@@ -78,7 +78,7 @@ void Game::init() {
 
     // create the window
     this->window = SDL_CreateWindow(
-        "pseudo engine",
+        "De Astra, Ad Terra",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
         WINDOW_WIDTH,
