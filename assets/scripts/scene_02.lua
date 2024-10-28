@@ -360,7 +360,7 @@ scene = {
                             tag = "enemy",
                         },
                         transform = {
-                            position = { x = 1600, y = 100},
+                            position = { x = 1600, y = 300},
                             scale = { x = 3.0, y = 3.0},
                             rotation = 0.0
                         }
@@ -396,7 +396,7 @@ scene = {
                             tag = "enemy",
                         },
                         transform = {
-                            position = { x = 1350, y = 100},
+                            position = { x = 1350, y = 300},
                             scale = { x = 3.0, y = 3.0},
                             rotation = 0.0
                         }
@@ -432,7 +432,7 @@ scene = {
                             tag = "enemy",
                         },
                         transform = {
-                            position = { x = 1100, y = 100},
+                            position = { x = 1100, y = 300},
                             scale = { x = 3.0, y = 3.0},
                             rotation = 0.0
                         }
@@ -468,7 +468,7 @@ scene = {
                             tag = "enemy",
                         },
                         transform = {
-                            position = { x = 850, y = 100},
+                            position = { x = 850, y = 300},
                             scale = { x = 3.0, y = 3.0},
                             rotation = 0.0
                         }
@@ -504,7 +504,7 @@ scene = {
                             tag = "enemy",
                         },
                         transform = {
-                            position = { x = 600, y = 100},
+                            position = { x = 600, y = 300},
                             scale = { x = 3.0, y = 3.0},
                             rotation = 0.0
                         }
@@ -540,7 +540,7 @@ scene = {
                             tag = "enemy",
                         },
                         transform = {
-                            position = { x = 350, y = 100},
+                            position = { x = 350, y = 300},
                             scale = { x = 3.0, y = 3.0},
                             rotation = 0.0
                         }
@@ -576,7 +576,7 @@ scene = {
                             tag = "enemy",
                         },
                         transform = {
-                            position = { x = 1850, y = 100},
+                            position = { x = 1850, y = 300},
                             scale = { x = 3.0, y = 3.0},
                             rotation = 0.0
                         }
@@ -612,7 +612,7 @@ scene = {
                             tag = "enemy",
                         },
                         transform = {
-                            position = { x = 2100, y = 100},
+                            position = { x = 2100, y = 300},
                             scale = { x = 3.0, y = 3.0},
                             rotation = 0.0
                         }
@@ -648,7 +648,7 @@ scene = {
                             tag = "enemy",
                         },
                         transform = {
-                            position = { x = 2350, y = 100},
+                            position = { x = 2350, y = 300},
                             scale = { x = 3.0, y = 3.0},
                             rotation = 0.0
                         }
@@ -684,7 +684,7 @@ scene = {
                             tag = "enemy",
                         },
                         transform = {
-                            position = { x = 2600, y = 100},
+                            position = { x = 2600, y = 300},
                             scale = { x = 3.0, y = 3.0},
                             rotation = 0.0
                         }
