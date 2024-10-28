@@ -136,7 +136,7 @@ bool is_action_activated(const std::string& action) {
 void increase_score(int score) {
     Game::get_instance().player_score += score;
     // print the score to the console
-    std::cout << "Score: " <<  Game::get_instance().player_score << std::endl;
+    // std::cout << "Score: " <<  Game::get_instance().player_score << std::endl;
 }
 
 // Movement, rotation and position related functions
@@ -353,7 +353,7 @@ bool right_collision(Entity e, Entity other) {
 }
 
 void shoot_bullet(Entity player) {
-    std::cout << "[LUABINDING] creating new bullet" << std::endl;
+    //std::cout << "[LUABINDING] creating new bullet" << std::endl;
     // Get the registry instance to create new entity
     auto& registry = Game::get_instance().registry;
     

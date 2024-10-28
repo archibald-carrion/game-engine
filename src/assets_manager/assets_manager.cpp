@@ -3,11 +3,11 @@
 #include <SDL2/SDL_image.h>
 
 AssetsManager::AssetsManager() {
-    std::cout << "AssetsManager constructor" << std::endl;
+    // std::cout << "[ASSETSMANAGER] Constructor" << std::endl;
 }
 
 AssetsManager::~AssetsManager() {
-    std::cout << "AssetsManager destructor" << std::endl;
+    // std::cout << "[ASSETSMANAGER] Destructor" << std::endl;
 }
 
 void AssetsManager::clear_assets() {

@@ -3,13 +3,13 @@
 #include "../game/game.hpp"
 
 SceneManager::SceneManager() {
-    std::cout << "[SCENEMANAGER] Constructor" << std::endl;
+    // std::cout << "[SCENEMANAGER] Constructor" << std::endl;
     this->scene_loader = std::make_unique<SceneLoader>();
 }
 
 SceneManager::~SceneManager() {
     scene_loader.reset();
-    std::cout << "[SCENEMANAGER] Destructor" << std::endl;
+    // std::cout << "[SCENEMANAGER] Destructor" << std::endl;
 }
 
 void SceneManager::load_scene_from_script(const std::string& scene_path, sol::state& lua) {
@@ -38,7 +38,7 @@ void SceneManager::load_scene() {
     Game& game = Game::get_instance();
     std::string scene_path = scenes[next_scene];
 
-    std::cout << "[SCENEMANAGER] loading new scene" << std::endl;
+    // std::cout << "[SCENEMANAGER] loading new scene" << std::endl;
 
     scene_loader->load_scene(scene_path, game.lua, game.assets_manager, game.controller_manager, game.audio_manager, game.registry, game.renderer);
 }

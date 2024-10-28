@@ -19,7 +19,7 @@ public:
      * @brief Constructor for RenderSystem
      */
     RenderSystem() {
-        std::cout<<"RenderSystem constructor"<<std::endl;
+        // std::cout<<"[RENDERSYSTEM] constructor"<<std::endl;
         RequireComponent<SpriteComponent>();
         RequireComponent<TransformComponent>();
     }

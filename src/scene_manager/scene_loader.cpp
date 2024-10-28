@@ -18,11 +18,11 @@
 #include "../components/player_score_component.hpp"
 
 SceneLoader::SceneLoader() {
-    std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
+    //std::cout << "[SCENELOADER] scene loader constructor" << std::endl;
 }
 
 SceneLoader::~SceneLoader() {
-    std::cout << "[SCENELOADER] scene loader destructor" << std::endl;
+    //std::cout << "[SCENELOADER] scene loader destructor" << std::endl;
 }
 
 void SceneLoader::load_scene(const std::string& scene_path,

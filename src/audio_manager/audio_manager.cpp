@@ -2,11 +2,11 @@
 #include <iostream>
 
 AudioManager::AudioManager() {
-    std::cout << "AudioManager constructor" << std::endl;
+    // std::cout << "[AUDIOMANAGER] Constructor" << std::endl;
 }
 
 AudioManager::~AudioManager() {
-    std::cout << "AudioManager destructor" << std::endl;
+    // std::cout << "[AUDIOMANAGER] Destructor" << std::endl;
     clear_audio();
 }
 
@@ -90,7 +90,7 @@ void AudioManager::stop_sound_effect(const std::string& sound_id) {
 }
 
 void AudioManager::stop_all_sounds() {
-    std::cout << "[AUDIOMANAGER] Stopping all sounds" << std::endl;
+    // std::cout << "[AUDIOMANAGER] Stopping all sounds" << std::endl;
 
     // stop all sound effects
     Mix_HaltChannel(-1);

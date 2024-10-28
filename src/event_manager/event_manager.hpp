@@ -84,14 +84,14 @@ public:
      * @brief Construct a new EventManager object
      */
     EventManager() {
-        std::cout << "[EVENTMANAGER] EventManager constructor" << std::endl;
+        //std::cout << "[EVENTMANAGER] EventManager constructor" << std::endl;
     }
 
     /**
      * @brief Destroy the EventManager object
      */
     ~EventManager() {
-        std::cout << "[EVENTMANAGER] EventManager destructor" << std::endl;
+        //std::cout << "[EVENTMANAGER] EventManager destructor" << std::endl;
     }
 
     /**

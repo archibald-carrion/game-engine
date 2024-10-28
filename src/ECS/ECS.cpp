@@ -1,11 +1,11 @@
 #include "ECS.hpp"
 
 Registry::Registry() {
-    std::cout<<"Registry constructor" << std::endl;
+    //std::cout<<"[REGISTRY] Constructor" << std::endl;
 }
     
 Registry::~Registry() {
-    std::cout<<"Registry destructor" << std::endl;
+    //std::cout<<"[REGISTRY] Destructor" << std::endl;
 }
 
 Entity Registry::create_entity(){

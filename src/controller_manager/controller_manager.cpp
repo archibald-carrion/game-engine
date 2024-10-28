@@ -2,11 +2,11 @@
 #include <iostream>
 
 ControllerManager::ControllerManager() {
-    std::cout << "[CONTROLLERMANAGER] ControllerManager constructor" << std::endl;
+    //std::cout << "[CONTROLLERMANAGER] ControllerManager constructor" << std::endl;
 }
 
 ControllerManager::~ControllerManager() {
-    std::cout << "[CONTROLLERMANAGER] ControllerManager destructor" << std::endl;
+    //std::cout << "[CONTROLLERMANAGER] ControllerManager destructor" << std::endl;
 }
 
 void ControllerManager::add_key(const std::string& key_name, int key_code) {
@@ -80,7 +80,7 @@ void ControllerManager::clear() {
 
 void ControllerManager::add_mouse_button(const std::string button_name, int mouse_button_code) {
     // print the button name and the mouse button code
-    std::cout << "[CONTROLLERMANAGER] Button name: " << button_name << " Mouse button code: " << mouse_button_code << std::endl;
+    //std::cout << "[CONTROLLERMANAGER] Button name: " << button_name << " Mouse button code: " << mouse_button_code << std::endl;
     this->mouse_buttons_name.emplace(button_name, mouse_button_code);
     this->mouse_button_state.emplace(mouse_button_code, false);
 }

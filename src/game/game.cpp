@@ -15,7 +15,7 @@
 #include "../events/click_event.hpp"
 
 Game::Game() {
-    std::cout << "[GAME] Constructor" << std::endl;
+    //std::cout << "[GAME] Constructor" << std::endl;
     registry = std::make_unique<Registry>();
     assets_manager = std::make_unique<AssetsManager>();
     events_manager = std::make_unique<EventManager>();
@@ -25,7 +25,7 @@ Game::Game() {
 }
 
 Game::~Game() {
-    std::cout << "[GAME] Destructor" << std::endl;
+    //std::cout << "[GAME] Destructor" << std::endl;
 
     audio_manager.reset();
     scene_manager.reset();
@@ -59,7 +59,7 @@ Game& Game::get_instance() {
 }
 
 void Game::init() {
-    std::cout << "[GAME] Init" << std::endl;
+    //std::cout << "[GAME] Init" << std::endl;
 
     // initialize SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -190,7 +190,7 @@ void Game::processInput() {
             case SDL_MOUSEBUTTONDOWN:
                 controller_manager->set_mouse_position(event.button.x, event.button.y);
                 controller_manager->set_mouse_button_to_pressed(static_cast<int>(event.button.button));
-                std::cout << (int)event.button.button << std::endl;
+                //std::cout << (int)event.button.button << std::endl;
                 events_manager->emit_event<ClickEvent>(static_cast<int>(event.button.button), event.button.x, event.button.y);
                 break;
 
