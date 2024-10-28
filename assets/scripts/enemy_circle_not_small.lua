@@ -26,7 +26,7 @@ if other_tag == "wall_0" or other_tag=="wall_1" then
 
     if right_collision(this, other) then
 
-        print("[LUA] Right collision")
+        --print("[LUA] Right collision")
         set_position(this, this_x-10, this_y)
         -- react to collision/resolve collision
         set_velocity(this, this_velocity_x * -1, this_velocity_y)
@@ -54,7 +54,7 @@ end
 
 -- player die when touching enemy
 if other_tag == "player" then
-    print("[LUA] circle killed player")
+    --print("[LUA] circle killed player")
     go_to_scene("fail_scene")
 end
 end

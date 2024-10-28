@@ -21,7 +21,7 @@ function on_collision(other)
     
         if right_collision(this, other) then
     
-            print("[LUA] Right collision")
+            --print("[LUA] Right collision")
             set_position(this, this_x-10, this_y)
             -- react to collision/resolve collision
             set_velocity(this, this_velocity_x * -1, this_velocity_y)
@@ -49,7 +49,7 @@ function on_collision(other)
     
     -- player die when touching enemy
     if other_tag == "player" then
-        print("[LUA] Meteor kill player")
+        --print("[LUA] Meteor kill player")
         go_to_scene("fail_scene")
     end
 

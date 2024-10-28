@@ -3,9 +3,9 @@ is_shooting = false
 
 function on_init()
     -- stop all sound from previous scene
-    print("[LUA] Stopping all sounds")
+    --print("[LUA] Stopping all sounds")
     stop_all_sounds()
-    print("[LUA] playing game music")
+    --print("[LUA] playing game music")
     play_music("first_level_music")
 end
 

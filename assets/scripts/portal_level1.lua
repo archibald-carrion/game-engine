@@ -17,7 +17,7 @@ function on_collision(other)
 
         -- if player has key, teleport to next level
         velocity = get_player_velocity(other)
-        print("[LUA] Player velocity: " .. velocity)
+        -- print("[LUA] Player velocity: " .. velocity)
 
         if velocity >= 300 then
             go_to_scene("level_02")

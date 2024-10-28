@@ -135,7 +135,7 @@ void Game::run_scene() {
 }
 
 void Game::destroy() {
-    std::cout << "[GAME] Destroy" << std::endl;
+    // std::cout << "[GAME] Destroy" << std::endl;
 
     audio_manager->clear_audio();
     assets_manager->clear_assets();    
