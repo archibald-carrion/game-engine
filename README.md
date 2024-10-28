@@ -1,4 +1,4 @@
-# Creación de Videojuegos ─ Tarea 1: Introducción a SDL2 y los motores de videojuegos
+# Creación de Videojuegos - De Astra Ad Terra
 ## Entrega
 Fecha de entrega: 27 de octubre de 2024
 
