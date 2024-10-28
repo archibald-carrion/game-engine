@@ -56,16 +56,18 @@ El makefile para funcionar con mi arquitectura de carpeta fue modificado.
 
 
 ## Proceso de desarrollo
-Para desarrollar el pseudo motor de videojuegos, se crearon se usaron los siguientes archivos:
-- main.cpp, crea un juego y lo ejecuta
-- game.hpp y game.cpp, implementan la clase Game donde tenemos las funciones de inicialización, leer eventos, actualización y renderizado, esa clase ademas de eso tiene una multitud de atributos para almacenar las entidades y las configuraciones de la ventana y fuente.
-- entity.hpp y entity.cpp, implementan la clase Entity que representa una entidad con un id unico, similar a la clase "persona" visto en los videos de clase, esos archivos no se usaron en el programa final, pero probablemente se usen en futuras implementaciones.
-- configuration.hpp y configuration.cpp, implementan los structs que contienen los datos de configuración de la ventana, fuente y entidades, además de un struct color que se usa para almacenar colores en formato RGB, el cual en futuras implementaciones se podra cambiar por SDL_Color. Ademas de esos structs se implementa la función de lectura de configuración que lee el archivo config.txt usado para configurar el juego.
+Para desarrollar el juego se uso el motor hecho en clase, el desarrollo se llevo a cabo siguiendo los videos disponibles en la plataforma, y agregando poco a poco las funcionalidades requeridas por la tarea.
 
-El desarrollo del motor se llevo a cabo siguiendo los videos disponibles en la plataforma, y agregando poco a poco las funcionalidades requeridas por la tarea, como la lectura de configuración, personalización de la clase Game para que tenga un vector de entity y los structs mencionados anteriormente, la funcionalidad de tener tantos entidades como se requiere en el archivo de config, y otras funcionalidades como pausar el juego usando la tecla "p" o que las imagenes reboten en los angulos de la ventana.
+Los principales cambios realizados en el motor fueron los siguientes:
+- Se agrego un audio manager para reproducir música de fondo y efectos de sonido
+- Se agregaron nuevos lua bindings para poder cargar y reproducir música y efectos de sonido
+- Se arreglaron varios bugs en el motor, como el bug que no borraba los entities y components al cambiar de escena, lo cual llevaba a tener nuevos entities con componentes de la escena anterior
+- Se agrego el score sytem que permite llevar la cuenta del score del jugador y mostrarlo en pantalla
+- Se agrego el sistema de disparo, que permite al jugador disparar a los enemigos de manera "infinita" ya que el unico limite es la frecuencia con el cual el/la jugador/a puede darle click a la tecla de espacio
+- Una considerable modificación fue la creación de varios archivos para el ECS, ya que el archivo ECS.h estaba muy grande y dificultaba la lectura del código. Para esto se crearon los archivos component.hpp, entity.hpp, entity.cpp, system.hpp y system.cpp, el archivo ECS.hpp se modifico para incluir los nuevos archivos, esa modificación no genera cambios en el funcionamiento del motor ni tampoco tiene impacto en runtime performance.
 
 Adjunto se agrego una serie de screenshots del juego ejecutandose:
-![screenshot pseudo motor](documentation/screenshot_basic_game.PNG)
+![screenshot del menu del juego](documentation/screenshot_basic_game.PNG)
 
 
 ## Instalación de las bibliotecas necesarias
