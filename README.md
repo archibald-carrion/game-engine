@@ -67,7 +67,12 @@ Los principales cambios realizados en el motor fueron los siguientes:
 - Una considerable modificación fue la creación de varios archivos para el ECS, ya que el archivo ECS.h estaba muy grande y dificultaba la lectura del código. Para esto se crearon los archivos component.hpp, entity.hpp, entity.cpp, system.hpp y system.cpp, el archivo ECS.hpp se modifico para incluir los nuevos archivos, esa modificación no genera cambios en el funcionamiento del motor ni tampoco tiene impacto en runtime performance.
 
 Adjunto se agrego una serie de screenshots del juego ejecutandose:
-![screenshot del menu del juego](documentation/screenshot_basic_game.PNG)
+![screenshot del menu del juego](documentation/main_menu.PNG)
+![screenshot del primer nivel](documentation/level_01.PNG)
+![screenshot del segundo nivel](documentation/level_02.PNG)
+![screenshot del tercer nivel](documentation/level_03.PNG)
+![screenshot de la pantalla de "muerte"](documentation/fail_screen.PNG)
+![screenshot de la pantalla de "congratulation"](documentation/win_screen.PNG)
 
 
 ## Instalación de las bibliotecas necesarias
