@@ -5,6 +5,7 @@
 #include <string> // used for file paths
 #include <SDL2/SDL.h> // SDL library for window creation and rendering
 #include <sol/sol.hpp> // Lua scripting
+#include<tinyxml2/tinyxml2.h> 
 
 #include "../audio_manager/audio_manager.hpp" // Audio manager for handling audio
 #include "../assets_manager/assets_manager.hpp" // Assets manager for loading textures and fonts 
@@ -65,6 +66,10 @@ private:
      */
     void load_entities(sol::state& lua, const sol::table& entities, std::unique_ptr<Registry>& registry);
 
+
+    void load_map(const sol::table map, std::unique_ptr<Registry>& registry);
+
+    void load_layer(std::unique_ptr<Registry>& registry, tinyxml2::XMLElement* layer, int tile_width, int tile_height, int map_width );
 public:
     /**
      * @brief Default constructor for the SceneLoader class.

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <glm/glm.hpp>
+#include "../game/game.hpp"
 
 #include "../components/transform_component.hpp"
 #include "../components/RigidBodyComponent.hpp"
@@ -382,4 +383,54 @@ void SceneLoader::load_buttons(const sol::table& buttons, std::unique_ptr<Contro
 
         index++;
     }
+}
+
+void SceneLoader::load_map(const sol::table map, std::unique_ptr<Registry>& registry) {
+    sol::optional<int> has_width = map["width"]; // size of the map
+    if(has_width != sol::nullopt) {
+        Game::get_instance().map_width = map["width"];
+    }
+
+    sol::optional<int> has_height = map["height"]; // size of the map
+    if(has_height != sol::nullopt) {
+        Game::get_instance().map_height = map["height"];
+    }
+
+    sol::optional<std::string> has_path_to_tmx = map["path_to_tmx"]; // path to the tmx file
+    if(has_path_to_tmx != sol::nullopt) {
+        std::string path_to_tmx = map["path_to_tmx"];
+        // load the tmx file
+        tinyxml2::XMLDocument doc;
+        doc.LoadFile(path_to_tmx.c_str());
+
+        tinyxml2::XMLElement* xml_root = doc.RootElement();
+
+        int tile_width, tile_height, map_width, map_height;
+        // get width and height of the map and the tile
+        xml_root->QueryIntAttribute("width", &map_width);
+        xml_root->QueryIntAttribute("height", &map_height);
+        xml_root->QueryIntAttribute("tilewidth", &tile_width);
+        xml_root->QueryIntAttribute("tileheight", &tile_height);
+
+        // calculate map width and height
+        Game::get_instance().map_width = map_width * tile_width;
+        Game::get_instance().map_height = map_height * tile_height;
+
+        // get layer
+        tinyxml2::XMLElement* layer = xml_root->FirstChildElement("layer");
+
+        // load all the layers
+        while(layer != nullptr) {
+            load_layer(registry, layer, tile_width, tile_height, map_width);
+            layer = layer->NextSiblingElement("layer");
+        }
+    }
+
+
+
+    
+}
+
+void SceneLoader::load_layer(std::unique_ptr<Registry>& registry, tinyxml2::XMLElement* layer, int tile_width, int tile_height, int map_width ){
+
 }
