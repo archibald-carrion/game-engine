@@ -3,6 +3,7 @@
 #include <iostream>
 #include <glm/glm.hpp>
 #include "../game/game.hpp"
+#include <sstream>
 
 #include "../components/transform_component.hpp"
 #include "../components/RigidBodyComponent.hpp"
@@ -396,8 +397,12 @@ void SceneLoader::load_map(const sol::table map, std::unique_ptr<Registry>& regi
         Game::get_instance().map_height = map["height"];
     }
 
+
+
     sol::optional<std::string> has_path_to_tmx = map["path_to_tmx"]; // path to the tmx file
     if(has_path_to_tmx != sol::nullopt) {
+        std::string tileset_name = map["tileset_name"];
+
         std::string path_to_tmx = map["path_to_tmx"];
         // load the tmx file
         tinyxml2::XMLDocument doc;
@@ -416,12 +421,21 @@ void SceneLoader::load_map(const sol::table map, std::unique_ptr<Registry>& regi
         Game::get_instance().map_width = map_width * tile_width;
         Game::get_instance().map_height = map_height * tile_height;
 
+        // read the tileset tsx file
+        std::string tileset_path = map["tileset_path"];
+        tinyxml2::XMLDocument tileset_doc;
+        tileset_doc.LoadFile(tileset_path.c_str());
+        tinyxml2::XMLElement* tileset_root = tileset_doc.RootElement();
+        // get columns
+        int quantity_columns;
+        tileset_root->QueryIntAttribute("columns", &quantity_columns);
+
         // get layer
         tinyxml2::XMLElement* layer = xml_root->FirstChildElement("layer");
 
         // load all the layers
         while(layer != nullptr) {
-            load_layer(registry, layer, tile_width, tile_height, map_width);
+            load_layer(registry, layer, tile_width, tile_height, map_width, quantity_columns, tileset_name);
             layer = layer->NextSiblingElement("layer");
         }
     }
@@ -431,6 +445,50 @@ void SceneLoader::load_map(const sol::table map, std::unique_ptr<Registry>& regi
     
 }
 
-void SceneLoader::load_layer(std::unique_ptr<Registry>& registry, tinyxml2::XMLElement* layer, int tile_width, int tile_height, int map_width ){
+void SceneLoader::load_layer(std::unique_ptr<Registry>& registry, tinyxml2::XMLElement* layer, int tile_width, int tile_height, int map_width, int quanity_columns, const std::string tileset){
+    tinyxml2::XMLElement* data = layer->FirstChildElement("data");
+
+    const char* data_text = data->GetText();
+
+    std::stringstream buffer_number;
+
+    int position = 0;
+    int tile_number = 0;
+
+    while(true){
+        if(data_text[position] == '\0') {
+            break;
+        }
+        if(isdigit(data_text[position])) {
+            buffer_number << data_text[position];
+        } else {
+
+            if(!buffer_number.str().empty()) {
+                int tile_id = std::stoi(buffer_number.str());
+                if(tile_id != 0) {
+                    Entity new_entity = registry->create_entity();
+
+                    new_entity.add_component<TransformComponent>(
+                        (tile_number % quanity_columns) * tile_width,
+                        (tile_number / quanity_columns) * tile_height
+                    );
+
+                    new_entity.add_component<SpriteComponent>(
+                        "terrain", // TODO: need to fix this to be dynamic
+                        tile_width,
+                        tile_height,
+                        ((tile_id % quanity_columns) * tile_width),
+                        ((tile_id / quanity_columns) * tile_height)
+                    );
+                }
+
+                tile_number++;
+                buffer_number.str("");
+
+            }
+            
+            position++;
+        }
+    }
 
 }

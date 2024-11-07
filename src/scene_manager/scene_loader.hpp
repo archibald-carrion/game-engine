@@ -69,7 +69,7 @@ private:
 
     void load_map(const sol::table map, std::unique_ptr<Registry>& registry);
 
-    void load_layer(std::unique_ptr<Registry>& registry, tinyxml2::XMLElement* layer, int tile_width, int tile_height, int map_width );
+    void load_layer(std::unique_ptr<Registry>& registry, tinyxml2::XMLElement* layer, int tile_width, int tile_height, int map_width, int quanity_columns, const std::string tileset );
 public:
     /**
      * @brief Default constructor for the SceneLoader class.
