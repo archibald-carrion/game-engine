@@ -469,8 +469,10 @@ void SceneLoader::load_layer(std::unique_ptr<Registry>& registry, tinyxml2::XMLE
                     Entity new_entity = registry->create_entity();
 
                     new_entity.add_component<TransformComponent>(
-                        (tile_number % quanity_columns) * tile_width,
-                        (tile_number / quanity_columns) * tile_height
+                        glm::vec2(
+                            (tile_number % map_width) * tile_width,
+                            (tile_number / map_width) * tile_height
+                        )
                     );
 
                     new_entity.add_component<SpriteComponent>(

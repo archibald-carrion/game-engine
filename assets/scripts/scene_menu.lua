@@ -40,6 +40,13 @@ scene = {
         {name = "mouse_left_button", button_code = 1}, -- SDL_BUTTON_LEFT
     },
 
+    -- map table
+    maps = {
+        -- tileset_path = "../maps/terrain.tsx",
+        -- tileset_name = "tileset_0",
+        -- path_to_tmx = "../maps/level_01.tmx",
+    },
+
     -- entities table
     entities = {
         [0] =
