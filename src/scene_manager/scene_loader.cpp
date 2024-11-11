@@ -65,6 +65,9 @@ void SceneLoader::load_scene(const std::string& scene_path,
     // load the keys
     sol::table keys = scene["keys"];
     load_keys_actions(keys, controller_manager);
+    // load the map
+    sol::table map = scene["maps"];
+    load_map(map, registry);
     // load the entities
     sol::table entities = scene["entities"];
     load_entities(lua, entities, registry);
@@ -439,10 +442,7 @@ void SceneLoader::load_map(const sol::table map, std::unique_ptr<Registry>& regi
             layer = layer->NextSiblingElement("layer");
         }
     }
-
-
-
-    
+   
 }
 
 void SceneLoader::load_layer(std::unique_ptr<Registry>& registry, tinyxml2::XMLElement* layer, int tile_width, int tile_height, int map_width, int quanity_columns, const std::string tileset){

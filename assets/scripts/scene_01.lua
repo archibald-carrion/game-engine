@@ -3,6 +3,8 @@ scene = {
     sprites = {
         [0] = 
         {asset_id = "background", file_path = "./assets/images/background_0.png"},
+        {asset_id = "terrain", file_path = "./assets/images/terrain.png"},
+
     },
 
     -- sounds table
@@ -42,9 +44,12 @@ scene = {
 
     -- map table
     maps = {
-        -- tileset_path = "../maps/terrain.tsx",
-        -- tileset_name = "tileset_0",
-        -- path_to_tmx = "../maps/level_01.tmx",
+        width = 3000,
+        height = 3000,
+        path_to_tmx = "./assets/maps/level_01.tmx",
+        tileset_path = "./assets/maps/terrain.tsx",
+        tileset_name = "terrain",
+
     },
 
     -- entities table

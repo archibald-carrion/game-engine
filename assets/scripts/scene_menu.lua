@@ -107,7 +107,7 @@ scene = {
                 clickable = {
                 },
                 text = {
-                    text = "Level  02: Monters, I guess",
+                    text = "Level  02: Monsters, I guess",
                     font_id = "arcade_classic_font",
                     r = 200, g = 200, b = 200, a = 255  -- Light gray color
                 },
