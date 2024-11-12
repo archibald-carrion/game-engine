@@ -66,11 +66,16 @@ void SceneLoader::load_scene(const std::string& scene_path,
     sol::table keys = scene["keys"];
     load_keys_actions(keys, controller_manager);
     // load the map
+    std::cout <<"before loading map" << std::endl;
     sol::table map = scene["maps"];
-    load_map(map, registry);
+    LoadMap(map, registry);
+    std::cout <<"after loading map" << std::endl;
+
     // load the entities
+    std::cout <<"before loading entities" << std::endl;
     sol::table entities = scene["entities"];
     load_entities(lua, entities, registry);
+    std::cout <<"after loading entities" << std::endl;
 }
 
 void SceneLoader::load_sprites(SDL_Renderer* renderer, const sol::table& sprites, std::unique_ptr<AssetsManager>& asset_manager) {
@@ -153,6 +158,7 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
     int index = 0;
 
     while(true) {
+        std::cout << "loading entity" << std::endl;
         sol::optional<sol::table> has_entity = entities[index];
 
         if(has_entity == sol::nullopt) {
@@ -389,108 +395,134 @@ void SceneLoader::load_buttons(const sol::table& buttons, std::unique_ptr<Contro
     }
 }
 
-void SceneLoader::load_map(const sol::table map, std::unique_ptr<Registry>& registry) {
-    sol::optional<int> has_width = map["width"]; // size of the map
-    if(has_width != sol::nullopt) {
-        Game::get_instance().map_width = map["width"];
+void SceneLoader::LoadLayer(std::unique_ptr<Registry> &registry, tinyxml2::XMLElement *layerElement,
+                            int tWidth, int tHeight, int mWidth, const std::string &tileSet, int columns)
+{
+  tinyxml2::XMLElement *xmlData = layerElement->FirstChildElement("data");
+  const char *data = xmlData->GetText();
+
+  std::stringstream tmpNumber;
+  int pos = 0;
+  int tileNumber = 0;
+
+  while (true)
+  {
+    if (data[pos] == '\0')
+    {
+      break;
     }
-
-    sol::optional<int> has_height = map["height"]; // size of the map
-    if(has_height != sol::nullopt) {
-        Game::get_instance().map_height = map["height"];
+    if (isdigit(data[pos]))
+    {
+      tmpNumber << data[pos];
     }
+    else if (!isdigit(data[pos]) && tmpNumber.str().length() != 0)
+    {
+      int tileId = std::stoi(tmpNumber.str());
+      if (tileId > 0)
+      {
+        Entity tile = registry->create_entity();
+        tile.add_component<TransformComponent>(
+            glm::vec2((tileNumber % mWidth) * tWidth,
+                      (tileNumber / mWidth) * tHeight) //
+        );
+        tile.add_component<SpriteComponent>(
+            tileSet,
+            tWidth,
+            tHeight,
+            ((tileId - 1) % columns) * tWidth,
+            ((tileId - 1) / columns) * tHeight //
+        );
+      }
 
-
-
-    sol::optional<std::string> has_path_to_tmx = map["path_to_tmx"]; // path to the tmx file
-    if(has_path_to_tmx != sol::nullopt) {
-        std::string tileset_name = map["tileset_name"];
-
-        std::string path_to_tmx = map["path_to_tmx"];
-        // load the tmx file
-        tinyxml2::XMLDocument doc;
-        doc.LoadFile(path_to_tmx.c_str());
-
-        tinyxml2::XMLElement* xml_root = doc.RootElement();
-
-        int tile_width, tile_height, map_width, map_height;
-        // get width and height of the map and the tile
-        xml_root->QueryIntAttribute("width", &map_width);
-        xml_root->QueryIntAttribute("height", &map_height);
-        xml_root->QueryIntAttribute("tilewidth", &tile_width);
-        xml_root->QueryIntAttribute("tileheight", &tile_height);
-
-        // calculate map width and height
-        Game::get_instance().map_width = map_width * tile_width;
-        Game::get_instance().map_height = map_height * tile_height;
-
-        // read the tileset tsx file
-        std::string tileset_path = map["tileset_path"];
-        tinyxml2::XMLDocument tileset_doc;
-        tileset_doc.LoadFile(tileset_path.c_str());
-        tinyxml2::XMLElement* tileset_root = tileset_doc.RootElement();
-        // get columns
-        int quantity_columns;
-        tileset_root->QueryIntAttribute("columns", &quantity_columns);
-
-        // get layer
-        tinyxml2::XMLElement* layer = xml_root->FirstChildElement("layer");
-
-        // load all the layers
-        while(layer != nullptr) {
-            load_layer(registry, layer, tile_width, tile_height, map_width, quantity_columns, tileset_name);
-            layer = layer->NextSiblingElement("layer");
-        }
+      tileNumber++;
+      tmpNumber.str("");
     }
-   
+    pos++;
+  }
 }
 
-void SceneLoader::load_layer(std::unique_ptr<Registry>& registry, tinyxml2::XMLElement* layer, int tile_width, int tile_height, int map_width, int quanity_columns, const std::string tileset){
-    tinyxml2::XMLElement* data = layer->FirstChildElement("data");
 
-    const char* data_text = data->GetText();
+void SceneLoader::LoadMap(const sol::table map, std::unique_ptr<Registry> &registry)
+{
+  sol::optional<int> hasWidth = map["width"];
+  if (hasWidth != sol::nullopt)
+  {
+    Game::get_instance().map_width = map["width"];
+  }
 
-    std::stringstream buffer_number;
+  sol::optional<int> hasHeight = map["height"];
+  if (hasHeight != sol::nullopt)
+  {
+    Game::get_instance().map_height = map["height"];
+  }
 
-    int position = 0;
-    int tile_number = 0;
+  sol::optional<std::string> hasPath = map["map_path"];
+  if (hasPath != sol::nullopt)
+  {
+    std::string path = map["map_path"];
 
-    while(true){
-        if(data_text[position] == '\0') {
-            break;
-        }
-        if(isdigit(data_text[position])) {
-            buffer_number << data_text[position];
-        } else {
+    // Se carga el documento xml que contiene la información del mapa
+    tinyxml2::XMLDocument xmlmap;
 
-            if(!buffer_number.str().empty()) {
-                int tile_id = std::stoi(buffer_number.str());
-                if(tile_id != 0) {
-                    Entity new_entity = registry->create_entity();
-
-                    new_entity.add_component<TransformComponent>(
-                        glm::vec2(
-                            (tile_number % map_width) * tile_width,
-                            (tile_number / map_width) * tile_height
-                        )
-                    );
-
-                    new_entity.add_component<SpriteComponent>(
-                        "terrain", // TODO: need to fix this to be dynamic
-                        tile_width,
-                        tile_height,
-                        ((tile_id % quanity_columns) * tile_width),
-                        ((tile_id / quanity_columns) * tile_height)
-                    );
-                }
-
-                tile_number++;
-                buffer_number.str("");
-
-            }
-            
-            position++;
-        }
+    if (xmlmap.LoadFile(path.c_str()) != tinyxml2::XML_SUCCESS)
+    {
+      std::cerr << "[SceneLoader] Error loading map XML file" << std::endl;
+      return;
     }
 
+    // Extraer la raiz del documento xml
+    tinyxml2::XMLElement *root = xmlmap.RootElement();
+
+    // Extraer las dimensiones del mapa
+    int tWidth, tHeight, mWidth, mHeight;
+    root->QueryIntAttribute("tilewidth", &tWidth);
+    root->QueryIntAttribute("tileheight", &tHeight);
+    root->QueryIntAttribute("width", &mWidth);
+    root->QueryIntAttribute("height", &mHeight);
+
+    // Calcular dimensiones del mapa
+    Game::get_instance().map_width = tWidth * mWidth;
+    Game::get_instance().map_height = tHeight * mHeight;
+
+    // Se carga el documento con la información de los tiles
+    std::string tilePath = map["tile_path"];
+    std::string tileName = map["tile_name"];
+
+    tinyxml2::XMLDocument xmltileset;
+    xmltileset.LoadFile(tilePath.c_str());
+
+    tinyxml2::XMLElement *xmlTilesetRoot = xmltileset.RootElement();
+
+    // Extraer cantidad de columnas
+    int columns;
+    xmlTilesetRoot->QueryIntAttribute("columns", &columns);
+
+    // Se obtiene la lista de layers
+    tinyxml2::XMLElement *layerElement = root->FirstChildElement("layer");
+
+    while (layerElement)
+    {
+        std::cout << "loading layer" << std::endl;
+      LoadLayer(registry, layerElement, tWidth, tHeight, mWidth, tileName, columns);
+      layerElement = layerElement->NextSiblingElement("layer");
+    }
+
+    // Se obtiene la lista de object groups
+    tinyxml2::XMLElement *objectGroup = root->FirstChildElement("objectgroup");
+
+    while (objectGroup)
+    {
+      const char *objectGroupName;
+      std::string name;
+      objectGroup->QueryStringAttribute("name", &objectGroupName);
+      name = objectGroupName;
+
+      if (name.compare("colliders") == 0)
+      {
+        //LoadColliders(registry, objectGroup);
+      }
+
+      objectGroup = objectGroup->NextSiblingElement("objectgroup");
+    }
+  }
 }

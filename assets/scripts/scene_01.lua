@@ -4,6 +4,7 @@ scene = {
         [0] = 
         {asset_id = "background", file_path = "./assets/images/background_0.png"},
         {asset_id = "terrain", file_path = "./assets/images/terrain.png"},
+        {asset_id = "player_ship", file_path = "./assets/images/admiral_ship_sprite_sheet.png"},
 
     },
 
@@ -46,29 +47,68 @@ scene = {
     maps = {
         width = 3000,
         height = 3000,
-        path_to_tmx = "./assets/maps/level_01.tmx",
-        tileset_path = "./assets/maps/terrain.tsx",
-        tileset_name = "terrain",
-
+        map_path = "./assets/maps/level_01.tmx",
+        tile_path = "./assets/maps/terrain.tsx",
+        tile_name = "terrain",
     },
 
     -- entities table
     entities = {
         [0] =
-        -- Background
+        -- -- Background
+        -- {
+        --     components = {
+        --         sprite = {
+        --             asset_id = "background",
+        --             width = 3000,
+        --             height = 3000,
+        --             src_rect = {x = 0, y = 0},
+        --         },
+        --         transform = {
+        --             position = { x = 0, y = 0},
+        --             scale = { x = 1.0, y = 1.0},
+        --             rotation = 0.0
+        --         },
+        --     }
+        -- },
+
+        -- player
         {
             components = {
+                animation = {
+                    num_frames = 3,
+                    frame_speed_rate = 5,
+                    is_loop = true
+                },
+                camera_follow = {},
+                tag = {
+                    tag = "player",
+                },
+                box_collider = {
+                    width = 32*2,
+                    height = 32*2,
+                    offset = {x = 0, y= 0},
+                },
+                rigid_body = {
+                    velocity = {x = 0, y = 0},
+                },
+                script = {
+                    path = "./assets/scripts/player.lua"
+                },
                 sprite = {
-                    asset_id = "background",
-                    width = 3000,
-                    height = 3000,
-                    src_rect = {x = 0, y = 0},
+                    asset_id = "player_ship",
+                    width = 32,
+                    height = 32,
+                    src_rect = {x = 16, y = 0},
                 },
                 transform = {
-                    position = { x = 0, y = 0},
-                    scale = { x = 1.0, y = 1.0},
+                    position = { x = 100, y = 100},
+                    scale = { x = 2.0, y =2.0},
                     rotation = 0.0
                 },
+                player_velocity = {
+                    player_velocity = 150
+                }
             }
         },
     }
