@@ -85,8 +85,8 @@ scene = {
                     tag = "player",
                 },
                 box_collider = {
-                    width = 32*2,
-                    height = 32*2,
+                    width = 32,
+                    height = 32,
                     offset = {x = 0, y= 0},
                 },
                 rigid_body = {
@@ -99,11 +99,11 @@ scene = {
                     asset_id = "player_ship",
                     width = 32,
                     height = 32,
-                    src_rect = {x = 16, y = 0},
+                    src_rect = {x = 0, y = 0},
                 },
                 transform = {
                     position = { x = 100, y = 100},
-                    scale = { x = 2.0, y =2.0},
+                    scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
                 player_velocity = {

@@ -555,7 +555,10 @@ void SceneLoader::LoadColliders(std::unique_ptr<Registry> &registry, tinyxml2::X
     Entity collider = registry->create_entity();
     collider.add_component<TagComponent>(tag);
     collider.add_component<TransformComponent>(
-        glm::vec2(x, y));
+        glm::vec2(x, y),
+        glm::vec2(1, 1),
+        0
+        );
     collider.add_component<BoxColliderComponent>(w, h);
     // collider.add_component<RigidBodyComponent>(false, true, 9999999999.0f);
 

@@ -212,9 +212,17 @@ void set_position(Entity e, int x, int y) {
 std::tuple<int, int> get_size(Entity e) {
     const auto& sprite = e.get_component<SpriteComponent>();
     const auto& transform = e.get_component<TransformComponent>();
-    
+
     int width = sprite.width * transform.scale.x;
     int height = sprite.height * transform.scale.y;
+
+    // alternative option used for cases where the entity has a collider but no sprite
+    // like for example colliders read in the map from tiled
+    if(width ==0 || height ==0) {
+        const auto& boxcollider = e.get_component<BoxColliderComponent>();
+        width = boxcollider.width;
+        height = boxcollider.height;
+    }
 
     return {width, height};
 }
