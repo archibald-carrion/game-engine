@@ -67,9 +67,23 @@ private:
     void load_entities(sol::state& lua, const sol::table& entities, std::unique_ptr<Registry>& registry);
 
 
-    void LoadMap(const sol::table map, std::unique_ptr<Registry> &registry);
-    void LoadLayer(std::unique_ptr<Registry> &registry, tinyxml2::XMLElement *layerElement, int tWidth, int tHeight, int mWidth, const std::string &tileSet, int columns);
+    void LoadMap(
+        const sol::table map,
+        std::unique_ptr<Registry> &registry);
 
+    void LoadLayer(
+        std::unique_ptr<Registry> &registry,
+        tinyxml2::XMLElement *layerElement,
+        int tWidth,
+        int tHeight,
+        int mWidth,
+        const std::string &tileSet,
+        int columns);
+
+    void LoadColliders(
+        std::unique_ptr<Registry> &registry,
+        tinyxml2::XMLElement *objectGroup);
+        
 public:
     /**
      * @brief Default constructor for the SceneLoader class.

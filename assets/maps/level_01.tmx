@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="150" height="75" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="150" height="75" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="48">
  <tileset firstgid="1" source="terrain.tsx"/>
  <layer id="1" name="platform" width="150" height="75">
   <data encoding="csv">
@@ -80,4 +80,39 @@
 24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24
 </data>
  </layer>
+ <objectgroup id="2" name="colliders">
+  <object id="2" name="wall" x="0" y="128" width="16" height="960"/>
+  <object id="3" name="floor" x="16" y="240" width="64" height="832"/>
+  <object id="4" name="floor" x="80" y="256" width="32" height="816"/>
+  <object id="6" name="floor" x="112" y="272" width="30.9091" height="74.7273"/>
+  <object id="7" name="floor" x="144" y="288" width="80" height="64"/>
+  <object id="9" name="floor" x="208" y="304" width="48" height="64.1818"/>
+  <object id="12" name="floor" x="240" y="320" width="32" height="48"/>
+  <object id="16" name="floor" x="256" y="336" width="48" height="48"/>
+  <object id="18" name="floor" x="288" y="352" width="48.9091" height="50.9091"/>
+  <object id="21" name="floor" x="320" y="368" width="96" height="48"/>
+  <object id="22" name="floor" x="400" y="400" width="80" height="32"/>
+  <object id="24" name="floor" x="448" y="416" width="64" height="32"/>
+  <object id="25" name="floor" x="496" y="432" width="80" height="32"/>
+  <object id="26" name="floor" x="560" y="448" width="64" height="32"/>
+  <object id="27" name="floor" x="608" y="464" width="224" height="32"/>
+  <object id="28" name="floor" x="816" y="448" width="110" height="32.5"/>
+  <object id="29" name="floor" x="912" y="432" width="208" height="32"/>
+  <object id="30" name="floor" x="1104" y="416" width="176" height="32"/>
+  <object id="31" name="floor" x="1264" y="432" width="80" height="32"/>
+  <object id="33" name="floor" x="1324.36" y="448" width="67.6364" height="27.6364"/>
+  <object id="34" name="floor" x="1376" y="464" width="64" height="32"/>
+  <object id="35" name="floor" x="1426.55" y="480" width="77.4545" height="29.2727"/>
+  <object id="36" name="floor" x="1494" y="496" width="106" height="28.1818"/>
+  <object id="37" name="floor" x="1587.82" y="512" width="108.182" height="27.2727"/>
+  <object id="38" name="floor" x="1664" y="528" width="112" height="29.0909"/>
+  <object id="39" name="floor" x="1760" y="544" width="336" height="24.6667"/>
+  <object id="40" name="floor" x="2096" y="512" width="71.6364" height="40.1818"/>
+  <object id="41" name="floor" x="2144" y="480" width="80.3636" height="43.4545"/>
+  <object id="42" name="floor" x="2208" y="448" width="42.7273" height="40.9091"/>
+  <object id="43" name="floor" x="2240" y="416" width="64" height="48"/>
+  <object id="45" name="floor" x="2288" y="384" width="48" height="48"/>
+  <object id="46" name="floor" x="2336" y="352" width="48" height="48"/>
+  <object id="47" name="wall" x="2384" y="128" width="16" height="960"/>
+ </objectgroup>
 </map>

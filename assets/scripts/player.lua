@@ -73,7 +73,7 @@ function on_collision(other)
     other_tag = get_tag(other)
     
     -- Check if the player is colliding with a wall, and if so don't allow the player to move through the wall
-    if other_tag == "wall_0" or other_tag=="wall_1" then
+    if other_tag == "wall" or other_tag=="floor" then
         this_x, this_y = get_position(this)
         this_width, this_height = get_size(this)
         other_x, other_y = get_position(other)
