@@ -235,10 +235,13 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
             sol::optional<sol::table> has_rigid_body = components["rigid_body"];
             if(has_rigid_body != sol::nullopt) {
                 new_entity.add_component<RigidBodyComponent>(
-                    glm::vec2(
-                        components["rigid_body"]["velocity"]["x"],
-                        components["rigid_body"]["velocity"]["y"]
-                    )
+                    components["rigid_body"]["is_dynamic"],
+                    components["rigid_body"]["mass"]
+
+                    // glm::vec2(
+                    //     components["rigid_body"]["velocity"]["x"],
+                    //     components["rigid_body"]["velocity"]["y"]
+                    // )
                 );
             }
 

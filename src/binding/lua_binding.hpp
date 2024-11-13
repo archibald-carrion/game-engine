@@ -397,9 +397,9 @@ void shoot_bullet(Entity player) {
         glm::vec2(0, 0)  // offset
     );
     
-    bullet.add_component<RigidBodyComponent>(
-        glm::vec2(velocity_x, velocity_y)  // velocity
-    );
+    // bullet.add_component<RigidBodyComponent>(
+    //     glm::vec2(velocity_x, velocity_y)  // velocity
+    // );
     
     bullet.add_component<SpriteComponent>(
         "bullet",  // asset_id
