@@ -45,8 +45,8 @@ scene = {
 
     -- map table
     maps = {
-        width = 3000,
-        height = 3000,
+        width = 1600,
+        height = 800,
         map_path = "./assets/maps/level_01.tmx",
         tile_path = "./assets/maps/terrain.tsx",
         tile_name = "terrain",

@@ -14,6 +14,8 @@ public:
    }
 
     void update(SDL_Renderer* renderer, SDL_Rect& camera) {
+            // print amoutn of entities with box collider
+            std::cout << "Box collider entities: " << get_entities().size() << std::endl;
         for (auto entity : get_entities()) {
             const auto& collider = entity.get_component<BoxColliderComponent>();
             const auto& transform = entity.get_component<TransformComponent>();

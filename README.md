@@ -79,6 +79,8 @@ Adjunto se agrego una serie de screenshots del juego ejecutandose:
 Para instalar las bibliotecas necesarias en linux, ejecute el siguiente comando:
 ```bash
 sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev libsdl2-mixer-dev lua5.3 liblua5.3-dev
+sudo apt install libtinyxml2-dev
+
 ```
 
 ## Puntos extras
