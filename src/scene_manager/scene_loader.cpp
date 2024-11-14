@@ -236,6 +236,7 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
             if(has_rigid_body != sol::nullopt) {
                 new_entity.add_component<RigidBodyComponent>(
                     components["rigid_body"]["is_dynamic"],
+                    components["rigid_body"]["is_solid"],
                     components["rigid_body"]["mass"]
 
                     // glm::vec2(
@@ -563,7 +564,8 @@ void SceneLoader::LoadColliders(std::unique_ptr<Registry> &registry, tinyxml2::X
         0
         );
     collider.add_component<BoxColliderComponent>(w, h);
-    // collider.add_component<RigidBodyComponent>(false, true, 9999999999.0f);
+
+    collider.add_component<RigidBodyComponent>(false, true, 9999999.0f);
 
     object = object->NextSiblingElement("object");
   }

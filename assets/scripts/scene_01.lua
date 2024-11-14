@@ -55,22 +55,6 @@ scene = {
     -- entities table
     entities = {
         [0] =
-        -- -- Background
-        -- {
-        --     components = {
-        --         sprite = {
-        --             asset_id = "background",
-        --             width = 3000,
-        --             height = 3000,
-        --             src_rect = {x = 0, y = 0},
-        --         },
-        --         transform = {
-        --             position = { x = 0, y = 0},
-        --             scale = { x = 1.0, y = 1.0},
-        --             rotation = 0.0
-        --         },
-        --     }
-        -- },
 
         -- player
         {
@@ -91,6 +75,7 @@ scene = {
                 },
                 rigid_body = {
                     is_dynamic = true,
+                    is_solid = true,
                     mass = 1,
                 },
                 script = {
@@ -103,49 +88,12 @@ scene = {
                     src_rect = {x = 0, y = 0},
                 },
                 transform = {
-                    position = { x = 100, y = 100},
+                    position = { x = 150, y = 50},
                     scale = { x = 1.0, y = 1.0},
                     rotation = 0.0
                 },
                 player_velocity = {
                     player_velocity = 150
-                }
-            }
-        },
-
-         -- enemy_circle 1
-         {
-            components = {
-                animation = {
-                    num_frames = 2,
-                    frame_speed_rate = 2,
-                    is_loop = true
-                },
-                box_collider = {
-                    width = 64,
-                    height = 64,
-                    offset = {x = 0, y= 0},
-                },
-                rigid_body = {
-                    is_dynamic = false,
-                    mass = 1,
-                },
-                script = {
-                    path = "./assets/scripts/enemy_circle_small.lua"
-                },
-                sprite = {
-                    asset_id = "enemy_circle",
-                    width = 32,
-                    height = 32,
-                    src_rect = {x = 16, y = 0},
-                },
-                tag = {
-                    tag = "enemy",
-                },
-                transform = {
-                    position = { x = 300, y = 100},
-                    scale = { x = 2.0, y = 2.0},
-                    rotation = 0.0
                 }
             }
         },

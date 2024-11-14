@@ -12,6 +12,8 @@
 #include "../systems/box_collision_system.hpp"
 #include "../systems/player_score_system.hpp"
 #include "../systems/PhysicsSystem.hpp"
+#include "../systems/overlap_system.hpp"
+#include "../systems/render_box_collider_system.hpp"
 
 #include "../events/click_event.hpp"
 
@@ -48,6 +50,8 @@ void Game::setup() {
     registry->add_system<BoxCollisionSystem>();
     registry->add_system<PlayerScoreSystem>();
     registry->add_system<PhysicsSystem>();
+    registry->add_system<OverlapSystem>();
+    registry->add_system<RenderBoxColliderSystem>();
 
 
     scene_manager->load_scene_from_script("assets/scripts/scenes.lua", lua);
@@ -168,6 +172,11 @@ void Game::processInput() {
                 break;
 
             case SDL_KEYDOWN:
+                // if key i is press toggle debug mode
+                if (event.key.keysym.sym == SDLK_i) {
+                    is_debug = !is_debug;
+                    break;
+                }
                 if (event.key.keysym.sym == SDLK_ESCAPE) {
                     scene_manager->stop_scene();
                     isRunning = false;
@@ -229,6 +238,7 @@ void Game::update() {
     // re-initialize subscriptions
     events_manager->reset();
     registry->get_system<UISystem>().suscribe_to_click_event(events_manager);
+    registry->get_system<OverlapSystem>().SubscribeToCollisionEvent(events_manager);
 
     registry->update();
     registry->get_system<ScriptSystem>().update(lua);
@@ -239,7 +249,7 @@ void Game::update() {
 
     registry->get_system<CameraMovementSystem>().update(this->camera);
     registry->get_system<CircleCollisionSystem>().update(events_manager);
-    registry->get_system<BoxCollisionSystem>().update(lua);
+    registry->get_system<BoxCollisionSystem>().update(lua, events_manager);
 
 }
 
@@ -250,6 +260,11 @@ void Game::render() {
     registry->get_system<RenderSystem>().update(renderer, assets_manager, this->camera);
     registry->get_system<PlayerScoreSystem>().update(renderer, player_score);
     registry->get_system<RenderTextSystem>().update(renderer, assets_manager);
+
+    // check if debug mode is enabled
+    if (is_debug) {
+        registry->get_system<RenderBoxColliderSystem>().update(renderer, this->camera);
+    }
 
     SDL_RenderPresent(this->renderer);
 }
