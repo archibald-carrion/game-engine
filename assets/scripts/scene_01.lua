@@ -4,7 +4,7 @@ scene = {
         [0] = 
         {asset_id = "background", file_path = "./assets/images/background_0.png"},
         {asset_id = "terrain", file_path = "./assets/images/terrain.png"},
-        {asset_id = "player_ship", file_path = "./assets/images/admiral_ship_sprite_sheet.png"},
+        {asset_id = "frog_idle", file_path = "./assets/images/frog_idle.png"},
         {asset_id = "enemy_circle", file_path = "./assets/images/enemy_circle_thing.png"},
     },
 
@@ -90,14 +90,14 @@ scene = {
                     offset = {x = 0, y= 0},
                 },
                 rigid_body = {
-                    is_dynamic = false,
+                    is_dynamic = true,
                     mass = 1,
                 },
                 script = {
-                    path = "./assets/scripts/player.lua"
+                    path = "./assets/scripts/player_frog.lua"
                 },
                 sprite = {
-                    asset_id = "player_ship",
+                    asset_id = "frog_idle",
                     width = 32,
                     height = 32,
                     src_rect = {x = 0, y = 0},

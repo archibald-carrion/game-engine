@@ -11,6 +11,7 @@
 #include "../systems/camera_movement_system.hpp"
 #include "../systems/box_collision_system.hpp"
 #include "../systems/player_score_system.hpp"
+#include "../systems/PhysicsSystem.hpp"
 
 #include "../events/click_event.hpp"
 
@@ -46,6 +47,8 @@ void Game::setup() {
     registry->add_system<CameraMovementSystem>();
     registry->add_system<BoxCollisionSystem>();
     registry->add_system<PlayerScoreSystem>();
+    registry->add_system<PhysicsSystem>();
+
 
     scene_manager->load_scene_from_script("assets/scripts/scenes.lua", lua);
 
@@ -230,7 +233,10 @@ void Game::update() {
     registry->update();
     registry->get_system<ScriptSystem>().update(lua);
     registry->get_system<AnimationSystem>().update();
+
+    registry->get_system<PhysicsSystem>().update();
     registry->get_system<MovementSystem>().update(deltaTime);
+
     registry->get_system<CameraMovementSystem>().update(this->camera);
     registry->get_system<CircleCollisionSystem>().update(events_manager);
     registry->get_system<BoxCollisionSystem>().update(lua);
