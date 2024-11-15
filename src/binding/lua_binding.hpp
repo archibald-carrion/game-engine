@@ -352,63 +352,63 @@ bool right_collision(Entity e, Entity other) {
     );
 }
 
-void shoot_bullet(Entity player) {
-    //std::cout << "[LUABINDING] creating new bullet" << std::endl;
-    // Get the registry instance to create new entity
-    auto& registry = Game::get_instance().registry;
+// void shoot_bullet(Entity player) {
+//     //std::cout << "[LUABINDING] creating new bullet" << std::endl;
+//     // Get the registry instance to create new entity
+//     auto& registry = Game::get_instance().registry;
     
-    // Create new bullet entity
-    Entity bullet = registry->create_entity();
+//     // Create new bullet entity
+//     Entity bullet = registry->create_entity();
     
-    // Get player position, rotation and sprite info
-    const auto& player_transform = player.get_component<TransformComponent>();
-    const auto& player_sprite = player.get_component<SpriteComponent>();
+//     // Get player position, rotation and sprite info
+//     const auto& player_transform = player.get_component<TransformComponent>();
+//     const auto& player_sprite = player.get_component<SpriteComponent>();
     
-    // Calculate center offset
-    float player_center_x = player_transform.position.x + (player_sprite.width * player_transform.scale.x / 2.0f);
-    float player_center_y = player_transform.position.y + (player_sprite.height * player_transform.scale.y / 2.0f);
+//     // Calculate center offset
+//     float player_center_x = player_transform.position.x + (player_sprite.width * player_transform.scale.x / 2.0f);
+//     float player_center_y = player_transform.position.y + (player_sprite.height * player_transform.scale.y / 2.0f);
     
-    // Subtract 90 degrees (π/2 radians) to make 0 degrees point upward
-    const float rotation_radians = glm::radians(player_transform.rotation - 90.0f);
+//     // Subtract 90 degrees (π/2 radians) to make 0 degrees point upward
+//     const float rotation_radians = glm::radians(player_transform.rotation - 90.0f);
     
-    // Calculate spawn offset from center based on rotation
-    // Use half the sprite height as the distance from center to nose
-    float spawn_offset = (player_sprite.height * player_transform.scale.y) / 2.0f;
-    float spawn_x = player_center_x + (spawn_offset * std::cos(rotation_radians));
-    float spawn_y = player_center_y + (spawn_offset * std::sin(rotation_radians));
+//     // Calculate spawn offset from center based on rotation
+//     // Use half the sprite height as the distance from center to nose
+//     float spawn_offset = (player_sprite.height * player_transform.scale.y) / 2.0f;
+//     float spawn_x = player_center_x + (spawn_offset * std::cos(rotation_radians));
+//     float spawn_y = player_center_y + (spawn_offset * std::sin(rotation_radians));
     
-    // Calculate bullet velocity based on player's rotation
-    const int bullet_speed = 1000;
-    const float velocity_x = static_cast<float>(bullet_speed) * std::cos(rotation_radians);
-    const float velocity_y = static_cast<float>(bullet_speed) * std::sin(rotation_radians);
+//     // Calculate bullet velocity based on player's rotation
+//     const int bullet_speed = 1000;
+//     const float velocity_x = static_cast<float>(bullet_speed) * std::cos(rotation_radians);
+//     const float velocity_y = static_cast<float>(bullet_speed) * std::sin(rotation_radians);
     
-    // Add components to bullet entity
-    bullet.add_component<BoxColliderComponent>(
-        8,  // width
-        8,  // height
-        glm::vec2(0, 0)  // offset
-    );
+//     // Add components to bullet entity
+//     bullet.add_component<BoxColliderComponent>(
+//         8,  // width
+//         8,  // height
+//         glm::vec2(0, 0)  // offset
+//     );
     
-    bullet.add_component<RigidBodyComponent>(
-        glm::vec2(velocity_x, velocity_y)  // velocity
-    );
+//     bullet.add_component<RigidBodyComponent>(
+//         glm::vec2(velocity_x, velocity_y)  // velocity
+//     );
     
-    bullet.add_component<SpriteComponent>(
-        "bullet",  // asset_id
-        8,  // width
-        8,  // height
-        0,  // src_rect.x
-        0   // src_rect.y
-    );
+//     bullet.add_component<SpriteComponent>(
+//         "bullet",  // asset_id
+//         8,  // width
+//         8,  // height
+//         0,  // src_rect.x
+//         0   // src_rect.y
+//     );
     
-    bullet.add_component<TagComponent>("bullet");
+//     bullet.add_component<TagComponent>("bullet");
     
-    // Use the nose position for the bullet, and center the bullet sprite itself
-    bullet.add_component<TransformComponent>(
-        glm::vec2(spawn_x - 4, spawn_y - 4),  // position (at nose, offset by half bullet size)
-        glm::vec2(1.0f, 1.0f),    // scale
-        player_transform.rotation   // rotation (match player rotation)
-    );
-}
+//     // Use the nose position for the bullet, and center the bullet sprite itself
+//     bullet.add_component<TransformComponent>(
+//         glm::vec2(spawn_x - 4, spawn_y - 4),  // position (at nose, offset by half bullet size)
+//         glm::vec2(1.0f, 1.0f),    // scale
+//         player_transform.rotation   // rotation (match player rotation)
+//     );
+// }
 
 #endif // LUA_BINDING_HPP

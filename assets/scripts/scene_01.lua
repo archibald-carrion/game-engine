@@ -90,7 +90,9 @@ scene = {
                     offset = {x = 0, y= 0},
                 },
                 rigid_body = {
-                    velocity = {x = 0, y = 0},
+                    is_dynamic = true,
+                    is_solid = true,
+                    mass = 10,
                 },
                 script = {
                     path = "./assets/scripts/player.lua"
