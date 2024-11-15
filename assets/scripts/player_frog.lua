@@ -1,10 +1,25 @@
+-- Global variable
+
+player_can_jump = false
+player_speed = 3.0 * 64.0
+player_jump_force = -3000.0 * 64.0
+
+
 function update()
 
 end
 
 
+function on_collision(other)
+    if get_tag(other) == "floor" then
+        local vel_x, vel_y = get_velocity(this)
+        if vel_y == 0 then
+            player_can_jump = true
+        end
+    end
+end
+  
 
--- -- -- Global variable
 -- is_shooting = false
 
 -- function update()

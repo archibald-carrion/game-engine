@@ -10,91 +10,99 @@
 #include "../event_manager/event_manager.hpp"
 #include "../events/collision_event.hpp"
 
-enum direction {
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT
+enum Direction
+{
+  TOP,
+  BOTTOM,
+  LEFT,
+  RIGHT
 };
 
 class OverlapSystem : public System {
 private:
 
-    bool check_collision(Entity a, Entity b, direction dir) {
-        auto& a_collider = a.get_component<BoxColliderComponent>();
-        auto& a_transform = a.get_component<TransformComponent>();
-        auto& b_collider = b.get_component<BoxColliderComponent>();
-        auto& b_transform = b.get_component<TransformComponent>();
+    bool check_collision(Entity a, Entity b, Direction dir) {
+       auto &aCollider = a.get_component<BoxColliderComponent>();
+        auto &bCollider = b.get_component<BoxColliderComponent>();
+        auto &aTransform = a.get_component<TransformComponent>();
+        auto &bTransform = b.get_component<TransformComponent>();
 
-        float a_x = a_transform.previous_position.x;
-        float a_y = a_transform.previous_position.y;
-        float a_w = static_cast<float>(a_collider.width);
-        float a_h = static_cast<float>(a_collider.height);
+        float aX = aTransform.previous_position.x;
+        float aY = aTransform.previous_position.y;
+        float aW = static_cast<float>(aCollider.width);
+        float aH = static_cast<float>(aCollider.height);
 
-        float b_x = b_transform.previous_position.x;
-        float b_y = b_transform.previous_position.y;
-        float b_w = static_cast<float>(b_collider.width);
-        float b_h = static_cast<float>(b_collider.height);
+        float bX = bTransform.previous_position.x;
+        float bY = bTransform.previous_position.y;
+        float bW = static_cast<float>(bCollider.width);
+        float bH = static_cast<float>(bCollider.height);
 
-        // check if upper side of a is colliding with lower side of b
-        if(direction::UP == dir) {
-            return (
-                a_x < b_x + b_w &&
-                a_x + a_w > b_x &&
-                a_y >b_y
-            );
-        } 
-
-        // check if lower side of a is colliding with upper side of b
-        if(direction::DOWN == dir) {
-            return (
-                a_x < b_x + b_w &&
-                a_x + a_w > b_x &&
-                a_y < b_y
-            );
+        if (Direction::TOP == dir)
+        {
+        return (
+            aX < bX + bW &&
+            aX + aW > bX &&
+            aY > bY //
+        );
+        }
+        if (Direction::BOTTOM == dir)
+        {
+        return (
+            aX < bX + bW &&
+            aX + aW > bX &&
+            aY < bY //
+        );
         }
 
-        // check if left side of a is colliding with right side of b
-        if(direction::LEFT == dir) {
-            return (
-                a_x > b_x &&
-                a_y < b_y + b_h &&
-                a_y + a_h > b_y
-            );
+        if (Direction::LEFT == dir)
+        {
+        return (
+            aY < bY + bH &&
+            aY + aH > bY &&
+            aX > bX //
+        );
         }
 
-        // check if right side of a is colliding with left side of b
-        if(direction::RIGHT == dir) {
-            return (
-                a_x < b_x &&
-                a_y < b_y + b_h &&
-                a_y + a_h > b_y
-            );
+        if (Direction::RIGHT == dir)
+        {
+        return (
+            aY < bY + bH &&
+            aY + aH > bY &&
+            aX < bX //
+        );
         }
 
         return false;
     }
 
     void avoid_overlad(Entity a, Entity b) {
-        auto& a_collider = a.get_component<BoxColliderComponent>();
-        auto& a_transform = a.get_component<TransformComponent>();
+        auto &aCollider = a.get_component<BoxColliderComponent>();
+        auto &aTransform = a.get_component<TransformComponent>();
 
-        auto& b_collider = b.get_component<BoxColliderComponent>();
-        auto& b_transform = b.get_component<TransformComponent>();
-        auto& b_rigidbody = b.get_component<RigidBodyComponent>();
+        auto &bCollider = b.get_component<BoxColliderComponent>();
+        auto &bTransform = b.get_component<TransformComponent>();
+        auto &bRigidBody = b.get_component<RigidBodyComponent>();
 
-        if(check_collision(a, b, direction::UP)) {
-            // move b upward
-            b_transform.position = glm::vec2(b_transform.position.x, a_transform.position.y - b_collider.height);
-            // change velocity of b
-            b_rigidbody.velocity = glm::vec2(b_rigidbody.velocity.x, 0.0f); 
+        if (check_collision(a, b, Direction::TOP))
+        {
+        bTransform.position = glm::vec2(bTransform.position.x, aTransform.position.y - bCollider.height);
+        bRigidBody.velocity = glm::vec2(bRigidBody.velocity.x, 0.0f);
+        }
+        if (check_collision(a, b, Direction::BOTTOM))
+        {
+        bTransform.position = glm::vec2(bTransform.position.x, aTransform.position.y + aCollider.height);
+        bRigidBody.velocity = glm::vec2(bRigidBody.velocity.x, 0.0f);
         }
 
-        if(check_collision(a, b, direction::DOWN)) {
-            // move b downward
-            b_transform.position = glm::vec2(b_transform.position.x, a_transform.position.y + a_collider.height);
-            // change velocity of b
-            b_rigidbody.velocity = glm::vec2(b_rigidbody.velocity.x, 0.0f); 
+        if (check_collision(a, b, Direction::LEFT))
+        {
+        bTransform.position = glm::vec2(aTransform.position.x - bCollider.width, bTransform.position.y);
+        bRigidBody.velocity = glm::vec2(0.0f, bRigidBody.velocity.y);
+        }
+        if (check_collision(a, b, Direction::RIGHT))
+        {
+        bTransform.position = glm::vec2(aTransform.position.x + aCollider.width, bTransform.position.y);
+        bRigidBody.velocity = glm::vec2(0.0f, bRigidBody.velocity.y);
         }
 
     }

@@ -5,6 +5,8 @@
 #include "../components/script_component.hpp" // ScriptComponent
 #include "../components/transform_component.hpp" // TransformComponent
 #include "../ECS/ECS.hpp" // System
+#include "../event_manager/event_manager.hpp"
+#include "../events/collision_event.hpp"
 
 #include <iostream> // std::cout
 
@@ -49,7 +51,7 @@ public:
      * @brief Update the box collision system
      * @param lua The Lua state
      */
-    void update(sol::state& lua){
+    void update(const std::unique_ptr<EventManager> &eventManager, sol::state& lua){
          auto entities = get_entities();
         for(auto i = entities.begin(); i != entities.end(); i++) {
             Entity a = *i;
@@ -81,6 +83,8 @@ public:
                 
                 // check if there is a collision
                 if(there_is_collision) {
+                    eventManager->emit_event<CollisionEvent>(a, b);
+
                     if(a.has_component<ScriptComponent>()) {
                         const auto& script = a.get_component<ScriptComponent>();
                         if(script.on_collision != sol::nil) {

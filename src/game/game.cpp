@@ -13,6 +13,7 @@
 #include "../systems/render_box_collider_system.hpp"
 #include "../systems/player_score_system.hpp"
 #include "../systems/PhysicsSystem.hpp"
+#include "../systems/overlap_system.hpp"
 
 #include "../events/click_event.hpp"
 
@@ -50,6 +51,7 @@ void Game::setup() {
     registry->add_system<PlayerScoreSystem>();
     registry->add_system<RenderBoxColliderSystem>();
     registry->add_system<PhysicsSystem>();
+    registry->add_system<OverlapSystem>();
 
     scene_manager->load_scene_from_script("assets/scripts/scenes.lua", lua);
 
@@ -235,6 +237,7 @@ void Game::update() {
 
     // re-initialize subscriptions
     events_manager->reset();
+    registry->get_system<OverlapSystem>().SubscribeToCollisionEvent(events_manager);
     registry->get_system<UISystem>().suscribe_to_click_event(events_manager);
 
     registry->update();
@@ -243,7 +246,7 @@ void Game::update() {
     registry->get_system<PhysicsSystem>().update();
     registry->get_system<MovementSystem>().update(deltaTime);
 
-    registry->get_system<BoxCollisionSystem>().update(lua);
+    registry->get_system<BoxCollisionSystem>().update(this->events_manager, lua);
     registry->get_system<CircleCollisionSystem>().update(events_manager);
     
     registry->get_system<AnimationSystem>().update();
