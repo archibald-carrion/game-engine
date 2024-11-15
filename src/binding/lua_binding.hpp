@@ -49,33 +49,41 @@ void kill_entity(Entity e) {
     e.kill();
 }
 
-/**
- * @brief Reset the bullet.
- * @param e The bullet entity to reset.
- */
-void reset_bullet(Entity e) {
-    // set velocity to 0
-    auto& rigid_body = e.get_component<RigidBodyComponent>();
 
-    rigid_body.velocity = {0, 0};
 
-    // get the player location from the game
-    auto& game = Game::get_instance();
-    auto [x, y] = game.player_location;
-
-    // set the bullet location to the player location
-    auto& transform = e.get_component<TransformComponent>();
-    transform.position = {static_cast<float>(x), static_cast<float>(y)};
+void add_force(Entity entity, float x, float y)
+{
+  auto &rigidBody = entity.get_component<RigidBodyComponent>();
+  rigidBody.sum_forces += glm::vec2(x, y);
 }
 
-/**
- * @brief Update the player location.
- * @param x The x coordinate of the player.
- * @param y The y coordinate of the player.
- */
-void update_player_location(int x, int y) {
-    Game::get_instance().player_location = {x, y};
-}
+// /**
+//  * @brief Reset the bullet.
+//  * @param e The bullet entity to reset.
+//  */
+// void reset_bullet(Entity e) {
+//     // set velocity to 0
+//     auto& rigid_body = e.get_component<RigidBodyComponent>();
+
+//     rigid_body.velocity = {0, 0};
+
+//     // get the player location from the game
+//     auto& game = Game::get_instance();
+//     auto [x, y] = game.player_location;
+
+//     // set the bullet location to the player location
+//     auto& transform = e.get_component<TransformComponent>();
+//     transform.position = {static_cast<float>(x), static_cast<float>(y)};
+// }
+
+// /**
+//  * @brief Update the player location.
+//  * @param x The x coordinate of the player.
+//  * @param y The y coordinate of the player.
+//  */
+// void update_player_location(int x, int y) {
+//     Game::get_instance().player_location = {x, y};
+// }
 
 /**
  * @brief Increment the player velocity by a certain amount.

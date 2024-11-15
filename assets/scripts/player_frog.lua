@@ -6,8 +6,24 @@ player_jump_force = -3000.0 * 64.0
 
 
 function update()
-
-end
+    local vel_x, vel_y = get_velocity(this)
+    vel_x = 0
+  
+    if is_action_activated("jump") then
+      if player_can_jump then
+        add_force(this, 0, player_jump_force)
+      end
+    end
+    if is_action_activated("left") then
+      vel_x = vel_x - player_speed
+    end
+    if is_action_activated("right") then
+      vel_x = vel_x + player_speed
+    end
+  
+    set_velocity(this, vel_x, vel_y)
+    player_can_jump = false
+  end
 
 
 function on_collision(other)

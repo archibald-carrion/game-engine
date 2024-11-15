@@ -82,10 +82,10 @@ private:
     bool is_debug_mode_activated = false;
  
 public:
-    int map_height = 3000; /**< Height of the game map. */
-    int map_width = 3000; /**< Width of the game map. */
+    int map_height = 800; /**< Height of the game map. */
+    int map_width = 600; /**< Width of the game map. */
 
-    std::tuple<int, int> player_location = {50, 50}; /**< Location of the player. */
+    // std::tuple<int, int> player_location = {50, 50}; /**< Location of the player. */
 
     int player_score = 0;
 

@@ -28,11 +28,11 @@ scene = {
     
     -- actions and keys table
     keys = {
-        [0] =
-        {name = "up", key = 119}, -- SDLK_w
-        {name = "left", key = 97}, -- SDLK_a
-        {name = "down", key = 115}, -- SDLK_s
-        {name = "right", key = 100}, -- SDLK_d
+        [0] = {name = "up", key = 119},
+        {name = "left", key = 97},
+        {name = "down", key = 115},
+        {name = "right", key = 100},
+        {name = "jump", key = 32},
     },
 
     -- actions and mouse button table
@@ -103,7 +103,7 @@ scene = {
                 },
                 transform = {
                     position = { x = 100, y = 100},
-                    scale = { x = 2.0, y =2.0},
+                    scale = { x = 1.0, y =1.0},
                     rotation = 0.0
                 },
                 player_velocity = {

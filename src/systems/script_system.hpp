@@ -43,10 +43,13 @@ public:
         lua.set_function("get_position", get_position);
         lua.set_function("get_size", get_size);
 
+        lua.set_function("add_force", add_force);
+
+
         // general entity related functions
         lua.set_function("get_tag", get_tag);
-        lua.set_function("reset_bullet", reset_bullet);
-        lua.set_function("update_player_location", update_player_location);
+        // lua.set_function("reset_bullet", reset_bullet);
+        // lua.set_function("update_player_location", update_player_location);
         lua.set_function("kill_entity", kill_entity);
         lua.set_function("increment_player_velocity", increment_player_velocity);
         lua.set_function("get_player_velocity", get_player_velocity);
