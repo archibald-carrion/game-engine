@@ -2,10 +2,8 @@ scene = {
     -- sprites table
     sprites = {
         [0] = 
-        {asset_id = "background", file_path = "./assets/images/background_0.png"},
         {asset_id = "terrain", file_path = "./assets/images/terrain.png"},
-        {asset_id = "player_ship", file_path = "./assets/images/admiral_ship_sprite_sheet.png"},
-
+        {asset_id = "frog_idle", file_path = "./assets/images/frog_idle.png"},
     },
 
     -- sounds table
@@ -76,7 +74,7 @@ scene = {
         {
             components = {
                 animation = {
-                    num_frames = 3,
+                    num_frames = 11,
                     frame_speed_rate = 5,
                     is_loop = true
                 },
@@ -85,8 +83,8 @@ scene = {
                     tag = "player",
                 },
                 box_collider = {
-                    width = 32*2,
-                    height = 32*2,
+                    width = 32,
+                    height = 32,
                     offset = {x = 0, y= 0},
                 },
                 rigid_body = {
@@ -95,13 +93,13 @@ scene = {
                     mass = 10,
                 },
                 script = {
-                    path = "./assets/scripts/player.lua"
+                    path = "./assets/scripts/player_frog.lua"
                 },
                 sprite = {
-                    asset_id = "player_ship",
+                    asset_id = "frog_idle",
                     width = 32,
                     height = 32,
-                    src_rect = {x = 16, y = 0},
+                    src_rect = {x = 0, y = 0},
                 },
                 transform = {
                     position = { x = 100, y = 100},
