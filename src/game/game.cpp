@@ -25,11 +25,12 @@ Game::Game() {
     controller_manager = std::make_unique<ControllerManager>();
     scene_manager = std::make_unique<SceneManager>();
     audio_manager = std::make_unique<AudioManager>();
+    animation_manager = std::make_unique<AnimationManager>();
 }
 
 Game::~Game() {
     //std::cout << "[GAME] Destructor" << std::endl;
-
+    animation_manager.reset();
     audio_manager.reset();
     scene_manager.reset();
     assets_manager.reset();

@@ -21,6 +21,7 @@
 #include "../event_manager/event_manager.hpp" // Event manager for handling events
 #include "../controller_manager/controller_manager.hpp" // Controller manager for handling user input
 #include "../scene_manager/scene_manager.hpp" // Scene manager for handling scenes
+#include "../animation_manager/animation_manager.hpp" // Animation manager for handling animations
 
 
 
@@ -99,6 +100,7 @@ public:
     std::unique_ptr<EventManager> events_manager; /**< Pointer to the event manager. */
     std::unique_ptr<ControllerManager> controller_manager; /**< Pointer to the controller manager. */
     std::unique_ptr<AudioManager> audio_manager; /**< Pointer to the audio manager. */
+    std::unique_ptr<AnimationManager> animation_manager; /**< Pointer to the animation manager. */
     sol::state lua; /**< Lua state for scripting. */
 
     /**
