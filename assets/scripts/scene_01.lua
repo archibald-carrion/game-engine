@@ -4,8 +4,8 @@ scene = {
         [0] = 
         {asset_id = "background", file_path = "./assets/images/background_0.png"},
         {asset_id = "terrain", file_path = "./assets/images/terrain.png"},
-        {asset_id = "frog_idle", file_path = "./assets/images/frog_idle.png"},
-        {asset_id = "enemy_circle", file_path = "./assets/images/enemy_circle_thing.png"},
+        {asset_id = "player_ship", file_path = "./assets/images/admiral_ship_sprite_sheet.png"},
+
     },
 
     -- sounds table
@@ -45,8 +45,8 @@ scene = {
 
     -- map table
     maps = {
-        width = 1600,
-        height = 800,
+        width = 3000,
+        height = 3000,
         map_path = "./assets/maps/level_01.tmx",
         tile_path = "./assets/maps/terrain.tsx",
         tile_name = "terrain",
@@ -55,6 +55,22 @@ scene = {
     -- entities table
     entities = {
         [0] =
+        -- -- Background
+        -- {
+        --     components = {
+        --         sprite = {
+        --             asset_id = "background",
+        --             width = 3000,
+        --             height = 3000,
+        --             src_rect = {x = 0, y = 0},
+        --         },
+        --         transform = {
+        --             position = { x = 0, y = 0},
+        --             scale = { x = 1.0, y = 1.0},
+        --             rotation = 0.0
+        --         },
+        --     }
+        -- },
 
         -- player
         {
@@ -69,27 +85,25 @@ scene = {
                     tag = "player",
                 },
                 box_collider = {
-                    width = 32,
-                    height = 32,
+                    width = 32*2,
+                    height = 32*2,
                     offset = {x = 0, y= 0},
                 },
                 rigid_body = {
-                    is_dynamic = true,
-                    is_solid = true,
-                    mass = 1,
+                    velocity = {x = 0, y = 0},
                 },
                 script = {
-                    path = "./assets/scripts/player_frog.lua"
+                    path = "./assets/scripts/player.lua"
                 },
                 sprite = {
-                    asset_id = "frog_idle",
+                    asset_id = "player_ship",
                     width = 32,
                     height = 32,
-                    src_rect = {x = 0, y = 0},
+                    src_rect = {x = 16, y = 0},
                 },
                 transform = {
-                    position = { x = 150, y = 50},
-                    scale = { x = 1.0, y = 1.0},
+                    position = { x = 100, y = 100},
+                    scale = { x = 2.0, y =2.0},
                     rotation = 0.0
                 },
                 player_velocity = {

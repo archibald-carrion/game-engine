@@ -80,8 +80,6 @@ private:
     int mPreviousFrame = 0; /**< Time of the previous frame. */
     bool isPaused = false; /**< Flag to indicate if the game is paused. */
 
-    bool is_debug = false; /**< Flag to indicate if debug mode is enabled. */
-
  
 public:
     int map_height = 3000; /**< Height of the game map. */

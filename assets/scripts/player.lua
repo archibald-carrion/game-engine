@@ -73,35 +73,24 @@ function on_collision(other)
     other_tag = get_tag(other)
     
     -- Check if the player is colliding with a wall, and if so don't allow the player to move through the wall
-    if other_tag == "wall" or other_tag == "floor" then
+    if other_tag == "wall_0" or other_tag=="wall_1" then
         this_x, this_y = get_position(this)
         this_width, this_height = get_size(this)
         other_x, other_y = get_position(other)
         other_width, other_height = get_size(other)
-
-        print("other size: ")
-        print(other_width)
-        print(other_height)
         
         if top_collision(this, other) then
-            print("top collision")
             -- Move this entity below the other entity
-            set_position(this, this_x, other_y + other_height)
-        
-        elseif bottom_collision(this, other) then
-            print("bottom collision")
-            -- Move this entity above the other entity
-            set_position(this, this_x, other_y - this_height)
-
-        elseif right_collision(this, other) then
-            print("right collision")
-            -- Move this entity to the left of the other entity
-            set_position(this, other_x - this_width, this_y)
-
+            set_position(this, this_x, other_y + other_height - 1)
         elseif left_collision(this, other) then
-            print("left collision")
             -- Move this entity to the right of the other entity
-            set_position(this, other_x+other_width, this_y)
+            set_position(this, other_x + other_width + 1, this_y)
+        elseif right_collision(this, other) then
+            -- Move this entity to the left of the other entity
+            set_position(this, other_x - this_width - 1, this_y)
+        elseif bottom_collision(this, other) then
+            -- Move this entity above the other entity
+            set_position(this, this_x, other_y - this_height - 1)
         end
     end
 

@@ -235,14 +235,10 @@ void SceneLoader::load_entities(sol::state& lua, const sol::table& entities, std
             sol::optional<sol::table> has_rigid_body = components["rigid_body"];
             if(has_rigid_body != sol::nullopt) {
                 new_entity.add_component<RigidBodyComponent>(
-                    components["rigid_body"]["is_dynamic"],
-                    components["rigid_body"]["is_solid"],
-                    components["rigid_body"]["mass"]
-
-                    // glm::vec2(
-                    //     components["rigid_body"]["velocity"]["x"],
-                    //     components["rigid_body"]["velocity"]["y"]
-                    // )
+                    glm::vec2(
+                        components["rigid_body"]["velocity"]["x"],
+                        components["rigid_body"]["velocity"]["y"]
+                    )
                 );
             }
 
@@ -523,50 +519,10 @@ void SceneLoader::LoadMap(const sol::table map, std::unique_ptr<Registry> &regis
 
       if (name.compare("colliders") == 0)
       {
-        LoadColliders(registry, objectGroup);
+        //LoadColliders(registry, objectGroup);
       }
 
       objectGroup = objectGroup->NextSiblingElement("objectgroup");
     }
-  }
-}
-
-void SceneLoader::LoadColliders(std::unique_ptr<Registry> &registry, tinyxml2::XMLElement *objectGroup)
-{
-  tinyxml2::XMLElement *object = objectGroup->FirstChildElement("object");
-
-  while (object != nullptr)
-  {
-    std::cout << "created a new collider" <<std::endl;
-    // Declarar variables
-    const char *name;
-    std::string tag;
-    int x, y, w, h;
-
-    // Extraer atributos
-    object->QueryStringAttribute("name", &name);
-    tag = name;
-
-    // Extraer posición
-    object->QueryIntAttribute("x", &x);
-    object->QueryIntAttribute("y", &y);
-
-    // Extraer dimensiones
-    object->QueryIntAttribute("width", &w);
-    object->QueryIntAttribute("height", &h);
-
-    // Crear entidad
-    Entity collider = registry->create_entity();
-    collider.add_component<TagComponent>(tag);
-    collider.add_component<TransformComponent>(
-        glm::vec2(x, y),
-        glm::vec2(1, 1),
-        0
-        );
-    collider.add_component<BoxColliderComponent>(w, h);
-
-    collider.add_component<RigidBodyComponent>(false, true, 9999999.0f);
-
-    object = object->NextSiblingElement("object");
   }
 }
