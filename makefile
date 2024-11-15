@@ -9,7 +9,8 @@ SRC=src/main.cpp \
 	src/assets_manager/assets_manager.cpp \
 	src/controller_manager/*.cpp \
 	src/scene_manager/*.cpp \
-	src/audio_manager/*.cpp
+	src/audio_manager/*.cpp \
+	stc/animation_manager/*.cpp
 LFLAGS=-lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -llua5.3 -ltinyxml2
 EXEC=game_engine
 
