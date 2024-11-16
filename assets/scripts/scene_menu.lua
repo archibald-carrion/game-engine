@@ -5,6 +5,9 @@ scene = {
         {asset_id = "background", file_path = "./assets/images/background_0.png"},
     },
 
+    -- animations table
+    animations = {},
+
     -- sounds table
     sounds = {
         [0] =

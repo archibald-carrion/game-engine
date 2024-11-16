@@ -32,7 +32,8 @@ void SceneLoader::load_scene(const std::string& scene_path,
     std::unique_ptr<AssetsManager>& asset_manager, 
     std::unique_ptr<ControllerManager>& controller_manager,
     std::unique_ptr<AudioManager>& audio_manager,
-    std::unique_ptr<Registry>& registry, 
+    std::unique_ptr<Registry>& registry,
+    std::unique_ptr<AnimationManager>& animation_manager,
     SDL_Renderer* renderer) {
 
     // load the script
@@ -50,6 +51,11 @@ void SceneLoader::load_scene(const std::string& scene_path,
     // load the sprites
     sol::table sprites = scene["sprites"];
     load_sprites(renderer, sprites, asset_manager);
+
+    // load the animations
+    sol::table animations = scene["animations"];
+    load_animations(animations, animation_manager);
+
     // load the sounds
     sol::table sounds = scene["sounds"];
     load_sounds(sounds, audio_manager);
@@ -559,4 +565,28 @@ void SceneLoader::LoadColliders(std::unique_ptr<Registry> &registry, tinyxml2::X
 
     object = object->NextSiblingElement("object");
   }
+}
+
+void SceneLoader::load_animations(const sol::table& animations, std::unique_ptr<AnimationManager>& animation_manager) {
+    int index = 0;
+    while (true) {
+        sol::optional<sol::table> hasAnimation = animations[index];
+        if (hasAnimation == sol::nullopt) {
+            break;
+        }
+        sol::table animation = animations[index];
+
+        std::string animationId = animation["animation_id"];
+        std::string textureId = animation["texture_id"];
+        int width = animation["w"];
+        int height = animation["h"];
+        int numFrames = animation["num_frames"];
+        int speedRate = animation["speed_rate"];
+        bool isLoop = animation["is_loop"];
+
+        animation_manager->add_animation(animationId, textureId, width, height
+            , numFrames, speedRate, isLoop);
+        
+        index++;
+    }
 }

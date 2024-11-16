@@ -40,7 +40,7 @@ void SceneManager::load_scene() {
 
     // std::cout << "[SCENEMANAGER] loading new scene" << std::endl;
 
-    scene_loader->load_scene(scene_path, game.lua, game.assets_manager, game.controller_manager, game.audio_manager, game.registry, game.renderer);
+    scene_loader->load_scene(scene_path, game.lua, game.assets_manager, game.controller_manager, game.audio_manager, game.registry,game.animation_manager, game.renderer);
 }
 
 std::string SceneManager::get_next_scene() const{

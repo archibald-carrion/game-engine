@@ -1,9 +1,20 @@
 scene = {
-    -- sprites table
+    -- sprites table 
     sprites = {
-        [0] = 
-        {asset_id = "terrain", file_path = "./assets/images/terrain.png"},
-        {asset_id = "frog_idle", file_path = "./assets/images/frog_idle.png"},
+        [0] =
+            {asset_id = "frog_idle", file_path = "./assets/images/frog_idle.png"},
+            {asset_id = "frog_jump", file_path = "./assets/images/frog_jump.png"},
+            {asset_id = "frog_fall", file_path = "./assets/images/frog_fall.png"},
+            {asset_id = "frog_run", file_path = "./assets/images/frog_run.png"},
+            {asset_id = "terrain", file_path = "./assets/images/terrain.png"},
+    },
+    
+    animations = {
+        [0] =
+            {animation_id = "player_frog_idle", texture_id = "frog_idle", w = 32, h = 32, num_frames = 11, speed_rate = 15, is_loop = true},
+            {animation_id = "player_frog_jump", texture_id = "frog_jump", w = 32, h = 32, num_frames = 01, speed_rate = 01, is_loop = true},
+            {animation_id = "player_frog_fall", texture_id = "frog_fall", w = 32, h = 32, num_frames = 01, speed_rate = 01, is_loop = true},
+            {animation_id = "player_frog_run", texture_id = "frog_run", w = 32, h = 32, num_frames = 12, speed_rate = 15, is_loop = true},
     },
 
     -- sounds table

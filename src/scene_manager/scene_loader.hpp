@@ -7,6 +7,7 @@
 #include <sol/sol.hpp> // Lua scripting
 #include<tinyxml2/tinyxml2.h> 
 
+#include "../animation_manager/animation_manager.hpp" // Animation manager for handling animations
 #include "../audio_manager/audio_manager.hpp" // Audio manager for handling audio
 #include "../assets_manager/assets_manager.hpp" // Assets manager for loading textures and fonts 
 #include "../controller_manager/controller_manager.hpp" // Controller manager for handling user input
@@ -66,6 +67,7 @@ private:
      */
     void load_entities(sol::state& lua, const sol::table& entities, std::unique_ptr<Registry>& registry);
 
+    void load_animations(const sol::table& animations, std::unique_ptr<AnimationManager>& animation_manager);
 
     void LoadMap(const sol::table map, std::unique_ptr<Registry> &registry);
     void LoadLayer(std::unique_ptr<Registry> &registry, tinyxml2::XMLElement *layerElement, int tWidth, int tHeight, int mWidth, const std::string &tileSet, int columns);
@@ -97,6 +99,7 @@ public:
         std::unique_ptr<ControllerManager>& controller_manager,
         std::unique_ptr<AudioManager>& audio_manager,
         std::unique_ptr<Registry>& registry, 
+        std::unique_ptr<AnimationManager>& animation_manager,
         SDL_Renderer* renderer);
 };
 
