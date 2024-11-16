@@ -1,5 +1,13 @@
 -- Global variable
 
+player_states = {
+    idle = 1,
+    run = 2,
+    jump = 3,
+    fall = 4
+}
+
+player_state = player_states["idle"]
 player_can_jump = false
 player_speed = 3.0 * 64.0
 player_jump_force = -3000.0 * 64.0
@@ -22,6 +30,7 @@ function update()
     end
   
     set_velocity(this, vel_x, vel_y)
+    update_animation_state()
     player_can_jump = false
   end
 
@@ -33,6 +42,34 @@ function on_collision(other)
             player_can_jump = true
         end
     end
+end
+
+function update_animation_state()
+  local x_vel, y_vel = get_velocity(this)
+  
+  -- jugador no se mueve (player not moving)
+  if -0.001 < x_vel and x_vel < 0.001 then
+      if player_state ~= player_states["idle"] then
+          player_state = player_states["idle"]
+          change_animation(this, "player_frog_idle")
+      end
+  end
+  
+  -- jugador se mueve hacia la derecha (player moving right)
+  if x_vel >= 0.001 then
+      if player_state ~= player_states["run"] then
+          player_state = player_states["run"]
+          change_animation(this, "player_frog_run")
+      end
+  end
+  
+  -- jugador se mueve hacia la izquierda (player moving left)
+  if x_vel <= -0.001 then
+      if player_state ~= player_states["run"] then
+          player_state = player_states["run"]
+          change_animation(this, "player_frog_run")
+      end
+  end
 end
   
 

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <tuple>
+#include <SDL2/SDL.h>
 
 #include"../ECS/ECS.hpp"
 #include "../game/game.hpp"
@@ -13,6 +14,31 @@
 #include "../components/tag_component.hpp"
 #include "../components/player_velocity.hpp"
 #include "../components/player_score_component.hpp"
+#include "../animation_manager/animation_manager.hpp"
+
+// animation related functions
+
+void change_animation(Entity entity, const std::string& animationId) {
+    auto& animation = entity.get_component<AnimationComponent>();
+    auto& sprite = entity.get_component<SpriteComponent>();
+
+    AnimationData animationData;
+    animationData = Game::get_instance().animation_manager->get_animation(
+        animationId);
+
+    sprite.texture_id = animationData.texture_id;
+    sprite.width = animationData.width;
+    sprite.height = animationData.height;
+    sprite.src_rect.x = 0;
+    sprite.src_rect.y = 0;
+
+    animation.current_frame = 1;
+    animation.frame_speed_rate = animationData.frame_speed_rate;
+    animation.num_frames = animationData.num_frames;
+    animation.is_loop = animationData.is_loop;
+    animation.start_time = SDL_GetTicks();
+}
+
 
 // Audio related functions
 

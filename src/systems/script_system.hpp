@@ -45,6 +45,8 @@ public:
 
         lua.set_function("add_force", add_force);
 
+        lua.set_function("change_animation", change_animation);
+
 
         // general entity related functions
         lua.set_function("get_tag", get_tag);
