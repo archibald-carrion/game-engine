@@ -47,7 +47,7 @@ end
 function update_animation_state()
   local x_vel, y_vel = get_velocity(this)
   
-  -- jugador no se mueve (player not moving)
+  -- player does not move (player idle)
   if -0.001 < x_vel and x_vel < 0.001 then
       if player_state ~= player_states["idle"] then
           player_state = player_states["idle"]
@@ -55,7 +55,7 @@ function update_animation_state()
       end
   end
   
-  -- jugador se mueve hacia la derecha (player moving right)
+  -- player moving right
   if x_vel >= 0.001 then
       if player_state ~= player_states["run"] then
           player_state = player_states["run"]
@@ -63,12 +63,28 @@ function update_animation_state()
       end
   end
   
-  -- jugador se mueve hacia la izquierda (player moving left)
+  -- player moving left
   if x_vel <= -0.001 then
       if player_state ~= player_states["run"] then
           player_state = player_states["run"]
           change_animation(this, "player_frog_run")
       end
+  end
+
+  -- player fall
+  if y_vel >= 0.001 then
+    if player_state ~= player_states["fall"] then
+        player_state = player_states["fall"]
+        change_animation(this, "player_frog_fall")
+    end
+  end
+
+  -- player jump
+  if y_vel <= -0.001 then
+    if player_state ~= player_states["jump"] then
+        player_state = player_states["jump"]
+        change_animation(this, "player_frog_jump")
+    end
   end
 end
   
