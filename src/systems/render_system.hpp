@@ -55,7 +55,7 @@ public:
                 &dst_rect, 
                 transform.rotation,
                 NULL, // is centered
-                SDL_FLIP_NONE // is mirror
+                (sprite.flip) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE // flip the sprite if needed
             );
         }
     }

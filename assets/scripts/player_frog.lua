@@ -57,6 +57,7 @@ function update_animation_state()
   
   -- player moving right
   if x_vel >= 0.001 then
+    flip_sprite(this, false)
       if player_state ~= player_states["run"] then
           player_state = player_states["run"]
           change_animation(this, "player_frog_run")
@@ -65,6 +66,7 @@ function update_animation_state()
   
   -- player moving left
   if x_vel <= -0.001 then
+    flip_sprite(this, true)
       if player_state ~= player_states["run"] then
           player_state = player_states["run"]
           change_animation(this, "player_frog_run")

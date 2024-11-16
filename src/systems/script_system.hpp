@@ -44,7 +44,7 @@ public:
         lua.set_function("get_size", get_size);
 
         lua.set_function("add_force", add_force);
-
+        lua.set_function("flip_sprite", flip_sprite);
         lua.set_function("change_animation", change_animation);
 
 

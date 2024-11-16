@@ -445,4 +445,12 @@ bool right_collision(Entity e, Entity other) {
 //     );
 // }
 
+// Sprite related functions
+
+void flip_sprite(Entity entity, bool flip) {
+    auto& sprite = entity.get_component<SpriteComponent>();
+    sprite.flip = flip;
+}
+
+
 #endif // LUA_BINDING_HPP

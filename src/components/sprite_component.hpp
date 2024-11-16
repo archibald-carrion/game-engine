@@ -13,6 +13,7 @@ struct SpriteComponent {
     int height; // height of the sprite
     int width; // width of the sprite
     SDL_Rect src_rect; // source rectangle of the sprite
+    bool flip = false; // flip the sprite
 
     /**
      * @brief Construct a new Sprite Component object
